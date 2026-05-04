@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CA Final · Strategic Cost & Performance Management — Index</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Fira+Code:wght@400;500&display=swap');
+
+  :root {
+    color-scheme: light;
+
+    --green-950: #0a1f0d;
+    --green-900: #133a18;
+    --green-800: #1b5225;
+    --green-700: #216b2e;
+    --green-600: #2d8c3e;
+    --green-500: #3aab50;
+    --green-400: #5cc470;
+    --green-200: #a8e4b4;
+    --green-100: #d4f1db;
+    --green-50:  #edf8ef;
+
+    --amber-700: #854f0b;
+    --amber-600: #ba7517;
+    --amber-200: #fac775;
+    --amber-50:  #fffbf2;
+
+    --blue-800: #0c447c;
+    --blue-600: #185fa5;
+    --blue-100: #b5d4f4;
+    --blue-50:  #f0f7ff;
+
+    --red-800:  #791f1f;
+    --red-600:  #a32d2d;
+    --red-100:  #f7c1c1;
+    --red-50:   #fff5f5;
+
+    --purple-800: #3c3489;
+    --purple-600: #534ab7;
+    --purple-100: #cecbf6;
+    --purple-50:  #f5f4ff;
+
+    --gray-900: #111111;
+    --gray-800: #222222;
+    --gray-700: #333333;
+    --gray-600: #555555;
+    --gray-400: #888888;
+    --gray-200: #dddddd;
+    --gray-100: #f0f0f0;
+    --gray-50:  #f8f8f8;
+    --white:    #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    background: var(--white) !important;
+    color: var(--gray-900);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  body {
+    background: var(--white) !important;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+
+  /* ── HEADER ── */
+  .doc-header {
+    background: linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 100%);
+    color: var(--white);
+    padding: 2.8rem 2.4rem 2.2rem;
+    border-radius: 0 0 18px 18px;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 24px rgba(27,82,37,.18);
+  }
+
+  .doc-header .meta {
+    display: block;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    opacity: .75;
+    margin-bottom: .6rem;
+  }
+
+  .doc-header h1 {
+    font-family: 'Merriweather', serif;
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: .55rem;
+  }
+
+  .doc-header .subtitle {
+    font-size: .93rem;
+    opacity: .82;
+    margin-bottom: 1.1rem;
+  }
+
+  /* ── BADGES ── */
+  .badge-row { display: flex; flex-wrap: wrap; gap: .45rem; }
+
+  .badge {
+    display: inline-block;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    padding: .22em .7em;
+    border-radius: 999px;
+    text-transform: uppercase;
+  }
+  .badge-green  { background: var(--green-200);  color: var(--green-900); }
+  .badge-amber  { background: var(--amber-200);  color: var(--amber-700); }
+  .badge-blue   { background: var(--blue-100);   color: var(--blue-800); }
+  .badge-purple { background: var(--purple-100); color: var(--purple-800); }
+  .badge-red    { background: var(--red-100);    color: var(--red-800); }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--green-700);
+    border-bottom: 2px solid var(--green-100);
+    padding-bottom: .35rem;
+    margin: 2.2rem 0 1.1rem;
+  }
+
+  /* ── CHAPTER GRID ── */
+  .chapter-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .chapter-card {
+    display: flex;
+    align-items: stretch;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow .18s, border-color .18s, transform .15s;
+    background: var(--white);
+  }
+
+  .chapter-card:hover {
+    box-shadow: 0 6px 24px rgba(27,82,37,.13);
+    border-color: var(--green-400);
+    transform: translateY(-2px);
+  }
+
+  /* Numbered tab on the left */
+  .card-num {
+    min-width: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--green-800);
+    color: var(--white);
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: .02em;
+    flex-shrink: 0;
+  }
+
+  .card-body {
+    padding: .95rem 1.1rem;
+    flex: 1;
+  }
+
+  .card-chapter-label {
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--green-600);
+    margin-bottom: .2rem;
+  }
+
+  .card-title {
+    font-family: 'Merriweather', serif;
+    font-size: .97rem;
+    font-weight: 700;
+    color: var(--gray-800);
+    line-height: 1.3;
+    margin-bottom: .45rem;
+  }
+
+  .card-badges { display: flex; flex-wrap: wrap; gap: .35rem; }
+
+  /* Arrow indicator */
+  .card-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    color: var(--green-500);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  /* ── INFO BOX ── */
+  .info-box {
+    background: var(--blue-50);
+    border-left: 4px solid var(--blue-600);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    font-size: .88rem;
+    color: var(--blue-800);
+    margin-top: 2.5rem;
+  }
+  .info-box strong { font-weight: 700; }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: .78rem;
+    color: var(--gray-400);
+    border-top: 1px solid var(--gray-200);
+    padding-top: 1.2rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header class="doc-header">
+  <span class="meta">CA Final · Strategic Cost &amp; Performance Management</span>
+  <h1>Complete Chapter Index</h1>
+  <p class="subtitle">One-Source Material — All Chapters at a Glance</p>
+  <div class="badge-row">
+    <span class="badge badge-green">13 Chapters</span>
+    <span class="badge badge-amber">CA Final</span>
+    <span class="badge badge-blue">SCPM</span>
+    <span class="badge badge-purple">One-Source Notes</span>
+  </div>
+</header>
+
+<!-- ══════════════ PART I ══════════════ -->
+<p class="section-label">Part I — Strategic Cost Management</p>
+
+<nav class="chapter-grid" aria-label="Chapters 1–5">
+
+  <a class="chapter-card" href="Ch-1_Introduction_to_Strategic_Cost_Mangament.html">
+    <div class="card-num">01</div>
+    <div class="card-body">
+      <div class="card-chapter-label">Chapter 1</div>
+      <div class="card-title">Introduction to Strategic Cost Management</div>
+      <div class="card-badges">
+        <span class="badge badge-green">Pillar Chapter</span>
+        <span class="badge badge-amber">High Weightage</span>
+        <span class="badge badge-blue">Theory + Application</span>
+        <span class="badge badge-purple">Links to All Chapters</span>
+      </div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a class="chapter-card" href="Ch-2_Modern_Business_Environment.html">
+    <div class="card-num">02</div>
+    <div class="card-body">
+      <div class="card-chapter-label">Chapter 2</div>
+      <div class="card-title">Modern Business Environment</div>
+      <div class="card-badges">
+        <span class="badge badge-amber">Conceptual</span>
+        <span class="badge badge-blue">Theory</span>
+      </div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a class="chapter-card" href="Ch-3_Lean_System_and_Innovation.html">
+    <div class="card-num">03</div>
+    <div class="card-body">
+      <div class="card-chapter-label">Chapter 3</div>
+      <div class="card-title">Lean System &amp; Innovation</div>
+      <div class="card-badges">
+        <span class="badge badge-green">Application</span>
+        <span class="badge badge-amber">High Weightage</span>
+      </div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a class="chapter-card" href="Ch-5_Management_of_cost_strategically_for_emerging_business_models.html">
+    <div class="card-num">05</div>
+    <div class="card-body">
+      <div class="card-chapter-label">Chapter 5</div>
+      <div class="card-title">Management of Cost Strategically for Emerging Business Models</div>
+      <div class="card-badges">
+        <span class="badge badge-purple">Emerging Models</span>
+        <span class="badge badge-blue">Application</span>
+      </div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+</nav>
+
+<!-- ══════════════ PART II ══════════════ -->
+<p class="section-label">Part II — Strategic Revenue &amp; Profit Management</p>
+
+<nav class="chapter-grid" aria-label="Chapters 6–7">
+
+  <a class="chapter-card" href="Ch-6_Strategic_Revenue_Management.html">
+    <div class="card-num">06</div>
+    <div class="card-body">
+      <div class="card-chapter-label">Chapter 6</div>
+      <div class="card-title">Strategic Revenue Management</div>
+      <div class="card-badges">
+        <span class="badge badge-amber">High Weightage</span>
+        <span class="badge badge-green">Numerical</span>
+        <span class="badge badge-blue">Theory + Application</span>
+      </div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a class="chapter-card" href="Ch-7_Strategic_Profit_Management.html">
+    <div class="card-num">07</div>
+    <div class="card-body">
+      <div class="card-chapter-label">Chapter 7</div>
+      <div class="card-title">Strategic Profit Management</div>
+      <div class="card-badges">
+        <span class="badge badge-amber">High Weightage</span>
+        <span class="badge badge-green">Numerical</span>
+      </div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+</nav>
+
+<!-- ══════════════ PART III ══════════════ -->
+<p class="section-label">Part III — Strategic Performance Management</p>
+
+<nav class="chapter-grid" aria-label="Chapters 8–10">
+
+  <a class="chapter-card" href="Chapter-8.html">
+    <div class="card-num">08</div>
+    <div class="card-body">
+      <div class="card-chapter-label">Chapter 8</div>
+      <div class="card-title">Introduction to Strategic Performance Management</div>
+      <div class="card-badges">
+        <span class="badge badge-green">Pillar Chapter</span>
+        <span class="badge badge-blue">Theory</span>
+      </div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a class="chapter-card" href="Ch-9_Strategic_Performance_Management_in_Private_Sector.html">
+    <div class="card-num">09</div>
+    <div class="card-body">
+      <div class="card-chapter-label">Chapter 9</div>
+      <div class="card-title">Strategic Performance Management in Private Sector</div>
+      <div class="card-badges">
+        <span class="badge badge-amber">High Weightage</span>
+        <span class="badge badge-green">Application</span>
+      </div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a class="chapter-card" href="Ch-10_Strategic_Performance_Management_in_Not-for-Profit_Organisations.html">
+    <div class="card-num">10</div>
+    <div class="card-body">
+      <div class="card-chapter-label">Chapter 10</div>
+      <div class="card-title">Strategic Performance Management in Not-for-Profit Organisations</div>
+      <div class="card-badges">
+        <span class="badge badge-purple">NFP Sector</span>
+        <span class="badge badge-blue">Theory + Application</span>
+      </div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+</nav>
+
+<!-- ══════════════ PART IV ══════════════ -->
+<p class="section-label">Part IV — Divisional Management &amp; Costing</p>
+
+<nav class="chapter-grid" aria-label="Chapters 12–13">
+
+  <a class="chapter-card" href="Ch-12_Divisional_Transfer_Pricing.html">
+    <div class="card-num">12</div>
+    <div class="card-body">
+      <div class="card-chapter-label">Chapter 12</div>
+      <div class="card-title">Divisional Transfer Pricing</div>
+      <div class="card-badges">
+        <span class="badge badge-amber">High Weightage</span>
+        <span class="badge badge-green">Numerical</span>
+        <span class="badge badge-blue">Theory + Application</span>
+      </div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a class="chapter-card" href="Ch-13_Standard_Costing.html">
+    <div class="card-num">13</div>
+    <div class="card-body">
+      <div class="card-chapter-label">Chapter 13</div>
+      <div class="card-title">Standard Costing</div>
+      <div class="card-badges">
+        <span class="badge badge-amber">High Weightage</span>
+        <span class="badge badge-green">Numerical</span>
+        <span class="badge badge-red">Variance Analysis</span>
+      </div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+</nav>
+
+<!-- ══════════════ INFO ══════════════ -->
+<div class="info-box">
+  <strong>How to use:</strong> Keep this index file in the same folder as all the chapter HTML files.
+  Click any card to open that chapter directly in your browser. All links are relative — no internet connection required.
+</div>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  CA Final · Strategic Cost &amp; Performance Management · One-Source Material
+</footer>
+
+</body>
+</html>

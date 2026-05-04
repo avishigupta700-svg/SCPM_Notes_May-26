@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 7 – Strategic Profit Management | CA Final SCPM</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #fdfaf4;
+    --accent: #c0392b;
+    --accent2: #1a6b4a;
+    --accent3: #2c5f8a;
+    --gold: #d4a017;
+    --muted: #6b6b7b;
+    --border: #d9d0c0;
+    --highlight: #fff8e1;
+    --highlight2: #e8f5e9;
+    --highlight3: #e3f0fb;
+    --card: #ffffff;
+    --shadow: 0 2px 16px rgba(26,26,46,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* ── HEADER ── */
+  .masthead {
+    background: var(--ink);
+    color: #f0ece0;
+    padding: 48px 40px 36px;
+    border-bottom: 4px solid var(--accent);
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead::before {
+    content: '';
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(192,57,43,0.12);
+  }
+  .masthead .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .masthead h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .masthead h1 span { color: var(--accent); }
+  .masthead .subtitle {
+    font-size: 14px;
+    color: #b0aaa0;
+    font-style: italic;
+    max-width: 560px;
+  }
+  .masthead .chapter-num {
+    position: absolute;
+    right: 40px; top: 32px;
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.05);
+    line-height: 1;
+    user-select: none;
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* ── NAV / TOC ── */
+  .toc {
+    background: var(--ink);
+    color: #e8e4d8;
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin: 36px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px 24px;
+  }
+  .toc-title {
+    grid-column: 1/-1;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .toc a {
+    color: #c8c4b8;
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 0;
+    transition: color .2s;
+  }
+  .toc a:hover { color: var(--gold); }
+  .toc a::before {
+    content: '→';
+    font-size: 10px;
+    color: var(--accent);
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-block { margin-top: 56px; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 700;
+    color: var(--ink);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 10px;
+    margin-bottom: 24px;
+    line-height: 1.25;
+  }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 32px 0 12px;
+  }
+  h3::before {
+    content: '▸ ';
+    color: var(--accent2);
+    font-size: 14px;
+  }
+
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--accent3);
+    margin: 20px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    font-family: 'Source Serif 4', serif;
+  }
+
+  p { margin-bottom: 14px; }
+
+  strong { color: var(--ink); font-weight: 600; }
+  em { color: var(--accent3); font-style: italic; }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 22px 26px;
+    margin: 18px 0;
+    box-shadow: var(--shadow);
+  }
+  .card.yellow { background: var(--highlight); border-left: 4px solid var(--gold); }
+  .card.green  { background: var(--highlight2); border-left: 4px solid var(--accent2); }
+  .card.blue   { background: var(--highlight3); border-left: 4px solid var(--accent3); }
+  .card.red    { background: #fff0ee; border-left: 4px solid var(--accent); }
+  .card.dark   { background: var(--ink); color: #e8e4d8; border: none; }
+  .card.dark strong { color: var(--gold); }
+
+  .card-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .card.yellow .card-title { color: #8a6d00; }
+  .card.green  .card-title { color: var(--accent2); }
+  .card.blue   .card-title { color: var(--accent3); }
+  .card.red    .card-title { color: var(--accent); }
+  .card.dark   .card-title { color: var(--gold); }
+
+  /* ── FORMULA BOX ── */
+  .formula-box {
+    background: var(--ink);
+    color: #e8f0ff;
+    border-radius: 6px;
+    padding: 18px 24px;
+    margin: 14px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    border-left: 4px solid var(--gold);
+  }
+  .formula-box .f-title {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .formula-box .f-eq {
+    color: #a8e6c8;
+    font-size: 14px;
+  }
+
+  /* ── LISTS ── */
+  ul, ol { padding-left: 22px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; }
+  ul li::marker { color: var(--accent2); }
+
+  .steps-list {
+    counter-reset: steps;
+    list-style: none;
+    padding: 0;
+  }
+  .steps-list li {
+    counter-increment: steps;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .steps-list li::before {
+    content: counter(steps);
+    min-width: 28px; height: 28px;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 20px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  thead {
+    background: var(--ink);
+    color: #f0ece0;
+  }
+  thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  tbody tr:nth-child(even) { background: #f7f4ee; }
+  tbody tr:hover { background: var(--highlight3); }
+  td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  td strong { color: var(--accent3); }
+
+  /* ── GRID ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 16px 0; }
+  @media (max-width: 640px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+
+  /* ── FLOWCHART ── */
+  .flowchart {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    margin: 20px 0;
+  }
+  .flow-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .flow-box {
+    background: var(--accent3);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 120px;
+  }
+  .flow-box.green { background: var(--accent2); }
+  .flow-box.gold  { background: var(--gold); color: var(--ink); }
+  .flow-box.red   { background: var(--accent); }
+  .flow-box.dark  { background: var(--ink); }
+  .flow-arrow {
+    font-size: 22px;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .flow-down {
+    text-align: center;
+    font-size: 20px;
+    color: var(--muted);
+    margin: 2px 0;
+  }
+
+  /* ── MNEMONIC ── */
+  .mnemonic {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--ink);
+    color: var(--gold);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 6px;
+    padding: 14px 24px;
+    border-radius: 6px;
+    margin: 10px 0;
+  }
+  .mnemonic-decoded {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* ── TAGS ── */
+  .tag {
+    display: inline-block;
+    background: var(--highlight3);
+    color: var(--accent3);
+    border: 1px solid #bdd3e8;
+    border-radius: 3px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    margin: 2px 3px 2px 0;
+  }
+  .tag.red { background: #fff0ee; color: var(--accent); border-color: #f5c6c0; }
+  .tag.green { background: var(--highlight2); color: var(--accent2); border-color: #b8dfc7; }
+  .tag.gold { background: #fffbf0; color: #8a6d00; border-color: #e8d080; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '☐';
+    font-size: 18px;
+    color: var(--accent2);
+    flex-shrink: 0;
+    line-height: 1.3;
+  }
+
+  /* ── EXAM LENS ── */
+  .trigger-list { list-style: none; padding: 0; }
+  .trigger-list li {
+    padding: 7px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 14px;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .trigger-list li::before {
+    content: '🔍';
+    flex-shrink: 0;
+  }
+
+  /* ── STICKY LABEL ── */
+  .sticky {
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .sticky.red { background: var(--accent); color: white; }
+  .sticky.green { background: var(--accent2); color: white; }
+  .sticky.blue { background: var(--accent3); color: white; }
+
+  /* component link pill */
+  .link-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight3); color: var(--accent3);
+    border: 1px solid #bdd3e8; border-radius: 20px;
+    padding: 3px 12px; font-size: 12px;
+    text-decoration: none; margin: 3px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 80px;
+    padding: 28px 40px;
+    background: var(--ink);
+    color: #6b6b7b;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    border-top: 2px solid var(--accent);
+    text-align: center;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ MASTHEAD ══════════════ -->
+<div class="masthead">
+  <div class="chapter-num">7</div>
+  <span class="badge">CA Final · SCPM · One-Source Material</span>
+  <h1>Strategic Profit <span>Management</span></h1>
+  <p class="subtitle">From cost analysis to competitive strategy — the complete examiner-ready reference for Chapter 7.</p>
+</div>
+
+<div class="container">
+
+<!-- ── TABLE OF CONTENTS ── -->
+<nav class="toc">
+  <div class="toc-title">Contents</div>
+  <a href="#big-picture">The Big Picture</a>
+  <a href="#spa">A. Strategic Profitability Analysis</a>
+  <a href="#abc-profit">B. Profitability via ABC (DPP & CPA)</a>
+  <a href="#abm">C. ABC · ABM · ABB</a>
+  <a href="#pareto">D. Pareto Analysis</a>
+  <a href="#exam-lens">The Examiner's Lens</a>
+  <a href="#visual">Visual Synthesis</a>
+  <a href="#recall">Retain &amp; Recall</a>
+</nav>
+
+<!-- ══════════════ SECTION 1 – BIG PICTURE ══════════════ -->
+<div class="section-block" id="big-picture">
+  <span class="section-label">Section 01</span>
+  <h2>The 'Big Picture' — Executive Summary</h2>
+
+  <div class="card blue">
+    <div class="card-title">Why This Chapter Matters</div>
+    <p>Chapter 7 sits at the <strong>intersection of strategy and cost accounting</strong>. While earlier chapters build the costing toolkit, this chapter asks the critical managerial question: <em>"Now that we know costs — how do we use them to defend or grow profitability?"</em></p>
+    <p>In the CA Final SCPM paper, this chapter is <strong>high-yield</strong>: it supports both pure numerical questions (Strategic Profitability Analysis, DPP, ABB) and analytical/discussion questions (ABM, Pareto, Customer Profitability).</p>
+  </div>
+
+  <h3>Syllabus Significance</h3>
+  <div class="grid-2">
+    <div class="card green">
+      <div class="card-title">Learning Outcomes</div>
+      <ul>
+        <li><strong>EVALUATE</strong> profitability using multi-dimensional analysis</li>
+        <li><strong>ADVISE</strong> on ABC (advanced), ABM, and ABB</li>
+      </ul>
+    </div>
+    <div class="card yellow">
+      <div class="card-title">Real-World Indian Context</div>
+      <ul>
+        <li><strong>Parle-G</strong> – 80–90% COVID growth from a single SKU (Pareto in pricing)</li>
+        <li><strong>Flipkart / Amazon India</strong> – Customer profitability: high-return customers cost more to serve</li>
+        <li><strong>D-Mart</strong> – Direct Product Profitability drives shelf-space decisions</li>
+        <li><strong>Maruti / Tata Motors</strong> – ABM to identify NVA in assembly lines</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Chapter Structure at a Glance</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Module</th><th>Key Concept</th><th>Exam Question Type</th><th>Marks Weight</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>A. Strategic Profitability</strong></td><td>Growth / Price Recovery / Productivity decomposition</td><td>Numerical + Reconciliation</td><td>★★★★★</td></tr>
+        <tr><td><strong>B. DPP</strong></td><td>Net profit per product in retail</td><td>Numerical Statement</td><td>★★★★</td></tr>
+        <tr><td><strong>B. CPA</strong></td><td>Profit by customer segment</td><td>Numerical + Comment</td><td>★★★★</td></tr>
+        <tr><td><strong>C. ABM / ABB</strong></td><td>VA/NVA, MCE, budgeting</td><td>Theory + MCE calculation</td><td>★★★★</td></tr>
+        <tr><td><strong>D. Pareto</strong></td><td>80/20 rule in cost management</td><td>Table + Chart + Recommendations</td><td>★★★</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════ SECTION 2 – STRATEGIC PROFITABILITY ANALYSIS ══════════════ -->
+<div class="section-block" id="spa">
+  <span class="section-label">Section 02 — Module A</span>
+  <h2>Strategic Profitability Analysis</h2>
+
+  <div class="card red">
+    <div class="card-title">The Why</div>
+    <p>A firm's operating profit changes year-on-year. A naive comparison of totals is meaningless. Management needs to know <em>WHY</em> profit changed — was it because we sold more? Or because prices moved? Or because we became more efficient? This decomposition isolates each driver so the right strategic action can be taken.</p>
+  </div>
+
+  <div class="card dark">
+    <div class="card-title">Key Definition</div>
+    <p><strong>Strategic Profitability Analysis</strong> decomposes the change in operating profit between two periods into three components: <strong>Growth</strong>, <strong>Price Recovery</strong>, and <strong>Productivity</strong> — each measured at the appropriate year's prices to isolate the effect.</p>
+  </div>
+
+  <!-- GROWTH COMPONENT -->
+  <h3>1. Growth Component</h3>
+  <h4>The Why</h4>
+  <p>Measures the revenue and cost impact of selling a <strong>different quantity</strong> of output. Holds prices and efficiency constant — isolates pure volume effect.</p>
+
+  <div class="formula-box">
+    <span class="f-title">Revenue Effect of Growth</span>
+    <span class="f-eq">= (Actual units sold in CY  −  Actual units sold in LY)  ×  Selling Price in LY</span>
+  </div>
+  <div class="formula-box">
+    <span class="f-title">Cost Effect of Growth — Variable Costs</span>
+    <span class="f-eq">= (Units of input required to produce CY output at LY efficiency  −  Actual input used in LY)  ×  Input Price in LY</span>
+  </div>
+  <div class="formula-box">
+    <span class="f-title">Cost Effect of Growth — Fixed Costs</span>
+    <span class="f-eq">= (LY capacity if adequate to produce CY output  −  Actual LY capacity)  ×  Price per unit of capacity in LY</span>
+  </div>
+
+  <div class="card yellow">
+    <div class="card-title">Sign Convention — Critical!</div>
+    <p>Revenue effect: <strong>Favourable (F)</strong> if CY units > LY units.<br>
+    Cost effect: <strong>Adverse (A)</strong> if more input is needed (cost increases). Always state direction explicitly.</p>
+  </div>
+
+  <!-- PRICE RECOVERY COMPONENT -->
+  <h3>2. Price Recovery Component</h3>
+  <h4>The Why</h4>
+  <p>Isolates the impact of <strong>price changes alone</strong> — both on revenue (selling price change) and on costs (input price change). Uses CY quantities to measure the price change effect.</p>
+
+  <div class="formula-box">
+    <span class="f-title">Revenue Effect of Price Recovery</span>
+    <span class="f-eq">= (Selling Price in CY  −  Selling Price in LY)  ×  Actual units sold in CY</span>
+  </div>
+  <div class="formula-box">
+    <span class="f-title">Cost Effect — Variable Costs</span>
+    <span class="f-eq">= (Input Price in CY  −  Input Price in LY)  ×  Units of input required to produce CY output at LY efficiency</span>
+  </div>
+  <div class="formula-box">
+    <span class="f-title">Cost Effect — Fixed Costs</span>
+    <span class="f-eq">= (Price/unit of capacity in CY  −  Price/unit of capacity in LY)  ×  LY capacity if adequate to produce CY output</span>
+  </div>
+
+  <!-- PRODUCTIVITY COMPONENT -->
+  <h3>3. Productivity Component</h3>
+  <h4>The Why</h4>
+  <p>Measures the impact of using <strong>more or fewer inputs</strong> per unit of output (efficiency/yield). Uses <em>CY prices</em> throughout — so this is the "current-cost efficiency gain."</p>
+
+  <div class="formula-box">
+    <span class="f-title">Cost Effect — Variable Costs</span>
+    <span class="f-eq">= (Actual input used to produce CY output  −  Input required at LY efficiency for CY output)  ×  Input Price in CY</span>
+  </div>
+  <div class="formula-box">
+    <span class="f-title">Cost Effect — Fixed Costs</span>
+    <span class="f-eq">= (Actual capacity in CY  −  LY capacity if adequate to produce CY output)  ×  Price/unit of capacity in CY</span>
+  </div>
+
+  <!-- RECONCILIATION -->
+  <h3>4. Reconciliation of Operating Profit</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Particulars</th><th>Revenue Effect</th><th>Cost Effect</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Operating Profit — Last Year</td><td colspan="2" style="text-align:center"><strong>XXX</strong></td></tr>
+        <tr><td>Add/(Less): Growth Component</td><td>(+)F / (−)A</td><td>(+)F / (−)A</td></tr>
+        <tr><td>Add/(Less): Price Recovery Component</td><td>(+)F / (−)A</td><td>(+)F / (−)A</td></tr>
+        <tr><td>Add/(Less): Productivity Component</td><td>—</td><td>(+)F / (−)A</td></tr>
+        <tr><td><strong>Operating Profit — Current Year</strong></td><td colspan="2" style="text-align:center"><strong>XXX</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MARKET SIZE vs DIFFERENTIATION -->
+  <h3>5. Industry Market Size vs. Differentiation vs. Productivity</h3>
+  <div class="card green">
+    <div class="card-title">Advanced Application (Illustration 1 Type)</div>
+    <p>When the overall market grows, only part of the Growth Component is attributable to the firm's own strategy. The split:</p>
+    <ul>
+      <li><strong>Industry Market Size Effect</strong> = Growth Component Effect × (Units due to market growth ÷ Total growth in units)</li>
+      <li><strong>Differentiation/Market Share Effect</strong> = Growth Component Effect × (Units due to market share gain ÷ Total growth) <em>+</em> entire Price Recovery Component</li>
+      <li><strong>Productivity Effect</strong> = Productivity Component Effect (unchanged)</li>
+    </ul>
+  </div>
+
+  <!-- STRATEGY LINK -->
+  <h3>6. Link to Porter's Generic Strategies</h3>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">Cost Leadership</div>
+      <p>High Productivity Component F → cost reduction creates competitive advantage</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Differentiation</div>
+      <p>High Price Recovery Revenue F → premium pricing accepted by market</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Growth</div>
+      <p>High Growth Component F → expanding market or gaining market share</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════ SECTION 3 – ABC PROFITABILITY ══════════════ -->
+<div class="section-block" id="abc-profit">
+  <span class="section-label">Section 03 — Module B</span>
+  <h2>Profitability Analysis Through Activity Based Costing</h2>
+
+  <div class="card dark">
+    <div class="card-title">Core Premise</div>
+    <p>Traditional costing uses volume-based drivers (labour hours, machine hours) to absorb overheads — this <em>distorts</em> true product/customer profitability. <strong>ABC assigns costs based on actual resource consumption</strong>, revealing the true economics of each product and customer.</p>
+  </div>
+
+  <!-- DPP -->
+  <h3>1. Direct Product Profitability (DPP)</h3>
+
+  <h4>The Why</h4>
+  <p>Primarily used in <strong>retail</strong>. Gross margin misleads — a product with high gross margin may consume expensive refrigeration, large warehouse space, or slow throughput time, making it <em>net unprofitable</em>. DPP reveals the true per-product contribution.</p>
+
+  <div class="card dark">
+    <div class="card-title">CIMA Definition — Reproduce Precisely in Exams</div>
+    <p>"DPP involves the attribution of both the <strong>purchase price</strong> and other <strong>indirect costs</strong> (for example, distribution, warehousing, and retailing) to each product line. Thus, a <strong>net profit</strong>, as opposed to a gross profit, can be identified for each product. The cost attribution process utilises a variety of measures (for example, warehousing space and transport time) to reflect the resource consumption of individual products."</p>
+  </div>
+
+  <h4>DPP Statement Format</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>Amount</th></tr></thead>
+      <tbody>
+        <tr><td>Sales Revenue</td><td>XX</td></tr>
+        <tr><td><em>Less:</em> Cost of Goods Sold (Bought-in Price)</td><td>(XX)</td></tr>
+        <tr><td><strong>Gross Margin</strong></td><td>XX</td></tr>
+        <tr><td><em>Less:</em> Direct Product Costs:</td><td></td></tr>
+        <tr><td>&nbsp;&nbsp;&nbsp;Warehouse Costs (space × time)</td><td>(XX)</td></tr>
+        <tr><td>&nbsp;&nbsp;&nbsp;Transportation Costs (volume × distance)</td><td>(XX)</td></tr>
+        <tr><td>&nbsp;&nbsp;&nbsp;Store Costs (space × shelf-time)</td><td>(XX)</td></tr>
+        <tr><td><strong>Direct Product Profit (DPP)</strong></td><td><strong>XX</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Indirect Cost Categories for DPP</h4>
+  <div class="grid-2">
+    <div class="card yellow">
+      <div class="card-title">Overhead Cost</div>
+      <p>Incurred through activities <em>not directly linked</em> to a specific product (e.g., general management).</p>
+    </div>
+    <div class="card yellow">
+      <div class="card-title">Volume Related Cost</div>
+      <p>Varies with <em>space occupied</em> — storage costs, transport costs. Base: cubic metres × time.</p>
+    </div>
+    <div class="card yellow">
+      <div class="card-title">Product Batch Cost</div>
+      <p>Time-based. Labour time to stock shelves per batch of identical items.</p>
+    </div>
+    <div class="card yellow">
+      <div class="card-title">Inventory Financing Cost</div>
+      <p>Cost of tying up capital = Cost of product × interest rate × days/weeks held.</p>
+    </div>
+  </div>
+
+  <h4>DPP Measurement Extensions</h4>
+  <ul>
+    <li><strong>DPP per unit of time</strong> — adds the time dimension</li>
+    <li><strong>DPP per unit of time per unit of space</strong> — the most refined retail metric; automatically captures both volume and velocity</li>
+  </ul>
+
+  <div class="card green">
+    <div class="card-title">Benefits of DPP</div>
+    <ul>
+      <li>Better <strong>cost analysis</strong></li>
+      <li>Better <strong>pricing decisions</strong></li>
+      <li>Better <strong>management of stores and warehouse space</strong></li>
+      <li>Rationalisation of <strong>product ranges</strong></li>
+    </ul>
+    <div class="mnemonic-decoded">Mnemonic: <strong>C-P-S-R</strong> → Cost, Price, Space, Rationalise</div>
+  </div>
+
+  <!-- CPA -->
+  <h3>2. Customer Profitability Analysis (CPA)</h3>
+
+  <h4>The Why</h4>
+  <p>Different customers consuming identical products impose <em>radically different costs</em> to serve. Rush orders, remote delivery, after-sales service, frequent small orders — these inflate the cost-to-serve for certain customers, potentially making them unprofitable despite positive gross margin.</p>
+
+  <h4>CPA Statement Format</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Line Item</th><th>Cust A</th><th>Cust B</th></tr></thead>
+      <tbody>
+        <tr><td>Revenue (net of discounts)</td><td>XX</td><td>XX</td></tr>
+        <tr><td><em>Less:</em> Variable Cost of Goods Sold</td><td>(XX)</td><td>(XX)</td></tr>
+        <tr><td><strong>Contribution / Gross Profit</strong></td><td>XX</td><td>XX</td></tr>
+        <tr><td><em>Less:</em> Customer-Assignable Costs:</td><td></td><td></td></tr>
+        <tr><td>&nbsp;&nbsp;&nbsp;Order Processing (orders × rate)</td><td>(XX)</td><td>(XX)</td></tr>
+        <tr><td>&nbsp;&nbsp;&nbsp;Delivery Cost (deliveries × km × rate)</td><td>(XX)</td><td>(XX)</td></tr>
+        <tr><td>&nbsp;&nbsp;&nbsp;Rush/Expedited Delivery</td><td>—</td><td>(XX)</td></tr>
+        <tr><td>&nbsp;&nbsp;&nbsp;Sales Visits / After-sales</td><td>(XX)</td><td>(XX)</td></tr>
+        <tr><td><strong>Customer-Level Operating Profit</strong></td><td><strong>XX</strong></td><td><strong>XX</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Benefits of CPA</h4>
+  <ul>
+    <li>Identifies customers <strong>eroding</strong> vs. <strong>contributing</strong> to profitability</li>
+    <li>Provides basis for <strong>constructive dialogue</strong> between buyer and seller to improve margins</li>
+    <li>Supports Pareto-based customer prioritisation</li>
+  </ul>
+
+  <div class="card red">
+    <div class="card-title">⚠ Common Exam Mistake</div>
+    <p>Students forget to apply <strong>quantity discounts AND delivery discounts</strong> separately before computing contribution. Also: a customer using own transport gets an 8% discount on the <em>undiscounted</em> selling price — this is an additional deduction, not alternative.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════ SECTION 4 – ABC / ABM / ABB ══════════════ -->
+<div class="section-block" id="abm">
+  <span class="section-label">Section 04 — Module C</span>
+  <h2>ABC · ABM · Activity Based Budgeting</h2>
+
+  <!-- ABC in AME -->
+  <h3>1. ABC in Advanced Manufacturing Environment (AME)</h3>
+  <div class="grid-2">
+    <div class="card blue">
+      <div class="card-title">Driver 1: Global Competitiveness</div>
+      <p>Internet eliminated geographical barriers → JIT manufacturing adopted → Traditional volume-based costing insufficient → ABC needed for <strong>non-unit-level overheads</strong> (Setup, Inspection, Material Handling).</p>
+    </div>
+    <div class="card blue">
+      <div class="card-title">Driver 2: Workplace Automation</div>
+      <p>Labour costs → Equipment + support overheads. Traditional systems over/under-absorb. ABC provides <strong>realistic product costing</strong> via activity-specific drivers.</p>
+    </div>
+  </div>
+  <div class="card yellow">
+    <div class="card-title">Important Nuance</div>
+    <p>ABC offers <strong>no increase</strong> in product-costing accuracy for a <em>single-product</em> setting. Its value emerges in multi-product, complex manufacturing environments.</p>
+  </div>
+
+  <!-- ABM -->
+  <h3>2. Activity Based Cost Management (ABM)</h3>
+
+  <div class="card dark">
+    <div class="card-title">CAM-I Definition — Reproduce in Exams</div>
+    <p>"A discipline that focuses on the <strong>management of activities</strong> as the route to improving the value received by the customer and the profit achieved by providing this value. This discipline includes <strong>cost driver analysis, activity analysis, and performance measurement</strong>. ABM draws on ABC as its major source of information."</p>
+  </div>
+
+  <div class="card green">
+    <div class="card-title">ABC vs ABM — The Classic Distinction</div>
+    <ul>
+      <li><strong>ABC</strong> = <em>What</em> do activities cost? (Measurement / Costing tool)</li>
+      <li><strong>ABM</strong> = <em>How</em> do we use that information to improve? (Management philosophy)</li>
+      <li>Relationship: "ABC supplies the information, and ABM uses this information in various analyses designed to yield continuous improvement."</li>
+    </ul>
+  </div>
+
+  <h4>Designing ABM — The Three-Step Process</h4>
+  <ol class="steps-list">
+    <li><strong>Cost Driver Analysis</strong> — Identify factors that cause activity costs to change. An activity may have multiple cost drivers.</li>
+    <li><strong>Activity Analysis</strong> — Classify every activity as <strong>VA</strong> (value-added) or <strong>NVA</strong> (non-value-added). Eliminate or reduce NVA activities.</li>
+    <li><strong>Performance Analysis</strong> — Benchmark activity rates against industry norms. Use cost-based and time-based measures to identify improvement opportunities.</li>
+  </ol>
+
+  <!-- VA / NVA -->
+  <h3>3. Value-Added (VA) vs Non-Value-Added (NVA) Activities</h3>
+
+  <div class="grid-2">
+    <div class="card green">
+      <div class="card-title">Value-Added Activities</div>
+      <p><strong>Definition:</strong> Activities that are <em>indispensable</em> to complete the process; customers are willing to pay for them.</p>
+      <p><strong>Tests:</strong></p>
+      <ul>
+        <li>Is the activity <em>necessary</em>? → If Yes, VA</li>
+        <li>Is it efficiently performed against benchmarks? → VA baseline</li>
+      </ul>
+      <p><strong>Example:</strong> Polishing furniture, actual machining time, welding, painting.</p>
+    </div>
+    <div class="card red">
+      <div class="card-title">Non-Value-Added Activities</div>
+      <p><strong>Definition:</strong> Work <em>not valued</em> by external or internal customers; creates waste, delays, and unnecessary costs.</p>
+      <p><strong>Five Classic NVA Activities in Manufacturing:</strong></p>
+      <ul>
+        <li>📦 <strong>Storing</strong> — inventory held in storage</li>
+        <li>🔄 <strong>Moving</strong> — materials movement between departments</li>
+        <li>⏳ <strong>Waiting</strong> — WIP awaiting next process</li>
+        <li>🔍 <strong>Inspecting</strong> — checking for specification conformance</li>
+        <li>📅 <strong>Scheduling</strong> — planning access to processes</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card yellow">
+    <div class="card-title">⚠ Important Exception — Context Matters!</div>
+    <p>Storing wine to age it IS a value-added activity — the customer specifies a quality standard that <em>requires</em> aging. The key test: <em>would eliminating this activity reduce customer value?</em></p>
+  </div>
+
+  <!-- CYCLE TIME / MCE -->
+  <h3>4. Manufacturing Cycle Efficiency (MCE)</h3>
+
+  <h4>Time Definitions — Must Know All Four</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Time Component</th><th>Definition</th><th>VA or NVA?</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Receipt Time</strong></td><td>Marketing dept specifies order details to Manufacturing</td><td>NVA (before production starts)</td></tr>
+        <tr><td><strong>Waiting / Queue Time</strong></td><td>WIP awaiting next stage / parts / machine setup</td><td>NVA</td></tr>
+        <tr><td><strong>Move Time</strong></td><td>Moving product between operations</td><td>NVA</td></tr>
+        <tr><td><strong>Inspection Time</strong></td><td>Checking product meets specifications</td><td>NVA (under zero-defect ideal)</td></tr>
+        <tr><td><strong>Processing Time</strong></td><td>Actual conversion work on product</td><td>✅ VA</td></tr>
+        <tr><td><strong>Delivery Time</strong></td><td>Completed order dispatched to customer</td><td>Post-manufacturing; not in MCT</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="formula-box">
+    <span class="f-title">Manufacturing Cycle Time (MCT) = Throughput Time</span>
+    <span class="f-eq">MCT = Processing Time + Inspection Time + Waiting/Queue Time + Move Time</span>
+    <br><br>
+    <span class="f-title">Manufacturing Cycle Efficiency (MCE)</span>
+    <span class="f-eq">MCE = Processing Time ÷ Manufacturing Cycle Time</span>
+    <br><br>
+    <span class="f-title">Delivery Cycle Time</span>
+    <span class="f-eq">DCT = Receipt/Wait Time (before production) + MCT + Delivery Time</span>
+    <br><br>
+    <span class="f-title">Customer Response Time (CRT)</span>
+    <span class="f-eq">CRT = All time from order placement to delivery to customer</span>
+  </div>
+
+  <div class="card blue">
+    <div class="card-title">MCE Interpretation Guide</div>
+    <ul>
+      <li><strong>MCE = 1.0 (100%)</strong> — Perfect; all time is value-adding (theoretical ideal)</li>
+      <li><strong>MCE = 0.5 (50%)</strong> — Half of production time is NVA (inspection, moving, waiting)</li>
+      <li><strong>MCE &lt; 0.1 (10%)</strong> — Typical in many manufacturing companies; 90% is NVA!</li>
+      <li>Goal: <em>continuously raise MCE</em> through JIT, TQC, cellular manufacturing</li>
+    </ul>
+  </div>
+
+  <!-- BUSINESS APPLICATIONS OF ABM -->
+  <h3>5. Business Applications of ABM</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Application</th><th>Description</th><th>Key Output</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Cost Reduction</strong></td><td>Identify and eliminate NVA activities; quantify process waste</td><td>Reduced overhead rates</td></tr>
+        <tr><td><strong>Activity Based Budgeting (ABB)</strong></td><td>Plan & control resources based on expected activity levels</td><td>Cost-effective budget</td></tr>
+        <tr><td><strong>Business Process Re-engineering</strong></td><td>Redesign processes to permanently eliminate activities</td><td>Structural cost reduction</td></tr>
+        <tr><td><strong>Benchmarking</strong></td><td>Compare ABC-derived activity costs across segments/industry</td><td>Performance gaps identified</td></tr>
+        <tr><td><strong>Performance Measurement</strong></td><td>Monitor activity efficiency (cost, time, quality, innovation)</td><td>KPI scorecards</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ABB -->
+  <h3>6. Activity Based Budgeting (ABB)</h3>
+
+  <div class="card dark">
+    <div class="card-title">Definition</div>
+    <p><strong>ABB</strong> is "a process of planning and controlling the <strong>expected activities</strong> of the organisation to derive a cost-effective budget that meets the <strong>forecast workload</strong> and agreed <strong>strategic goals</strong>."</p>
+    <p>An ABB is a quantitative expression of expected activities, reflecting management's forecast of workload and both financial and non-financial requirements.</p>
+  </div>
+
+  <h4>Three Key Elements of ABB</h4>
+  <div class="grid-3">
+    <div class="card blue"><div class="card-title">Type</div><p>What type of work/activity is to be performed?</p></div>
+    <div class="card blue"><div class="card-title">Quantity</div><p>How much of the work/activity is to be performed?</p></div>
+    <div class="card blue"><div class="card-title">Cost</div><p>What is the cost of performing that work/activity?</p></div>
+  </div>
+
+  <h4>ABB vs ABC — The Reversal Relationship</h4>
+  <div class="flowchart">
+    <p style="font-weight:600; text-align:center; margin-bottom:16px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--muted)">ABC FLOW (Actual Costing) vs ABB FLOW (Budgeting)</p>
+    <div class="flow-row">
+      <div class="flow-box dark">Resources</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Activities</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box green">Cost Objects / Products</div>
+    </div>
+    <p style="text-align:center; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); margin:8px 0">↑ ABC Direction (Top-down)</p>
+    <div class="flow-row">
+      <div class="flow-box red">Forecast Products &amp; Customers</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box gold">Required Activities</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box dark">Resources to Budget</div>
+    </div>
+    <p style="text-align:center; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); margin:8px 0">↑ ABB Direction (Reverse — bottom-up from forecast)</p>
+  </div>
+
+  <h4>Activity Flexible Budgeting</h4>
+  <p>Unlike traditional flexible budgets (based on a single unit-level driver like labour hours), <strong>Activity Flexible Budgets</strong> use <em>activity-specific drivers</em> for each activity, making variance analysis far more accurate and actionable.</p>
+
+  <h4>Kaizen Budgeting (within ABB)</h4>
+  <div class="card green">
+    <div class="card-title">Kaizen Approach</div>
+    <p>Each month's budgeted cost-driver rate is set at a <em>small improvement</em> over the prior month's rate (e.g., 0.996 × prior month). This builds <strong>continuous improvement</strong> into the budget itself, creating pressure on managers to seek operational gains every month.</p>
+    <p><strong>Limitation:</strong> Focuses only on incremental change; may miss irregular step-change improvements from process redesign or supply-chain restructuring.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════ SECTION 5 – PARETO ANALYSIS ══════════════ -->
+<div class="section-block" id="pareto">
+  <span class="section-label">Section 05 — Module D</span>
+  <h2>Pareto Analysis</h2>
+
+  <div class="card dark">
+    <div class="card-title">Origins &amp; The 80:20 Rule</div>
+    <p>Developed by Italian economist <strong>Vilfredo Pareto</strong> (1896): ~80% of land in Italy was owned by ~20% of the population. Applied to business by <strong>Joseph M. Juran</strong> as a quality control tool.</p>
+    <p><strong>Rule:</strong> 80% of results come from 20% of effort (vital few). 20% of results come from 80% of effort (trivial many).</p>
+  </div>
+
+  <div class="card blue">
+    <div class="card-title">Underlying Principle</div>
+    <p>Pareto Analysis is based on the <strong>Law of Diminishing Returns</strong> — pick the low-hanging fruit first. Focus on the <em>vital few</em> causes which deliver the highest payoff per unit of effort.</p>
+  </div>
+
+  <h3>Applications of Pareto Analysis</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Application Area</th><th>What 80:20 Reveals</th><th>Managerial Action</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Pricing</strong></td><td>~20% of products generate ~80% of revenue</td><td>Senior management focuses on vital 20%; delegate pricing of trivial 80% downward</td></tr>
+        <tr><td><strong>Customer Profitability</strong></td><td>~20% of customers generate ~80% of profit</td><td>Prioritise retention of profitable customers; renegotiate with loss-making ones</td></tr>
+        <tr><td><strong>Stock Control (ABC Analysis)</strong></td><td>~20% of stock items constitute ~80% of value</td><td>Apply stringent controls (continuous review) only to A-class items</td></tr>
+        <tr><td><strong>Activity Based Costing</strong></td><td>~20% of cost drivers cause ~80% of overhead cost</td><td>Target high-impact cost drivers for reduction</td></tr>
+        <tr><td><strong>Quality Control</strong></td><td>~20% of defect causes lead to ~80% of defects</td><td>Eliminate vital few causes; greatest immediate quality improvement</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Building a Pareto Chart — Step-by-Step</h3>
+  <ol class="steps-list">
+    <li>List all categories (defects, products, customers) and their frequency/value.</li>
+    <li>Sort in <strong>descending order</strong> by frequency/value.</li>
+    <li>Calculate each item's <strong>percentage of total</strong>.</li>
+    <li>Compute <strong>cumulative percentage</strong> — running total down the list.</li>
+    <li>Draw a bar chart (descending bars) with a cumulative line overlay.</li>
+    <li>Draw a horizontal line at <strong>80%</strong> on the cumulative axis — everything to the left is the "vital few."</li>
+    <li>Recommend action on vital few; delegate/defer trivial many.</li>
+  </ol>
+
+  <h3>Pros and Cons</h3>
+  <div class="grid-2">
+    <div class="card green">
+      <div class="card-title">Pros (Benefits)</div>
+      <ul>
+        <li>Breaks big problems into manageable pieces</li>
+        <li>Identifies significance of each cause</li>
+        <li>Prioritises resource allocation</li>
+        <li>Ensures optimal use of scarce resources</li>
+        <li>Acts as ongoing control mechanism</li>
+      </ul>
+      <div class="mnemonic-decoded">Mnemonic: <strong>B-I-P-O-C</strong> → Break, Identify, Prioritise, Optimise, Control</div>
+    </div>
+    <div class="card red">
+      <div class="card-title">Cons (Limitations)</div>
+      <ul>
+        <li>May exclude problems that are <em>small now but growing</em></li>
+        <li>Misidentification of causes if data quality is poor</li>
+        <li>Effectiveness entirely dependent on data accuracy</li>
+        <li>Requires periodic review — distributions shift over time</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card yellow">
+    <div class="card-title">Concept Insight — Combine with Other Tools</div>
+    <p>Pareto Analysis is most powerful when combined with <strong>Fishbone Diagrams</strong> (identify root causes of vital few), <strong>Scatter Diagrams</strong>, and <strong>Fault Tree Analysis</strong>.</p>
+    <p>If the "Others" category exceeds 10–25% of total, break it down further — it likely hides important causes.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════ SECTION 6 – EXAMINER'S LENS ══════════════ -->
+<div class="section-block" id="exam-lens">
+  <span class="section-label">Section 06</span>
+  <h2>The Examiner's Lens</h2>
+
+  <h3>Trigger Points — What to Look for in Case Studies</h3>
+
+  <div class="card blue">
+    <div class="card-title">Strategic Profitability Analysis Triggers</div>
+    <ul class="trigger-list">
+      <li>"Profit has changed between Year 1 and Year 2… analyse the reasons"</li>
+      <li>"Market for X grew by Y% in terms of units"</li>
+      <li>"All other changes are due to the company's differentiation strategy"</li>
+      <li>Data provided for two consecutive years with selling price, input price, and quantity</li>
+    </ul>
+  </div>
+
+  <div class="card green">
+    <div class="card-title">DPP / CPA Triggers</div>
+    <ul class="trigger-list">
+      <li>"Retail stores" / "warehouse" / "refrigerated storage" in the scenario</li>
+      <li>"Calculate profitability rather than using traditional method"</li>
+      <li>"Customers differ in number of orders / deliveries / visit requirements"</li>
+      <li>"Rush deliveries" / "own transport" / "discount on delivery"</li>
+    </ul>
+  </div>
+
+  <div class="card yellow">
+    <div class="card-title">ABM / MCE Triggers</div>
+    <ul class="trigger-list">
+      <li>"Processing time / inspection time / move time / queue time / wait time" given</li>
+      <li>"Calculate Manufacturing Cycle Efficiency"</li>
+      <li>"Identify value-added and non-value-added activities"</li>
+      <li>"What would happen if all queue time is eliminated using Lean/JIT?"</li>
+    </ul>
+  </div>
+
+  <div class="card red">
+    <div class="card-title">Pareto Triggers</div>
+    <ul class="trigger-list">
+      <li>"Prepare a frequency table" / "construct a Pareto chart"</li>
+      <li>"Identify vital few" / "80/20 rule"</li>
+      <li>Defect data / sales by product / complaints by category given in a table</li>
+      <li>"Prioritise areas for management focus"</li>
+    </ul>
+  </div>
+
+  <h3>Common Mistakes — Where Students Lose Marks</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Concept</th><th>Common Error</th><th>Correct Approach</th></tr></thead>
+      <tbody>
+        <tr><td>SPA – Growth</td><td>Using CY prices instead of LY prices</td><td><strong>Growth Component always uses LY prices</strong></td></tr>
+        <tr><td>SPA – Productivity</td><td>Using LY prices instead of CY prices</td><td><strong>Productivity Component always uses CY prices</strong></td></tr>
+        <tr><td>SPA – Market Size</td><td>Ignoring the market growth split; attributing all growth to the firm</td><td>Multiply Growth Component by (market growth units ÷ total growth units)</td></tr>
+        <tr><td>DPP</td><td>Not apportioning refrigeration costs separately from general warehouse costs</td><td>Refrigeration costs → refrigerated goods only; general costs → all goods by volume</td></tr>
+        <tr><td>CPA – Discounts</td><td>Applying delivery discount to already-discounted price</td><td>8% delivery discount is on the <em>original/undiscounted</em> selling price</td></tr>
+        <tr><td>MCE</td><td>Including Receipt Time (wait before order reaches manufacturing) in MCT</td><td>MCT starts when order is <em>received by manufacturing</em> — not when customer places order</td></tr>
+        <tr><td>MCE</td><td>Including Delivery Time in MCT</td><td>Delivery is <em>post-manufacturing</em>; it is part of Customer Response Time, not MCT</td></tr>
+        <tr><td>Pareto</td><td>Not sorting in descending order before computing cumulative %</td><td>Always sort highest-to-lowest frequency first</td></tr>
+        <tr><td>ABB</td><td>Confusing ABB with ABC — stating ABB and ABC are the same</td><td>ABB is the <em>reverse</em> of ABC; starts from forecast output and works back to resource needs</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Inter-connectivity — Links to Other Chapters</h3>
+  <div class="card dark">
+    <div class="card-title">How Chapter 7 Connects</div>
+    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:12px">
+      <a class="link-pill">Ch 5 – Costing Systems → ABC feeds ABM</a>
+      <a class="link-pill">Ch 8 – Variance Analysis → SPA = advanced variance decomposition</a>
+      <a class="link-pill">Ch 9 – Performance Measurement → MCE is a KPI; CPA links to balanced scorecard</a>
+      <a class="link-pill">Ch 10 – Transfer Pricing → CPA customer profitability informs internal pricing</a>
+      <a class="link-pill">Ch 6 – Pricing → Pareto helps decide which 20% products need sophisticated pricing</a>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════ SECTION 7 – VISUAL SYNTHESIS ══════════════ -->
+<div class="section-block" id="visual">
+  <span class="section-label">Section 07</span>
+  <h2>Visual Synthesis</h2>
+
+  <h3>Summary Comparison Table — All Major Models</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Str. Profitability Analysis</th>
+          <th>DPP</th>
+          <th>Customer Profitability</th>
+          <th>ABM</th>
+          <th>ABB</th>
+          <th>Pareto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Primary Focus</strong></td>
+          <td>Why did profit change?</td>
+          <td>True per-product profitability</td>
+          <td>True per-customer profitability</td>
+          <td>Manage activities to add value</td>
+          <td>Plan resources via activities</td>
+          <td>Prioritise vital few causes</td>
+        </tr>
+        <tr>
+          <td><strong>Sector</strong></td>
+          <td>Any</td>
+          <td>Retail primarily</td>
+          <td>Any (esp. services)</td>
+          <td>Manufacturing, Services</td>
+          <td>Any (with ABC system)</td>
+          <td>Any</td>
+        </tr>
+        <tr>
+          <td><strong>Output</strong></td>
+          <td>Reconciliation statement</td>
+          <td>DPP per unit / per m³</td>
+          <td>Profit per customer</td>
+          <td>VA/NVA classification, MCE</td>
+          <td>Activity-based budget</td>
+          <td>Ranked list + Pareto chart</td>
+        </tr>
+        <tr>
+          <td><strong>Key Driver</strong></td>
+          <td>Volume, Price, Efficiency</td>
+          <td>Space × Time consumed</td>
+          <td>Orders, deliveries, visits</td>
+          <td>Cost drivers → activities</td>
+          <td>Expected activity levels</td>
+          <td>Frequency / Value</td>
+        </tr>
+        <tr>
+          <td><strong>Exam Format</strong></td>
+          <td>Multi-step numerical</td>
+          <td>Statement + Working Notes</td>
+          <td>Statement + Analysis</td>
+          <td>Theory + MCE calculation</td>
+          <td>Calculation + Discussion</td>
+          <td>Table + Chart + Recommendations</td>
+        </tr>
+        <tr>
+          <td><strong>Basis Year for Prices</strong></td>
+          <td>LY / LY / CY (G/P/Pr)</td>
+          <td>Current period rates</td>
+          <td>Current period rates</td>
+          <td>N/A</td>
+          <td>Budgeted rates</td>
+          <td>N/A</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Logic Flowchart — Strategic Profitability Analysis (Most Complex Process)</h3>
+  <div class="flowchart">
+    <div class="flow-row">
+      <div class="flow-box dark">Start: Two-Year Data (LY &amp; CY)</div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row">
+      <div class="flow-box red">Step 1: Growth Component<br><small>Use LY Prices throughout</small></div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row">
+      <div class="flow-box" style="font-size:12px">Revenue: (CY units − LY units) × LY price</div>
+      <div class="flow-box red" style="font-size:12px">Var Cost: (CY output at LY efficiency − LY input) × LY input price</div>
+      <div class="flow-box" style="font-size:12px">Fixed: (LY capacity for CY output − LY capacity) × LY cap price</div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row">
+      <div class="flow-box green">Step 2: Price Recovery Component<br><small>Use CY/LY price differences</small></div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row">
+      <div class="flow-box" style="font-size:12px">Revenue: (CY price − LY price) × CY units</div>
+      <div class="flow-box green" style="font-size:12px">Var Cost: (CY input price − LY input price) × CY output at LY efficiency</div>
+      <div class="flow-box" style="font-size:12px">Fixed: Price diff × LY capacity for CY</div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row">
+      <div class="flow-box gold">Step 3: Productivity Component<br><small>Use CY Prices throughout; Cost only (no revenue)</small></div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row">
+      <div class="flow-box" style="font-size:12px">Var: (Actual CY input − CY output at LY efficiency) × CY input price</div>
+      <div class="flow-box gold" style="font-size:12px">Fixed: (Actual CY capacity − LY capacity for CY output) × CY cap price</div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row">
+      <div class="flow-box dark">Step 4: Reconciliation<br>LY Profit + Growth +/- Price Recovery +/- Productivity = CY Profit</div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row">
+      <div class="flow-box green">Step 5 (If required): Market Size vs Differentiation Split<br><small>Allocate Growth Component proportionally</small></div>
+    </div>
+  </div>
+
+  <h3>MCE Flowchart — Time Classification</h3>
+  <div class="flowchart">
+    <div class="flow-row">
+      <div class="flow-box dark">Customer Places Order</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box red">Receipt Time (Wait)<br><small>NVA — before mfg</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box green">Mfg Receives Order</div>
+    </div>
+    <div class="flow-down">↓ Manufacturing Cycle Time (MCT) begins here ↓</div>
+    <div class="flow-row">
+      <div class="flow-box red">Queue Time<br><small>NVA</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box gold">Processing Time<br><small>✅ VA only</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box red">Inspection Time<br><small>NVA</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box red">Move Time<br><small>NVA</small></div>
+    </div>
+    <div class="flow-down">↓ MCT ends — Delivery begins ↓</div>
+    <div class="flow-row">
+      <div class="flow-box dark">Delivery Time (post-mfg, not in MCT)</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box green">Customer Receives Order</div>
+    </div>
+    <div style="margin-top:16px; padding:12px; background:var(--highlight); border-radius:4px; font-size:13px; text-align:center">
+      <strong>MCE = Processing Time ÷ MCT</strong> &nbsp;|&nbsp; <strong>DCT = Receipt + MCT + Delivery</strong>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════ SECTION 8 – RETAIN & RECALL ══════════════ -->
+<div class="section-block" id="recall">
+  <span class="section-label">Section 08</span>
+  <h2>The 'Retain &amp; Recall' Section</h2>
+
+  <h3>Mnemonics for All Multi-Point Lists</h3>
+
+  <div class="card dark">
+    <div class="card-title">1. SPA Three Components</div>
+    <div class="mnemonic">G · P · P</div>
+    <div class="mnemonic-decoded"><strong>G</strong>rowth (LY prices) → <strong>P</strong>rice Recovery (price difference) → <strong>P</strong>roductivity (CY prices)</div>
+    <p style="color:#c8c4b8; font-size:13px; margin-top:8px">Price Year Rule: "Growth-Last, Productivity-Current, Price-Both-Difference"</p>
+  </div>
+
+  <div class="card dark">
+    <div class="card-title">2. DPP Benefits</div>
+    <div class="mnemonic">C · P · S · R</div>
+    <div class="mnemonic-decoded"><strong>C</strong>ost analysis better → <strong>P</strong>ricing decisions better → <strong>S</strong>pace management better → <strong>R</strong>ationalisation of product ranges</div>
+  </div>
+
+  <div class="card dark">
+    <div class="card-title">3. Five NVA Activities in Manufacturing</div>
+    <div class="mnemonic">S · M · W · I · S</div>
+    <div class="mnemonic-decoded"><strong>S</strong>toring → <strong>M</strong>oving → <strong>W</strong>aiting → <strong>I</strong>nspecting → <strong>S</strong>cheduling</div>
+    <p style="color:#c8c4b8; font-size:13px; margin-top:8px">Memory sentence: <em>"Some Machines Wait In Storage"</em></p>
+  </div>
+
+  <div class="card dark">
+    <div class="card-title">4. ABM Three Design Steps</div>
+    <div class="mnemonic">C · A · P</div>
+    <div class="mnemonic-decoded"><strong>C</strong>ost Driver Analysis → <strong>A</strong>ctivity Analysis (VA/NVA) → <strong>P</strong>erformance Analysis</div>
+  </div>
+
+  <div class="card dark">
+    <div class="card-title">5. ABB Three Key Elements</div>
+    <div class="mnemonic">T · Q · C</div>
+    <div class="mnemonic-decoded"><strong>T</strong>ype of work → <strong>Q</strong>uantity of work → <strong>C</strong>ost of work</div>
+  </div>
+
+  <div class="card dark">
+    <div class="card-title">6. DPP Indirect Cost Categories</div>
+    <div class="mnemonic">O · V · B · I</div>
+    <div class="mnemonic-decoded"><strong>O</strong>verhead → <strong>V</strong>olume Related → <strong>B</strong>atch (product) → <strong>I</strong>nventory Financing</div>
+  </div>
+
+  <div class="card dark">
+    <div class="card-title">7. Pareto Pros</div>
+    <div class="mnemonic">B · I · P · O · C</div>
+    <div class="mnemonic-decoded"><strong>B</strong>reak down problems → <strong>I</strong>dentify significance → <strong>P</strong>rioritise focus → <strong>O</strong>ptimal resource use → <strong>C</strong>ontrol mechanism</div>
+  </div>
+
+  <h3>Critical Formula Reference Card</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Formula</th><th>Key Variables</th><th>Price Year</th></tr></thead>
+      <tbody>
+        <tr><td>Growth Revenue</td><td>(CY units − LY units) × SP</td><td><strong>LY</strong> selling price</td></tr>
+        <tr><td>Growth Variable Cost</td><td>(CY output at LY eff. − LY input) × IP</td><td><strong>LY</strong> input price</td></tr>
+        <tr><td>Price Recovery Revenue</td><td>(CY SP − LY SP) × CY units</td><td>Price <em>difference</em>, CY quantity</td></tr>
+        <tr><td>Price Recovery Variable Cost</td><td>(CY IP − LY IP) × LY efficiency for CY output</td><td>Price <em>difference</em></td></tr>
+        <tr><td>Productivity Variable Cost</td><td>(Actual CY input − CY output at LY eff.) × CY IP</td><td><strong>CY</strong> input price</td></tr>
+        <tr><td>MCE</td><td>Processing Time ÷ MCT</td><td>N/A</td></tr>
+        <tr><td>MCT</td><td>Processing + Inspection + Wait/Queue + Move Time</td><td>N/A</td></tr>
+        <tr><td>DCT</td><td>Receipt Time + MCT + Delivery Time</td><td>N/A</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>3-Point Revision Checklist</h3>
+  <div class="card">
+    <ul class="checklist">
+      <li>
+        <div>
+          <strong>Can I correctly apply the three-year-price rule?</strong><br>
+          <span style="font-size:13px; color:var(--muted)">Growth Component → LY prices | Productivity Component → CY prices | Price Recovery → the difference. If I mix these up, my entire reconciliation will be wrong.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Can I build a complete DPP and CPA statement from raw data?</strong><br>
+          <span style="font-size:13px; color:var(--muted)">For DPP: allocate warehouse/store/transport costs per m³ per month, separately for refrigerated and non-refrigerated goods, then divide by items per m³. For CPA: assign all customer-specific costs (orders, deliveries, rush, visits) correctly and separately from product costs.</span>
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Can I classify MCT time components correctly and explain the ABM/ABB distinction?</strong><br>
+          <span style="font-size:13px; color:var(--muted)">Only Processing Time is VA. Receipt Time and Delivery Time are outside MCT. ABB is the reverse of ABC: start from forecast output → required activities → resources to budget. Kaizen budgeting builds in monthly continuous improvement.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card red" style="margin-top:24px">
+    <div class="card-title">The Examiner's Final Test</div>
+    <p>If you can answer this question fluently, you are exam-ready:</p>
+    <p><em>"A company's operating profit increased by ₹3.62 lakhs. The market grew by 3%. Discuss how you would decompose this increase into Industry Market Size, Product Differentiation, and Productivity components — and what each tells management about the success of their competitive strategy."</em></p>
+    <p>The answer requires: Growth Component calculation → Market size split → Price Recovery as differentiation signal → Productivity Component → Reconciliation → Strategic interpretation linking to Porter's generic strategies.</p>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<footer>
+  Chapter 7 · Strategic Profit Management · CA Final SCPM · One-Source Material &nbsp;|&nbsp; © Institute of Chartered Accountants of India · Prepared for Examination Preparation Only
+</footer>
+
+</body>
+</html>

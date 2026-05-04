@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 10 | Strategic Performance Measures in NFPs | CA Final SCPM</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:   #1a4731;
+    --emerald:  #2d7a52;
+    --mint:     #4caf80;
+    --sage:     #a8d5b5;
+    --cream:    #faf8f3;
+    --parchment:#f2ede4;
+    --ink:      #1c1c1e;
+    --charcoal: #3a3a3c;
+    --muted:    #6b6b70;
+    --gold:     #c9a84c;
+    --amber:    #e8c96b;
+    --rust:     #c0392b;
+    --sky:      #2471a3;
+    --lavender: #7d6e9e;
+    --border:   #d4cfc4;
+    --shadow:   rgba(26,71,49,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.75;
+    font-size: 16px;
+  }
+
+  /* ── SIDEBAR NAV ── */
+  .sidebar {
+    position: fixed; top: 0; left: 0;
+    width: 240px; height: 100vh;
+    background: var(--forest);
+    padding: 32px 0;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 4px 0 20px var(--shadow);
+  }
+  .sidebar-brand {
+    padding: 0 24px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 20px;
+  }
+  .sidebar-brand .ch-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--forest);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .sidebar-brand h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.4;
+  }
+  .nav-section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--sage);
+    text-transform: uppercase;
+    padding: 12px 24px 6px;
+  }
+  .sidebar a {
+    display: block;
+    padding: 8px 24px;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 13px;
+    font-family: 'Source Serif 4', serif;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+    line-height: 1.4;
+  }
+  .sidebar a:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+    border-left-color: var(--gold);
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    margin-left: 240px;
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--forest) 0%, #0e3320 50%, #142d1e 100%);
+    padding: 80px 72px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234caf80' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+  .hero-meta {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 28px;
+  }
+  .hero-meta .pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+  .pill-chapter { background: var(--gold); color: var(--forest); }
+  .pill-subject { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.2); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+    max-width: 700px;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .hero h1 em {
+    color: var(--amber);
+    font-style: normal;
+  }
+  .hero-sub {
+    color: var(--sage);
+    font-size: 16px;
+    font-style: italic;
+    max-width: 560px;
+    position: relative;
+    margin-bottom: 40px;
+  }
+  .hero-stats {
+    display: flex; gap: 32px;
+    position: relative;
+  }
+  .stat-box {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 16px 24px;
+    text-align: center;
+  }
+  .stat-box .val {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--amber);
+    display: block;
+  }
+  .stat-box .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--sage);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── CONTENT SECTIONS ── */
+  .content { padding: 64px 72px; }
+  .content + .content { padding-top: 0; }
+
+  section { margin-bottom: 72px; scroll-margin-top: 24px; }
+
+  /* ── SECTION HEADERS ── */
+  .section-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--emerald);
+    margin-bottom: 10px;
+  }
+  h1.section-title, h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--forest);
+    border-bottom: 3px solid var(--gold);
+    padding-bottom: 12px;
+    margin-bottom: 32px;
+    display: inline-block;
+  }
+  h3.sub-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--forest);
+    margin: 36px 0 14px;
+    padding-left: 14px;
+    border-left: 4px solid var(--emerald);
+  }
+  h4.micro-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin: 20px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  p { margin-bottom: 14px; color: var(--charcoal); }
+  strong { color: var(--ink); font-weight: 600; }
+  em { color: var(--forest); }
+
+  /* ── EXECUTIVE SUMMARY BOX ── */
+  .big-picture {
+    background: linear-gradient(135deg, #1a4731 0%, #0e2a1d 100%);
+    border-radius: 12px;
+    padding: 48px 52px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+  .big-picture::after {
+    content: '📋';
+    position: absolute;
+    right: 40px; top: 36px;
+    font-size: 80px;
+    opacity: 0.08;
+  }
+  .big-picture h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--amber);
+    margin-bottom: 16px;
+  }
+  .big-picture p { color: rgba(255,255,255,0.85); margin-bottom: 10px; }
+  .big-picture ul { list-style: none; }
+  .big-picture ul li {
+    color: rgba(255,255,255,0.85);
+    padding: 6px 0 6px 24px;
+    position: relative;
+    font-size: 15px;
+  }
+  .big-picture ul li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--amber);
+  }
+
+  /* ── CONCEPT CARDS ── */
+  .concept-card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .concept-card-header {
+    background: var(--forest);
+    padding: 16px 24px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .concept-card-header .icon {
+    width: 36px; height: 36px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .concept-card-header h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+  }
+  .concept-card-body { padding: 24px 28px; }
+  .concept-card-body p { font-size: 15px; }
+
+  /* ── WHY / DEFINE / APPLY TABS ── */
+  .trio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .trio-box {
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+  }
+  .trio-box.why { background: #fef9ec; border: 1px solid var(--amber); }
+  .trio-box.define { background: #eaf7f0; border: 1px solid var(--sage); }
+  .trio-box.apply { background: #eef3fb; border: 1px solid #aec6e8; }
+  .trio-box .trio-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .trio-box.why .trio-label { color: #8a6400; }
+  .trio-box.define .trio-label { color: var(--forest); }
+  .trio-box.apply .trio-label { color: var(--sky); }
+  .trio-box p { font-size: 14px; margin: 0; }
+
+  /* ── VFM VISUAL ── */
+  .vfm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 24px 0;
+  }
+  .vfm-box {
+    border-radius: 10px;
+    padding: 28px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .vfm-box.economy   { background: #fff8e8; border: 2px solid var(--gold); }
+  .vfm-box.efficiency { background: #eaf7f0; border: 2px solid var(--emerald); }
+  .vfm-box.effective { background: #fdecea; border: 2px solid #e57373; }
+  .vfm-box .vfm-icon { font-size: 36px; margin-bottom: 12px; display: block; }
+  .vfm-box .vfm-keyword {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .vfm-box.economy .vfm-keyword { color: #8a6400; }
+  .vfm-box.efficiency .vfm-keyword { color: var(--forest); }
+  .vfm-box.effective .vfm-keyword { color: #c0392b; }
+  .vfm-box h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .vfm-box p { font-size: 13px; margin: 0; line-height: 1.5; }
+  .vfm-box .tag {
+    display: inline-block;
+    margin-top: 12px;
+    background: rgba(0,0,0,0.06);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  /* ── EXTRA 2 Es ── */
+  .extra-es {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;
+  }
+  .extra-e {
+    background: #f4f0fa;
+    border: 1px solid #c5b8e4;
+    border-radius: 8px;
+    padding: 18px 20px;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .extra-e .badge {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--lavender); color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .extra-e h5 { font-size: 15px; font-weight: 600; color: var(--forest); margin-bottom: 4px; }
+  .extra-e p { font-size: 13px; margin: 0; }
+
+  /* ── BSC TABLE ── */
+  .bsc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14.5px;
+  }
+  .bsc-table thead tr { background: var(--forest); }
+  .bsc-table thead th {
+    color: #fff;
+    padding: 14px 18px;
+    text-align: left;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .bsc-table tbody tr:nth-child(even) { background: #f4f9f6; }
+  .bsc-table tbody tr:nth-child(odd) { background: #fff; }
+  .bsc-table td { padding: 14px 18px; border-bottom: 1px solid var(--border); }
+  .bsc-table .perspective-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .badge-cust { background: #fef3cd; color: #856404; }
+  .badge-fin  { background: #d1f2eb; color: #1a5e40; }
+  .badge-int  { background: #d6eaf8; color: #1a5276; }
+  .badge-innov{ background: #f9ebea; color: #922b21; }
+
+  /* ── CHALLENGE CARDS ── */
+  .challenge-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  .challenge-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .challenge-card .ch-head {
+    background: var(--parchment);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .ch-num {
+    width: 28px; height: 28px;
+    background: var(--forest);
+    color: #fff;
+    border-radius: 50%;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .challenge-card .ch-head h5 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--forest);
+    margin: 0;
+    line-height: 1.3;
+  }
+  .challenge-card .ch-body { padding: 18px 20px; }
+  .challenge-card .ch-body p { font-size: 13.5px; margin-bottom: 10px; }
+  .way-out {
+    display: flex; align-items: flex-start; gap: 8px;
+    background: #eaf7f0;
+    border: 1px solid var(--sage);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-top: 10px;
+  }
+  .way-out .arrow { color: var(--emerald); font-weight: 700; font-size: 16px; flex-shrink: 0; }
+  .way-out p { font-size: 13px; margin: 0; color: var(--forest); font-weight: 600; }
+
+  /* ── EXAMINER BOX ── */
+  .examiner-section { background: var(--parchment); border-radius: 12px; padding: 40px 48px; margin-bottom: 48px; }
+  .examiner-section h2.section-title { font-size: 26px; }
+
+  .trigger-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .trigger-pill {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .trigger-pill .kw {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--emerald);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .trigger-pill p { font-size: 13.5px; margin: 0; }
+
+  .mistake-list { list-style: none; }
+  .mistake-list li {
+    background: #fdf0f0;
+    border-left: 4px solid var(--rust);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 18px;
+    margin-bottom: 10px;
+    font-size: 14.5px;
+  }
+  .mistake-list li strong { color: var(--rust); }
+
+  .intercon-list { list-style: none; }
+  .intercon-list li {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14.5px;
+  }
+  .intercon-list li:last-child { border: none; }
+  .intercon-list li .tag-box {
+    background: var(--forest);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── COMPARISON TABLE ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .compare-table thead tr { background: var(--forest); }
+  .compare-table thead th {
+    color: #fff; padding: 14px 16px;
+    text-align: left; font-weight: 600;
+    font-family: 'Source Serif 4', serif; font-size: 14px;
+  }
+  .compare-table tbody tr:nth-child(even) { background: #f0f9f4; }
+  .compare-table tbody tr:nth-child(odd) { background: #fff; }
+  .compare-table td { padding: 13px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .compare-table td:first-child { font-weight: 600; color: var(--forest); width: 18%; }
+
+  /* ── FLOWCHART ── */
+  .flowchart {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 40px;
+    margin: 24px 0;
+    text-align: center;
+  }
+  .flow-steps { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .flow-step {
+    display: flex; align-items: center; gap: 0;
+    width: 100%;
+    flex-direction: column;
+  }
+  .flow-box {
+    background: var(--forest);
+    color: #fff;
+    border-radius: 8px;
+    padding: 16px 32px;
+    max-width: 480px;
+    width: 100%;
+    position: relative;
+  }
+  .flow-box .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--sage);
+    margin-bottom: 4px;
+    display: block;
+  }
+  .flow-box h5 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .flow-box p { font-size: 13px; color: var(--sage); margin: 0; }
+  .flow-box.alt { background: var(--emerald); }
+  .flow-box.gold-box { background: var(--gold); }
+  .flow-box.gold-box h5, .flow-box.gold-box p { color: var(--forest); }
+  .flow-box.gold-box .step-num { color: var(--forest); opacity: 0.7; }
+  .flow-arrow {
+    width: 2px;
+    height: 28px;
+    background: linear-gradient(to bottom, var(--emerald), var(--gold));
+    position: relative;
+    margin: 0 auto;
+  }
+  .flow-arrow::after {
+    content: '▼';
+    position: absolute;
+    bottom: -8px; left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold); font-size: 12px;
+  }
+
+  /* ── MNEMONIC BOXES ── */
+  .mnemonic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+  .mnemonic-card {
+    background: linear-gradient(135deg, #1a4731, #0e2a1d);
+    border-radius: 10px;
+    padding: 28px 28px;
+    color: #fff;
+  }
+  .mnemonic-card .mnemo-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--sage);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .mnemonic-card .acronym {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--amber);
+    letter-spacing: 4px;
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+  .mnemonic-card ul { list-style: none; }
+  .mnemonic-card ul li {
+    padding: 5px 0;
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .mnemonic-card ul li strong { color: var(--amber); font-size: 15px; }
+
+  /* ── REVISION CHECKLIST ── */
+  .checklist {
+    background: #fff;
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    padding: 36px 40px;
+    margin: 24px 0;
+  }
+  .checklist h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--forest);
+    margin-bottom: 20px;
+  }
+  .check-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .check-item:last-child { border: none; padding-bottom: 0; }
+  .check-box {
+    width: 28px; height: 28px;
+    border: 2px solid var(--emerald);
+    border-radius: 6px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; color: var(--emerald);
+  }
+  .check-item h5 { font-size: 15px; font-weight: 600; color: var(--forest); margin-bottom: 4px; }
+  .check-item p { font-size: 13.5px; margin: 0; }
+
+  /* ── EXAMPLE BOX ── */
+  .example-box {
+    background: #f0f9f4;
+    border: 1px solid var(--sage);
+    border-left: 5px solid var(--emerald);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .example-box .eg-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--emerald);
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: block;
+    text-transform: uppercase;
+  }
+  .example-box p { font-size: 14px; margin-bottom: 6px; }
+  .example-box p:last-child { margin: 0; }
+
+  /* ── CALLOUT ── */
+  .callout {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 18px 22px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .callout.note { background: #fff8e8; border: 1px solid var(--amber); }
+  .callout.warn { background: #fdecea; border: 1px solid #e57373; }
+  .callout .callout-icon { font-size: 20px; flex-shrink: 0; }
+  .callout p { margin: 0; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--forest);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 28px;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.5px;
+  }
+  .footer span { color: var(--amber); }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--forest); }
+  ::-webkit-scrollbar-thumb { background: var(--emerald); border-radius: 3px; }
+
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+    .hero { padding: 48px 32px; }
+    .content { padding: 40px 32px; }
+    .trio-grid, .vfm-grid, .challenge-grid, .trigger-grid, .mnemonic-grid, .extra-es { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <div class="ch-badge">CHAPTER 10</div>
+    <h2>Strategic Performance in NFPs</h2>
+  </div>
+  <div class="nav-section-label">Overview</div>
+  <a href="#big-picture">📋 Big Picture</a>
+  <a href="#nfp-intro">🏛 NFP Organisations</a>
+  <div class="nav-section-label">Concepts</div>
+  <a href="#challenges">⚠️ Challenges</a>
+  <a href="#vfm">🔢 VFM Framework</a>
+  <a href="#bsc">📊 Adapted BSC</a>
+  <a href="#other">📌 Other Measures</a>
+  <a href="#process">🔄 Measurement Process</a>
+  <div class="nav-section-label">Exam Focus</div>
+  <a href="#examiner">🎯 Examiner's Lens</a>
+  <a href="#visuals">📈 Visual Synthesis</a>
+  <a href="#recall">🧠 Retain & Recall</a>
+</nav>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-meta">
+      <span class="pill pill-chapter">Chapter 10</span>
+      <span class="pill pill-subject">CA Final · Strategic Cost & Performance Management</span>
+    </div>
+    <h1>Strategic Performance<br>Measures in <em>Not-for-Profit</em><br>Organisations</h1>
+    <p class="hero-sub">A definitive one-source reference bridging theoretical frameworks with exam-ready application — from VFM to Adapted Balanced Scorecard.</p>
+    <div class="hero-stats">
+      <div class="stat-box"><span class="val">3E</span><span class="lbl">VFM Framework</span></div>
+      <div class="stat-box"><span class="val">+2</span><span class="lbl">New Es Added</span></div>
+      <div class="stat-box"><span class="val">4</span><span class="lbl">BSC Perspectives</span></div>
+      <div class="stat-box"><span class="val">3</span><span class="lbl">Core Challenges</span></div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- SECTION 1: BIG PICTURE                  -->
+    <!-- ═══════════════════════════════════════ -->
+    <section id="big-picture">
+      <div class="section-eyebrow">Section 01 · Foundation</div>
+      <h2 class="section-title">The 'Big Picture'</h2>
+
+      <div class="big-picture">
+        <h3>Why This Chapter Matters in the SCPM Syllabus</h3>
+        <p>Performance measurement is often studied in a profit-seeking context. This chapter tests your ability to <strong>shift the paradigm</strong> — recognising that when profit is absent as an objective, different metrics and frameworks must govern accountability. In the CA Final exam, this chapter is frequently examined through case-let based MCQs and descriptive questions requiring comparative analysis.</p>
+        <ul>
+          <li><strong>Syllabus Relevance:</strong> Directly tests Learning Outcome — "Analyse and Evaluate performance in NFP organisations." Questions often involve applying the VFM 3Es to a given scenario and classifying measures correctly.</li>
+          <li><strong>Real-World Anchor (India):</strong> Think of organisations like <em>Akshaya Patra Foundation</em> (mid-day meals), <em>Teach For India</em> (education), <em>Give India</em> (charity), or <em>AIIMS</em> (government healthcare). Their success is NOT measured in profits — yet they must demonstrate value for every rupee spent.</li>
+          <li><strong>Exam Trend:</strong> Examiners love asking students to classify a given action as Economy / Efficiency / Effectiveness — a distinction that requires deep conceptual clarity, not rote memorisation.</li>
+          <li><strong>Inter-chapter Link:</strong> This chapter is a specialised application of Balanced Scorecard (from BSC/Performance Measurement chapters) — adapted specifically for the mission-driven context of NFPs.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- SECTION 2: NFP ORGANISATIONS            -->
+    <!-- ═══════════════════════════════════════ -->
+    <section id="nfp-intro">
+      <div class="section-eyebrow">Section 02 · Foundations</div>
+      <h2 class="section-title">A. Not-for-Profit Organisations</h2>
+
+      <h3 class="sub-title">Key Characteristics</h3>
+
+      <div class="trio-grid">
+        <div class="trio-box why">
+          <span class="trio-label">Purpose</span>
+          <p>Established for <strong>charitable, welfare, social, environmental,</strong> and mutual cooperation purposes. They perform <em>non-economic activities</em> as their principal operation.</p>
+        </div>
+        <div class="trio-box define">
+          <span class="trio-label">Corpus & Funding</span>
+          <p>Require funds to acquire resources → maintain a <strong>Corpus</strong>, funded by <em>members</em> or <em>external contributors</em> (not shareholders).</p>
+        </div>
+        <div class="trio-box apply">
+          <span class="trio-label">Surplus Treatment</span>
+          <p>Surplus is <strong>NOT distributed</strong> among stakeholders (no dividends). It becomes part of the <em>corpus</em>. Yet a <strong>fiduciary duty</strong> towards contributors exists.</p>
+        </div>
+      </div>
+
+      <div class="callout note">
+        <span class="callout-icon">💡</span>
+        <p><strong>Exam Tip:</strong> The key distinguisher of NFPs is not the <em>absence of surplus</em>, but the <em>absence of the objective to distribute surplus</em>. Fiduciary responsibility to contributors still applies — they must ensure funds are applied for stated purposes.</p>
+      </div>
+
+      <div class="example-box">
+        <span class="eg-label">Indian Context Examples</span>
+        <p><strong>Education:</strong> Akshaya Patra Foundation, Teach For India</p>
+        <p><strong>Healthcare:</strong> Government hospitals (AIIMS), Red Cross Society of India</p>
+        <p><strong>Old Age Homes:</strong> HelpAge India</p>
+        <p><strong>Environmental:</strong> WWF-India, Greenpeace India</p>
+        <p><strong>Housing:</strong> National Housing Bank schemes, PM Awas Yojana (government body)</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- SECTION 3: CHALLENGES                   -->
+    <!-- ═══════════════════════════════════════ -->
+    <section id="challenges">
+      <div class="section-eyebrow">Section 03 · Performance Measurement</div>
+      <h2 class="section-title">B. Challenges & Way-Outs</h2>
+
+      <p>Despite not needing to earn profit, NFPs have a <strong>fiduciary responsibility</strong> to contributors to demonstrate that funds are applied for stated purposes and to the intended scale. This necessitates performance measurement — but it comes with specific challenges.</p>
+
+      <div class="challenge-grid">
+
+        <div class="challenge-card">
+          <div class="ch-head">
+            <div class="ch-num">1</div>
+            <h5>Difficult to Quantify Costs & Benefits</h5>
+          </div>
+          <div class="ch-body">
+            <p><strong>Nature:</strong> Benefits can be <em>behavioural</em> (utility/satisfaction) and <em>futuristic</em> — e.g., free education's benefit is realised over a student's lifetime, not immediately.</p>
+            <p><strong>Time Gap:</strong> There is a lag between cost incurred and benefit accrued, making trade-off analysis complex.</p>
+            <p><strong>Auxiliary Costs:</strong> Externalities (like pollution, infrastructure needed for an affordable housing scheme) are hard to quantify monetarily.</p>
+            <div class="way-out">
+              <span class="arrow">→</span>
+              <p>Trade-off costs and benefits using <strong>opportunity value and cost</strong>. Assign <em>relative value</em> to costs and benefits. Note: reliability may vary over time.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="challenge-card">
+          <div class="ch-head">
+            <div class="ch-num">2</div>
+            <h5>Performance & Commitment of State</h5>
+          </div>
+          <div class="ch-body">
+            <p><strong>Overlap:</strong> NFPs (like NGOs) operate in domains that are the <em>primary responsibility of the state</em> — food security, education, health.</p>
+            <p><strong>Dependency:</strong> The state is the <em>funding source</em> for both government bodies AND NGOs. If the state performs well, little space remains for NGO intervention.</p>
+            <p><strong>External Factor:</strong> This is largely beyond the NFP's control.</p>
+            <div class="way-out">
+              <span class="arrow">→</span>
+              <p><strong>Forecasting with acute accuracy</strong> is the only mitigation — predict state commitment levels as precisely as possible.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="challenge-card">
+          <div class="ch-head">
+            <div class="ch-num">3</div>
+            <h5>Multiple Objectives</h5>
+          </div>
+          <div class="ch-body">
+            <p><strong>Diverse Stakeholders:</strong> A single NFP may serve multiple sections of society — each with different needs. This generates <em>multiple, potentially conflicting objectives</em>.</p>
+            <p><strong>Conflict:</strong> Catering to senior citizens vs. unemployed youth vs. children — all simultaneously — creates prioritisation dilemmas.</p>
+            <div class="way-out">
+              <span class="arrow">→</span>
+              <p><strong>Prioritise objectives</strong> based on: (i) <em>Importance (Utility)</em> and (ii) <em>Urgency (Time)</em>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="challenge-card">
+          <div class="ch-head">
+            <div class="ch-num">4</div>
+            <h5>Measuring the Utility of Funds</h5>
+          </div>
+          <div class="ch-body">
+            <p>NFPs <em>"don't earn to spend; they just budget to spend."</em> Two opposite problems arise:</p>
+            <p><strong>Over-spending:</strong> Funds available but without purpose → wastage.</p>
+            <p><strong>Under-spending:</strong> Scarcity of funds → objectives unfulfilled.</p>
+            <p>The utility of funds is therefore <em>not always constant</em> for NFPs.</p>
+            <div class="way-out">
+              <span class="arrow">→</span>
+              <p>Apply the <strong>Value for Money (VFM) Framework</strong> to measure the utility of funds spent.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-icon">⚠️</span>
+        <p><strong>Critical Note:</strong> Financial measures alone CANNOT evaluate NFP performance — the reliability of monetised values varies with time and transaction levels. Both financial AND non-financial measures are essential.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- SECTION 4: VFM FRAMEWORK                -->
+    <!-- ═══════════════════════════════════════ -->
+    <section id="vfm">
+      <div class="section-eyebrow">Section 04 · Performance Models</div>
+      <h2 class="section-title">C. Value for Money (VFM) Framework</h2>
+
+      <p>NFPs are expected to deliver the <strong>best possible value from limited funds</strong>. The VFM framework is the primary tool to measure this utility. It traditionally rests on three pillars — the <em>"3 Es"</em> — with two additional Es subsequently added.</p>
+
+      <div class="vfm-grid">
+        <div class="vfm-box economy">
+          <span class="vfm-icon">💰</span>
+          <span class="vfm-keyword">1.1 · Economy</span>
+          <h4>Spend Less</h4>
+          <p>Obtaining the appropriate <strong>quantity and quality of inputs</strong> at the <em>lowest cost possible</em>.</p>
+          <span class="tag">Input Measure · Resource Approach</span>
+        </div>
+        <div class="vfm-box efficiency">
+          <span class="vfm-icon">⚙️</span>
+          <span class="vfm-keyword">1.2 · Efficiency</span>
+          <h4>Spend Well</h4>
+          <p>Maximising the ratio of <strong>output to input</strong> — achieving maximum output with minimum resources.</p>
+          <span class="tag">Process Measure · Input-Output Link</span>
+        </div>
+        <div class="vfm-box effective">
+          <span class="vfm-icon">🎯</span>
+          <span class="vfm-keyword">1.3 · Effectiveness</span>
+          <h4>Spend Wisely</h4>
+          <p>Whether the organisation has <strong>achieved its desired mission and objectives</strong> — actual vs. intended impact.</p>
+          <span class="tag">Output Measure · Goal Approach</span>
+        </div>
+      </div>
+
+      <h3 class="sub-title">The Two Additional Es (Extended VFM)</h3>
+      <div class="extra-es">
+        <div class="extra-e">
+          <div class="badge">E</div>
+          <div>
+            <h5>Equity — "Spend Fairly"</h5>
+            <p>Ensuring services are accessible to all target beneficiaries, regardless of ability to pay, location, or social standing. <em>E.g., ABC Healthcare serving rural underserved populations.</em></p>
+          </div>
+        </div>
+        <div class="extra-e">
+          <div class="badge">E</div>
+          <div>
+            <h5>Ethics — "Spend Properly"</h5>
+            <p>Ensuring funds are deployed with integrity, transparency, and adherence to moral standards. <em>E.g., ABC Healthcare's code of conduct for employees.</em></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout note">
+        <span class="callout-icon">📌</span>
+        <p><strong>Five VFM Elements to Monitor:</strong> <em>Input → Process → Output → Outcome → Impact</em>. These ensure the framework operates end-to-end, from resource procurement to long-term societal benefit.</p>
+      </div>
+
+      <h3 class="sub-title">VFM Illustrated: School Example (Indian Context)</h3>
+      <div class="example-box">
+        <span class="eg-label">Scenario: Free School for BPL Children (e.g., Pratham or Government Schools)</span>
+        <p><strong>Economy:</strong> Amount spent on school premises maintenance, teacher remuneration — compared to the sanctioned budget.</p>
+        <p><strong>Efficiency:</strong> Students trained per teacher-hour; or the student-to-teacher ratio (lower is better in schooling).</p>
+        <p><strong>Effectiveness:</strong> Number of students who cleared board exams; reduction in dropout rate year-on-year.</p>
+        <p><em>⚠ Caution:</em> Cutting library or computer lab expenses to achieve Economy may compromise Effectiveness — balance is critical.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- SECTION 5: ADAPTED BSC                  -->
+    <!-- ═══════════════════════════════════════ -->
+    <section id="bsc">
+      <div class="section-eyebrow">Section 05 · Performance Models</div>
+      <h2 class="section-title">D. Adapted Balanced Scorecard (Kaplan, 2001)</h2>
+
+      <div class="concept-card">
+        <div class="concept-card-header">
+          <div class="icon">📖</div>
+          <h4>Origin & Rationale</h4>
+        </div>
+        <div class="concept-card-body">
+          <p>Robert S. Kaplan published <em>"Strategic Performance Measurement and Management in Nonprofit Organizations"</em> in 2001, proposing the <strong>Adapted Balanced Scorecard</strong> for NGOs. The four perspectives are identical to the original BSC — but the <em>underlying assumption shifts</em> entirely: the <strong>Mission Statement</strong>, not profit, is the central purpose of the organisation.</p>
+          <div class="trio-grid">
+            <div class="trio-box why">
+              <span class="trio-label">Original BSC</span>
+              <p>Financial perspective sits at the <em>top</em> — profit maximisation drives everything.</p>
+            </div>
+            <div class="trio-box define">
+              <span class="trio-label">Adapted BSC</span>
+              <p><strong>Customer/Stakeholder</strong> perspective moves to the top — mission fulfilment drives everything.</p>
+            </div>
+            <div class="trio-box apply">
+              <span class="trio-label">Key Shift</span>
+              <p>Financial perspective is a <em>means</em>, not an end — it enables the mission rather than being the mission.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="sub-title">The Four Perspectives in NFP Context</h3>
+
+      <table class="bsc-table">
+        <thead>
+          <tr>
+            <th>Perspective</th>
+            <th>Focus in NFP</th>
+            <th>Position</th>
+            <th>Indian Example (Akshaya Patra)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="perspective-badge badge-cust">Customer / Stakeholder</span></td>
+            <td>Satisfaction of beneficiaries, market growth, other stakeholder interests</td>
+            <td>🔝 <strong>Top</strong> (replaces Financial)</td>
+            <td>No. of children receiving meals; beneficiary satisfaction surveys</td>
+          </tr>
+          <tr>
+            <td><span class="perspective-badge badge-fin">Financial</span></td>
+            <td>Fund raising, fund's growth, and fund's distribution</td>
+            <td>Supporting (not primary)</td>
+            <td>CSR funds raised; government grants secured; surplus added to corpus</td>
+          </tr>
+          <tr>
+            <td><span class="perspective-badge badge-int">Internal Processes</span></td>
+            <td>Internal efficiency, volunteer development, information communication, and quality</td>
+            <td>Operational</td>
+            <td>Meals prepared per kitchen-hour; volunteer training completion rate</td>
+          </tr>
+          <tr>
+            <td><span class="perspective-badge badge-innov">Innovation & Learning</span></td>
+            <td>Organisation's capability to adapt to changing environment and implement innovative changes</td>
+            <td>Future-Oriented</td>
+            <td>New kitchen technologies adopted; expansion into new cities; digital systems</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout note">
+        <span class="callout-icon">⭐</span>
+        <p><strong>Critical Distinction for Exams:</strong> In the Adapted BSC, <em>Customer and Financial perspectives are SWITCHED</em> compared to the original BSC. This is because achieving financial success is NOT the primary objective — efficiently and effectively meeting beneficiary needs is. Do not confuse the two in descriptive answers.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- SECTION 6: OTHER MEASURES               -->
+    <!-- ═══════════════════════════════════════ -->
+    <section id="other">
+      <div class="section-eyebrow">Section 06 · Performance Models</div>
+      <h2 class="section-title">E. Other Performance Measures</h2>
+
+      <div class="challenge-grid">
+        <div class="challenge-card">
+          <div class="ch-head"><div class="ch-num">i</div><h5>Quality of Services Provided</h5></div>
+          <div class="ch-body"><p>How well the delivered service conforms to the beneficiary's expectations. Measured via tenant/beneficiary feedback, complaint analysis, retention rate.</p></div>
+        </div>
+        <div class="challenge-card">
+          <div class="ch-head"><div class="ch-num">ii</div><h5>Attainment of Objectives & Mission</h5></div>
+          <div class="ch-body"><p>The extent to which the stated purpose of the organisation has been achieved — the effectiveness dimension of VFM.</p></div>
+        </div>
+        <div class="challenge-card">
+          <div class="ch-head"><div class="ch-num">iii</div><h5>Ability to Raise Funds Efficiently</h5></div>
+          <div class="ch-body"><p>Financial health of the organisation — whether it can sustainably fund its operations. Includes corpus growth, grant acquisition, donation drives.</p></div>
+        </div>
+        <div class="challenge-card">
+          <div class="ch-head"><div class="ch-num">iv</div><h5>Transparent & Periodic Reporting</h5></div>
+          <div class="ch-body"><p>Accountability to all stakeholders via regular, honest disclosure of financials and impact — critical for donor confidence and regulatory compliance.</p></div>
+        </div>
+        <div class="challenge-card">
+          <div class="ch-head"><div class="ch-num">v</div><h5>Long-term Impact of Activities</h5></div>
+          <div class="ch-body"><p>The lasting societal benefit created. Often the hardest to quantify but most meaningful metric — e.g., % of educated students who escape poverty.</p></div>
+        </div>
+      </div>
+
+      <h3 class="sub-title">Building Block Model — Flexibility & Service Quality (Fitzgerald & Moon)</h3>
+      <p>The Building Block Model identifies <strong>six dimensions</strong> of performance. Two are particularly relevant for NFPs in exam contexts:</p>
+      <div class="trio-grid">
+        <div class="trio-box define">
+          <span class="trio-label">Service Quality</span>
+          <p>How well service conforms to beneficiary expectations. Measures: staff behaviour/attitude, quality of amenities, on-site service availability, safety compliance.</p>
+        </div>
+        <div class="trio-box apply">
+          <span class="trio-label">Flexibility</span>
+          <p>Organisation's ability to adapt to changing needs. Measures: average waiting time for accommodation, ability to reassign different-sized units, emergency repair response time.</p>
+        </div>
+        <div class="trio-box why">
+          <span class="trio-label">Data Collection</span>
+          <p>Tenant/beneficiary feedback forms, number & nature of complaints, retention/loyalty rates — both specific and general feedback.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- SECTION 7: PROCESS                      -->
+    <!-- ═══════════════════════════════════════ -->
+    <section id="process">
+      <div class="section-eyebrow">Section 07 · Process</div>
+      <h2 class="section-title">F. Performance Measurement Process</h2>
+
+      <div class="flowchart">
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-box">
+              <span class="step-num">STEP 01</span>
+              <h5>Identify Overriding Objectives & Mission</h5>
+              <p>Define the problem being solved and stakeholders addressed. Continuously evaluate mission, vision and strategy.</p>
+            </div>
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="flow-step">
+            <div class="flow-box alt">
+              <span class="step-num">STEP 02</span>
+              <h5>Break Down & Map Objectives</h5>
+              <p>Map objectives to BSC perspectives: Stakeholder, Financial, Internal Process, Learning & Growth.</p>
+            </div>
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="flow-step">
+            <div class="flow-box">
+              <span class="step-num">STEP 03</span>
+              <h5>Define KPIs for Each Perspective</h5>
+              <p>Establish specific, measurable Key Performance Indicators for each of the four BSC perspectives.</p>
+            </div>
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="flow-step">
+            <div class="flow-box alt">
+              <span class="step-num">STEP 04</span>
+              <h5>Measure & Evaluate Actual Outcomes</h5>
+              <p>Collect actual data and compare against the defined KPIs and performance benchmarks.</p>
+            </div>
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="flow-step">
+            <div class="flow-box gold-box">
+              <span class="step-num">STEP 05</span>
+              <h5>Review & Revise Periodically</h5>
+              <p>Analyse outcomes on a periodic basis. Carry out required changes to performance measures — an iterative, continuous cycle.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /content -->
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- EXAMINER'S LENS                             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="content" style="padding-top:0">
+    <section id="examiner">
+      <div class="examiner-section">
+        <div class="section-eyebrow">Section 08 · Exam Strategy</div>
+        <h2 class="section-title">The Examiner's Lens 🎯</h2>
+
+        <h3 class="sub-title">Trigger Points — Keywords That Signal a Concept</h3>
+        <div class="trigger-grid">
+          <div class="trigger-pill">
+            <span class="kw">ECONOMY</span>
+            <p>"Discounted rates," "lowest cost," "input procurement," "cost-cutting on resources," "spending less," "cheaper suppliers."</p>
+          </div>
+          <div class="trigger-pill">
+            <span class="kw">EFFICIENCY</span>
+            <p>"Streamlined process," "productivity," "wait time reduced," "digital records," "output per unit of input," "ratio of houses per employee."</p>
+          </div>
+          <div class="trigger-pill">
+            <span class="kw">EFFECTIVENESS</span>
+            <p>"Mission achieved," "objectives attained," "quality outcomes," "preventive programs," "specialised services," "number of beneficiaries served."</p>
+          </div>
+          <div class="trigger-pill">
+            <span class="kw">EQUITY</span>
+            <p>"Regardless of ability to pay," "underserved populations," "rural outreach," "community programs," "inclusive access."</p>
+          </div>
+          <div class="trigger-pill">
+            <span class="kw">ETHICS</span>
+            <p>"Code of conduct," "patient privacy," "ethical standards," "responsible manner," "integrity in operations."</p>
+          </div>
+          <div class="trigger-pill">
+            <span class="kw">ADAPTED BSC</span>
+            <p>"Mission-driven," "NFP balanced scorecard," "beneficiary satisfaction at top," "financial perspective is means not end."</p>
+          </div>
+          <div class="trigger-pill">
+            <span class="kw">FLEXIBILITY</span>
+            <p>"Waiting time," "adapting to needs," "emergency repair response," "different house sizes available."</p>
+          </div>
+          <div class="trigger-pill">
+            <span class="kw">SERVICE QUALITY</span>
+            <p>"Tenant satisfaction," "staff attitude," "safety compliance," "complaint analysis," "amenity standards."</p>
+          </div>
+        </div>
+
+        <h3 class="sub-title">Common Mistakes — Where Marks Are Lost</h3>
+        <ul class="mistake-list">
+          <li><strong>Confusing Economy with Efficiency:</strong> Economy = spending less on inputs (procurement). Efficiency = getting more output from same inputs (process). A digital records system that <em>reduces cost AND reduces paperwork</em> is BOTH — a common MCQ trap.</li>
+          <li><strong>Forgetting the BSC Perspective Swap:</strong> In Adapted BSC, Financial is NOT at the top — Customer/Stakeholder is. Students who default to the original BSC order lose marks in case-study answers.</li>
+          <li><strong>Treating VFM as Finance-Only:</strong> VFM is a balance of financial and non-financial measures. Writing only financial metrics in an evaluation question signals shallow understanding.</li>
+          <li><strong>Ignoring "Benchmarking Against Similar NFPs":</strong> When comparing HS vs ES (in the question), noting that ES is profit-driven and therefore not the ideal benchmark — and suggesting comparison with <em>similar charitable organisations</em> — earns extra marks.</li>
+          <li><strong>Missing the 5th Element of VFM:</strong> The framework operates across <em>Input → Process → Output → Outcome → Impact</em>. Mentioning only 3Es without these elements in a long-form question leaves the answer incomplete.</li>
+        </ul>
+
+        <h3 class="sub-title">Inter-Connectivity with Other Chapters</h3>
+        <ul class="intercon-list">
+          <li>
+            <span class="tag-box">BSC</span>
+            <p>The Adapted BSC is a direct derivative of the Balanced Scorecard framework. Exam questions may require you to contrast both — emphasise the mission-centricity and perspective reordering in the NFP version.</p>
+          </li>
+          <li>
+            <span class="tag-box">BUDGETING</span>
+            <p>NFPs rely heavily on budgetary control (a key financial objective is "keeping spending within budget"). The challenge of measuring fund utility connects directly to flexible vs. fixed budgeting concepts.</p>
+          </li>
+          <li>
+            <span class="tag-box">BENCHMARKING</span>
+            <p>The HS vs ES case study illustrates benchmarking in practice. The ideal benchmark for a NFP is a comparable NFP — connecting to best-practice and internal benchmarking theory.</p>
+          </li>
+          <li>
+            <span class="tag-box">BUILDING BLOCKS</span>
+            <p>Fitzgerald & Moon's Building Block Model (Service Quality, Flexibility, Innovation, Resource Utilisation, Competitiveness, Financial) is referenced in Section E. Know all six dimensions as they may be asked independently.</p>
+          </li>
+          <li>
+            <span class="tag-box">STAKEHOLDER</span>
+            <p>Multiple objectives stem from multiple stakeholders — linking to stakeholder theory and stakeholder mapping frameworks studied in the strategic analysis chapters.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- VISUAL SYNTHESIS                            -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="content" style="padding-top:0">
+    <section id="visuals">
+      <div class="section-eyebrow">Section 09 · Visual Synthesis</div>
+      <h2 class="section-title">Visual Synthesis 📊</h2>
+
+      <h3 class="sub-title">Master Comparison Table: VFM vs. Adapted BSC vs. Building Blocks</h3>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>VFM Framework</th>
+            <th>Adapted BSC (Kaplan)</th>
+            <th>Building Block Model</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Origin</td>
+            <td>Public sector / Government accountability context</td>
+            <td>Kaplan (2001) — Nonprofit adaptation of BSC</td>
+            <td>Fitzgerald & Moon — Service sector</td>
+          </tr>
+          <tr>
+            <td>Primary Goal</td>
+            <td>Maximise value from limited funds</td>
+            <td>Achieve mission across 4 perspectives</td>
+            <td>Measure performance across 6 dimensions</td>
+          </tr>
+          <tr>
+            <td>Key Components</td>
+            <td>3Es: Economy, Efficiency, Effectiveness (+Equity, Ethics)</td>
+            <td>Customer, Financial, Internal Process, Innovation & Learning</td>
+            <td>Results: Competitiveness, Financial Performance; Determinants: Quality, Flexibility, Resource Utilisation, Innovation</td>
+          </tr>
+          <tr>
+            <td>Nature of Measures</td>
+            <td>Both financial & non-financial</td>
+            <td>Both financial & non-financial across 4 perspectives</td>
+            <td>Primarily non-financial, service-oriented</td>
+          </tr>
+          <tr>
+            <td>Central Concept</td>
+            <td>Cost-benefit optimisation</td>
+            <td>Mission Statement as focal point (not profit)</td>
+            <td>Standards, Rewards, Ownership — employee motivation linked</td>
+          </tr>
+          <tr>
+            <td>Key Difference from For-Profit</td>
+            <td>No profit target; effectiveness judged by mission fulfilment</td>
+            <td>Financial & Customer perspectives switched vs. original BSC</td>
+            <td>Dimensions adapted for service delivery, not manufacturing</td>
+          </tr>
+          <tr>
+            <td>Best Applied When</td>
+            <td>Evaluating fund utility, procurement efficiency</td>
+            <td>Strategic planning and KPI setting for NFPs</td>
+            <td>Service quality measurement and flexibility analysis</td>
+          </tr>
+          <tr>
+            <td>Indian Application</td>
+            <td>Government hospital procurement, NGO grant utilisation</td>
+            <td>Akshaya Patra Foundation's strategic dashboard</td>
+            <td>Tenant satisfaction in Housing Board schemes</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub-title">Logic Flowchart: Classifying a Performance Measure (VFM Decision Tree)</h3>
+
+      <div class="flowchart">
+        <p style="font-family:'Playfair Display',serif;font-size:18px;color:var(--forest);font-weight:700;margin-bottom:28px;">Given an action in a case study — classify it under the VFM Framework</p>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-box">
+              <span class="step-num">START HERE</span>
+              <h5>Does the action relate to <em>procurement / acquiring resources / inputs</em>?</h5>
+              <p>(e.g., negotiating supplier rates, hiring staff at a certain salary)</p>
+            </div>
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="flow-step">
+            <div class="flow-box alt">
+              <span class="step-num">IF YES →</span>
+              <h5>✅ ECONOMY</h5>
+              <p>"Spend Less" — Input Measure. Getting quality resources at lowest cost.</p>
+            </div>
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="flow-step">
+            <div class="flow-box">
+              <span class="step-num">IF NO — NEXT QUESTION</span>
+              <h5>Does the action relate to the <em>process of delivering service</em> / converting input to output?</h5>
+              <p>(e.g., streamlining delivery, digital records reducing paperwork, staff-to-output ratios)</p>
+            </div>
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="flow-step">
+            <div class="flow-box alt">
+              <span class="step-num">IF YES →</span>
+              <h5>✅ EFFICIENCY</h5>
+              <p>"Spend Well" — Process Measure. Maximum output from minimum input.</p>
+            </div>
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="flow-step">
+            <div class="flow-box">
+              <span class="step-num">IF NO — FINAL QUESTION</span>
+              <h5>Does the action relate to <em>achieving the organisation's mission / desired outcomes</em>?</h5>
+              <p>(e.g., preventive health programs, specialised care, mission attainment, beneficiary outcomes)</p>
+            </div>
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="flow-step">
+            <div class="flow-box gold-box">
+              <span class="step-num">IF YES →</span>
+              <h5>✅ EFFECTIVENESS</h5>
+              <p>"Spend Wisely" — Output/Outcome Measure. Mission achieved = effective.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- RETAIN & RECALL                             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="content" style="padding-top:0">
+    <section id="recall">
+      <div class="section-eyebrow">Section 10 · Memory Aids</div>
+      <h2 class="section-title">Retain & Recall 🧠</h2>
+
+      <div class="mnemonic-grid">
+
+        <div class="mnemonic-card">
+          <span class="mnemo-label">Mnemonic 01 · VFM Framework (5 Es)</span>
+          <div class="acronym">3E+2</div>
+          <ul>
+            <li><strong>E</strong>conomy — Spend Less (Inputs)</li>
+            <li><strong>E</strong>fficiency — Spend Well (Process)</li>
+            <li><strong>E</strong>ffectiveness — Spend Wisely (Outputs)</li>
+            <li><strong>E</strong>quity — Spend Fairly (Inclusion)</li>
+            <li><strong>E</strong>thics — Spend Properly (Integrity)</li>
+          </ul>
+        </div>
+
+        <div class="mnemonic-card">
+          <span class="mnemo-label">Mnemonic 02 · VFM 5 Elements</span>
+          <div class="acronym">IPOOI</div>
+          <ul>
+            <li><strong>I</strong>nput</li>
+            <li><strong>P</strong>rocess</li>
+            <li><strong>O</strong>utput</li>
+            <li><strong>O</strong>utcome</li>
+            <li><strong>I</strong>mpact</li>
+          </ul>
+        </div>
+
+        <div class="mnemonic-card">
+          <span class="mnemo-label">Mnemonic 03 · Challenges (3+1)</span>
+          <div class="acronym">QSM</div>
+          <ul>
+            <li><strong>Q</strong>uantifying costs & benefits</li>
+            <li><strong>S</strong>tate performance & commitment</li>
+            <li><strong>M</strong>ultiple objectives</li>
+            <li><em>+</em> <strong>U</strong>tility of funds</li>
+          </ul>
+        </div>
+
+        <div class="mnemonic-card">
+          <span class="mnemo-label">Mnemonic 04 · Adapted BSC Perspectives</span>
+          <div class="acronym">CFIL</div>
+          <ul>
+            <li><strong>C</strong>ustomer (top — beneficiary satisfaction)</li>
+            <li><strong>F</strong>inancial (fund-raising & growth)</li>
+            <li><strong>I</strong>nternal Processes (efficiency & quality)</li>
+            <li><strong>L</strong>earning & Innovation (adaptability)</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="callout note" style="margin:16px 0 32px;">
+        <span class="callout-icon">🔑</span>
+        <p><strong>Economy vs. Efficiency — The Quick Test:</strong> If the action happens <em>BEFORE</em> service delivery (buying, hiring, procuring) = Economy. If it happens <em>DURING</em> service delivery (processes, ratios, workflows) = Efficiency. If it measures the <em>RESULT</em> = Effectiveness.</p>
+      </div>
+
+      <h3 class="sub-title">3-Point Revision Checklist — Test Your Mastery</h3>
+      <div class="checklist">
+        <h4>Before the exam, verify you can do all three:</h4>
+
+        <div class="check-item">
+          <div class="check-box">✓</div>
+          <div>
+            <h5>Classify any given action under the 5E VFM Framework — without hesitation.</h5>
+            <p>Take any bullet point from the ABC Healthcare or HS case study and correctly label it as Economy / Efficiency / Effectiveness / Equity / Ethics. Explain <em>why</em> in one sentence using the definition. If you can do this for all 7 actions in the ABC case, you're ready.</p>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <div class="check-box">✓</div>
+          <div>
+            <h5>Articulate precisely WHY the Adapted BSC differs from the original BSC — and diagram both.</h5>
+            <p>You must state: (a) which perspectives are the same, (b) which perspective moves to the top, (c) the central assumption shift from profit to mission. Write the Adapted BSC table from memory — including the NFP-specific focus for each perspective.</p>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <div class="check-box">✓</div>
+          <div>
+            <h5>Solve the HS vs. ES numerical — and critically evaluate the result with qualitative commentary.</h5>
+            <p>Calculate: (a) Average Employee Cost/week/house, (b) Average Running Repair Cost/week/house, (c) % Rent Lost. Then go beyond the numbers — comment on WHY HS benchmarking against ES may be flawed, and suggest the ideal alternative (similar NFP benchmarking via Housing Benchmarking Organisations).</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    CA Final · SCPM · <span>Chapter 10</span> · Strategic Performance Measures in NFPs · One-Source Material · © ICAI Curriculum
+  </div>
+
+</div><!-- /main -->
+
+</body>
+</html>

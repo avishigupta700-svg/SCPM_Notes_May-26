@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 5 | SCPM | One-Source Material</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #0e3d28;
+    --forest-mid: #1a5c3e;
+    --forest-light: #2d7a55;
+    --gold: #c8962b;
+    --gold-light: #f0c46a;
+    --gold-pale: #fdf3dc;
+    --cream: #faf7f2;
+    --ink: #1c1a17;
+    --ink-soft: #3d3a34;
+    --ink-muted: #6b6560;
+    --rule: #d6cfc4;
+    --red-flag: #c0392b;
+    --blue-link: #1a4a7a;
+    --teal: #1a7a6e;
+    --section-bg: #f4f0ea;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 15px; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* ─── HEADER ─── */
+  .masthead {
+    background: var(--forest);
+    padding: 3.5rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 30px,
+      rgba(255,255,255,0.025) 30px, rgba(255,255,255,0.025) 31px
+    );
+  }
+  .masthead-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+  .masthead h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.25;
+    max-width: 720px;
+    margin: 0 auto 1rem;
+    position: relative;
+  }
+  .masthead h1 span { color: var(--gold-light); font-style: italic; }
+  .masthead-meta {
+    display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+    position: relative;
+  }
+  .meta-pill {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.72rem;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.9rem;
+    border-radius: 2rem;
+  }
+
+  /* ─── TOC ─── */
+  .toc-wrapper {
+    background: var(--forest-mid);
+    padding: 1.5rem 2rem;
+    position: sticky; top: 0; z-index: 100;
+    border-bottom: 3px solid var(--gold);
+  }
+  .toc-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; gap: 0.5rem 1.5rem; flex-wrap: wrap; align-items: center;
+  }
+  .toc-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.15em;
+    color: var(--gold-light); text-transform: uppercase;
+    margin-right: 0.5rem;
+  }
+  .toc-link {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+  .toc-link:hover { color: var(--gold-light); }
+  .toc-sep { color: rgba(255,255,255,0.25); font-size: 0.7rem; }
+
+  /* ─── LAYOUT ─── */
+  .page { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+  /* ─── SECTION BLOCKS ─── */
+  .section-block {
+    margin-top: 3.5rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--forest-mid);
+  }
+  .section-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.18em;
+    color: var(--gold); text-transform: uppercase;
+    display: block; margin-bottom: 0.4rem;
+  }
+  .section-block > h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.65rem; font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--forest-mid);
+    margin: 2rem 0 0.75rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  h4 {
+    font-size: 0.9rem; font-weight: 600;
+    color: var(--ink); margin: 1.2rem 0 0.4rem;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  p { margin-bottom: 0.8rem; color: var(--ink-soft); }
+  strong { color: var(--ink); font-weight: 600; }
+  em { color: var(--forest-mid); font-style: italic; }
+
+  /* ─── CALLOUT BOXES ─── */
+  .box {
+    border-radius: 4px;
+    padding: 1.1rem 1.4rem;
+    margin: 1.2rem 0;
+    border-left: 4px solid;
+    font-size: 0.88rem;
+  }
+  .box-why { background: #eef5f1; border-color: var(--forest-light); }
+  .box-def { background: var(--gold-pale); border-color: var(--gold); }
+  .box-warn { background: #fdf0ef; border-color: var(--red-flag); }
+  .box-exam { background: #eef2f8; border-color: var(--blue-link); }
+  .box-tip { background: #ecf6f4; border-color: var(--teal); }
+  .box-mnemonic { background: var(--forest); color: var(--white); border-color: var(--gold); border-radius: 6px; }
+  .box-mnemonic strong { color: var(--gold-light); }
+  .box-mnemonic em { color: var(--gold-light); font-style: normal; }
+
+  .box-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.15em;
+    text-transform: uppercase; font-weight: 500;
+    display: block; margin-bottom: 0.4rem;
+    opacity: 0.7;
+  }
+  .box-warn .box-label { color: var(--red-flag); }
+  .box-def .box-label { color: var(--gold); }
+  .box-why .box-label { color: var(--forest-light); }
+  .box-exam .box-label { color: var(--blue-link); }
+  .box-tip .box-label { color: var(--teal); }
+  .box-mnemonic .box-label { color: var(--gold-light); }
+
+  /* ─── LISTS ─── */
+  ul.styled, ol.styled { padding-left: 1.4rem; margin: 0.6rem 0 0.9rem; }
+  ul.styled li, ol.styled li { margin-bottom: 0.45rem; color: var(--ink-soft); font-size: 0.9rem; }
+  ul.styled li::marker { color: var(--gold); }
+
+  /* ─── CARDS GRID ─── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem; margin: 1.2rem 0;
+  }
+  .card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.1rem;
+    border-top: 3px solid var(--forest-light);
+    transition: box-shadow 0.2s;
+  }
+  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .card-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; color: var(--gold);
+    letter-spacing: 0.1em; display: block; margin-bottom: 0.3rem;
+  }
+  .card h5 {
+    font-size: 0.88rem; font-weight: 600;
+    color: var(--forest); margin-bottom: 0.4rem;
+  }
+  .card p { font-size: 0.8rem; color: var(--ink-muted); margin: 0; line-height: 1.5; }
+
+  /* ─── TABLES ─── */
+  .table-wrapper { overflow-x: auto; margin: 1.2rem 0; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.84rem; background: var(--white);
+  }
+  thead { background: var(--forest); color: var(--white); }
+  thead th {
+    padding: 0.75rem 1rem; text-align: left;
+    font-weight: 600; font-size: 0.8rem;
+    letter-spacing: 0.03em;
+  }
+  tbody tr:nth-child(even) { background: var(--section-bg); }
+  tbody tr:hover { background: #eef5f1; }
+  tbody td { padding: 0.65rem 1rem; color: var(--ink-soft); border-bottom: 1px solid var(--rule); vertical-align: top; }
+  tbody td:first-child { font-weight: 600; color: var(--ink); }
+
+  /* ─── FLOWCHART (CSS-only) ─── */
+  .flowchart { margin: 1.5rem 0; }
+  .flow-row {
+    display: flex; align-items: stretch;
+    gap: 0; margin-bottom: 0;
+  }
+  .flow-node {
+    flex: 1;
+    background: var(--white);
+    border: 2px solid var(--forest-light);
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+    text-align: center;
+    font-size: 0.8rem; font-weight: 600;
+    color: var(--forest);
+    position: relative;
+  }
+  .flow-node.highlight { background: var(--forest); color: var(--white); border-color: var(--forest); }
+  .flow-node.highlight-gold { background: var(--gold); color: var(--white); border-color: var(--gold); }
+  .flow-node sub { display: block; font-weight: 300; font-size: 0.7rem; color: var(--ink-muted); margin-top: 0.2rem; }
+  .flow-node.highlight sub { color: rgba(255,255,255,0.7); }
+  .flow-arrow {
+    display: flex; align-items: center; justify-content: center;
+    width: 2.5rem; flex-shrink: 0;
+    color: var(--gold); font-size: 1.2rem; font-weight: 700;
+  }
+  .flow-down {
+    display: flex; justify-content: center;
+    color: var(--gold); font-size: 1.2rem;
+    margin: 0.3rem 0;
+  }
+
+  /* ─── TWO-COL ─── */
+  .two-col {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin: 1rem 0;
+  }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* ─── TAG CHIPS ─── */
+  .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0; }
+  .tag {
+    background: var(--forest-light);
+    color: var(--white);
+    font-size: 0.7rem; font-weight: 500;
+    padding: 0.2rem 0.65rem; border-radius: 2rem;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.04em;
+  }
+  .tag.gold { background: var(--gold); }
+  .tag.red { background: var(--red-flag); }
+  .tag.teal { background: var(--teal); }
+  .tag.blue { background: var(--blue-link); }
+
+  /* ─── REVISION CHECKLIST ─── */
+  .checklist-item {
+    display: flex; gap: 0.8rem; align-items: flex-start;
+    padding: 0.8rem 1rem; background: var(--white);
+    border: 1px solid var(--rule); border-radius: 4px;
+    margin-bottom: 0.6rem;
+  }
+  .check-circle {
+    width: 1.4rem; height: 1.4rem; flex-shrink: 0;
+    border-radius: 50%; border: 2px solid var(--forest-light);
+    margin-top: 0.1rem;
+  }
+  .checklist-item p { margin: 0; font-size: 0.875rem; color: var(--ink-soft); }
+
+  /* ─── INTERCONNECT LINES ─── */
+  .ic-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem; }
+  .ic-source { background: var(--forest); color: var(--white); padding: 0.25rem 0.6rem; border-radius: 3px; font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+  .ic-arrow { color: var(--gold); font-size: 0.9rem; }
+  .ic-target { font-size: 0.82rem; color: var(--ink-soft); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--forest); color: rgba(255,255,255,0.55);
+    text-align: center; padding: 1.5rem;
+    font-size: 0.72rem; font-family: 'DM Mono', monospace;
+    letter-spacing: 0.06em; margin-top: 4rem;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    .toc-wrapper { position: static; }
+    .section-block { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ MASTHEAD ══════════ -->
+<header class="masthead">
+  <p class="masthead-label">CA Final · Strategic Cost & Performance Management</p>
+  <h1>Chapter 5 — <span>Management of Cost Strategically</span><br>for Emerging Business Models</h1>
+  <div class="masthead-meta">
+    <span class="meta-pill">One-Source Material</span>
+    <span class="meta-pill">Section A: Change Drivers</span>
+    <span class="meta-pill">Section B: Business Models</span>
+    <span class="meta-pill">Section C: Strategic Responses</span>
+  </div>
+</header>
+
+<!-- ══════════ STICKY TOC ══════════ -->
+<nav class="toc-wrapper">
+  <div class="toc-inner">
+    <span class="toc-title">Jump to →</span>
+    <a class="toc-link" href="#bigpicture">Big Picture</a>
+    <span class="toc-sep">·</span>
+    <a class="toc-link" href="#sectionA">Change Drivers</a>
+    <span class="toc-sep">·</span>
+    <a class="toc-link" href="#sectionB">Business Models</a>
+    <span class="toc-sep">·</span>
+    <a class="toc-link" href="#sectionC">Strategic Responses</a>
+    <span class="toc-sep">·</span>
+    <a class="toc-link" href="#examiners">Examiner's Lens</a>
+    <span class="toc-sep">·</span>
+    <a class="toc-link" href="#visual">Visual Synthesis</a>
+    <span class="toc-sep">·</span>
+    <a class="toc-link" href="#recall">Retain & Recall</a>
+  </div>
+</nav>
+
+<main class="page">
+
+<!-- ══════════ SECTION 1: BIG PICTURE ══════════ -->
+<section class="section-block" id="bigpicture">
+  <span class="section-number">Section 01 · Executive Overview</span>
+  <h2>The 'Big Picture' — Chapter Significance & Real-World Relevance</h2>
+
+  <p>Chapter 5 is the <strong>crown jewel</strong> of the SCPM syllabus from an applied strategy perspective. While earlier chapters build analytical frameworks (CVP, variance, ABM), this chapter demands that a <em>management accountant think like a business strategist</em>. It synthesises environmental scanning, innovation theory, and cost management into a unified narrative about how organisations survive and thrive in a volatile, hyper-connected world.</p>
+
+  <div class="two-col">
+    <div class="box box-why">
+      <span class="box-label">Syllabus Position</span>
+      <strong>Bridge Chapter:</strong> Chapter 5 connects environmental dynamics (Strategy, Ch.1) to performance measurement (BSC, Ch.6) via cost-consciousness in emerging models. Examiners use it to test <em>application</em>, not rote recall.
+    </div>
+    <div class="box box-exam">
+      <span class="box-label">Real-World Anchor</span>
+      <strong>Why it matters now:</strong> Every industry — from FinTech (Razorpay, Paytm) to Healthcare (AI diagnostics) to FMCG (D2C brands) — is either disrupting or being disrupted. A CA advising such businesses must grasp these models to design relevant cost systems.
+    </div>
+  </div>
+
+  <h3>Three-Pillar Structure of the Chapter</h3>
+  <div class="flowchart">
+    <div class="flow-row">
+      <div class="flow-node highlight">Section A<sub>What is changing & why?</sub></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node highlight">Section B<sub>What new models emerge?</sub></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node highlight-gold">Section C<sub>How do we respond strategically?</sub></div>
+    </div>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-label">Global Context — Real Examples</span>
+    <strong>Digital Tech:</strong> ChatGPT disrupted the knowledge economy overnight (new-market disruption). <strong>Blockchain:</strong> DeFi platforms challenge traditional banking (low-end disruption). <strong>Sustainability:</strong> Patagonia's "don't buy this jacket" campaign — a closed-loop, gift-economy hybrid. <strong>Ecosystem:</strong> Apple's App Store = platform ecosystem model; Amazon Web Services = domain transformation.
+  </div>
+</section>
+
+<!-- ══════════ SECTION 2: SECTION A - CHANGE DRIVERS ══════════ -->
+<section class="section-block" id="sectionA">
+  <span class="section-number">Section 02 · Conceptual Deep-Dive</span>
+  <h2>Section A — Changing Business Environment & Change Drivers</h2>
+
+  <div class="box box-def">
+    <span class="box-label">Core Definition</span>
+    <strong>Change Drivers:</strong> A wide range of key elements — including hyper competition, digital technology advancements, sustainability-led disruptions, stakeholder expectations, innovation, and incubation of ideas — that collectively determine the <em>degree of environmental dynamism</em>. Some are <strong>causes</strong>; others are <strong>effects</strong>.
+  </div>
+
+  <div class="box box-why">
+    <span class="box-label">The 'Why' — Cause vs. Effect Distinction</span>
+    <p style="margin:0;">Digital technologies → <strong>CAUSE</strong>; Advanced Manufacturing → <strong>EFFECT</strong>. Ecosystems → <strong>ROOT CAUSE</strong>; Agile Organisations & Lean Start-ups → <strong>EFFECT</strong>. Understanding this distinction is critical for Section C (strategic responses target <em>cause drivers</em>).</p>
+  </div>
+
+  <!-- DRIVER 1 -->
+  <h3>Driver 1 — Digital Technologies</h3>
+  <div class="box box-def">
+    <span class="box-label">Definition</span>
+    <strong>Digital Technologies:</strong> Electronic or automated tools, systems, devices, and resources that generate, store, or process data. The <em>Network/Internet</em> is the underlying basis of all digital technology advancements.
+  </div>
+
+  <h4>11 Key Technologies for Digital Transformation</h4>
+  <div class="card-grid">
+    <div class="card"><span class="card-num">1.1</span><h5>Internet of Things (IoT)</h5><p>Continuous connectivity of smart devices/sensors enabling manufacturers to access operations data like never before. Enables efficiency, flexibility, and innovation.</p></div>
+    <div class="card"><span class="card-num">1.2</span><h5>Robotics</h5><p>Senses input, applies AI, and reacts physically. Used for repetitive AND analytically-based tasks. Key sectors: Healthcare, Agriculture, Manufacturing, Defence.</p></div>
+    <div class="card"><span class="card-num">1.3</span><h5>Artificial Intelligence (AI)</h5><p>Technologies that react to data resembling human thought. Releases unattainable analytics. <em>Machine Learning</em> = application of AI using mathematical models of data.</p></div>
+    <div class="card"><span class="card-num">1.4</span><h5>Automation</h5><p>Technology performing work traditionally done by humans. 4 types: <strong>Basic</strong> (BPM/RPA), <strong>Process</strong> (workflow), <strong>Integration</strong> (rule-based), <strong>AI Automation</strong> (most complex).</p></div>
+    <div class="card"><span class="card-num">1.5</span><h5>Cloud</h5><p>Delivers computer infrastructure/software over a network. Described by XaaS, SaaS, PaaS, IaaS, BaaS. AWS 6R migration: Re-host, Re-platform, Re-factor, Re-purchase, Retire, Retain.</p></div>
+    <div class="card"><span class="card-num">1.6</span><h5>Autonomous Vehicles</h5><p>Navigate and drive without human operators. Military operations use case. Tesla as end-product example.</p></div>
+    <div class="card"><span class="card-num">1.7</span><h5>3D Printing</h5><p>Additive manufacturing — building objects layer by layer (FDM/FFF technique). Market projected at $250 billion by 2025 (McKinsey).</p></div>
+    <div class="card"><span class="card-num">1.8</span><h5>Digital Twin</h5><p>Virtual representations of physical counterparts (products, processes, or tasks). Powered by IoT + AR + digital thread. Used across engineering, operations, maintenance.</p></div>
+    <div class="card"><span class="card-num">1.9</span><h5>Augmented Reality</h5><p>"IoT for humans." Connects physical, digital, and human worlds. Enterprise AR benefits: worker productivity, knowledge transfer, next-gen HMIs, new customer services.</p></div>
+    <div class="card"><span class="card-num">1.10</span><h5>Mobile Internet</h5><p>Foundational technology enabling other game-changers. 5G will amplify robotics/automation connectivity and real-time field analytics. 81% of manufacturing CEOs see it as strategically important.</p></div>
+    <div class="card"><span class="card-num">1.11</span><h5>Blockchain</h5><p>Records transactions in peer-to-peer linked chains (DLT). Uses immutable cryptographic hash. Data is extremely secure; nearly impossible to change or hack.</p></div>
+  </div>
+
+  <div class="box box-exam">
+    <span class="box-label">Examiner's Concept — 3 Categories of Tech Change</span>
+    <ul class="styled" style="margin-top:0.4rem;">
+      <li><strong>Automation:</strong> Mere replacement of humans with tech, no impact on culture. <em>Example: Passbook update kiosk at banks.</em></li>
+      <li><strong>Extension:</strong> Tech performs new/extended tasks enhancing existing function. <em>Example: Mobile Banking extending internet banking.</em></li>
+      <li><strong>Transformation:</strong> Revamps products, processes, AND organisational culture. <em>Example: ATMs — banking outside banking hours, digital clearing system.</em></li>
+    </ul>
+  </div>
+
+  <!-- DRIVER 2 -->
+  <h3>Driver 2 — Business Ecosystems</h3>
+  <div class="box box-def">
+    <span class="box-label">Definition (James Moore, 1993)</span>
+    A <strong>business ecosystem</strong> is a network of organisations (suppliers, distributors, customers, competitors, government agencies) involved in delivering a specific product/service through <em>both competition and cooperation</em>. It represents the <strong>coexistence and co-evolution</strong> of organisations through ongoing interactions.
+  </div>
+
+  <div class="box box-why">
+    <span class="box-label">The 'Why' — Strategic Shift</span>
+    Networks are rapidly replacing traditional markets. Competitive advantage shifts from what the organisation <em>"does better"</em> than rivals to how its <em>partnerships and alliances help all parties "do better."</em>
+  </div>
+
+  <h4>Three Types of Ecosystem</h4>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Type</th><th>Purpose</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Innovation Ecosystem</td><td>Striving together for innovation</td><td>Global Pharma companies developing COVID-19 vaccines (Oxford-AstraZeneca-Serum Institute-Indian Govt)</td></tr>
+        <tr><td>Platform Ecosystem</td><td>Complementary products around a single product/service</td><td>Apple App Store, Google Play Store</td></tr>
+        <tr><td>Service Ecosystem</td><td>Exchange of value among parties involved</td><td>Financial services platforms aggregating multiple providers</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box box-def">
+    <span class="box-label">BCG's Three Flywheels Fueling Ecosystem Success</span>
+    <ul class="styled" style="margin-top:0.3rem;">
+      <li><strong>Data Flywheel:</strong> More & richer data → deeper insights → improved value proposition → more users</li>
+      <li><strong>Growth Flywheel:</strong> More users & partners → network effects → improved value proposition</li>
+      <li><strong>Cost Flywheel:</strong> Spreading fixed costs → lower unit costs → improved value proposition</li>
+    </ul>
+  </div>
+
+  <h4>Ecosystem Strategy Framework — 8 Questions</h4>
+  <ul class="styled">
+    <li>Should we engage in a business ecosystem?</li>
+    <li>How can we identify viable ecosystem opportunities?</li>
+    <li>Which role should we play in the ecosystem?</li>
+    <li>How can we build our own ecosystem?</li>
+    <li>How can we win against competing ecosystems?</li>
+    <li>How can we capture value in our ecosystem?</li>
+    <li>How can we benefit as an ecosystem contributor?</li>
+    <li>How can our ecosystem strategy evolve over time?</li>
+  </ul>
+
+  <!-- DRIVER 3 -->
+  <h3>Driver 3 — Hyper Competition</h3>
+  <div class="box box-def">
+    <span class="box-label">Definition</span>
+    <strong>Hyper-competition:</strong> A market condition where competition is so intense it creates <em>market instability</em>. Any competitive advantage established cannot be sustained for long; businesses must constantly change their strategies.
+  </div>
+
+  <h4>Characteristics of a Hypercompetitive Market (9 Points)</h4>
+  <ul class="styled">
+    <li>High level of rivalry among players</li>
+    <li>Strategic maneuvers occur at quick, intense, unexpected pace</li>
+    <li>Rapid technological and structural changes</li>
+    <li>Adoption of flexible strategies due to rapidly changing landscape</li>
+    <li>Low entry barriers (new players challenge incumbents easily)</li>
+    <li>Diminishing geographic and industrial barriers due to globalisation</li>
+    <li>Significant global alliances among deep-pocketed competitors</li>
+    <li>Strong bargaining power of buyers (fragmented preferences)</li>
+    <li>Competitive advantage is temporary and replaced rapidly</li>
+  </ul>
+
+  <div class="box box-def">
+    <span class="box-label">Response Framework — D'Aveni's 7S Framework</span>
+    Created by Richard A. D'Aveni. Enables a business to remain competitive through <em>a series of temporary advantages</em> rather than restructuring for equilibrium. The 7 S's:
+    <ul class="styled" style="margin-top:0.5rem;">
+      <li><strong>S</strong>takeholder's satisfaction</li>
+      <li><strong>S</strong>trategic soothsaying</li>
+      <li><strong>S</strong>peed</li>
+      <li><strong>S</strong>urprise</li>
+      <li><strong>S</strong>ignals</li>
+      <li><strong>S</strong>hifting the rules of a market</li>
+      <li><strong>S</strong>imultaneous and sequential thrust</li>
+    </ul>
+  </div>
+
+  <!-- DRIVER 4 -->
+  <h3>Driver 4 — Transformation and Disruption</h3>
+  <div class="two-col">
+    <div class="box box-def">
+      <span class="box-label">Transformation</span>
+      Occurs when an innovation <strong>shifts the basis of competition</strong> in the industry. Includes realignment of/new investment in technology and business models to more effectively engage customers. <br><em>4 Types:</em> Business Process · Business Model · Domain · Cultural/Organisational<br><em>Example:</em> UPI transforming small merchant payments.
+    </div>
+    <div class="box box-def">
+      <span class="box-label">Disruption</span>
+      Occurs when an existing industry player faces a challenger offering <strong>greater value to customers</strong> in a way incumbent firms cannot directly compete with.<br><em>Example:</em> App-based cab services (Ola, Uber) disrupting traditional taxi services.
+    </div>
+  </div>
+
+  <h4>Two Types of Disruptive Innovation (Clayton Christensen)</h4>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Dimension</th><th>Low-End Disruption</th><th>New-Market Disruption</th></tr></thead>
+      <tbody>
+        <tr><td>Target Customers</td><td>Overserved customers (bottom of existing market)</td><td>Underserved / Non-consumers (who never used similar product)</td></tr>
+        <tr><td>Mechanism</td><td>Low-cost business model; incumbents retreat upmarket</td><td>Creates entirely new market by making product accessible/affordable</td></tr>
+        <tr><td>Market Impact</td><td>Gains share from existing players</td><td>Creates new market segment</td></tr>
+        <tr><td>Example</td><td>Online booksellers targeting price-sensitive buyers</td><td>Personal computers (minicomputers) replacing mainframes</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box box-def">
+    <span class="box-label">3 Components of Disruptive Innovation (Must-Know)</span>
+    <ul class="styled" style="margin-top:0.3rem;">
+      <li><strong>Enabling Technology:</strong> Ability to create a better/cheaper product (e.g., transistor radio using broadcast network)</li>
+      <li><strong>Disruptive/Innovative Business Model:</strong> Targets new or low-end customers — this distinguishes disruptive from standard innovation</li>
+      <li><strong>Coherent Value Network:</strong> Must be accepted across a coherent value network including suppliers</li>
+    </ul>
+  </div>
+
+  <div class="box box-tip">
+    <span class="box-label">Disruptive vs. Sustaining Innovation</span>
+    <strong>Disruptive Innovation</strong> expands the market, sometimes displacing incumbents (new market or low-end). <strong>Sustaining Innovation</strong> is incremental, targets existing customers, and improves existing products. <em>Smartphone companies = Sustaining Innovation.</em>
+  </div>
+
+  <!-- DRIVER 5 -->
+  <h3>Driver 5 — Advanced Manufacturing</h3>
+  <div class="box box-def">
+    <span class="box-label">Definition</span>
+    <strong>Advanced Manufacturing:</strong> The use of innovative technologies and methodologies for improved competitiveness in the manufacturing sector. Aims to: enhance output · increase value/quality/flexibility · reduce time-to-market · remove underutilised capital.
+  </div>
+
+  <h4>Meredith & Hill's 4 Levels of Integration</h4>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Level</th><th>Integration</th><th>Technology</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Stand-alone / Unitary</td><td>Robots, NC Machine Tools</td></tr>
+        <tr><td>2</td><td>Cells</td><td>GT + CAM → may form FIMS</td></tr>
+        <tr><td>3</td><td>Linked Islands</td><td>CAD/CAM, JIT, MRPII, Automated Storage</td></tr>
+        <tr><td>4</td><td>Full Integration</td><td>Computer Integrated Manufacturing (CIM)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DRIVER 6 -->
+  <h3>Driver 6 — Lean Start-up</h3>
+  <div class="box box-def">
+    <span class="box-label">Definition (Eric Ries)</span>
+    An approach to build new businesses based on the belief that entrepreneurs must <strong>investigate, experiment, test, and iterate</strong> as they develop products. Founders search for a business model (not execute a business plan) through rapid rounds of experimentation. Uses <strong>Minimum Viable Product (MVP)</strong> to test scientific hypotheses under extreme uncertainty.
+  </div>
+
+  <div class="box box-why">
+    <span class="box-label">The 'Why'</span>
+    Around 70–80% of product cost is committed during the design phase only. Committing too many resources upfront makes businesses vulnerable when assumptions prove incorrect. Lean Start-up minimises this risk through iterative validation.
+  </div>
+
+  <h4>The Build-Measure-Learn Feedback Loop</h4>
+  <div class="flowchart">
+    <div class="flow-row">
+      <div class="flow-node">IDEAS<sub>Problem identified</sub></div>
+      <div class="flow-arrow">→ Build →</div>
+      <div class="flow-node">PRODUCTS<sub>MVP created</sub></div>
+      <div class="flow-arrow">→ Measure →</div>
+      <div class="flow-node">DATA<sub>Metrics captured</sub></div>
+      <div class="flow-arrow">→ Learn →</div>
+      <div class="flow-node highlight-gold">PIVOT or PERSEVERE<sub>Strategy updated</sub></div>
+    </div>
+  </div>
+
+  <h4>Traditional vs. Lean Start-up Comparison</h4>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Basis</th><th>Traditional</th><th>Lean Start-up</th></tr></thead>
+      <tbody>
+        <tr><td>Strategy</td><td>Business Plan & Implementation driven</td><td>Business Model & Hypothesis driven</td></tr>
+        <tr><td>New-Product Process</td><td>Product Management</td><td>Customer Development</td></tr>
+        <tr><td>Engineering</td><td>Agile or Waterfall</td><td>Agile (iterative & incremental)</td></tr>
+        <tr><td>Organisation</td><td>Department by function; experience-based hiring</td><td>Customer & agile development teams</td></tr>
+        <tr><td>Reporting</td><td>Financial statements (IS, BS, CF)</td><td>Metrics that matter (CAC, LTV, etc.)</td></tr>
+        <tr><td>Failure</td><td>Exception</td><td>Expected (pivot away from what doesn't work)</td></tr>
+        <tr><td>Speed</td><td>Measured — operates on complete data</td><td>Rapid — operates on good enough data</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DRIVER 7 -->
+  <h3>Driver 7 — Agile Organisations</h3>
+  <div class="box box-def">
+    <span class="box-label">Definition</span>
+    An organisation whose structure, policies, and capabilities are designed to allow employees to <strong>respond quickly to changing environments</strong>. Focus: adapting to changing customer needs and business environment changes. <em>"Rather than organisation as a machine, agile organisation is a living organism."</em>
+  </div>
+
+  <h4>6 Characteristics of an Agile Organisation</h4>
+  <ul class="styled">
+    <li>No traditional command structure; empowered team structure promoting active collaboration</li>
+    <li>Customer-centric approach centred on understanding customer needs, wants, desires</li>
+    <li>Shared goal and vision with open communication based on collaboration</li>
+    <li>Employees comfortable sharing best practices; open to new experiences; quick decisions</li>
+    <li>Proactive employee development and emotional intelligence highly valued</li>
+    <li>Strong growth mindset; always seeking efficiency improvements</li>
+  </ul>
+
+  <div class="box box-tip">
+    <span class="box-label">Concept Insight — Innovation at the Core</span>
+    <strong>Design Thinking</strong> (Empathy/Concept) → <strong>Lean Start-up</strong> (Hypothesis/Business Model) → <strong>Agile</strong> (Development/Product) → <strong>Six Sigma</strong> (Quality/Process). Innovation happens when all three (Design Thinking + Lean Start-up + Agile) intersect.
+  </div>
+
+  <!-- DRIVER 8 -->
+  <h3>Driver 8 — Start-ups vs. Incumbents</h3>
+  <div class="box box-def">
+    <span class="box-label">Key Definitions</span>
+    <strong>Start-up:</strong> "A temporary organisation designed to look for a business model that is repeatable and scalable."<br>
+    <strong>Incumbent:</strong> "A permanent organisation designed to execute a business model that is repeatable and scalable."<br>
+    <em>Critical Insight:</em> The battle comes down to whether the start-up gets <strong>distribution</strong> before the incumbent gets <strong>innovation</strong>.
+  </div>
+
+  <h4>Stages of a Start-up Journey</h4>
+  <div class="flowchart">
+    <div class="flow-row">
+      <div class="flow-node">Pre-Start-up<sub>Problem-Solution FIT</sub></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Start-up Stage<sub>Product-Market FIT</sub></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Scale-up<sub>Scale FIT</sub></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node highlight-gold">Unicorn → Incumbent</div>
+    </div>
+  </div>
+
+  <!-- DRIVER 9 -->
+  <h3>Driver 9 — Intrapreneurship</h3>
+  <div class="box box-def">
+    <span class="box-label">Definition (Stevenson & Jarillo, 1990)</span>
+    <strong>Intrapreneurship:</strong> Entrepreneurship within an existing business. A process that allows individuals (<em>intrapreneurs</em>) from inside organisations to pursue opportunities independent of resources they currently control. Also called <em>organisational entrepreneurship</em>.<br><br>
+    <strong>Intrapreneur:</strong> "Dreamers who do" — carries high vision AND high involvement in actions. Does <em>not</em> have ownership of the new venture (unlike entrepreneur).
+  </div>
+
+  <div class="box box-why">
+    <span class="box-label">Strategic Cost Perspective</span>
+    Intrapreneurial teams are usually considered cost centres, but organisations striving for sustainability should consider these as <strong>profit centres</strong>. It is a revolutionary system of speeding up innovations within large companies by making better use of available/allocated resources.
+  </div>
+
+  <!-- DRIVER 10 -->
+  <h3>Driver 10 — Innovation Hubs & Incubators</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Aspect</th><th>Innovation Hub</th><th>Incubator (= Startup Hub)</th><th>Accelerator</th></tr></thead>
+      <tbody>
+        <tr><td>Definition</td><td>Physical space bringing together researchers, creators, innovators</td><td>Focuses on early-stage startups without a business model; nurtures idea → viable product</td><td>Accelerates growth of start-ups that already have an MVP</td></tr>
+        <tr><td>Stage</td><td>Broad innovation</td><td>Early-stage (pre-MVP)</td><td>Post-MVP (rapid growth)</td></tr>
+        <tr><td>Fee Model</td><td>Varies</td><td>Fee-based (not equity)</td><td>May take equity stake</td></tr>
+        <tr><td>Time Frame</td><td>Open-ended</td><td>Open-ended</td><td>Weeks to months</td></tr>
+        <tr><td>Key Feature</td><td>Networking, idea convergence</td><td>Seed funding, mentoring, training</td><td>Rapid growth, industry connections, mentorship</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DRIVER 11 -->
+  <h3>Driver 11 — Supply Chain Partnerships</h3>
+  <div class="box box-def">
+    <span class="box-label">Definition</span>
+    <strong>Supply chain partnership/collaboration:</strong> Coordinating with internal departments and external partners to sustain an optimised flow through the supply chain to efficiently meet demand and ensure on-time, in-full delivery.
+  </div>
+
+  <h4>3 Approaches to Supply Chain Innovation</h4>
+  <ul class="styled">
+    <li><strong>Rapid</strong> supply chains — prioritise speed and efficiency</li>
+    <li><strong>Agile</strong> supply chains — emphasise ability to respond to changes in demand (volume & variety)</li>
+    <li><strong>Lean</strong> supply chains — prioritise waste elimination (including time)</li>
+  </ul>
+
+  <h4>5 Essentials of Seamless Supply Chain Collaboration</h4>
+  <ul class="styled">
+    <li><strong>Real-time data sharing</strong> — all parties access the most recent data</li>
+    <li><strong>Configurable workflows</strong> — align systems because every business is unique</li>
+    <li><strong>AI & Machine Learning</strong> — beyond analytics; identifies threats faster</li>
+    <li><strong>In-context messaging</strong> — real-time communication without switching systems</li>
+    <li><strong>End-to-end visibility</strong> — inventory location, supplier issues, capacity mismatches</li>
+  </ul>
+
+  <div class="box box-tip">
+    <span class="box-label">Technology Backbone of Supply Chain</span>
+    EDI (Electronic Data Interchange) · Bar Coding & Scanning · RFID Tags · POS Terminals · EFT (Electronic Funds Transfer)
+  </div>
+</section>
+
+<!-- ══════════ SECTION 3: SECTION B - BUSINESS MODELS ══════════ -->
+<section class="section-block" id="sectionB">
+  <span class="section-number">Section 03 · Conceptual Deep-Dive</span>
+  <h2>Section B — Emerging Business Models</h2>
+
+  <div class="box box-def">
+    <span class="box-label">Definition of Business Model (Johnson, Christensen & Kaggerman, 2008)</span>
+    A business model explains how a business works and the <strong>economic logic</strong> behind it. Contains three components: (1) <em>Customer Value Proposition</em>, (2) <em>Profit Formula</em>, and (3) <em>Key Resources & Processes</em>.
+  </div>
+
+  <!-- B1: HYPER DISRUPTIVE -->
+  <h3>B1 — Hyper Disruptive Business Models</h3>
+  <p>Disruptive business models create, disintermediate, refine, reengineer, or optimise a product, service, role, function, category, market, sector, or industry. Companies using these models gain a distinct competitive advantage.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <span class="card-num">1.1</span><h5>The Free Model</h5>
+      <p>Core product distributed free to a large user base; premium features sold to a subset. Relies on high value to spread virally. <em>Sub-types: Advertising (Hidden Revenue), Cross-subsidisation (Razorblade), Open Source, Promotion.</em></p>
+    </div>
+    <div class="card">
+      <span class="card-num">1.2</span><h5>The Subscription Model</h5>
+      <p>Locks a service previously freely accessible; consumer pays recurring subscription fee. Generates sustainable, recurring revenue. <em>Example: OTT platforms (Netflix), newspapers. Subscription businesses grow 5–8× faster than traditional ones (SEI).</em></p>
+    </div>
+    <div class="card">
+      <span class="card-num">1.3</span><h5>Freemium Model</h5>
+      <p>Users pay for basic services with their data; premium features require a set fee. Lowers customer acquisition costs; aids in understanding consumer behaviour. <em>Example: LinkedIn, Grammarly, SaaS platforms.</em></p>
+    </div>
+    <div class="card">
+      <span class="card-num">1.4</span><h5>Digital Platform (E-Commerce)</h5>
+      <p>Digital marketplace where buyers and sellers transact; platform earns fee/commission. <em>Sub-types: B2B (IndiaMART), B2C (Flipkart), C2C (OLX), C2B (crowdsourcing platforms).</em></p>
+    </div>
+    <div class="card">
+      <span class="card-num">1.5</span><h5>Hypermarket Model</h5>
+      <p>Uses economies of scale to offer products at lower cost, crushing competitors. Operates as: Brick-Mortar (D-Mart), Click (Amazon), or Hybrid (Reliance Retail).</p>
+    </div>
+    <div class="card">
+      <span class="card-num">1.6</span><h5>Access-Over-Ownership</h5>
+      <p>Provides temporary access to goods/services traditionally available only through purchase. Internet reduces transaction friction by matching borrowers with willing sharers. <em>Example: Car rentals, vehicle-sharing apps, lounge access.</em></p>
+    </div>
+    <div class="card">
+      <span class="card-num">1.7</span><h5>Service Ecosystem Model</h5>
+      <p>Offers different but integrated products; locks customers into the ecosystem, eliminating competition. Premium brands draw customers in and retain them. Creates high switching costs.</p>
+    </div>
+    <div class="card">
+      <span class="card-num">1.8</span><h5>The Experience Model</h5>
+      <p>Unique, stylish, innovative products for those who can afford them. Adds an experience component elevating value; makes switching difficult. <em>Example: Luxury car manufacturers flying buyers for personal fitting.</em></p>
+    </div>
+    <div class="card">
+      <span class="card-num">1.9</span><h5>On-Demand Model</h5>
+      <p>Monetises time by charging premium for instant access. Creates significant advantage via digital technologies. <em>Example: Ola/Uber (transport), Zomato/Swiggy (food delivery).</em></p>
+    </div>
+  </div>
+
+  <div class="box box-exam">
+    <span class="box-label">Free → Freemium → Subscription Progression</span>
+    A <strong>Free model</strong> can convert into a <strong>Freemium</strong> and then into a <strong>Subscription-based model</strong>. Free model can be used for any product type; Freemium and Subscription are most prominent for services rendered via an app or digital platform.
+  </div>
+
+  <!-- B2: SUSTAINABILITY -->
+  <h3>B2 — Models Relevant to Sustainability</h3>
+  <div class="box box-def">
+    <span class="box-label">Sustainable Business Model — Definition</span>
+    A business model that addresses the <strong>social and environmental perspectives in addition to the economic perspective</strong>. Triple Bottom Line: <em>People · Planet · Profit</em> (bearable, equitable, viable → Sustainable).
+  </div>
+
+  <div class="box box-def">
+    <span class="box-label">Tima Bansal's 5 Elements of Sustainable Business Model (Systems Theory)</span>
+    <ul class="styled" style="margin-top:0.3rem;">
+      <li>Diversity of resources, people, and investment</li>
+      <li>Modularity of functional operations</li>
+      <li>Openness to ideas outside firm boundaries</li>
+      <li>Slack resources in capabilities and resources</li>
+      <li>Matching the cycles and rhythms of business and environment</li>
+    </ul>
+  </div>
+
+  <h4>9 Approaches for Developing a Sustainable Business Model (Gaziulusory & Twomey, 2014)</h4>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>#</th><th>Approach</th><th>Core Idea</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>2.2.1</td><td>Product Service Systems (PSS)</td><td>Consumer pays for service provided by product, not the product itself; company responsible for entire lifecycle</td><td>Rolls-Royce "Power by the Hour" (engine services)</td></tr>
+        <tr><td>2.2.2</td><td>Open Innovation</td><td>Collaborates with external organisations/individuals to generate and commercialise new ideas; sharing risks and rewards</td><td>Pharma R&D collaborations</td></tr>
+        <tr><td>2.2.3</td><td>Peer-to-Peer Innovation</td><td>Loosely connected individuals collaborate using open-source resources and distributed production without hierarchical commands</td><td>Linux, Wikipedia development</td></tr>
+        <tr><td>2.2.4</td><td>Closed-Loop Production</td><td>Materials recycled throughout manufacturing; minimise/eliminate waste; maximise resource efficiency (cradle-to-cradle / industrial symbiosis)</td><td>Renault remanufacturing facility</td></tr>
+        <tr><td>2.2.5</td><td>Crowdfunding</td><td>Requests financial/other resources from a large number of people for a specific project; typically via online platforms</td><td>Kickstarter, Indiegogo campaigns</td></tr>
+        <tr><td>2.2.6</td><td>Sharing Economy</td><td>Participatory sharing providing timely access to idle resources; new business models with disruptive potential</td><td>Airbnb, Uber, OYO</td></tr>
+        <tr><td>2.2.7</td><td>Social Enterprises & Benefit Corporations</td><td>Legally obligated to pursue social/environmental value in addition to financial value; extends beyond traditional CSR</td><td>Patagonia, TOMS Shoes</td></tr>
+        <tr><td>2.2.8</td><td>Gift Economy</td><td>Voluntary donations ('pay what you want'); opposed to commodification; extreme form of sharing economy</td><td>Wikipedia donations, open-source software</td></tr>
+        <tr><td>2.2.9</td><td>New Manufacturing Paradigm</td><td>Driven by additive manufacturing (3D printing); increases production efficiency, enables rapid prototyping</td><td>Local Motors 3D-printed cars</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- B3: EMERGING MARKETS -->
+  <h3>B3 — Models Relevant to Emerging National Markets</h3>
+  <div class="box box-def">
+    <span class="box-label">Emerging Economy — Julien Vercueil's 3 Characteristics (2012)</span>
+    <ul class="styled" style="margin-top:0.3rem;">
+      <li><strong>Intermediate Income:</strong> PPP per capita income = 10%–75% of average EU per capita income</li>
+      <li><strong>Catching-up Growth:</strong> Brisk economic growth for at least a decade, narrowing income gap with advanced economies</li>
+      <li><strong>Institutional Transformation:</strong> Profound institutional changes contributing to deeper global economic integration</li>
+    </ul>
+  </div>
+
+  <h4>Characteristics of Emerging Markets Relevant to Business Model</h4>
+  <p><strong>Jagdish N. Sheth's 5 characteristics:</strong></p>
+  <ul class="styled">
+    <li>Sociopolitical governance</li>
+    <li>Market heterogeneity</li>
+    <li>Inadequate infrastructure</li>
+    <li>Chronic shortage of resources</li>
+    <li>Unbranded competition</li>
+  </ul>
+  <p><strong>Adesegun Oyedele's 3 additional dimensions:</strong></p>
+  <ul class="styled">
+    <li>Prevalence of clientelistic exchange</li>
+    <li>Informal institutional flux</li>
+    <li>Channels of distribution challenges</li>
+  </ul>
+
+  <div class="box box-warn">
+    <span class="box-label">Strategic Implication</span>
+    If a business firm desires to target emerging markets, they either have to <strong>accept very small profits</strong> or <strong>rethink their business models from scratch</strong> to create and capture value in new ways — acting like start-ups developing their model from the very foundation to account for the pain and gains of their customer base.
+  </div>
+</section>
+
+<!-- ══════════ SECTION 4: SECTION C - STRATEGIC RESPONSES ══════════ -->
+<section class="section-block" id="sectionC">
+  <span class="section-number">Section 04 · Conceptual Deep-Dive</span>
+  <h2>Section C — Strategic Responses to New Business Models</h2>
+
+  <div class="box box-why">
+    <span class="box-label">The 'Why' — Which Drivers Need Strategic Response?</span>
+    <em>Root causes</em> need to be addressed strategically because they individually or in combination lead to evolution of new business models. <em>Effect drivers are responses in themselves</em> (but have a circular effect — efficient cause management creates a virtuous cycle; inefficient creates a vicious cycle). <strong>Causing drivers:</strong> Digital Technologies · Business Ecosystems · Hyper-Competition · Transformation & Disruption.
+  </div>
+
+  <h3>Strategic Response 1 — Digital Technologies</h3>
+  <p>For <strong>start-ups:</strong> innovations and disruptions are the core; essence of business model focal to digital tech. For <strong>incumbents:</strong> balance between optimising existing products/services while using technological advancement for sustainable growth. Life-cycle phase is a key consideration.</p>
+
+  <h3>Strategic Response 2 — Value-Based Strategy in a Business Ecosystem</h3>
+  <p>Strategy should dominate those aspects of the ecosystem that create significant customer value — the <em>"value-capture model."</em></p>
+
+  <h4>2.1 — Three Guidelines to Capture Value</h4>
+  <ul class="styled">
+    <li><strong>Make the best out of customer needs (especially changing ones)</strong> — e.g., DTH providers offering recording features; FMCG companies launching ready-to-eat products</li>
+    <li><strong>Be the locus of USP</strong> — be the reason customers buy the product, irrespective of where you fall in the value system (Intel Inside)</li>
+    <li><strong>Be an indispensable integrator</strong> — be the system integrator capable of redefining the value chain (e.g., App Play Stores)</li>
+  </ul>
+
+  <h4>2.2 — Strategic Aspects of Creating Ecosystem (Partnerships & Alliances)</h4>
+  <ul class="styled">
+    <li><strong>Flexibility and co-operations:</strong> Develop and maintain relationships; regional/political harmony is critical for cross-border clusters; FTAs can be game-changers</li>
+    <li><strong>Enhanced accountability:</strong> External parties become stakeholders; strategy must be redefined</li>
+    <li><strong>Free (seamless) flow of information:</strong> Real-time, transparent communication; confidentiality concerns are a major reason collaborations fail</li>
+    <li><strong>Shared economy → shared resources:</strong> Decide strategically which resources are core (reserve them); rest contributed to common pool</li>
+    <li><strong>Economics of scope apart from scale:</strong> Alliances create scope benefits, not just scale</li>
+  </ul>
+
+  <h3>Strategic Response 3 — Hyper-Competition</h3>
+  <p>Focus on a <strong>series of short-term advantages</strong> based on market disruption. Timing of shift to next disruption is critical. Culture must foster innovation at all levels. D'Aveni's 7S framework is the operative tool.</p>
+
+  <h3>Strategic Response 4 — Transformations & Disruptions</h3>
+  <h4>4.1 — Six Available Strategies</h4>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Strategy</th><th>Description</th><th>When to Use</th></tr></thead>
+      <tbody>
+        <tr><td>Milking as Cash Cow</td><td>Cash generation/harvest from vulnerable business; winding-up as last resort</td><td>Disruption has made the business segment unviable (e.g., DVD rental, internet cafes)</td></tr>
+        <tr><td>Invest or Counter-Invest</td><td>Strive for disruption or respond with incremental investments in resources/capabilities</td><td>Organisation has resources and capability to invest (e.g., fibre optic networks for VoLTE)</td></tr>
+        <tr><td>Blocking the Path</td><td>Reserve IP rights to commercially exploit disruption; peers create hurdles for disruptors</td><td>Innovation is proprietary; legal protection is available (e.g., IP patents)</td></tr>
+        <tr><td>Counter Disruption</td><td>Aggressive strategy — respond to disruption with another disruption; crush the original innovator</td><td>Large players with more resources than start-ups (e.g., incumbents launching competing apps)</td></tr>
+        <tr><td>Restrict & Shift Focus to Core</td><td>Rethink core capabilities; shift focus from affected product line to core; not fully closing the product</td><td>Core capabilities lie elsewhere; niche focus increases per-head profit (e.g., IT firms focusing on software over hardware)</td></tr>
+        <tr><td>Withdraw</td><td>Exit/surrender strategy; liquidate value from assets; divert to profitable businesses (stars)</td><td>No viable response possible; value should be diverted to prevent further losses</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>4.2 — Key Considerations in Selecting Strategy</h4>
+  <ul class="styled">
+    <li>Availability of resources and investor/customer expectations</li>
+    <li>Importance of the market segment to the product line (not just its size)</li>
+    <li>Whether the organisation is competent in the process/function where disruption occurred (capabilities can be acquired)</li>
+    <li><em>For the disruptor additionally:</em> Trade-off between first-mover advantage and uncertainty · Commercial exploitability of the disruption</li>
+  </ul>
+</section>
+
+<!-- ══════════ SECTION 5: EXAMINER'S LENS ══════════ -->
+<section class="section-block" id="examiners">
+  <span class="section-number">Section 05 · Exam Intelligence</span>
+  <h2>The Examiner's Lens</h2>
+
+  <h3>Trigger Points — Keywords in Case Studies</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Keyword/Phrase in Case</th><th>Concept Triggered</th></tr></thead>
+      <tbody>
+        <tr><td>"Testing with a small pilot," "minimum viable product," "iterate and pivot"</td><td>Lean Start-up Methodology</td></tr>
+        <tr><td>"Empowered teams," "no hierarchy," "cross-functional," "self-organising"</td><td>Agile Organisation</td></tr>
+        <tr><td>"Offers service for free initially, premium paid tier"</td><td>Freemium Business Model</td></tr>
+        <tr><td>"Monthly recurring subscription," "locked-in access"</td><td>Subscription Model</td></tr>
+        <tr><td>"Disintermediated incumbents," "simpler, cheaper, accessible product"</td><td>Disruptive Innovation (Low-end or New-Market)</td></tr>
+        <tr><td>"Partners from across the value chain," "coopetition," "sharing resources with rivals"</td><td>Business Ecosystem / Innovation Ecosystem</td></tr>
+        <tr><td>"Innovation within the firm," "employee acting like an entrepreneur"</td><td>Intrapreneurship</td></tr>
+        <tr><td>"Price sensitive market," "unbranded competition," "informal channels"</td><td>Emerging National Markets</td></tr>
+        <tr><td>"Real-time data sharing," "bullwhip effect," "EDI/RFID/POS"</td><td>Supply Chain Partnerships</td></tr>
+        <tr><td>"New market segment created," "non-consumers targeted"</td><td>New-Market Disruption</td></tr>
+        <tr><td>"Overserved customers," "low-cost entry," "incumbents retreated upmarket"</td><td>Low-End Disruption</td></tr>
+        <tr><td>"Virtual representation," "predict physical behaviour," "IoT + CAD integration"</td><td>Digital Twin</td></tr>
+        <tr><td>"Series of temporary advantages," "disrupt → mature → next disruption"</td><td>Hyper-competition / D'Aveni's 7S</td></tr>
+        <tr><td>"Recycle materials," "cradle-to-cradle," "industrial symbiosis"</td><td>Closed-Loop Production (Sustainability)</td></tr>
+        <tr><td>"Startup nurturing," "seed funding," "fee-based program"</td><td>Incubator</td></tr>
+        <tr><td>"Rapid growth program," "existing MVP," "weeks-to-months"</td><td>Accelerator</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Common Mistakes — Where Students Lose Marks</h3>
+  <div class="box box-warn">
+    <span class="box-label">⚠ Mistake 1 — Confusing Disruption with Transformation</span>
+    <strong>Disruption</strong> = challenger offers greater value that incumbents cannot directly compete with (different business model). <strong>Transformation</strong> = innovation shifts the <em>basis of competition</em> (same industry, different engagement model). UPI is Transformation; Ola/Uber is Disruption.
+  </div>
+  <div class="box box-warn">
+    <span class="box-label">⚠ Mistake 2 — Confusing Lean Start-up with Agile</span>
+    Lean Start-up is about <em>finding the right business model</em> (strategic); Agile is about <em>building the product efficiently</em> (operational). In sequence: Lean Start-up first finds the model, then Agile builds it iteratively.
+  </div>
+  <div class="box box-warn">
+    <span class="box-label">⚠ Mistake 3 — Misclassifying Freemium as Subscription</span>
+    Freemium = core product is free, pay for premium features (e.g., Grammarly). Subscription = the service itself is locked behind a paywall (e.g., Netflix). Grammarly's model is <strong>Freemium</strong>, not Free or Subscription (MCQ 5 in the chapter).
+  </div>
+  <div class="box box-warn">
+    <span class="box-label">⚠ Mistake 4 — Ignoring Cause vs. Effect Distinction in Section C</span>
+    Strategic responses must address <em>cause drivers</em> (Digital Tech, Ecosystem, Hyper-Competition, Disruption). Students who list all 11 drivers as requiring equal strategic response miss the nuance and lose application marks.
+  </div>
+  <div class="box box-warn">
+    <span class="box-label">⚠ Mistake 5 — Confusing Low-End vs. New-Market Disruption</span>
+    Low-end = overserved customers, gains from incumbents (zero-sum). New-market = underserved/non-consumers, creates new market (positive-sum). Christensen's distinction is a high-frequency exam topic.
+  </div>
+  <div class="box box-warn">
+    <span class="box-label">⚠ Mistake 6 — Describing Intrapreneur as an Entrepreneur</span>
+    Key difference: intrapreneur does <em>not</em> have ownership of the venture and is <em>not</em> completely independent. They operate within an existing organisation using its resources.
+  </div>
+
+  <h3>Inter-Connectivity — Linking to Other Chapters</h3>
+  <div style="margin: 1rem 0;">
+    <div class="ic-row"><span class="ic-source">Ch.5: Supply Chain</span><span class="ic-arrow">→</span><span class="ic-target"><strong>Ch.6 (BSC/Performance):</strong> Supply chain KPIs (on-time delivery, bullwhip reduction) feed directly into the Learning & Growth and Internal Process perspectives of the Balanced Scorecard.</span></div>
+    <div class="ic-row"><span class="ic-source">Ch.5: Lean Start-up / MVP</span><span class="ic-arrow">→</span><span class="ic-target"><strong>Ch.3 (Lean/Six Sigma):</strong> Lean Start-up applies lean thinking to business model discovery; Six Sigma applies to mature product process quality. Design Thinking → Lean Start-up → Agile → Six Sigma is the product lifecycle continuum.</span></div>
+    <div class="ic-row"><span class="ic-source">Ch.5: Business Ecosystem</span><span class="ic-arrow">→</span><span class="ic-target"><strong>Ch.1 (Environmental Analysis):</strong> Ecosystem analysis is the advanced form of Porter's Five Forces; network effects replace traditional competitive dynamics. Value chain extends to value network/system.</span></div>
+    <div class="ic-row"><span class="ic-source">Ch.5: Advanced Manufacturing</span><span class="ic-arrow">→</span><span class="ic-target"><strong>Ch.2 (Cost Management Techniques):</strong> CAD/CAM/CIM directly impact product cost structure; JIT and MRP II are cost drivers discussed under manufacturing. Target costing is set during the design phase (70-80% cost lock-in).</span></div>
+    <div class="ic-row"><span class="ic-source">Ch.5: Disruptive Innovation</span><span class="ic-arrow">→</span><span class="ic-target"><strong>Ch.1 (Strategy):</strong> Blue Ocean Strategy (making competition irrelevant) = New-Market Disruption. Porter's Generic Strategies face challenge in hyper-competitive markets (D'Aveni's 7S is the response).</span></div>
+    <div class="ic-row"><span class="ic-source">Ch.5: Sustainability Models</span><span class="ic-arrow">→</span><span class="ic-target"><strong>Ch.6 (Reporting):</strong> Triple Bottom Line (People/Planet/Profit) links to Integrated Reporting (<IR>) framework. ESG metrics are the performance measures for sustainable business models.</span></div>
+  </div>
+</section>
+
+<!-- ══════════ SECTION 6: VISUAL SYNTHESIS ══════════ -->
+<section class="section-block" id="visual">
+  <span class="section-number">Section 06 · Visual Synthesis</span>
+  <h2>Visual Synthesis — Summary Tables & Logic Flowchart</h2>
+
+  <h3>Master Comparison Table — All 9 Hyper-Disruptive Business Models</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Model</th><th>Revenue Source</th><th>Disruption Mechanism</th><th>Cost Implication</th><th>Indian/Global Example</th></tr></thead>
+      <tbody>
+        <tr><td>Free (Advertising)</td><td>Advertisers (not users)</td><td>Eliminates price barrier; massive reach</td><td>High fixed platform cost; near-zero marginal cost per user</td><td>Google Search, Facebook</td></tr>
+        <tr><td>Free (Cross-subsidisation / Razorblade)</td><td>High-margin complementary product</td><td>Locks customers into ecosystem via low-cost entry product</td><td>Low margin on razor/printer; high margin on blades/cartridges</td><td>HP Printers, Gillette</td></tr>
+        <tr><td>Free (Open Source)</td><td>Services, support (not product)</td><td>Community-driven improvement; zero acquisition cost</td><td>No incremental service cost per user added</td><td>Wikipedia, Apache OpenOffice</td></tr>
+        <tr><td>Subscription</td><td>Recurring periodic fee</td><td>Locks previously free/easy-access content</td><td>Predictable revenue; high content/service delivery cost</td><td>Netflix, Spotify, OTT platforms</td></tr>
+        <tr><td>Freemium</td><td>Premium tier upgrade fees</td><td>Digital sampling; data as currency for basic tier</td><td>Marginal cost of additional users < cost of selling personal data</td><td>Grammarly, LinkedIn, Canva</td></tr>
+        <tr><td>Digital Platform (E-Commerce)</td><td>Commission on transactions</td><td>Disintermediates traditional distribution chains</td><td>Platform development + data centre (high fixed); low variable per transaction</td><td>Flipkart (B2C), IndiaMART (B2B), OLX (C2C)</td></tr>
+        <tr><td>Hypermarket</td><td>Volume sales at thin margin</td><td>Economies of scale crush competitors on price</td><td>Very low per-unit cost from scale; high fixed infra cost</td><td>D-Mart (offline), Amazon (online), Reliance Retail (hybrid)</td></tr>
+        <tr><td>Access-Over-Ownership</td><td>Rental/access fees</td><td>Eliminates need to purchase; shared idle assets</td><td>Asset utilisation > ownership cost; platform matching reduces friction cost</td><td>Zoomcar, Airbnb, MakeMyTrip</td></tr>
+        <tr><td>On Demand</td><td>Premium pricing for immediacy</td><td>Monetises time and convenience</td><td>Logistics/tech cost significant; customer LTV drives unit economics</td><td>Ola/Uber, Zomato, Blinkit (10-min delivery)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Comparison: Start-ups vs. Incumbents — At a Glance</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Dimension</th><th>Start-up</th><th>Incumbent</th></tr></thead>
+      <tbody>
+        <tr><td>Structure</td><td>Lean, cross-functional, end-to-end visibility</td><td>Hierarchical, siloed, functional departments</td></tr>
+        <tr><td>Culture</td><td>Risk-taking, aim to capture market share</td><td>Risk-averse, aim to defend market share</td></tr>
+        <tr><td>Leadership</td><td>Young (~40 globally, <30 in India); 20% women</td><td>Long-tenured (~58 globally); only 5% women</td></tr>
+        <tr><td>Sales Channel</td><td>Predominantly online; 3rd-party distribution</td><td>90%+ offline; own distribution network</td></tr>
+        <tr><td>Marketing Spend</td><td>2–3% of sales (digital)</td><td>10%+ of sales (traditional media)</td></tr>
+        <tr><td>R&D Spend</td><td>10%+ of sales</td><td>Less than 4% of sales</td></tr>
+        <tr><td>New Product Time</td><td>6–8 months</td><td>12–18 months</td></tr>
+        <tr><td>Innovation Focus</td><td>Unmet demand, niche categories</td><td>Product variations (60% of launches)</td></tr>
+        <tr><td>Financial Position</td><td>Seldom profitable early; answerable to investors</td><td>Strong financial position; answerable to shareholders</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Disruptive Innovation — Logic Flowchart (Most Complex Process)</h3>
+  <div class="flowchart" style="padding: 1rem; background: var(--section-bg); border-radius: 6px; border: 1px solid var(--rule);">
+    <p style="font-size:0.78rem; color: var(--ink-muted); margin-bottom: 1rem; font-family: 'DM Mono', monospace; letter-spacing: 0.05em;">STRATEGIC LOGIC FLOWCHART — Responding to Disruption</p>
+
+    <div class="flow-row">
+      <div class="flow-node highlight" style="flex: none; width: 100%;">DISRUPTION DETECTED IN MARKET</div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row" style="gap: 1rem;">
+      <div class="flow-node" style="flex:1; border-color: var(--blue-link);">Is it <strong>Low-End Disruption</strong>?<sub>Overserved customers, low-cost entry</sub></div>
+      <div style="display:flex; align-items:center; color: var(--ink-muted); font-size: 0.8rem;">OR</div>
+      <div class="flow-node" style="flex:1; border-color: var(--teal);">Is it <strong>New-Market Disruption</strong>?<sub>Non-consumers, new segment created</sub></div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row" style="gap: 0.5rem; flex-wrap: wrap;">
+      <div class="flow-node" style="flex: 1; min-width: 140px; font-size: 0.75rem; border-color: var(--gold);">Assess 3 Components<sub>Enabling Tech · Biz Model · Value Network</sub></div>
+      <div class="flow-arrow" style="font-size: 0.9rem;">→</div>
+      <div class="flow-node" style="flex: 1; min-width: 140px; font-size: 0.75rem;">Evaluate Resources<sub>Available? Can be acquired?</sub></div>
+      <div class="flow-arrow" style="font-size: 0.9rem;">→</div>
+      <div class="flow-node" style="flex: 1; min-width: 140px; font-size: 0.75rem;">Assess Segment Importance<sub>Not just size; importance to product line</sub></div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row" style="gap: 0.5rem; flex-wrap: wrap;">
+      <div class="flow-node" style="flex:1; min-width: 110px; font-size: 0.72rem; background: #fdf3dc; border-color: var(--gold);">Milk as Cash Cow<sub>Harvest & Wind-down</sub></div>
+      <div class="flow-node" style="flex:1; min-width: 110px; font-size: 0.72rem;">Invest / Counter-Invest<sub>Resources available</sub></div>
+      <div class="flow-node" style="flex:1; min-width: 110px; font-size: 0.72rem;">Block the Path<sub>IP rights, create hurdles</sub></div>
+      <div class="flow-node" style="flex:1; min-width: 110px; font-size: 0.72rem;">Counter Disruption<sub>Aggressive response</sub></div>
+      <div class="flow-node" style="flex:1; min-width: 110px; font-size: 0.72rem;">Restrict & Refocus<sub>Core capabilities</sub></div>
+      <div class="flow-node" style="flex:1; min-width: 110px; font-size: 0.72rem; background: #fdf0ef; border-color: var(--red-flag);">Withdraw<sub>Exit strategy</sub></div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row">
+      <div class="flow-node highlight-gold" style="flex: none; width: 100%;">Ensure response does not threaten ability to serve existing customers · Apply D'Aveni's 7S for equilibrium</div>
+    </div>
+  </div>
+
+  <h3>9 Sustainability Approaches — Quick Reference</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>#</th><th>Approach</th><th>One-Line Essence</th><th>Sustainability Dimension</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Product Service Systems</td><td>Pay for service, not product; full lifecycle responsibility</td><td>Environmental + Economic</td></tr>
+        <tr><td>2</td><td>Open Innovation</td><td>Collaborate externally; share risks and rewards of innovation</td><td>Economic + Social</td></tr>
+        <tr><td>3</td><td>Peer-to-Peer Innovation</td><td>Loosely connected individuals; open-source; no hierarchy</td><td>Social + Economic</td></tr>
+        <tr><td>4</td><td>Closed-Loop Production</td><td>Cradle-to-cradle; zero waste; recycle throughout manufacturing</td><td>Environmental</td></tr>
+        <tr><td>5</td><td>Crowdfunding</td><td>Large number of small funders for niche/social innovation</td><td>Social + Economic</td></tr>
+        <tr><td>6</td><td>Sharing Economy</td><td>Timely access to otherwise idle resources; ICT-facilitated</td><td>Environmental + Social</td></tr>
+        <tr><td>7</td><td>Social Enterprises & Benefit Corps</td><td>Legally pursue social/environmental value alongside profit</td><td>Social + Economic</td></tr>
+        <tr><td>8</td><td>Gift Economy</td><td>'Pay what you want'; voluntary donations; extreme sharing</td><td>Social</td></tr>
+        <tr><td>9</td><td>New Manufacturing Paradigm</td><td>3D printing; rapid prototyping; production efficiency</td><td>Environmental + Economic</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ SECTION 7: RETAIN & RECALL ══════════ -->
+<section class="section-block" id="recall">
+  <span class="section-number">Section 07 · Retain & Recall</span>
+  <h2>The 'Retain & Recall' Section</h2>
+
+  <h3>Mnemonics for All Multi-Point Lists</h3>
+
+  <div class="box box-mnemonic">
+    <span class="box-label">Mnemonic 1 — 11 Digital Technologies</span>
+    <strong>Phrase: "I Really Am Amazed — Cloud AVs, 3D Twins Amplify Mobile Blockchain"</strong><br><br>
+    <strong>I</strong> — IoT &nbsp;·&nbsp; <strong>R</strong> — Robotics &nbsp;·&nbsp; <strong>A</strong> — Artificial Intelligence &nbsp;·&nbsp; <strong>A</strong> — Automation &nbsp;·&nbsp; <strong>C</strong> — Cloud &nbsp;·&nbsp; <strong>AV</strong> — Autonomous Vehicles &nbsp;·&nbsp; <strong>3D</strong> — 3D Printing &nbsp;·&nbsp; <strong>T</strong> — Digital Twin &nbsp;·&nbsp; <strong>A</strong> — Augmented Reality &nbsp;·&nbsp; <strong>M</strong> — Mobile Internet &nbsp;·&nbsp; <strong>B</strong> — Blockchain
+  </div>
+
+  <div class="box box-mnemonic">
+    <span class="box-label">Mnemonic 2 — 11 Change Drivers (Section A)</span>
+    <strong>Phrase: "Digital Businesses Hyper-Transform Advanced Lean Agile Startups Into Innovation Supply"</strong><br><br>
+    <strong>D</strong>igital Technologies &nbsp;·&nbsp; <strong>B</strong>usiness Ecosystems &nbsp;·&nbsp; <strong>H</strong>yper Competition &nbsp;·&nbsp; <strong>T</strong>ransformation & Disruption &nbsp;·&nbsp; <strong>A</strong>dvanced Manufacturing &nbsp;·&nbsp; <strong>L</strong>ean Start-up &nbsp;·&nbsp; <strong>A</strong>gile Organisations &nbsp;·&nbsp; <strong>S</strong>tart-ups vs Incumbents &nbsp;·&nbsp; <strong>I</strong>ntrapreneurship &nbsp;·&nbsp; <strong>I</strong>nnovation Hubs &nbsp;·&nbsp; <strong>S</strong>upply Chain Partnerships
+  </div>
+
+  <div class="box box-mnemonic">
+    <span class="box-label">Mnemonic 3 — D'Aveni's 7S Framework</span>
+    <strong>Phrase: "Smart Strategists Speed Surprises — Signals Shift Simultaneously"</strong><br><br>
+    <strong>S</strong>takeholder satisfaction &nbsp;·&nbsp; <strong>S</strong>trategic soothsaying &nbsp;·&nbsp; <strong>S</strong>peed &nbsp;·&nbsp; <strong>S</strong>urprise &nbsp;·&nbsp; <strong>S</strong>ignals &nbsp;·&nbsp; <strong>S</strong>hifting the rules &nbsp;·&nbsp; <strong>S</strong>imultaneous & sequential thrust
+  </div>
+
+  <div class="box box-mnemonic">
+    <span class="box-label">Mnemonic 4 — Tima Bansal's 5 Elements of Sustainable Business Model</span>
+    <strong>Phrase: "DIMOS" — Diversity · Integration (Modularity) · Openness · Matching (Cycles) · Slack</strong><br><br>
+    <strong>D</strong>iversity of resources, people, investment &nbsp;·&nbsp; <strong>M</strong>odularity of functional operations &nbsp;·&nbsp; <strong>O</strong>penness to external ideas &nbsp;·&nbsp; <strong>S</strong>lack resources &nbsp;·&nbsp; <strong>M</strong>atching cycles of business and environment
+  </div>
+
+  <div class="box box-mnemonic">
+    <span class="box-label">Mnemonic 5 — Jagdish Sheth's 5 Emerging Market Characteristics</span>
+    <strong>Phrase: "Some Markets Ignore Chronic Unrest" → SMICU</strong><br><br>
+    <strong>S</strong>ociopolitical governance &nbsp;·&nbsp; <strong>M</strong>arket heterogeneity &nbsp;·&nbsp; <strong>I</strong>nadequate infrastructure &nbsp;·&nbsp; <strong>C</strong>hronic shortage of resources &nbsp;·&nbsp; <strong>U</strong>nbranded competition
+  </div>
+
+  <div class="box box-mnemonic">
+    <span class="box-label">Mnemonic 6 — 6 Strategic Responses to Disruption</span>
+    <strong>Phrase: "Most Important Businesses Counter Restrictions Wisely" → MIBCRW</strong><br><br>
+    <strong>M</strong>ilking as Cash Cow &nbsp;·&nbsp; <strong>I</strong>nvest / Counter-Invest &nbsp;·&nbsp; <strong>B</strong>lock the Path &nbsp;·&nbsp; <strong>C</strong>ounter Disruption &nbsp;·&nbsp; <strong>R</strong>estrict & Refocus on Core &nbsp;·&nbsp; <strong>W</strong>ithdraw
+  </div>
+
+  <div class="box box-mnemonic">
+    <span class="box-label">Mnemonic 7 — 3 Components of Disruptive Innovation</span>
+    <strong>Phrase: "Every Brave Challenger" → EBC</strong><br><br>
+    <strong>E</strong>nabling Technology &nbsp;·&nbsp; <strong>B</strong>usiness Model (Disruptive/Innovative) &nbsp;·&nbsp; <strong>C</strong>oherent Value Network
+  </div>
+
+  <div class="box box-mnemonic">
+    <span class="box-label">Mnemonic 8 — 4 Types of Automation</span>
+    <strong>Phrase: "Basic Process Integration AI" → BPIA (Base to Peak)</strong><br><br>
+    <strong>B</strong>asic (BPM/RPA) &nbsp;·&nbsp; <strong>P</strong>rocess (workflow/process mining) &nbsp;·&nbsp; <strong>I</strong>ntegration (machines mimic humans) &nbsp;·&nbsp; <strong>AI</strong> Automation (most complex; machine learning)
+  </div>
+
+  <div class="box box-mnemonic">
+    <span class="box-label">Mnemonic 9 — AWS 6 R's of Cloud Migration (Effort: Low → High)</span>
+    <strong>Phrase: "Retired Rats Rarely Purchase Re-Architected Platforms"</strong><br><br>
+    <strong>R</strong>etire (lowest effort) → <strong>R</strong>etain → <strong>R</strong>e-host → <strong>R</strong>e-purchase → <strong>R</strong>e-platform → <strong>R</strong>e-architect (highest effort, highest optimisation)
+  </div>
+
+  <div class="box box-mnemonic">
+    <span class="box-label">Mnemonic 10 — 9 Sustainability Approaches (Gaziulusory & Twomey)</span>
+    <strong>Phrase: "People Open Peer-to-Peer Clouds, Sharing Social Gifts in New Manufacturing"</strong><br><br>
+    <strong>P</strong>roduct Service Systems &nbsp;·&nbsp; <strong>O</strong>pen Innovation &nbsp;·&nbsp; <strong>P</strong>eer-to-Peer &nbsp;·&nbsp; <strong>C</strong>losed-Loop Production &nbsp;·&nbsp; <strong>S</strong>haring Economy &nbsp;·&nbsp; <strong>S</strong>ocial Enterprises &nbsp;·&nbsp; <strong>G</strong>ift Economy &nbsp;·&nbsp; <strong>N</strong>ew Manufacturing Paradigm &nbsp;·&nbsp; (Crowd<strong>F</strong>unding — insert between Closed-Loop & Sharing)
+  </div>
+
+  <h3>3-Point Revision Checklist — Verify Your Mastery</h3>
+  <div style="margin-top: 1rem;">
+    <div class="checklist-item">
+      <div class="check-circle"></div>
+      <p><strong>Checklist 1 — Cause vs. Effect Clarity:</strong> Can you correctly categorise each of the 11 change drivers as either a Cause or an Effect, and explain why this distinction determines which drivers need to be addressed strategically in Section C? Can you distinguish between Low-End and New-Market Disruption with original examples?</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-circle"></div>
+      <p><strong>Checklist 2 — Business Model Differentiation:</strong> Given a case study description of a business (e.g., Grammarly, Netflix, WhatsApp, D-Mart, OLX), can you instantly identify the correct business model, explain the revenue stream, the disruption mechanism, and the cost implication — without confusing Free, Freemium, Subscription, or Open Source?</p>
+    </div>
+    <div class="checklist-item">
+      <div class="check-circle"></div>
+      <p><strong>Checklist 3 — Strategic Response Application:</strong> Given a scenario where a company faces a disruption, can you: (a) identify the type of disruption, (b) select the most appropriate strategic response from the 6 options and justify it against the 3 key considerations (resources, segment importance, organisational capability), and (c) link your response to ecosystem value-capture guidelines or D'Aveni's 7S framework as appropriate?</p>
+    </div>
+  </div>
+
+  <div class="box box-tip" style="margin-top: 2rem;">
+    <span class="box-label">Final Examiner Insight — The Unifying Thread</span>
+    Every element of this chapter connects back to one central question: <strong>"How does a management accountant help an organisation manage cost strategically when the very rules of the game are changing?"</strong> Whether it's designing cost structures for a freemium model, evaluating whether an intrapreneur's team is a cost centre or profit centre, quantifying supply chain collaboration savings, or advising on whether to invest or withdraw in the face of disruption — the CA's role is to translate strategic insight into financial discipline.
+  </div>
+</section>
+
+</main>
+
+<footer>
+  CA FINAL · SCPM · CHAPTER 5 · ONE-SOURCE MATERIAL &nbsp;·&nbsp; Prepared for Exam Excellence &nbsp;·&nbsp; © ICAI Curriculum Reference
+</footer>
+
+</body>
+</html>

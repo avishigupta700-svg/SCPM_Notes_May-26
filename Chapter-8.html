@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCPM | Chapter 8 | Strategic Performance Management | One-Source Material</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --ink: #1a1a2e;
+    --deep: #16213e;
+    --accent: #0f3460;
+    --gold: #e94560;
+    --gold-light: #ff6b6b;
+    --emerald: #00b09b;
+    --amber: #f0a500;
+    --surface: #f7f5f0;
+    --card: #ffffff;
+    --muted: #6b7280;
+    --border: #e5e0d8;
+    --highlight-bg: #fff8e7;
+    --highlight-border: #f0a500;
+    --warn-bg: #fff0f3;
+    --warn-border: #e94560;
+    --success-bg: #f0fdf8;
+    --success-border: #00b09b;
+    --info-bg: #f0f4ff;
+    --info-border: #0f3460;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--surface);
+    color: var(--ink);
+    line-height: 1.75;
+    font-size: 16px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white;
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(233,69,96,0.12);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(0,176,155,0.08);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(233,69,96,0.25);
+    border: 1px solid rgba(233,69,96,0.5);
+    color: #ff9aa8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 span { color: #e94560; }
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    font-style: italic;
+    margin-bottom: 30px;
+    font-weight: 300;
+  }
+  .hero-badges {
+    display: flex; flex-wrap: wrap; gap: 10px;
+  }
+  .badge {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 50px 0 30px; }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 700;
+    color: var(--deep);
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 3px solid var(--gold);
+    display: inline-block;
+  }
+  h3.topic-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 32px 0 12px;
+    padding-left: 14px;
+    border-left: 4px solid var(--emerald);
+  }
+  h4.sub-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 18px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin: 20px 0;
+  }
+  .card-accent {
+    border-left: 5px solid var(--accent);
+  }
+  .card-emerald {
+    border-left: 5px solid var(--emerald);
+  }
+  .card-gold {
+    border-left: 5px solid var(--amber);
+  }
+  .card-red {
+    border-left: 5px solid var(--gold);
+  }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 16px 0;
+    border-left: 5px solid;
+    font-size: 15px;
+  }
+  .callout-why {
+    background: var(--info-bg);
+    border-color: var(--info-border);
+  }
+  .callout-why .callout-head { color: var(--accent); }
+  .callout-exam {
+    background: var(--warn-bg);
+    border-color: var(--warn-border);
+  }
+  .callout-exam .callout-head { color: var(--gold); }
+  .callout-tip {
+    background: var(--success-bg);
+    border-color: var(--success-border);
+  }
+  .callout-tip .callout-head { color: var(--emerald); }
+  .callout-def {
+    background: var(--highlight-bg);
+    border-color: var(--highlight-border);
+  }
+  .callout-def .callout-head { color: var(--amber); }
+  .callout-head {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 10px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead th {
+    background: var(--deep);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  thead th:first-child { border-radius: 10px 0 0 0; }
+  thead th:last-child { border-radius: 0 10px 0 0; }
+  tbody tr { border-bottom: 1px solid var(--border); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:nth-child(even) { background: #f9f7f4; }
+  tbody td { padding: 11px 16px; vertical-align: top; line-height: 1.5; }
+  tbody td strong { color: var(--accent); }
+
+  /* ── LISTS ── */
+  ul.styled, ol.styled {
+    padding-left: 20px;
+    margin: 10px 0;
+  }
+  ul.styled li, ol.styled li {
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+  ul.styled li::marker { color: var(--gold); }
+  ol.styled li::marker { color: var(--accent); font-weight: 700; }
+
+  /* ── MNEMONIC BOX ── */
+  .mnemonic {
+    background: linear-gradient(135deg, #1a1a2e, #0f3460);
+    color: white;
+    border-radius: 10px;
+    padding: 24px;
+    margin: 16px 0;
+  }
+  .mnemonic-word {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: #e94560;
+    letter-spacing: 4px;
+    margin-bottom: 14px;
+  }
+  .mnemonic-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    align-items: flex-start;
+  }
+  .mnemonic-letter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: #f0a500;
+    min-width: 24px;
+  }
+  .mnemonic-desc { color: rgba(255,255,255,0.85); line-height: 1.4; }
+
+  /* ── FORMULA BOX ── */
+  .formula-box {
+    background: #1a1a2e;
+    color: #00e5c8;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 18px 22px;
+    border-radius: 8px;
+    margin: 14px 0;
+    font-size: 14px;
+    overflow-x: auto;
+    border: 1px solid rgba(0,229,200,0.2);
+  }
+  .formula-box .formula-label {
+    color: rgba(255,255,255,0.4);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  /* ── SCORE TABLE ── */
+  .score-distress { background: #fff0f3 !important; }
+  .score-grey { background: #fffbf0 !important; }
+  .score-safe { background: #f0fdf8 !important; }
+
+  /* ── FLOWCHART ── */
+  .flowchart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: 24px 0;
+  }
+  .flow-node {
+    background: var(--accent);
+    color: white;
+    border-radius: 8px;
+    padding: 14px 28px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    max-width: 420px;
+    width: 100%;
+    position: relative;
+  }
+  .flow-node.start { background: var(--deep); }
+  .flow-node.process { background: var(--accent); }
+  .flow-node.decision {
+    background: var(--amber);
+    color: var(--ink);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    padding: 28px 40px;
+    border-radius: 0;
+  }
+  .flow-node.end { background: var(--emerald); }
+  .flow-arrow {
+    width: 2px;
+    height: 28px;
+    background: var(--border);
+    position: relative;
+  }
+  .flow-arrow::after {
+    content: '▼';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--muted);
+    font-size: 10px;
+  }
+  .flow-label {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    margin: 2px 0;
+  }
+
+  /* ── STEP SEQUENCE ── */
+  .steps { counter-reset: step; margin: 14px 0; }
+  .step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .step-num {
+    counter-increment: step;
+    min-width: 32px;
+    height: 32px;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content { flex: 1; font-size: 15px; }
+  .step-content strong { color: var(--accent); }
+
+  /* ── TAGS ── */
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin: 2px;
+  }
+  .tag-hard { background: #1a1a2e; color: #e94560; }
+  .tag-soft { background: #0f3460; color: #a8d8ff; }
+  .tag-trigger { background: #fff0f3; color: #c0392b; border: 1px solid #e94560; }
+  .tag-connect { background: #f0fdf8; color: #00876a; border: 1px solid #00b09b; }
+
+  /* ── CHECKLIST ── */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-icon {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--emerald);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── DIVIDERS ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 40px 0;
+  }
+
+  /* ── INDIA EXAMPLE TAG ── */
+  .india-eg {
+    background: #fff8e7;
+    border: 1px solid #f0a500;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    font-style: italic;
+  }
+  .india-eg::before {
+    content: '🇮🇳 India Example: ';
+    font-style: normal;
+    font-weight: 700;
+    color: #e07b00;
+    font-size: 13px;
+  }
+
+  /* ── PRINT / FOOTER ── */
+  .footer {
+    background: var(--deep);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: 60px;
+    letter-spacing: 1px;
+  }
+
+  /* ── ARGENTI TABLE ── */
+  .argenti-group-a { background: #fff0f3 !important; }
+  .argenti-group-b { background: #fff8e7 !important; }
+  .argenti-group-c { background: #f0fdf8 !important; }
+  .argenti-head-a { background: #e94560 !important; }
+  .argenti-head-b { background: #f0a500 !important; }
+  .argenti-head-c { background: #00b09b !important; }
+
+  @media(max-width:640px) {
+    .hero { padding: 36px 20px 36px; }
+    .container { padding: 0 14px; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ HERO ══════════ -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-tag">CA Final · SCPM · Chapter 8</div>
+    <h1>An Introduction to <span>Strategic Performance</span> Management</h1>
+    <p class="hero-sub">One-Source Material — Definitive Notes for Conceptual Clarity & Exam Excellence</p>
+    <div class="hero-badges">
+      <span class="badge">Section A: Strategy Link</span>
+      <span class="badge">Section B: Value Chain & 7S</span>
+      <span class="badge">Section C: Structure Culture Strategy</span>
+      <span class="badge">Section D: Complex Structures</span>
+      <span class="badge">Section E: Behavioural Aspects</span>
+      <span class="badge">Section F: Corporate Failure</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 1: BIG PICTURE ══════════ -->
+<div class="container">
+<div class="section">
+  <p class="section-label">§ 01</p>
+  <h2 class="section-title">The 'Big Picture' — Executive Summary</h2>
+
+  <div class="card card-accent">
+    <h4 class="sub-title">Syllabus Significance</h4>
+    <p>Chapter 8 is the <strong>strategic anchor</strong> of the entire SCPM paper. Every subsequent chapter (Balanced Scorecard, Performance Pyramid, Transfer Pricing, etc.) derives its logical foundation from here. The examiner expects you to <em>integrate</em> this chapter with all others, not treat it in isolation. Questions typically appear as case-study analysis requiring you to identify which framework applies and justify the selection based on structure, culture, and strategy.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card card-emerald">
+      <h4 class="sub-title">📌 The Central Thesis</h4>
+      <p style="font-size:15px"><strong>Strategy guides what to measure → Performance Management measures how well strategy is executed → Measurement results refine strategy.</strong> This virtuous cycle is what makes SPM strategic, not merely operational.</p>
+    </div>
+    <div class="card card-gold">
+      <h4 class="sub-title">🌍 Real-World Relevance</h4>
+      <p style="font-size:15px">Consider <strong>Tata Motors' Jaguar Land Rover acquisition</strong> — performance measurement across cultures, currencies, and geographies is exactly the multinational complex structure problem. Similarly, <strong>Zomato's platform model</strong> is a virtual/network organisation facing virtual-org performance challenges.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-why">
+    <p class="callout-head">🔗 Chapter Map — How Topics Connect</p>
+    <p><strong>Strategy ↔ Performance Management</strong> are two sides of one coin. The <strong>Value Chain</strong> and <strong>McKinsey 7S</strong> show how to achieve business integration. Once integrated, <strong>Structure, Culture & Strategy</strong> determine which performance tool to pick. When organisations grow complex (<strong>JVs, MNCs, Franchises</strong>), new measurement challenges emerge. <strong>Behavioural factors</strong> ensure people align, and <strong>Corporate Failure Models</strong> serve as early warning systems.</p>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ SECTION 2: CONCEPTUAL DEEP-DIVE ══════════ -->
+<div class="container">
+<div class="section">
+  <p class="section-label">§ 02</p>
+  <h2 class="section-title">Conceptual Deep-Dive</h2>
+
+  <!-- ── A. STRATEGY & PM ── -->
+  <h3 class="topic-title">A. Performance Management & Its Link to Strategy</h3>
+
+  <div class="callout callout-why">
+    <p class="callout-head">The 'Why'</p>
+    <p>Businesses exist to achieve objectives. Strategy defines <em>what those objectives are and how to compete</em>. But strategy without measurement is just intent. Performance Management is the feedback mechanism that tells management whether the strategy is working — enabling course correction before it's too late.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card card-accent">
+      <div class="callout-def callout" style="margin:0">
+        <p class="callout-head">📖 Key Definition — Strategy</p>
+        <p><strong>Drucker:</strong> "A pattern of activities that seek to achieve the objectives of the organisation and adapt its scope, resources, and operations to environmental changes in the long term."</p>
+        <br>
+        <p><strong>Porter:</strong> "A competitive position — deliberately choosing a different set of activities to deliver a unique mix of value."</p>
+      </div>
+    </div>
+    <div class="card card-emerald">
+      <div class="callout-def callout" style="margin:0">
+        <p class="callout-head">📖 Key Definition — Performance Management</p>
+        <p>A key aspect of management accounting dealing with: determining organisational structure; establishing responsibility centres; establishing performance measurement systems; and reviewing performance periodically to take corrective action.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="india-eg">Biscuit manufacturers like <strong>Parle-G</strong> reduced pack grammage instead of raising prices — a cost leadership strategy response to price-sensitive consumers. This is "Shrinkflation." Performance Management tracked whether margins were sustained post-implementation.</div>
+
+  <h4 class="sub-title">The Interlinking: How PM Supports Strategy</h4>
+  <div class="card">
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Strategy sets CSFs/KPIs</strong> — Strategy defines Critical Success Factors; PM converts these into measurable KPIs.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><strong>PM Information feeds Strategy</strong> — The performance measurement system generates the data needed for informed strategic decision-making.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Individual goals align to organisational objectives</strong> — When employees' KPIs mirror strategic objectives, goal congruence is achieved.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><strong>PM Systems must evolve with Strategy</strong> — As strategy changes, the PM system must change. A static PM system is a liability.</div></div>
+    </div>
+  </div>
+
+  <div class="callout callout-tip">
+    <p class="callout-head">🎯 Exam Anchor Phrase</p>
+    <p><em>"Performance Management can bring ease in strategic planning and control for management of any business, whereas Strategy acts as a guiding force for establishing performance indicators and parameters thereof."</em></p>
+  </div>
+
+  <!-- ── B. VALUE CHAIN ── -->
+  <h3 class="topic-title">B1. Value Chain / Value Chain Analysis (Porter, 1985)</h3>
+
+  <div class="callout callout-why">
+    <p class="callout-head">The 'Why'</p>
+    <p>Businesses are not just departments — they are sequences of activities. Porter recognised that <strong>competitive advantage comes from how well these activities are performed and linked</strong>, not just from the final product. Value Chain provides a structured way to identify where value is created, where waste exists, and where competitive advantage can be built or eroded.</p>
+  </div>
+
+  <div class="callout callout-def">
+    <p class="callout-head">📖 Key Definition</p>
+    <p><strong>Value Chain</strong> is the sequential chain of activities that leads to the delivery of the final product to the customer. <strong>Margin</strong> = Value customer is willing to pay − Cost incurred by firm.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Activity Type</th><th>Sub-Activity</th><th>Description</th><th>India Example</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="5"><strong>PRIMARY</strong><br>(Directly create value)</td><td>Inbound Logistics</td><td>Receiving, storing & handling raw material inputs</td><td>JSW Steel sourcing iron ore from Odisha mines</td></tr>
+        <tr><td>Operations</td><td>Transformation of inputs into finished goods/services</td><td>Maruti Suzuki's Manesar manufacturing plant</td></tr>
+        <tr><td>Outbound Logistics</td><td>Storing, distributing & delivering finished goods</td><td>Amul's cold-chain distribution network</td></tr>
+        <tr><td>Marketing & Sales</td><td>Market research + 4Ps</td><td>Flipkart's targeted Big Billion Days campaign</td></tr>
+        <tr><td>After-Sales Service</td><td>Installation, training, repair post-sale</td><td>Bajaj Auto's 4,000+ service centres nationwide</td></tr>
+        <tr><td rowspan="4"><strong>SUPPORT</strong><br>(Enable primary activities)</td><td>Firm Infrastructure</td><td>How the firm is organised (legal, finance, management)</td><td>Tata Group's centralised corporate governance</td></tr>
+        <tr><td>HRM</td><td>Recruitment, training — how people build competitive advantage</td><td>Infosys's training campus in Mysuru</td></tr>
+        <tr><td>Technology Development</td><td>R&D, process automation, IT systems</td><td>ISRO's rocket technology for satellite deployment</td></tr>
+        <tr><td>Procurement</td><td>Purchasing inputs — not just materials, also services</td><td>ITC's e-Choupal for direct farmer procurement</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4 class="sub-title">Kaplan & Cooper's 4-Category Value Classification</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Necessary?</th><th>Can Be Improved Now?</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>Required; cannot be improved now</td><td>✅ Yes</td><td>❌ No</td><td><strong>No action</strong> (retain as-is)</td></tr>
+        <tr><td>Required; can be improved now</td><td>✅ Yes</td><td>✅ Yes</td><td><strong>Modify the process</strong></td></tr>
+        <tr><td>Not required; can be eliminated eventually</td><td>❌ No</td><td>—</td><td><strong>Eliminate eventually</strong></td></tr>
+        <tr><td>Not required; can be eliminated immediately</td><td>❌ No</td><td>—</td><td><strong>Eliminate immediately</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4 class="sub-title">How Value Chain Builds Competitive Advantage</h4>
+  <div class="card">
+    <ul class="styled">
+      <li><strong>Classification:</strong> Separating value-added from non-value-added activities guides resource deployment</li>
+      <li><strong>Outsourcing Decisions:</strong> Non-core NVA activities → outsource; even VA activities may be outsourced if cost-effective</li>
+      <li><strong>Benchmarking:</strong> Compare your chain against competitors for gap analysis (Shank & Govindarajan, 1992)</li>
+      <li><strong>Customer Perspective:</strong> Every downstream stage is the "customer" of the upstream stage</li>
+      <li><strong>Value System (Big Picture):</strong> Supplier's suppliers → Your Chain → Customer's customers. No firm operates in isolation.</li>
+    </ul>
+  </div>
+
+  <div class="india-eg"><strong>ITC e-Choupal</strong> is a Value System example — ITC extended its value chain backward to village-level internet kiosks, eliminating middlemen and gaining direct access to farmers (suppliers). This reduced procurement costs and improved quality control, demonstrating how managing the wider Value System creates sustainable competitive advantage.</div>
+
+  <!-- ── McKINSEY 7S ── -->
+  <h3 class="topic-title">B2. McKinsey's 7S Framework</h3>
+
+  <div class="callout callout-why">
+    <p class="callout-head">The 'Why'</p>
+    <p>Organisations fail not because of bad strategy alone, but because the <strong>seven internal elements are misaligned</strong>. McKinsey 7S reveals that a change in any one element ripples through all others. This makes it the premier diagnostic tool for understanding why performance is sub-optimal and what changes are needed for business integration.</p>
+  </div>
+
+  <div class="callout callout-def">
+    <p class="callout-head">📖 Key Definition</p>
+    <p><strong>McKinsey's 7S Framework</strong> maps a constellation of interrelated factors (Subsystems) that influence an organisation's ability to change in order to attain its objectives. Since subsystems are interconnected, <em>a change in one element will have repercussions on all others.</em></p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <h4 class="sub-title">🔩 HARD S (Easier to Change)</h4>
+      <div style="margin-bottom:8px"><span class="tag tag-hard">Strategy</span> <span class="tag tag-hard">Structure</span> <span class="tag tag-hard">Systems</span></div>
+      <p style="font-size:14px">Tangible, quantifiable, rule-based. Management can change these with formal authority.</p>
+      <ul class="styled" style="font-size:14px; margin-top:10px">
+        <li><strong>Strategy:</strong> Plan to achieve goals with scarce resources; create competitive advantage. Must be clearly articulated, long-term, and reinforced by strong mission/vision.</li>
+        <li><strong>Structure:</strong> Formal framework of job tasks, authority, coordination, and reporting relationships. Determines Responsibility Centre type.</li>
+        <li><strong>Systems:</strong> Daily processes and activities — accounting, HR, MIS, marketing analytics. Core: information system.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 class="sub-title">🌿 SOFT S (Harder to Change)</h4>
+      <div style="margin-bottom:8px"><span class="tag tag-soft">Style</span> <span class="tag tag-soft">Staff</span> <span class="tag tag-soft">Skills</span> <span class="tag tag-soft">Shared Values</span></div>
+      <p style="font-size:14px">Culture-driven, intangible. Require sustained effort and leadership to change.</p>
+      <ul class="styled" style="font-size:14px; margin-top:10px">
+        <li><strong>Style:</strong> Leadership & management approach; informal rules; how the org presents itself.</li>
+        <li><strong>Staff:</strong> Human capital — the people who create organisational culture. HR has <em>strategic</em> importance.</li>
+        <li><strong>Skills:</strong> Core competencies of the organisation. Identify skill gaps; outsource non-core skills.</li>
+        <li><strong>Shared Values:</strong> The central element — beliefs guiding why the org exists, transcending all divisions. (Originally called "Superordinate Goals")</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4 class="sub-title">Steps for Effective Use of 7S (for Business Integration)</h4>
+  <div class="card">
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Start with Shared Values:</strong> Are they consistent with Structure, Strategy, and Systems? Identify misalignments.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Examine Hard Elements:</strong> Strategy ↔ Structure ↔ Systems — do they mutually support each other?</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Examine Soft Elements:</strong> Do Style, Staff, Skills support the desired hard elements and each other?</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Review & Iterate:</strong> Use Gap Analysis to move from current to desired state. Use Change Management to implement. All 7S must pull in the same direction.</div></div>
+    </div>
+  </div>
+
+  <div class="india-eg"><strong>Infosys's shift from founder-led to professional management (Narayana Murthy → Vishal Sikka → Salil Parekh)</strong>: Changing the CEO (Style element) required realigning Structure (flatter hierarchy), Systems (new tech platforms), and Skills (AI/digital capabilities). This is a live 7S realignment exercise visible in Indian corporate history.</div>
+
+  <!-- ── ORGANISATIONAL STRUCTURES ── -->
+  <h3 class="topic-title">B3. Organisational Structures (within 7S — Structure element)</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Structure Type</th><th>Key Feature</th><th>Advantages</th><th>Limitations</th><th>Responsibility Centre Implication</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Entrepreneurial</strong></td><td>Owner-manager, dual role</td><td>Fast decisions, unified control</td><td>Bottleneck at owner; not scalable</td><td>Single cost/profit centre</td></tr>
+        <tr><td><strong>Functional</strong></td><td>Grouped by specialisation</td><td>Pooled expertise, no duplication</td><td>Poor cross-functional communication</td><td>Cost centres per function</td></tr>
+        <tr><td><strong>Divisional</strong></td><td>Grouped by product/geography</td><td>Flexibility; division managers accountable</td><td>Duplication across divisions</td><td>Investment/Profit centres (SBUs)</td></tr>
+        <tr><td><strong>Matrix</strong></td><td>Dual reporting — functional + project</td><td>Flexible resource use; project focus</td><td>Dual authority causes confusion</td><td>Measured by both functional & project heads</td></tr>
+        <tr><td><strong>Network/Virtual</strong></td><td>Highly outsourced; IT-connected</td><td>Asset-light; competitive even with limited capital</td><td>Reduced control; partner reliability risk</td><td>Difficult to assign accountability</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-tip">
+    <p class="callout-head">💡 Span of Control Formula (Examiner Favourite)</p>
+    <p><strong>Relations = n(n−1)/2 &nbsp;|&nbsp; Cross-Relations = n(n−1)</strong><br>
+    Where n = superior + subordinates. Cross-relations = 2 × Relations (always).</p>
+    <p style="margin-top:8px"><em>Example:</em> Manager + 3 subordinates (n=4): Relations = 4×3/2 = <strong>6</strong>; Cross-relations = 4×3 = <strong>12</strong></p>
+  </div>
+
+  <!-- ── C: STRUCTURE, CULTURE, STRATEGY ── -->
+  <h3 class="topic-title">C. Effect of Structure, Culture & Strategy on Performance Measurement</h3>
+
+  <div class="callout callout-why">
+    <p class="callout-head">The 'Why'</p>
+    <p>Two firms in the same industry with the same resources will perform differently because their structure, culture, and strategy create different information needs, different accountability frameworks, and different openness to new measurement techniques. <em>There is no one-size-fits-all performance measurement system.</em></p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Factor</th><th>Type</th><th>Performance Measurement Implication</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Structure</strong></td><td>Functional / Centralised</td><td>Data collected at functional level; analysed at top; feedback sent downward</td></tr>
+        <tr><td><strong>Structure</strong></td><td>Divisional / Decentralised</td><td>Data collected and analysed lower in hierarchy; managers have more discretion</td></tr>
+        <tr><td><strong>Structure</strong></td><td>Matrix</td><td>Individual measured by both functional AND project manager</td></tr>
+        <tr><td><strong>Culture</strong></td><td>Predictable / Bureaucratic</td><td>Formal behaviour; uses tried-and-tested traditional methods</td></tr>
+        <tr><td><strong>Culture</strong></td><td>Innovative / Creative</td><td>Open to new methods; encourages participation and risk-taking</td></tr>
+        <tr><td><strong>Strategy</strong></td><td>Cost Leadership</td><td>Financial indicators (ROI, RI, profit, sales) dominate measurement</td></tr>
+        <tr><td><strong>Strategy</strong></td><td>Differentiation / Quality Leadership</td><td>Non-financial + financial indicators; Balanced Scorecard, Performance Pyramid</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-exam">
+    <p class="callout-head">⚠️ Examiner's Note — RI vs ROI in Divisional Structures</p>
+    <p>In a divisional organisation, <strong>RI (Residual Income) can be misleading</strong> when comparing divisions of different sizes. <strong>ROI is a better comparative metric</strong> in such cases. However, ROI must be used carefully when transfer pricing is involved between divisions.</p>
+  </div>
+
+  <!-- ── D: COMPLEX STRUCTURES ── -->
+  <h3 class="topic-title">D. Strategic Performance Issues in Complex Business Structures</h3>
+
+  <div class="callout callout-why">
+    <p class="callout-head">The 'Why'</p>
+    <p>Modern business environments force organisations to collaborate with external partners. This creates complex structures where traditional performance management approaches break down because control is diluted, objectives diverge, resources are pooled, and cultures clash.</p>
+  </div>
+
+  <div class="callout callout-def">
+    <p class="callout-head">📖 Key Definition</p>
+    <p>A <strong>complex business structure</strong> is one where one or more of the following exist: <em>diluted control, shared objectives, pooled resources, virtual connectivity, collaboration across cultures/interests, or diverse business environments.</em></p>
+  </div>
+
+  <h4 class="sub-title">Generic Problems in ALL Complex Structures & Solutions</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Problem / Root Cause</th><th>Solution</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Establishing objectives</strong> — Different values, vision, risk appetites, timescales</td><td>Establish <strong>Goal Congruence</strong> at the outset</td></tr>
+        <tr><td><strong>Different attitudes to quality, control, risk</strong></td><td>Devise a <strong>Common Minimum Programme</strong></td></tr>
+        <tr><td><strong>Assigning accountability</strong> — Different resource contributions</td><td>Clearly establish and communicate accountability <strong>at the outset</strong></td></tr>
+        <tr><td><strong>Lack of trust</strong> — Hesitancy to share information</td><td><strong>Mutually decided</strong> control & reporting framework; foster trust through compatible management style</td></tr>
+        <tr><td><strong>Cultural conflicts</strong></td><td>Redefine <strong>Shared Values</strong> to be more liberal and inclusive</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4 class="sub-title">Specific Issues by Structure Type</h4>
+  <div class="card-grid">
+    <div class="card card-accent">
+      <h4 class="sub-title">Strategic Alliance</h4>
+      <div class="callout callout-def" style="margin:0 0 10px 0"><p class="callout-head">Definition</p><p>Arrangement between 2+ enterprises to undertake a mutually beneficial project while <strong>each retaining its independence.</strong></p></div>
+      <p style="font-size:14px"><strong>Key Issue:</strong> Difficult to implement common performance measures; security of confidential information is a concern.</p>
+    </div>
+    <div class="card card-emerald">
+      <h4 class="sub-title">Joint Venture</h4>
+      <div class="callout callout-def" style="margin:0 0 10px 0"><p class="callout-head">Definition</p><p>2+ parties develop a <strong>single separate business entity</strong> for profit, sharing risks. (Types: Project, Vertical, Horizontal, Functional)</p></div>
+      <p style="font-size:14px"><strong>Key Issue:</strong> Assigning accountability when resources/work distribution is unequal. Creates a new legal entity unlike a Strategic Alliance.</p>
+    </div>
+    <div class="card card-gold">
+      <h4 class="sub-title">Multinationals</h4>
+      <div class="callout callout-def" style="margin:0 0 10px 0"><p class="callout-head">Definition</p><p>Enterprises with <strong>subsidiaries or operations in multiple countries.</strong></p></div>
+      <p style="font-size:14px"><strong>Key Issues:</strong> Culture/language/time zone differences; currency fluctuations; exchange rate risk; varying tax/trade policies; lack of common systems.</p>
+    </div>
+    <div class="card card-red">
+      <h4 class="sub-title">Complex Supply Chains</h4>
+      <div class="callout callout-def" style="margin:0 0 10px 0"><p class="callout-head">Definition</p><p>A <strong>network of enterprises connected</strong> while creating a product and delivering it to the consumer.</p></div>
+      <p style="font-size:14px"><strong>Key Issues:</strong> Logistical barriers, incompatible technology, trust and efficiency breakdowns. <strong>Solution:</strong> Free flow of information; collaboration.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-tip">
+    <p class="callout-head">💡 The IT Game-Changer (Universal Solution for Complex Structures)</p>
+    <p>A <strong>single shared IT information system</strong> used by all partners ensures: everyone uses the same data, performance data is centralised, collection is easier, and trust is enhanced. The core organisation can invest in developing this system as a shared resource.</p>
+  </div>
+
+  <div class="india-eg"><strong>Difference: Strategic Alliance vs. Joint Venture — Indian Context:</strong> Maruti Suzuki (Japan's Suzuki + India's Maruti, Government) was a <strong>Joint Venture</strong> (new separate entity). Whereas Air India's code-sharing agreements with Star Alliance members are <strong>Strategic Alliances</strong> (each airline retains independence).</div>
+
+  <!-- ── E: BEHAVIOURAL ── -->
+  <h3 class="topic-title">E. Behavioural Aspects of Performance Management</h3>
+
+  <div class="callout callout-why">
+    <p class="callout-head">The 'Why'</p>
+    <p>An organisation's performance is the sum of its people's performance. Performance systems don't operate in a vacuum — they shape human behaviour. If the system incentivises wrong behaviour, performance will be poor despite a technically perfect measurement framework.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card card-accent">
+      <h4 class="sub-title">1. Accountability</h4>
+      <p style="font-size:14px"><em>When people are made accountable, they become more conscious and strive for better performance.</em></p>
+      <br>
+      <p style="font-size:14px"><strong>Hard Accountability:</strong> Financial and quantitative information — converting activities to numbers and reporting them with reasons.</p>
+      <p style="font-size:14px"><strong>Soft Accountability:</strong> Human input — shaping, evaluating, and implementing goals through people.</p>
+    </div>
+    <div class="card card-emerald">
+      <h4 class="sub-title">2. Control Mechanisms</h4>
+      <ul class="styled" style="font-size:14px">
+        <li><strong>Behavioural Control:</strong> Ensures only desired actions take place</li>
+        <li><strong>Personnel & Cultural Control:</strong> Right person with right skills in a conducive environment</li>
+        <li><strong>Reporting Control:</strong> Ensures performance outcomes are reported fairly and completely</li>
+      </ul>
+    </div>
+    <div class="card card-gold">
+      <h4 class="sub-title">3. Performance Measures as Stimuli</h4>
+      <p style="font-size:14px"><strong>Berry, Broadbent & Otley:</strong> "What gets measured, gets done."</p>
+      <p style="font-size:14px" style="margin-top:8px">CSFs and KPIs act as <em>stimuli</em> — forces that promote or prevent behaviour. Clearly communicated performance measures mend behaviour in a desired direction.</p>
+    </div>
+    <div class="card card-red">
+      <h4 class="sub-title">4. Management Style & Culture</h4>
+      <p style="font-size:14px"><strong>Hopwood's 3 Styles:</strong></p>
+      <ul class="styled" style="font-size:14px">
+        <li><strong>Budget-Constrained:</strong> For maturity phase; strict cost control focus</li>
+        <li><strong>Profit-Conscious:</strong> For growth phase; broader performance view</li>
+        <li><strong>Non-Accounting:</strong> Minimal accounting emphasis</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── F: CORPORATE FAILURE ── -->
+  <h3 class="topic-title">F. Predicting & Preventing Corporate Failure</h3>
+
+  <div class="callout callout-why">
+    <p class="callout-head">The 'Why'</p>
+    <p>~90% of 1955 Fortune 500 firms no longer exist as they were. Failure is not random — it follows predictable patterns of deep-seated corporate shortcomings. Early detection via quantitative and qualitative models allows corrective action before the point of no return.</p>
+  </div>
+
+  <h4 class="sub-title">Why Companies Fail — Root Causes</h4>
+  <div class="card">
+    <ul class="styled">
+      <li><strong>Failure to innovate and adapt</strong> to changing market needs</li>
+      <li><strong>Hostile environment beyond control</strong> (Johnson's "Strategic Drift" — strategy becomes irrelevant as environment changes)</li>
+      <li><strong>Too many rapid restructurings</strong> — organisational instability</li>
+      <li><strong>Financial misappropriations</strong> (e.g., Satyam scandal — India's Enron)</li>
+      <li><strong>Power tussles / Management inefficiency</strong> in promoter groups</li>
+      <li><strong>Failed strategic decisions</strong> — especially bad investment/expansion decisions (e.g., Subhiksha's overexpansion leading to collapse in 2009)</li>
+    </ul>
+  </div>
+
+  <!-- QUANTITATIVE MODELS -->
+  <h4 class="sub-title">F1. Quantitative Models</h4>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Model</th><th>Author & Year</th><th>Basis</th><th>Key Feature</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Univariate Model</strong></td><td>Beaver, 1966</td><td>One ratio at a time (t-tests)</td><td>First ever statistical bankruptcy prediction model; replaced by Altman (only one ratio = flaw)</td></tr>
+        <tr><td><strong>Z-Score (Manufacturing, Listed)</strong></td><td>Altman, 1968</td><td>5-ratio multivariate discriminant analysis</td><td>Most prevalent; 72-90% accurate; zones: &lt;1.81 Distress, 1.81-2.99 Grey, &gt;2.99 Safe</td></tr>
+        <tr><td><strong>Z-Score (Private Firms)</strong></td><td>Altman, 1983</td><td>Book value of equity instead of market value in X4</td><td>Zones: &lt;1.23 Distress, 1.23-2.99 Grey, &gt;2.99 Safe</td></tr>
+        <tr><td><strong>Z-Score (Non-Mfg / Emerging Markets)</strong></td><td>Altman, 1983</td><td>4-factor model (removes asset turnover)</td><td>Zones: &lt;1.1 Distress, 1.1-2.6 Grey, &gt;2.6 Safe. Emerging markets: add 3.25 constant.</td></tr>
+        <tr><td><strong>ZETA Model</strong></td><td>Altman, Haldeman & Narayanan, 1977</td><td>Improved Z-Score; addresses non-normal distribution</td><td>Uses comprehensive discriminant inputs; covers 1969-1975 bankrupt sample</td></tr>
+        <tr><td><strong>Taffler & Tishaw Model</strong></td><td>Taffler & Tishaw, 1977</td><td>4-ratio Z-score variant; 92 UK listed manufacturers</td><td>UK-specific model; evolved into PAS</td></tr>
+        <tr><td><strong>PAS (Performance Analysis Score)</strong></td><td>Taffler (evolved from T&T)</td><td>Z-score expressed as percentile (0–100)</td><td>Relative measure; downward trend signals trouble. Formula: Z = 3.2 + 12.18X₁ + 2.50X₂ − 10.68X₃ + 0.029X₄. Negative Z = potential bankruptcy.</td></tr>
+        <tr><td><strong>H-Score Model</strong></td><td>Company Watch</td><td>Percentile score 0–100</td><td>Similar to PAS. Threshold: score below <strong>25</strong> → "Warning Area"</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ALTMAN Z-SCORE DETAIL -->
+  <div class="card" style="margin-top:20px">
+    <h4 class="sub-title">Altman Z-Score (1968) — Full Detail</h4>
+    <div class="formula-box">
+      <div class="formula-label">Altman Z-Score Formula (Listed Manufacturing Firms)</div>
+      Z = 1.2X₁ + 1.4X₂ + 3.3X₃ + 0.6X₄ + 1.0X₅
+
+      X₁ = Working Capital / Total Assets
+      X₂ = Retained Earnings / Total Assets
+      X₃ = EBIT / Total Assets
+      X₄ = Market Value of Equity / Total Liabilities
+      X₅ = Sales / Total Assets
+    </div>
+    <div class="table-wrap" style="margin-top:10px">
+      <table>
+        <thead><tr><th>Z-Score Range</th><th>Zone</th><th>Prediction</th></tr></thead>
+        <tbody>
+          <tr class="score-distress"><td><strong>&lt; 1.81</strong></td><td>🔴 <strong>Distress</strong></td><td>In danger; possibly heading to bankruptcy within 2 years</td></tr>
+          <tr class="score-grey"><td><strong>1.81 to 2.99</strong></td><td>🟡 <strong>Grey Zone</strong></td><td>Further investigation required (CSFs and KPIs)</td></tr>
+          <tr class="score-safe"><td><strong>&gt; 2.99</strong></td><td>🟢 <strong>Safe</strong></td><td>Financially sound</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout callout-tip" style="margin-top:12px">
+      <p class="callout-head">📊 Accuracy</p>
+      <p>72% accurate (2 years prior) | Type II error only 6% (Altman, 1968). 80-90% accurate (1 year prior) in later tests (Altman, 2000).</p>
+    </div>
+  </div>
+
+  <!-- QUALITATIVE -->
+  <h4 class="sub-title">F2. Argenti's A-Score (Qualitative Model)</h4>
+
+  <div class="callout callout-def">
+    <p class="callout-head">📖 Key Principle</p>
+    <p>Failure follows a predictable sequence: <strong>Defects → Mistakes → Symptoms of Failure</strong>. If total score &gt;25, the company is likely to fail.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr class="argenti-head-a"><th colspan="3" style="color:white;text-align:center">GROUP A — DEFECTS (Max: 43 | Threshold: ≤10 is healthy)</th></tr>
+        <tr><th>Observed Variable</th><th>Score</th><th>Category</th></tr>
+      </thead>
+      <tbody class="argenti-group-a">
+        <tr><td>Chief Executive is an autocrat</td><td>8</td><td rowspan="7">Management Defects</td></tr>
+        <tr><td>Chief Executive also holds position of Chairman</td><td>4</td></tr>
+        <tr><td>Passive board of directors</td><td>2</td></tr>
+        <tr><td>Unbalanced board (not all functions represented)</td><td>2</td></tr>
+        <tr><td>Weak Finance Director</td><td>2</td></tr>
+        <tr><td>Lack of 'management in depth'</td><td>1</td></tr>
+        <tr><td>Poor response to change: old-fashioned products/methods/directors</td><td>15</td></tr>
+        <tr><td>No budgets or budgetary controls</td><td>3</td><td rowspan="3">Accounting Defects</td></tr>
+        <tr><td>No cash flow forecasts (or not up to date)</td><td>3</td></tr>
+        <tr><td>No costing system (costs/contribution per product unknown)</td><td>3</td></tr>
+        <tr><td colspan="2" style="text-align:right"><strong>Sub-Total</strong></td><td><strong>43</strong></td></tr>
+      </tbody>
+      <thead>
+        <tr class="argenti-head-b"><th colspan="3" style="color:white;text-align:center">GROUP B — MISTAKES (Max: 45 | Threshold: ≤15 is healthy)</th></tr>
+      </thead>
+      <tbody class="argenti-group-b">
+        <tr><td>High gearing; inability to service debt</td><td>15</td><td>Management Mistakes</td></tr>
+        <tr><td>Overtrading: expanding faster than funding supports</td><td>15</td><td>Management Mistakes</td></tr>
+        <tr><td>A big project gone wrong</td><td>15</td><td>Management Mistakes</td></tr>
+        <tr><td colspan="2" style="text-align:right"><strong>Sub-Total</strong></td><td><strong>45</strong></td></tr>
+      </tbody>
+      <thead>
+        <tr class="argenti-head-c"><th colspan="3" style="color:white;text-align:center">GROUP C — SYMPTOMS OF FAILURE (Max: 12 | ANY score = immediate risk)</th></tr>
+      </thead>
+      <tbody class="argenti-group-c">
+        <tr><td>Financial analysis indicates failure (e.g., poor Z-score)</td><td>4</td><td>Symptoms</td></tr>
+        <tr><td>Creative accounting (gaming, misrepresentation)</td><td>4</td><td>Symptoms</td></tr>
+        <tr><td>Non-financial signs: untidy premises, high turnover, low morale, rumours</td><td>4</td><td>Symptoms</td></tr>
+        <tr><td colspan="2" style="text-align:right"><strong>Sub-Total</strong></td><td><strong>12</strong></td></tr>
+        <tr><td colspan="2" style="text-align:right"><strong>Grand Total</strong></td><td><strong>100</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-exam">
+    <p class="callout-head">⚠️ Interpretation Rule — Critical for Exams</p>
+    <p>A firm is healthy ONLY IF: <strong>Overall score &lt; 25 AND Group A ≤ 10 AND Group B ≤ 15 AND Group C = 0</strong>.<br>
+    ANY score in Group C = immediately risky. Overall score &gt; 25 = risky (even if individual thresholds are met).</p>
+  </div>
+
+  <!-- SHORTCOMINGS -->
+  <h4 class="sub-title">Shortcomings — Both Model Types</h4>
+  <div class="card-grid">
+    <div class="card card-red">
+      <h4 class="sub-title">Quantitative Model Limitations</h4>
+      <ul class="styled" style="font-size:14px">
+        <li>Based on financial numbers — susceptible to <strong>window dressing</strong></li>
+        <li>Short-term orientation; relies on <strong>historical data</strong></li>
+        <li>Score is a snapshot — <strong>no root cause, no solution highlighted</strong></li>
+        <li>Pre-defined weights have inherent limitations reducing <strong>prediction reliability</strong></li>
+      </ul>
+    </div>
+    <div class="card card-gold">
+      <h4 class="sub-title">Qualitative Model Limitations</h4>
+      <ul class="styled" style="font-size:14px">
+        <li><strong>Subjectivity</strong> — expert judgement reduces reliability</li>
+        <li>Requires large amount of <strong>non-financial information</strong> (hard to obtain)</li>
+        <li>Results are only as good as the inputs — <strong>GIGO principle</strong></li>
+        <li>Identifies root cause but <strong>doesn't suggest corrective measures</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ SECTION 3: EXAMINER'S LENS ══════════ -->
+<div class="container">
+<div class="section">
+  <p class="section-label">§ 03</p>
+  <h2 class="section-title">The Examiner's Lens</h2>
+
+  <!-- TRIGGER POINTS -->
+  <h3 class="topic-title">Trigger Points — Keywords in Case Studies</h3>
+  <div class="card">
+    <div class="table-wrap" style="margin:0">
+      <table>
+        <thead><tr><th>Keyword in Question</th><th>Concept Triggered</th></tr></thead>
+        <tbody>
+          <tr><td>"two companies collaborate, each retaining independence"</td><td><span class="tag tag-trigger">Strategic Alliance</span></td></tr>
+          <tr><td>"new separate entity formed by two companies"</td><td><span class="tag tag-trigger">Joint Venture</span></td></tr>
+          <tr><td>"royalty payments", "brand licence"</td><td><span class="tag tag-trigger">Licensing</span></td></tr>
+          <tr><td>"standardised format, brand, support" by parent</td><td><span class="tag tag-trigger">Franchising</span></td></tr>
+          <tr><td>"operations in multiple countries", "exchange rate risk"</td><td><span class="tag tag-trigger">Multinational</span></td></tr>
+          <tr><td>"asset-light", "remote working", "platform-based"</td><td><span class="tag tag-trigger">Virtual / Network Organisation</span></td></tr>
+          <tr><td>"what activities add value", "competitive advantage through operations"</td><td><span class="tag tag-trigger">Value Chain Analysis</span></td></tr>
+          <tr><td>"organisation changed strategy but structure/culture didn't change"</td><td><span class="tag tag-trigger">McKinsey 7S Misalignment</span></td></tr>
+          <tr><td>"predict bankruptcy", "financial ratios", "distress zone"</td><td><span class="tag tag-trigger">Altman Z-Score</span></td></tr>
+          <tr><td>"autocratic CEO", "no budgets", "high gearing"</td><td><span class="tag tag-trigger">Argenti's A-Score</span></td></tr>
+          <tr><td>"performance measures not motivating employees"</td><td><span class="tag tag-trigger">Behavioural Aspects / Stimuli</span></td></tr>
+          <tr><td>"supplier's supplier", "extended supply chain"</td><td><span class="tag tag-trigger">Value System</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES -->
+  <h3 class="topic-title">Common Mistakes — Where Students Lose Marks</h3>
+  <div class="card">
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:var(--gold)">✗</div>
+        <div class="step-content"><strong>Confusing Strategic Alliance with Joint Venture:</strong> The critical difference is independence. SA = independence retained. JV = new separate entity created. Mixing these up in a case is a guaranteed mark loss.</div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:var(--gold)">✗</div>
+        <div class="step-content"><strong>Wrong Z-Score formula for entity type:</strong> Using the listed manufacturing formula for a non-manufacturing or private firm. Always identify entity type first, then pick the right Z-Score variant.</div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:var(--gold)">✗</div>
+        <div class="step-content"><strong>Argenti A-Score threshold confusion:</strong> Students often state "score above 25 = fail" but forget that ANY Group C score is immediately a risk flag, and individual group thresholds apply even when overall is below 25.</div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:var(--gold)">✗</div>
+        <div class="step-content"><strong>Treating 7S as just a list:</strong> The key insight is interconnectedness — any change in one S ripples through others. Answers must discuss this ripple effect for full marks.</div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:var(--gold)">✗</div>
+        <div class="step-content"><strong>Ignoring Shared Values as the central element:</strong> Students often list 7S without noting that Shared Values is at the centre — it is the foundational element from which all other alignment flows.</div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:var(--gold)">✗</div>
+        <div class="step-content"><strong>Not linking PM selection to structure/culture/strategy:</strong> Simply stating a performance measure without justifying WHY it suits the given structure or strategy will not earn application marks.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERCONNECTIVITY -->
+  <h3 class="topic-title">Inter-Connectivity — How Chapter 8 Links to Other Chapters</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Chapter 8 Concept</th><th>Connects To</th><th>Nature of Link</th></tr></thead>
+      <tbody>
+        <tr><td>CSFs & KPIs</td><td><span class="tag tag-connect">Ch. 9: Balanced Scorecard</span> <span class="tag tag-connect">Performance Pyramid</span></td><td>BSC and Pyramid ARE the frameworks that operationalise CSFs/KPIs. Chapter 8 gives the "why"; Ch. 9 gives the "how."</td></tr>
+        <tr><td>Value Chain</td><td><span class="tag tag-connect">Ch. 1: Strategic Analysis</span> <span class="tag tag-connect">Cost Management</span></td><td>Value Chain is the foundation for ABM, Target Costing, and identifying cost drivers in Chapter 1.</td></tr>
+        <tr><td>Divisional Structure</td><td><span class="tag tag-connect">Transfer Pricing</span> <span class="tag tag-connect">ROI vs RI</span></td><td>Divisional structures require transfer pricing mechanisms. ROI vs RI choice directly depends on structure.</td></tr>
+        <tr><td>Complex Structures (JV, Alliance)</td><td><span class="tag tag-connect">Risk Management</span></td><td>Cultural conflicts, accountability gaps, and lack of trust are key operational risks in complex structures.</td></tr>
+        <tr><td>Behavioural Aspects</td><td><span class="tag tag-connect">Budgeting (Hopwood)</span></td><td>Hopwood's budget-constrained, profit-conscious, and non-accounting styles connect directly to budgetary control chapters.</td></tr>
+        <tr><td>Corporate Failure Models</td><td><span class="tag tag-connect">Financial Analysis</span></td><td>Z-Score uses financial ratios (gearing, liquidity, profitability) — a direct application of ratio analysis.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ SECTION 4: VISUAL SYNTHESIS ══════════ -->
+<div class="container">
+<div class="section">
+  <p class="section-label">§ 04</p>
+  <h2 class="section-title">Visual Synthesis</h2>
+
+  <!-- COMPARISON TABLE -->
+  <h3 class="topic-title">Master Comparison Table — All Major Models</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Dimension</th><th>Value Chain</th><th>McKinsey 7S</th><th>Altman Z-Score</th><th>Argenti A-Score</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Purpose</strong></td><td>Identify value-creating activities; competitive advantage</td><td>Diagnose misalignment across 7 subsystems</td><td>Predict bankruptcy probability (quantitative)</td><td>Identify failure precursors (qualitative)</td></tr>
+        <tr><td><strong>Focus</strong></td><td>Operations & activities</td><td>Organisational change & integration</td><td>Financial ratios</td><td>Management behaviour & accounting defects</td></tr>
+        <tr><td><strong>Creator</strong></td><td>M.E. Porter (1985)</td><td>Peters, Waterman et al., McKinsey (1970s)</td><td>Edward Altman (1968 onwards)</td><td>John Argenti</td></tr>
+        <tr><td><strong>Output</strong></td><td>Map of VA vs. NVA activities; margin improvement</td><td>Alignment gaps + change agenda</td><td>Z-Score → Zone (Distress/Grey/Safe)</td><td>A-Score → Health/Risk Classification</td></tr>
+        <tr><td><strong>Data Type</strong></td><td>Operational / qualitative</td><td>Qualitative / structural</td><td>Quantitative (financial)</td><td>Qualitative + some quantitative</td></tr>
+        <tr><td><strong>Tells Root Cause?</strong></td><td>Yes — identifies NVA activities</td><td>Yes — pinpoints misaligned element</td><td>No — only a score/snapshot</td><td>Yes — defects and mistakes identified</td></tr>
+        <tr><td><strong>Gives Solution?</strong></td><td>Yes — eliminate/outsource NVA</td><td>Yes — realign elements</td><td>No</td><td>No</td></tr>
+        <tr><td><strong>Time Orientation</strong></td><td>Current + future strategy</td><td>Current state diagnosis</td><td>Short-term prediction (1-2 years)</td><td>Medium-term warning signs</td></tr>
+        <tr><td><strong>PM Link</strong></td><td>Identify Key Value Drivers = CSFs</td><td>Aligned 7S → better performance</td><td>Financial performance warning</td><td>Non-financial early warning system</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SA vs JV COMPARISON -->
+  <h3 class="topic-title">Strategic Alliance vs. Joint Venture — Critical Comparison</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Parameter</th><th>Strategic Alliance</th><th>Joint Venture</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Independence</strong></td><td>✅ Each party retains full independence</td><td>❌ New separate entity is created</td></tr>
+        <tr><td><strong>Complexity</strong></td><td>Less complex; less binding agreement</td><td>More complex; legally binding entity</td></tr>
+        <tr><td><strong>Confidentiality Risk</strong></td><td>High — information sharing is difficult</td><td>Moderate — governed by JV agreement</td></tr>
+        <tr><td><strong>Accountability</strong></td><td>Difficult — no separate entity to measure</td><td>Clearer — entity-level P&L possible</td></tr>
+        <tr><td><strong>Cost Sharing</strong></td><td>Yes — shared costs and risks</td><td>Yes — shared costs, risks, and profits</td></tr>
+        <tr><td><strong>India Example</strong></td><td>Air India + Star Alliance codeshare</td><td>Maruti + Suzuki (original JV); Vistara (Tata + SIA)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FLOWCHART: ALTMAN Z-SCORE APPLICATION -->
+  <h3 class="topic-title">Logic Flowchart — Applying Altman Z-Score</h3>
+  <div class="card">
+    <div class="flowchart">
+      <div class="flow-node start">STEP 1: Identify Entity Type<br><small>Listed Mfg? Private? Non-Mfg? Emerging Market?</small></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node process">STEP 2: Select Correct Formula<br><small>Original (1968) / Private (0.717) / Non-Mfg (6.56) / Emerging (3.25+)</small></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node process">STEP 3: Calculate X₁ to X₅<br><small>WC/TA · RE/TA · EBIT/TA · Equity/TL · Sales/TA</small></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node process">STEP 4: Apply Weights & Sum<br><small>Z = w₁X₁ + w₂X₂ + w₃X₃ + w₄X₄ + w₅X₅</small></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node process">STEP 5: Compare Against Zones<br><small>Distress | Grey | Safe — apply correct threshold for entity type</small></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node end">STEP 6: Interpret & Recommend<br><small>State zone → discuss limitations → suggest further analysis</small></div>
+    </div>
+  </div>
+
+  <!-- FLOWCHART: CORPORATE FAILURE PREVENTION -->
+  <h3 class="topic-title">Logic Flowchart — Predicting → Preventing Corporate Failure</h3>
+  <div class="card">
+    <div class="flowchart">
+      <div class="flow-node start">Warning Signs Emerge<br><small>(Declining ratios, poor Z-score, management defects)</small></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node process">Apply Quantitative Models (Z-Score, PAS)<br>+ Qualitative Models (Argenti A-Score)</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node process">Investigate Root Causes<br><small>Seek external expert advice if needed; function-specific diagnosis</small></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node process">Management Accepts the Problem<br><small>Move to solutions — do not apportion blame</small></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node process">Design Corrective Actions<br><small>Strategic change (exit loss-making SBU) OR Operational change (production management)</small></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node end">Implement Controls to Prevent Recurrence<br><small>Effective management systems + early warning mechanisms</small></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ SECTION 5: RETAIN & RECALL ══════════ -->
+<div class="container">
+<div class="section">
+  <p class="section-label">§ 05</p>
+  <h2 class="section-title">The 'Retain & Recall' Section</h2>
+
+  <!-- MNEMONICS -->
+  <h3 class="topic-title">Mnemonics for Multi-Point Lists</h3>
+
+  <!-- 7S -->
+  <div class="mnemonic">
+    <p style="color:rgba(255,255,255,0.5); font-size:12px; margin-bottom:8px; font-family:'JetBrains Mono',monospace; letter-spacing:2px; text-transform:uppercase;">McKinsey 7S</p>
+    <div class="mnemonic-word">3S + 4S</div>
+    <p style="color:rgba(255,255,255,0.6); font-size:13px; margin-bottom:12px;">Hard S → "SSS" | Soft S → "3S + Value"</p>
+    <div class="mnemonic-item"><span class="mnemonic-letter">S</span><span class="mnemonic-desc"><strong>Strategy</strong> — the plan (Hard)</span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">S</span><span class="mnemonic-desc"><strong>Structure</strong> — the form (Hard)</span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">S</span><span class="mnemonic-desc"><strong>Systems</strong> — the processes (Hard)</span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">S</span><span class="mnemonic-desc"><strong>Style</strong> — the culture + leadership (Soft)</span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">S</span><span class="mnemonic-desc"><strong>Staff</strong> — the people (Soft)</span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">S</span><span class="mnemonic-desc"><strong>Skills</strong> — core competencies (Soft)</span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">S</span><span class="mnemonic-desc"><strong>Shared Values</strong> — the centre (Soft)</span></div>
+    <br>
+    <p style="color:rgba(255,255,255,0.5); font-size:12px">Memory Aid: <em>"3 Hard S work on FACTS; 4 Soft S work on PEOPLE"</em></p>
+  </div>
+
+  <!-- COMPLEX STRUCTURES -->
+  <div class="mnemonic" style="margin-top:20px">
+    <p style="color:rgba(255,255,255,0.5); font-size:12px; margin-bottom:8px; font-family:'JetBrains Mono',monospace; letter-spacing:2px; text-transform:uppercase;">Complex Business Structures</p>
+    <div class="mnemonic-word">MJVSFL N</div>
+    <p style="color:rgba(255,255,255,0.6); font-size:13px; margin-bottom:12px;">"<em>My Joints Venture So Far Look Nice</em>"</p>
+    <div class="mnemonic-item"><span class="mnemonic-letter">M</span><span class="mnemonic-desc"><strong>Multinationals</strong></span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">J</span><span class="mnemonic-desc"><strong>Joint Ventures</strong></span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">V</span><span class="mnemonic-desc"><strong>Virtual / Network Organisations</strong></span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">S</span><span class="mnemonic-desc"><strong>Strategic Alliances</strong></span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">F</span><span class="mnemonic-desc"><strong>Franchising</strong></span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">L</span><span class="mnemonic-desc"><strong>Licensing</strong></span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">N</span><span class="mnemonic-desc"><strong>Network Supply Chains</strong> (Complex)</span></div>
+  </div>
+
+  <!-- PRIMARY ACTIVITIES -->
+  <div class="mnemonic" style="margin-top:20px">
+    <p style="color:rgba(255,255,255,0.5); font-size:12px; margin-bottom:8px; font-family:'JetBrains Mono',monospace; letter-spacing:2px; text-transform:uppercase;">Value Chain — Primary Activities</p>
+    <div class="mnemonic-word">I O O M A</div>
+    <p style="color:rgba(255,255,255,0.6); font-size:13px; margin-bottom:12px;">"<em>I Often Order More Ahead</em>"</p>
+    <div class="mnemonic-item"><span class="mnemonic-letter">I</span><span class="mnemonic-desc"><strong>Inbound Logistics</strong></span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">O</span><span class="mnemonic-desc"><strong>Operations</strong></span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">O</span><span class="mnemonic-desc"><strong>Outbound Logistics</strong></span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">M</span><span class="mnemonic-desc"><strong>Marketing & Sales</strong></span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">A</span><span class="mnemonic-desc"><strong>After-Sales Service</strong></span></div>
+  </div>
+
+  <!-- SUPPORT ACTIVITIES -->
+  <div class="mnemonic" style="margin-top:20px">
+    <p style="color:rgba(255,255,255,0.5); font-size:12px; margin-bottom:8px; font-family:'JetBrains Mono',monospace; letter-spacing:2px; text-transform:uppercase;">Value Chain — Support Activities</p>
+    <div class="mnemonic-word">F T H P</div>
+    <p style="color:rgba(255,255,255,0.6); font-size:13px; margin-bottom:12px;">"<em>Firm Technology Helps Procurement</em>"</p>
+    <div class="mnemonic-item"><span class="mnemonic-letter">F</span><span class="mnemonic-desc"><strong>Firm Infrastructure</strong></span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">T</span><span class="mnemonic-desc"><strong>Technology Development</strong></span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">H</span><span class="mnemonic-desc"><strong>Human Resource Management</strong></span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">P</span><span class="mnemonic-desc"><strong>Procurement</strong></span></div>
+  </div>
+
+  <!-- ALTMAN VARIABLES -->
+  <div class="mnemonic" style="margin-top:20px">
+    <p style="color:rgba(255,255,255,0.5); font-size:12px; margin-bottom:8px; font-family:'JetBrains Mono',monospace; letter-spacing:2px; text-transform:uppercase;">Altman Z-Score Variables</p>
+    <div class="mnemonic-word">W R E M S</div>
+    <p style="color:rgba(255,255,255,0.6); font-size:13px; margin-bottom:12px;">"<em>Working Retailers Earn More Sales</em>"</p>
+    <div class="mnemonic-item"><span class="mnemonic-letter">W</span><span class="mnemonic-desc"><strong>Working Capital</strong> / Total Assets (X₁) — weight 1.2</span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">R</span><span class="mnemonic-desc"><strong>Retained Earnings</strong> / Total Assets (X₂) — weight 1.4</span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">E</span><span class="mnemonic-desc"><strong>EBIT</strong> / Total Assets (X₃) — weight 3.3 (highest)</span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">M</span><span class="mnemonic-desc"><strong>Market Value of Equity</strong> / Total Liabilities (X₄) — weight 0.6</span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">S</span><span class="mnemonic-desc"><strong>Sales</strong> / Total Assets (X₅) — weight 1.0</span></div>
+  </div>
+
+  <!-- ARGENTI -->
+  <div class="mnemonic" style="margin-top:20px">
+    <p style="color:rgba(255,255,255,0.5); font-size:12px; margin-bottom:8px; font-family:'JetBrains Mono',monospace; letter-spacing:2px; text-transform:uppercase;">Argenti A-Score — Sequence & Thresholds</p>
+    <div class="mnemonic-word">D → M → S</div>
+    <p style="color:rgba(255,255,255,0.6); font-size:13px; margin-bottom:12px;">"<em>Defects become Mistakes, Mistakes show Symptoms</em>" — 43 : 45 : 12 = 100</p>
+    <div class="mnemonic-item"><span class="mnemonic-letter">D</span><span class="mnemonic-desc"><strong>Defects:</strong> Max 43 | Healthy threshold ≤10 | Management + Accounting defects</span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">M</span><span class="mnemonic-desc"><strong>Mistakes:</strong> Max 45 | Healthy threshold ≤15 | Gearing, Overtrading, Big Project failure</span></div>
+    <div class="mnemonic-item"><span class="mnemonic-letter">S</span><span class="mnemonic-desc"><strong>Symptoms:</strong> Max 12 | ANY score = risk | Creative accounting, Non-financial signs, Poor Z-score</span></div>
+    <br>
+    <p style="color:rgba(255,255,255,0.5); font-size:12px">Overall threshold: <span style="color:#f0a500; font-weight:700">25</span>. Score &gt; 25 = likely to fail.</p>
+  </div>
+
+  <!-- REVISION CHECKLIST -->
+  <h3 class="topic-title" style="margin-top:40px">3-Point Revision Checklist — Verify Your Mastery</h3>
+  <div class="card" style="margin-top:8px">
+    <ul class="checklist">
+      <li>
+        <div class="check-icon"></div>
+        <div>
+          <strong>Checkpoint 1 — Frameworks & Their Purpose:</strong> Can you, without referring to notes, name the PURPOSE of Value Chain, McKinsey 7S, Altman Z-Score, and Argenti A-Score, and state the key output of each? If yes — you understand the conceptual architecture of this chapter.
+        </div>
+      </li>
+      <li>
+        <div class="check-icon"></div>
+        <div>
+          <strong>Checkpoint 2 — Application to Case Facts:</strong> Given a case study describing an organisation, can you: (a) identify which complex structure applies, (b) state two performance measurement challenges specific to that structure, and (c) recommend an appropriate PM tool justified by the organisation's strategy and culture? If yes — you can handle the application-based questions.
+        </div>
+      </li>
+      <li>
+        <div class="check-icon"></div>
+        <div>
+          <strong>Checkpoint 3 — Numerical Accuracy:</strong> Can you correctly calculate the Altman Z-Score for a given entity (identifying the right formula variant), classify the result into the correct zone, AND list two limitations of the model? If yes — you are prepared for the numerical + evaluation style questions in this chapter.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- FINAL QUICK REFERENCE -->
+  <h3 class="topic-title" style="margin-top:40px">Quick Reference — Zone Thresholds at a Glance</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Model / Formula</th><th style="background:#c0392b">🔴 Distress</th><th style="background:#d4a900">🟡 Grey</th><th style="background:#00876a">🟢 Safe</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Z-Score (Listed Mfg)</strong></td><td>&lt; 1.81</td><td>1.81 – 2.99</td><td>&gt; 2.99</td></tr>
+        <tr><td><strong>Z-Score (Private Firms)</strong></td><td>&lt; 1.23</td><td>1.23 – 2.99</td><td>&gt; 2.99</td></tr>
+        <tr><td><strong>Z-Score (Non-Mfg / Emerging)</strong></td><td>&lt; 1.1</td><td>1.1 – 2.6</td><td>&gt; 2.6</td></tr>
+        <tr><td><strong>H-Score (Company Watch)</strong></td><td colspan="2">&lt; 25 → Warning Area</td><td>≥ 25</td></tr>
+        <tr><td><strong>Argenti A-Score</strong></td><td colspan="2">&gt; 25 overall, OR any Group C score</td><td>≤ 25 (with D≤10, M≤15, C=0)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<div class="footer">
+  <p>CA FINAL · STRATEGIC COST & PERFORMANCE MANAGEMENT · CHAPTER 8</p>
+  <p style="margin-top:6px; font-size:10px; opacity:0.6">One-Source Material · Based strictly on ICAI Study Material · For Academic Use</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1: Introduction to Strategic Cost Management — One-Source Material</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Fira+Code:wght@400;500&display=swap');
+
+  /* ── FORCED WHITE BACKGROUND — Light Mode Only ── */
+  :root {
+    color-scheme: light;
+
+    /* Color Palette */
+    --green-950: #0a1f0d;
+    --green-900: #133a18;
+    --green-800: #1b5225;
+    --green-700: #216b2e;
+    --green-600: #2d8c3e;
+    --green-500: #3aab50;
+    --green-400: #5cc470;
+    --green-200: #a8e4b4;
+    --green-100: #d4f1db;
+    --green-50:  #edf8ef;
+
+    --amber-700: #854f0b;
+    --amber-600: #ba7517;
+    --amber-200: #fac775;
+    --amber-50:  #fffbf2;
+
+    --blue-800: #0c447c;
+    --blue-600: #185fa5;
+    --blue-100: #b5d4f4;
+    --blue-50:  #f0f7ff;
+
+    --red-800:  #791f1f;
+    --red-600:  #a32d2d;
+    --red-100:  #f7c1c1;
+    --red-50:   #fff5f5;
+
+    --purple-800: #3c3489;
+    --purple-600: #534ab7;
+    --purple-100: #cecbf6;
+    --purple-50:  #f5f4ff;
+
+    --coral-700: #993c1d;
+    --coral-50:  #fff4f0;
+
+    --gray-900: #111111;
+    --gray-800: #222222;
+    --gray-700: #444444;
+    --gray-600: #555555;
+    --gray-400: #999999;
+    --gray-200: #dddddd;
+    --gray-100: #f0f0f0;
+    --gray-50:  #f9f9f9;
+
+    /* ── UI Surfaces — White Background ── */
+    --bg:           #ffffff;
+    --bg-alt:       #f8f8f6;
+    --bg-card:      #ffffff;
+    --border:       #e0e0da;
+    --border-strong:#c0c0ba;
+
+    /* ── Text — High Contrast on White ── */
+    --text:         #111111;
+    --text-muted:   #444444;
+    --text-faint:   #888888;
+
+    /* ── Accent — Deep Forest Green ── */
+    --accent:       #1b5225;
+    --accent-mid:   #2d8c3e;
+    --accent-light: #edf8ef;
+
+    /* ── Typography ── */
+    --font-display: 'Merriweather', Georgia, serif;
+    --font-body:    'Inter', system-ui, sans-serif;
+    --font-mono:    'Fira Code', 'Courier New', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    line-height: 1.8;
+    color: var(--text);
+    background: #ffffff;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 28px 80px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ── HEADER ── */
+  .doc-header {
+    border-bottom: 3px solid var(--accent);
+    padding: 48px 0 32px;
+    margin-bottom: 40px;
+  }
+  .doc-header .meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-mid);
+    margin-bottom: 12px;
+  }
+  .doc-header h1 {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .doc-header .subtitle {
+    font-size: 17px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .badge {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .badge-green { background: var(--green-50); color: var(--green-800); border: 1px solid var(--green-200); }
+  .badge-amber { background: var(--amber-50); color: var(--amber-700); border: 1px solid var(--amber-200); }
+  .badge-blue  { background: var(--blue-50);  color: var(--blue-800);  border: 1px solid var(--blue-100); }
+  .badge-purple{ background: var(--purple-50);color: var(--purple-800);border: 1px solid var(--purple-100);}
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 24px 28px;
+    margin-bottom: 48px;
+  }
+  .toc h2 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 16px;
+  }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin-bottom: 6px; }
+  .toc a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  .toc a:hover { text-decoration: underline; }
+  .toc .toc-sub { padding-left: 16px; margin-top: 4px; }
+  .toc .toc-sub li { margin-bottom: 3px; }
+  .toc .toc-sub a { color: var(--text-muted); font-size: 13px; }
+
+  /* ── SECTION TYPOGRAPHY ── */
+  h2.section-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 56px 0 8px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .section-number {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent-mid);
+    display: block;
+    margin-bottom: 4px;
+  }
+  h3.sub-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 32px 0 12px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent-mid);
+  }
+  h4.concept-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 20px 0 8px;
+    font-family: var(--font-body);
+  }
+  p { margin-bottom: 14px; }
+
+  /* ── CARDS & BOXES ── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .card-green  { border-left: 4px solid var(--green-600); background: var(--green-50); }
+  .card-amber  { border-left: 4px solid var(--amber-600); background: var(--amber-50); }
+  .card-blue   { border-left: 4px solid var(--blue-600);  background: var(--blue-50); }
+  .card-red    { border-left: 4px solid var(--red-600);   background: var(--red-50); }
+  .card-purple { border-left: 4px solid var(--purple-600);background: var(--purple-50); }
+  .card-gray   { border-left: 4px solid var(--gray-400);  background: var(--gray-50); }
+
+  .card .card-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .card .card-label.green  { color: var(--green-700); }
+  .card .card-label.amber  { color: var(--amber-600); }
+  .card .card-label.blue   { color: var(--blue-600); }
+  .card .card-label.red    { color: var(--red-600); }
+  .card .card-label.purple { color: var(--purple-600); }
+
+  /* definition box */
+  .def-box {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: 0 0 8px 8px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text);
+  }
+  .def-box strong { font-style: normal; color: var(--accent); }
+
+  /* steps */
+  .steps { counter-reset: step-counter; list-style: none; padding: 0; margin: 16px 0; }
+  .steps li {
+    counter-increment: step-counter;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .steps li::before {
+    content: counter(step-counter);
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .steps li .step-content { flex: 1; }
+  .steps li .step-label { font-weight: 600; display: block; }
+
+  /* bullet points styled */
+  ul.styled { list-style: none; padding: 0; margin: 12px 0; }
+  ul.styled li { padding: 6px 0 6px 22px; position: relative; }
+  ul.styled li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent-mid);
+    font-size: 12px;
+    top: 9px;
+  }
+  ul.check li::before { content: '✓'; color: var(--green-600); }
+  ul.cross li::before { content: '✗'; color: var(--red-600); }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 8px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead tr { background: var(--accent); color: #fff; }
+  thead th { padding: 12px 14px; text-align: left; font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.04em; }
+  tbody tr { border-bottom: 1px solid var(--border); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:nth-child(even) { background: var(--bg-alt); }
+  tbody td { padding: 10px 14px; vertical-align: top; }
+  tbody td:first-child { font-weight: 600; color: var(--text); }
+  .tbl-green td:first-child { color: var(--green-700); }
+
+  /* ── MNEMONIC BOX ── */
+  .mnemonic {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .mnemonic-letter {
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--accent);
+  }
+  .mnemonic-word {
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-card);
+  }
+  .mnemonic-word:last-child { border-bottom: none; }
+  .mnemonic-word strong { color: var(--accent); margin-right: 8px; }
+
+  /* ── FLOWCHART (CSS-only) ── */
+  .flow { display: flex; flex-direction: column; align-items: center; gap: 0; margin: 24px 0; }
+  .flow-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; width: 100%; }
+  .flow-box {
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1.5px solid;
+    min-width: 140px;
+    max-width: 200px;
+  }
+  .flow-box.green { background: var(--green-50); color: var(--green-800); border-color: var(--green-400); }
+  .flow-box.blue  { background: var(--blue-50);  color: var(--blue-800);  border-color: var(--blue-100); }
+  .flow-box.amber { background: var(--amber-50); color: var(--amber-700); border-color: var(--amber-200); }
+  .flow-box.purple{ background: var(--purple-50);color: var(--purple-800);border-color: var(--purple-100);}
+  .flow-box.gray  { background: var(--gray-50);  color: var(--gray-800);  border-color: var(--gray-200); }
+  .flow-arrow { font-size: 20px; color: var(--text-faint); margin: 4px 0; text-align: center; line-height: 1; }
+  .flow-arrow-h { font-size: 20px; color: var(--text-faint); display: flex; align-items: center; }
+
+  /* ── EXAM ALERT ── */
+  .exam-alert {
+    background: var(--amber-50);
+    border: 1px solid var(--amber-200);
+    border-left: 4px solid var(--amber-600);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 14px;
+    color: var(--amber-700);
+  }
+  .exam-alert .label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  .mistake-alert {
+    background: var(--red-50);
+    border: 1px solid var(--red-100);
+    border-left: 4px solid var(--red-600);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 14px;
+    color: var(--red-800);
+  }
+  .mistake-alert .label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  .link-alert {
+    background: var(--purple-50);
+    border: 1px solid var(--purple-100);
+    border-left: 4px solid var(--purple-600);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 14px;
+    color: var(--purple-800);
+  }
+
+  /* ── QUOTE ── */
+  blockquote {
+    border-left: 3px solid var(--accent-mid);
+    margin: 20px 0;
+    padding: 12px 20px;
+    background: var(--bg-alt);
+    font-style: italic;
+    color: var(--text-muted);
+    border-radius: 0 6px 6px 0;
+  }
+  blockquote cite { display: block; margin-top: 8px; font-style: normal; font-size: 13px; color: var(--text-faint); }
+
+  /* ── GRID ── */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 16px 0; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 16px 0; }
+
+  /* canvas comparison */
+  .canvas-grid {
+    display: grid;
+    grid-template-columns: 1fr 2px 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+  .canvas-col { padding: 16px; }
+  .canvas-divider { background: var(--border); }
+  .canvas-col h5 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+    margin-bottom: 12px;
+  }
+
+  /* checklist */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist .check-num {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* porter card */
+  .porter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 16px 0; }
+  .porter-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .porter-card .p-head {
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: var(--font-body);
+  }
+  .porter-card .p-body { padding: 10px 14px; font-size: 13px; color: var(--text-muted); }
+  .porter-card.pc-blue .p-head  { background: var(--blue-50);   color: var(--blue-800); }
+  .porter-card.pc-green .p-head { background: var(--green-50);  color: var(--green-800); }
+  .porter-card.pc-amber .p-head { background: var(--amber-50);  color: var(--amber-700); }
+  .porter-card.pc-red .p-head   { background: var(--red-50);    color: var(--red-800); }
+  .porter-card.pc-purple .p-head{ background: var(--purple-50); color: var(--purple-800); }
+
+  /* highlight span */
+  mark {
+    background: var(--green-100);
+    color: var(--green-900);
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-style: normal;
+  }
+
+  /* footer */
+  .doc-footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* pillar diagram */
+  .pillar-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+  }
+  .pillar {
+    width: 180px;
+    text-align: center;
+  }
+  .pillar-cap {
+    background: var(--accent);
+    color: #fff;
+    padding: 8px;
+    border-radius: 6px 6px 0 0;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .pillar-body {
+    background: var(--green-50);
+    border: 1px solid var(--green-200);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    padding: 12px;
+    font-size: 12px;
+    color: var(--green-800);
+  }
+  .pillar-arrow {
+    font-size: 24px;
+    color: var(--accent-mid);
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+  }
+  .pillar-result {
+    width: 180px;
+    background: var(--amber-50);
+    border: 2px solid var(--amber-600);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pillar-result span { font-size: 13px; font-weight: 700; color: var(--amber-700); }
+
+  /* value canvas */
+  .vc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 2px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0;
+    font-size: 13px;
+  }
+  .vc-cell { padding: 14px; border: 1px solid var(--border); }
+  .vc-cell h5 { font-size: 12px; font-family: var(--font-mono); color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .vc-left  { background: var(--green-50); }
+  .vc-right { background: var(--blue-50); }
+  .vc-full  { grid-column: 1 / -1; background: var(--amber-50); border-top: 2px solid var(--amber-600); }
+
+  /* tags */
+  .tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: var(--font-mono);
+    margin: 2px;
+  }
+  .tag-g { background: var(--green-50);  color: var(--green-800);  border: 1px solid var(--green-200); }
+  .tag-a { background: var(--amber-50);  color: var(--amber-700);  border: 1px solid var(--amber-200); }
+  .tag-b { background: var(--blue-50);   color: var(--blue-800);   border: 1px solid var(--blue-100); }
+  .tag-r { background: var(--red-50);    color: var(--red-800);    border: 1px solid var(--red-100); }
+  .tag-p { background: var(--purple-50); color: var(--purple-800); border: 1px solid var(--purple-100); }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header class="doc-header">
+  <span class="meta">CA Final · Strategic Cost &amp; Performance Management · Chapter 1</span>
+  <h1>An Introduction to Strategic Cost Management</h1>
+  <p class="subtitle">One-Source Material — Conceptual Depth + Exam Precision</p>
+  <div class="badge-row">
+    <span class="badge badge-green">Pillar Chapter</span>
+    <span class="badge badge-amber">High Weightage</span>
+    <span class="badge badge-blue">Theory + Application</span>
+    <span class="badge badge-purple">Links to All Chapters</span>
+  </div>
+</header>
+
+<!-- ══════════════ TOC ══════════════ -->
+<nav class="toc">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#s1">The Big Picture — Executive Summary</a></li>
+    <li><a href="#s2">Managing Cost Strategically</a>
+      <ul class="toc-sub">
+        <li><a href="#s2a">Traditional vs. Strategic Cost Management</a></li>
+        <li><a href="#s2b">The Three Pillars of SCM</a></li>
+        <li><a href="#s2c">Value Chain Analysis</a></li>
+        <li><a href="#s2d">Strategic Positioning Analysis</a></li>
+        <li><a href="#s2e">Cost Driver Analysis</a></li>
+      </ul>
+    </li>
+    <li><a href="#s3">Organisational Context</a>
+      <ul class="toc-sub">
+        <li><a href="#s3a">Gaining Competitive Advantage</a></li>
+        <li><a href="#s3b">Osterwalder's Business Model Canvas</a></li>
+        <li><a href="#s3c">Value Proposition Canvas</a></li>
+      </ul>
+    </li>
+    <li><a href="#s4">External Environment Context</a>
+      <ul class="toc-sub">
+        <li><a href="#s4a">Porter's Five Forces</a></li>
+        <li><a href="#s4b">Understanding Customers &amp; Markets</a></li>
+        <li><a href="#s4c">Basis of Competition &amp; Key Success Factors</a></li>
+        <li><a href="#s4d">Core Competencies</a></li>
+      </ul>
+    </li>
+    <li><a href="#s5">Information Technology — Strategic Context</a></li>
+    <li><a href="#s6">Role of Management Accountant as Leader</a></li>
+    <li><a href="#s7">The Examiner's Lens</a></li>
+    <li><a href="#s8">Visual Synthesis — Summary Tables &amp; Flowcharts</a></li>
+    <li><a href="#s9">Retain &amp; Recall — Mnemonics &amp; Checklist</a></li>
+  </ol>
+</nav>
+
+<!-- ══════════════ SECTION 1: BIG PICTURE ══════════════ -->
+<section id="s1">
+  <span class="section-number">Section 01</span>
+  <h2 class="section-title">The Big Picture — Executive Summary</h2>
+
+  <div class="card card-green">
+    <span class="card-label green">Why This Chapter Matters</span>
+    <p>Chapter 1 is the <strong>conceptual spine</strong> of the entire SCPM paper. Every subsequent chapter — whether Activity-Based Costing, Balanced Scorecard, or Transfer Pricing — is an application of ideas seeded here. The examiner uses this chapter as the <em>lens</em> through which all strategic decisions are evaluated.</p>
+    <p style="margin-bottom:0">Mastery here means you can frame any business problem in strategic terms — the foundational skill tested at CA Final level.</p>
+  </div>
+
+  <h3 class="sub-title">The Central Problem This Chapter Solves</h3>
+  <p>Traditional accounting gave us <em>how much things cost</em>. But in a globalised, competitive economy, that is insufficient. The real question is: <strong>are we spending on the right things, in the right way, to win?</strong> Strategic Cost Management (SCM) answers this by marrying cost data with strategy.</p>
+
+  <h3 class="sub-title">Real-World Anchors (Indian Context)</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h4 class="concept-title">Reliance Jio (Cost Leadership)</h4>
+      <p style="font-size:14px; margin-bottom:0">Jio entered the telecom market in 2016 with near-zero call and data prices — a textbook cost leadership strategy. By reconfiguring its value chain (direct to consumer, no legacy CDMA infrastructure), it disrupted Airtel, Vodafone, and Idea within three years. SCM explains precisely how this was possible.</p>
+    </div>
+    <div class="card">
+      <h4 class="concept-title">Tanishq / Titan (Differentiation)</h4>
+      <p style="font-size:14px; margin-bottom:0">Tanishq charges a premium in the gold jewellery market — a commodity — through design innovation, hallmarking assurance, and brand trust. This is differentiation via the value chain (superior marketing, R&amp;D, and service). SCM frameworks underpin this strategy.</p>
+    </div>
+    <div class="card">
+      <h4 class="concept-title">Maruti Suzuki (Value Chain)</h4>
+      <p style="font-size:14px; margin-bottom:0">Maruti's network of 3,800+ service stations is strategically located, creating inbound/outbound logistics value and building customer lock-in through after-sales services. Closing even 10% of these would trigger a Porter-style reaction — exactly what traditional cost management would wrongly recommend.</p>
+    </div>
+    <div class="card">
+      <h4 class="concept-title">Tata Steel Jamshedpur (Inbound Logistics)</h4>
+      <p style="font-size:14px; margin-bottom:0">J.N. Tata's 1908 decision to locate in Jamshedpur (near iron ore, coal, manganese deposits &amp; proximity to Kolkata markets) is a living example of generating competitive advantage through strategic location — directly creating value in both inbound logistics and operations.</p>
+    </div>
+  </div>
+
+  <div class="card card-amber">
+    <span class="card-label amber">The Core Argument of This Chapter in One Sentence</span>
+    <p style="font-size:15px; margin-bottom:0; font-weight:600">"Cost management must be aligned to strategy — not just aimed at reduction — because only strategically managed costs create and sustain competitive advantage."</p>
+    <p style="font-size:13px; margin-top:8px; margin-bottom:0; font-style:italic">— Cooper &amp; Slagmulder (1998): "It is not sufficient to simply reduce costs; instead, costs must be managed strategically."</p>
+  </div>
+</section>
+
+<!-- ══════════════ SECTION 2: MANAGING COST STRATEGICALLY ══════════════ -->
+<section id="s2">
+  <span class="section-number">Section 02</span>
+  <h2 class="section-title">Managing Cost Strategically</h2>
+
+  <section id="s2a">
+    <h3 class="sub-title">Traditional vs. Strategic Cost Management</h3>
+
+    <h4 class="concept-title">The Why: Evolution of Cost Thinking</h4>
+    <p>Cost thinking has evolved linearly, from merely recording costs, to controlling them, to reducing them, and finally to <em>strategically aligning</em> them. Each stage was driven by increasing competitive pressure.</p>
+
+    <div class="flow">
+      <div class="flow-row">
+        <div class="flow-box gray">Cost Ascertainment<br><small style="font-weight:400; font-size:11px">Recording costs</small></div>
+        <div class="flow-arrow-h">→</div>
+        <div class="flow-box blue">Cost Control<br><small style="font-weight:400; font-size:11px">Containment</small></div>
+        <div class="flow-arrow-h">→</div>
+        <div class="flow-box amber">Traditional CM<br><small style="font-weight:400; font-size:11px">Reduction</small></div>
+        <div class="flow-arrow-h">→</div>
+        <div class="flow-box green">Strategic CM<br><small style="font-weight:400; font-size:11px">Alignment to strategy</small></div>
+      </div>
+    </div>
+
+    <h4 class="concept-title">Key Definitions</h4>
+    <div class="def-box">
+      <strong>Strategic Cost Management (SCM):</strong> The implementation of cost management techniques to sustain and improve the organisation's strategic position <em>as well as</em> reduce costs. It deals with collection, processing, analysis, and dissemination of cost data to feed the decision-making system in support of organisational strategy as a whole.
+    </div>
+    <div class="def-box">
+      <strong>Alternate Definition:</strong> The application of cost management techniques so that they <mark>simultaneously</mark> improve the strategic position of a firm and reduce costs.
+    </div>
+
+    <h4 class="concept-title">Limitations of Traditional Cost Management</h4>
+    <div class="card card-red">
+      <span class="card-label red">Why Traditional CM Fails</span>
+      <ul class="styled cross">
+        <li><strong>Ignores competition, market growth, and customer requirements</strong> — focuses only on quantitative internal factors.</li>
+        <li><strong>Excessive focus on cost reduction</strong> — ignores strategic importance of individual cases; broad cuts lead to inferior quality.</li>
+        <li><strong>Ignores marketing and economic dynamics</strong> — relies on static, historical financial accounting data.</li>
+        <li><strong>Limited review scope</strong> — only investigates quantitative variances; ignores qualitative deviations.</li>
+        <li><strong>Reactive, not proactive</strong> — corrective function rather than preventive.</li>
+        <li><strong>Short-term outlook</strong> — focus on month/quarter/year, not perpetual competitive position.</li>
+      </ul>
+    </div>
+
+    <div class="exam-alert">
+      <span class="label">Exam Trigger — Illustrative Test</span>
+      A question describing a company cutting preventive maintenance costs (leading to breakdown) or closing dealerships to save costs (leading to revenue loss) is testing your knowledge of TCM limitations. <strong>Apply the limitations framework, not a generic cost-benefit answer.</strong>
+    </div>
+
+    <h4 class="concept-title">Comparison Table: Traditional vs. Strategic Cost Management</h4>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Basis of Difference</th><th>Traditional Cost Management</th><th>Strategic Cost Management</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Allocation of Cost</td><td>Volume-based (per unit produced)</td><td>Activity-based (relevant cost driver)</td></tr>
+          <tr><td>Nature</td><td>Reactive (risk-averse)</td><td>Proactive and dynamic</td></tr>
+          <tr><td>Objective</td><td>Cost control and reduction</td><td>Product differentiation + cost containment</td></tr>
+          <tr><td>Risk Appetite</td><td>Risk-averse</td><td>Risk-taking; adapts to changing environment</td></tr>
+          <tr><td>Scope</td><td>Internal business environment only</td><td>Both internal and external</td></tr>
+          <tr><td>Term Focus</td><td>Short-term (month/quarter/year)</td><td>Long-span or perpetual</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section id="s2b">
+    <h3 class="sub-title">The Three Pillars of SCM</h3>
+    <div class="pillar-wrap">
+      <div class="pillar">
+        <div class="pillar-cap">Value Chain Analysis</div>
+        <div class="pillar-body">Understand where value is created/destroyed across the activity sequence</div>
+      </div>
+      <div class="pillar-arrow">+</div>
+      <div class="pillar">
+        <div class="pillar-cap">Strategic Positioning</div>
+        <div class="pillar-body">Analyse the firm's position relative to competitors in its industry segment</div>
+      </div>
+      <div class="pillar-arrow">+</div>
+      <div class="pillar">
+        <div class="pillar-cap">Cost Driver Analysis</div>
+        <div class="pillar-body">Identify the root causes of cost behaviour across activities</div>
+      </div>
+      <div class="pillar-arrow">→</div>
+      <div class="pillar-result"><span>Strategic Cost Management</span></div>
+    </div>
+
+    <div class="card card-green">
+      <span class="card-label green">The Logical Link Between the Three Pillars</span>
+      <p style="margin-bottom:0">Understanding the <strong>value chain</strong> helps define the optimal <strong>strategic position</strong>. Together, both pillars help identify the relevant <strong>cost drivers</strong>. This is the sequence — each pillar informs the next.</p>
+    </div>
+
+    <p>SCM is used at four stages of strategic management: <strong>strategy formulation → communicating the strategy → implementing the strategy → controlling</strong>.</p>
+  </section>
+
+  <!-- VALUE CHAIN -->
+  <section id="s2c">
+    <h3 class="sub-title">Value Chain Analysis</h3>
+
+    <div class="def-box">
+      <strong>Value Chain (Michael E. Porter, 1985):</strong> The sequential chain of activities that leads to the delivery of the final product to the customer; it depicts how <em>value (utility) accumulates</em> for the customer. <strong>Margin</strong> = value customer is willing to pay minus cost incurred by the firm.
+    </div>
+
+    <h4 class="concept-title">Primary Activities (Value Creation — Direct)</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Activity</th><th>What It Covers</th><th>Indian Example</th></tr></thead>
+        <tbody>
+          <tr><td>Inbound Logistics</td><td>Receiving, storing, handling raw material inputs. <em>Does NOT include procurement.</em> Deeply impacted by business location.</td><td>Indian sugar mills in UP (46%+ sugarcane production) minimize inbound logistics cost by locating near raw material.</td></tr>
+          <tr><td>Operations</td><td>Transformation of raw materials into finished goods/services. Includes outsourcing non-core activities.</td><td>Apple designs iPhone but manufactures via Foxconn in China — operations outsourced to low-cost locations.</td></tr>
+          <tr><td>Outbound Logistics</td><td>Storing, distributing, and delivering finished goods. Answers: where, how, when to deliver.</td><td>Amazon/Flipkart — contactless delivery, flexible time slots, shipping to address ≠ billing address.</td></tr>
+          <tr><td>Marketing &amp; Sales</td><td>Market research, 4Ps/7Ps of marketing mix. Booms &amp; Bitner added People, Process, Physical Evidence to McCarthy's 4Ps.</td><td>McDonald's entering India — aloo tikki instead of beef patty, low prices, intensive promotions, seating arrangements.</td></tr>
+          <tr><td>After-Sales Service</td><td>Installation, training, repair. Higher importance for durable goods vs. FMCG. Service costs form part of total ownership cost.</td><td>JD Power 2022 CSI Study: Indian vehicle owners place high importance on proactive service advisor interaction.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="concept-title">Support Activities (Secondary — Horizontal)</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Activity</th><th>What It Covers</th></tr></thead>
+        <tbody>
+          <tr><td>Firm Infrastructure</td><td>Legal, general management, admin, accounting, finance, public relations, quality assurance — the "how is the firm organised" question.</td></tr>
+          <tr><td>Technology Development</td><td>R&amp;D, IT management, cybersecurity — how the firm builds and maintains its use of technology.</td></tr>
+          <tr><td>Human Resource Management</td><td>Hiring, training, building organisational culture, employee relations — how people contribute to competitive advantage.</td></tr>
+          <tr><td>Procurement</td><td>Finding vendors, negotiating prices, maintaining vendor relationships — purchasing, but not limited to materials.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card card-blue">
+      <span class="card-label blue">Key Principle</span>
+      <p style="margin-bottom:0">Improving the performance of <strong>one support activity can benefit at least one primary activity</strong>. E.g., better HR management → more skilled operations staff → improved operations quality.</p>
+    </div>
+
+    <h4 class="concept-title">Value Shop Model (for Service Firms)</h4>
+    <div class="card">
+      <p><strong>Conceptualised:</strong> James D. Thompson (1967) | <strong>Named and defined:</strong> Stabell &amp; Fjeldstad (1998)</p>
+      <p>Alternate to value chain for professional services. <strong>Focused on problem resolution, not value addition.</strong></p>
+      <p><strong>Primary Activities:</strong> Problem Finding &amp; Acquisition → Problem Solving → Choice → Execution → Control &amp; Evaluation (cyclic, no fixed sequence).</p>
+      <p style="margin-bottom:0"><strong>Examples:</strong> BCG, Deloitte, McKinsey, BFSI sector, telecom services, SaaS subscriptions.</p>
+    </div>
+
+    <h4 class="concept-title">How to Conduct Value Chain Analysis — Three Steps</h4>
+    <ol class="steps">
+      <li>
+        <div class="step-content">
+          <span class="step-label">Identify Value Chain Activities</span>
+          Understand all primary and secondary activities. For multiple products/services, repeat for each.
+        </div>
+      </li>
+      <li>
+        <div class="step-content">
+          <span class="step-label">Determine the Cost and Value of Activities</span>
+          Ask: How does each activity increase end-user satisfaction? How does it create value for the firm? What are associated costs?
+        </div>
+      </li>
+      <li>
+        <div class="step-content">
+          <span class="step-label">Identify Opportunities for Competitive Advantage</span>
+          Evaluate through three lenses:
+          <ul class="styled" style="margin-top:8px">
+            <li><strong>Internal Cost Analysis</strong> — identify value-creating processes; find cost driver for each; evaluate relative cost advantage opportunities.</li>
+            <li><strong>Internal Differentiation Analysis</strong> — identify customer's value-creating process; evaluate differentiation strategies; determine best sustainable differentiation.</li>
+            <li><strong>Vertical Linkage Analysis</strong> — extend value chain across suppliers and customers (upstream and downstream).</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+
+    <h4 class="concept-title">Strategic Framework for Value Chain Analysis — Three Essential Analyses</h4>
+    <div class="grid-3">
+      <div class="card card-green">
+        <span class="card-label green">Industry Structure Analysis</span>
+        <p style="font-size:14px; margin-bottom:0">To determine <strong>industry profitability and basis of competition</strong> (Porter's Five Forces)</p>
+      </div>
+      <div class="card card-blue">
+        <span class="card-label blue">Core Competencies Analysis</span>
+        <p style="font-size:14px; margin-bottom:0">To determine whether the organisation possesses the desired <strong>key success factors</strong></p>
+      </div>
+      <div class="card card-amber">
+        <span class="card-label amber">Segmentation Analysis</span>
+        <p style="font-size:14px; margin-bottom:0">To <strong>understand customers and markets</strong> and the segments in which to operate</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRATEGIC POSITIONING -->
+  <section id="s2d">
+    <h3 class="sub-title">Strategic Positioning Analysis</h3>
+
+    <div class="def-box">
+      <strong>Strategic Position:</strong> Concerned with the impact of the <em>external environment, internal resources and competences</em>, and the <em>expectations and influence of stakeholders</em> on strategy. (Johnson, Scholes &amp; Whittington, 2008)
+    </div>
+    <div class="def-box">
+      <strong>Strategic Positioning Analysis:</strong> The analysis of the company's <em>relative position</em> within its strategic industry segment for the purpose of establishing performance targets (while attaining competitive advantage), determining the means of attaining them, measuring performance, and evaluating it.
+    </div>
+
+    <p>Strategic positioning should translate into <strong>either</strong>: a <mark>premium price (Differentiation)</mark> <strong>or</strong> a <mark>lower cost (Cost Leadership)</mark>.</p>
+
+    <h4 class="concept-title">Four Elements Studied in Strategic Positioning Analysis</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Element</th><th>Analytical Focus</th><th>Output</th></tr></thead>
+        <tbody>
+          <tr><td>I. Culture, Beliefs &amp; Assumptions</td><td>Mission, values, norms, behaviour patterns of the organisation</td><td><strong>Vision &amp; Values</strong></td></tr>
+          <tr><td>II. Stakeholder Influences &amp; Expectations</td><td>Mendelow's Matrix — Power vs. Interest of stakeholder groups</td><td><strong>Mission &amp; Objectives</strong></td></tr>
+          <tr><td>III. Task Environment — Resources &amp; Core Competences</td><td>Microenvironment; VRIO, Porter's Value Chain, McKinsey 7S</td><td><strong>Strengths &amp; Weaknesses</strong></td></tr>
+          <tr><td>IV. Macro Environment</td><td>PESTEL/STEEPLE, Porter's Five Forces, Porter's Diamond</td><td><strong>Opportunities &amp; Threats</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card card-purple">
+      <span class="card-label purple">Mendelow's Matrix — Stakeholder Prioritisation</span>
+      <div class="table-wrap" style="margin-top:8px">
+        <table>
+          <thead><tr><th>Power \ Interest</th><th>Low Interest</th><th>High Interest</th></tr></thead>
+          <tbody>
+            <tr><td>High Power</td><td>Keep Satisfied (Potentially Influential)</td><td><mark>Manage Closely (Key Players)</mark></td></tr>
+            <tr><td>Low Power</td><td>Monitor / Minimum Effort</td><td>Keep Informed (Affected)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card card-gray">
+      <span class="card-label">Key Principle from Denison Survey</span>
+      <p style="font-size:14px; margin-bottom:0">Strong organisational culture measurably outperforms weak culture: <strong>21% ROE (high culture) vs. 6% ROE (low culture)</strong> — underscoring the strategic importance of Culture in Element I above.</p>
+    </div>
+  </section>
+
+  <!-- COST DRIVERS -->
+  <section id="s2e">
+    <h3 class="sub-title">Cost Driver Analysis</h3>
+
+    <div class="def-box">
+      <strong>Cost Driver:</strong> The unit of an activity that causes costs to be incurred. It is the <em>trigger of change in cost</em> — more frequency/runs of the cost driver leads to more cost.
+    </div>
+    <div class="def-box">
+      <strong>Cost Driver Analysis:</strong> The examination, quantification, and explanation of the <em>monetary effects</em> of cost drivers associated with an activity.
+    </div>
+
+    <h4 class="concept-title">Classification of Cost Drivers</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Level</th><th>Type</th><th>Key Characteristics</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td>Resource Drivers</td><td>Based on resource consumed</td><td>Contribution of specific quantum of resources that cause cost</td><td>Machine hours, kWh of electricity</td></tr>
+          <tr><td>Organisational Activities — Structural</td><td>Strategic choices about economic structure</td><td>Scale, scope, experience, technology, complexity. <em>Not necessary that more is better.</em></td><td>Number of plants, product-line complexity</td></tr>
+          <tr><td>Organisational Activities — Executional</td><td>Execution of business activities</td><td>Workforce involvement, TQM, capacity utilisation, plant layout efficiency. <em>Higher is better.</em></td><td>Degree of employee involvement, quality management approach</td></tr>
+          <tr><td>Operational Drivers — Unit Level</td><td>Per unit produced</td><td>Occur every time a unit is produced</td><td>Machine hours/unit, labour hours/unit</td></tr>
+          <tr><td>Operational Drivers — Batch Level</td><td>Per batch</td><td>Occur each time a batch is run</td><td>Setup hours, number of inspections</td></tr>
+          <tr><td>Operational Drivers — Product Level</td><td>Per product line</td><td>Sustain each product line regardless of volume</td><td>Design changes, product testing</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="exam-alert">
+      <span class="label">Exam Distinction — Critical Point</span>
+      Traditional costing uses <strong>only volume-based drivers</strong> for overhead allocation. SCM uses <strong>multiple drivers</strong> — structural, executional, and operational — making cost allocation far more accurate and strategically meaningful. This distinction is frequently tested.
+    </div>
+  </section>
+</section>
+
+<!-- ══════════════ SECTION 3: ORGANISATIONAL CONTEXT ══════════════ -->
+<section id="s3">
+  <span class="section-number">Section 03</span>
+  <h2 class="section-title">Organisational Context</h2>
+
+  <section id="s3a">
+    <h3 class="sub-title">Gaining Competitive Advantage</h3>
+
+    <div class="def-box">
+      <strong>Competitive Advantage:</strong> The ability of an organisation to outperform its competitors and make more profits than competitors from an equivalent set of activities through <em>superior performance</em>.
+    </div>
+
+    <h4 class="concept-title">The Two Generic Strategies (Porter)</h4>
+    <div class="grid-2">
+      <div class="card card-green">
+        <span class="card-label green">1. Differentiation</span>
+        <p><strong>The Why:</strong> To command a premium price, deliver <em>distinctive value</em> to customers.</p>
+        <p><strong>Sources:</strong> Quality (design/performance), innovation, customer relations, wide product range, after-sales service.</p>
+        <p><strong>Benefits:</strong> Earn huge margin at top price <em>OR</em> build market share at below-premium pricing.</p>
+        <p><strong>Cost Management Emphasis:</strong> Marketing cost analysis is <mark>critical to success</mark>. Standard costs: not very important. Budget adherence: moderate to low.</p>
+        <p style="margin-bottom:0"><strong>Indian Example:</strong> Apple iPhone in India; Tanishq jewellery; Apollo Hospitals.</p>
+      </div>
+      <div class="card card-blue">
+        <span class="card-label blue">2. Cost Leadership</span>
+        <p><strong>The Why:</strong> To compete on cost, become the <em>lowest cost producer</em> while maintaining acceptable quality.</p>
+        <p><strong>Sources:</strong> Cost-effective inputs, process re-engineering, low-cost distribution, superior operations management, learning curve, economies of scale.</p>
+        <p><strong>Benefits:</strong> Earn highest unit profits <em>OR</em> capture market share through lower pricing than rivals.</p>
+        <p><strong>Cost Management Emphasis:</strong> Standard costs: <mark>very important</mark>. Flexible budgeting: high to very high. Competitor cost analysis: high.</p>
+        <p style="margin-bottom:0"><strong>Indian Example:</strong> Reliance Jio, Indigo Airlines, Patanjali.</p>
+      </div>
+    </div>
+
+    <blockquote>
+      Companies that try to be all things to all customers can wind up getting stuck in the middle — a strategic mistake Michael Porter calls <strong>"the kiss of death."</strong>
+      <cite>— Michael E. Porter</cite>
+    </blockquote>
+
+    <h4 class="concept-title">Strategic Emphasis Comparison</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Aspect</th><th>Product Differentiation</th><th>Cost Leadership</th></tr></thead>
+        <tbody>
+          <tr><td>Role of standard costs in performance assessment</td><td>Not very important</td><td><mark>Very important</mark></td></tr>
+          <tr><td>Flexible budgeting for manufacturing cost control</td><td>Moderate to low</td><td><mark>High to very high</mark></td></tr>
+          <tr><td>Perceived importance of meeting budgets</td><td>Moderate to low</td><td><mark>High to very high</mark></td></tr>
+          <tr><td>Importance of marketing cost analysis</td><td><mark>Critical to success</mark></td><td>Relatively less important</td></tr>
+          <tr><td>Product cost as input to pricing decisions</td><td>Low</td><td><mark>High</mark></td></tr>
+          <tr><td>Competitor cost analysis importance</td><td>Low</td><td><mark>High</mark></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- BUSINESS MODEL CANVAS -->
+  <section id="s3b">
+    <h3 class="sub-title">Osterwalder's Business Model Canvas</h3>
+
+    <div class="def-box">
+      <strong>Business Model:</strong> A way of representing and communicating how an organisation creates values for itself while delivering products or services to customers. It explains the <em>economic logic</em> behind a business.
+    </div>
+
+    <p><strong>Evolution:</strong> Margretta (Making + Selling) → Johnson, Christensen &amp; Kaggerman 2008 (+ Value Proposition, Profit Formula, Key Resources &amp; Processes) → <strong>Osterwalder May 2013 (9-Element Canvas)</strong></p>
+
+    <h4 class="concept-title">The Nine Elements</h4>
+    <div class="vc-grid">
+      <div class="vc-cell vc-left">
+        <h5>Cost Side (Left)</h5>
+        <p><strong>8. Key Partners</strong> — Suppliers and channel partners who make the business model work. Define strategic alliances needed.</p>
+        <p><strong>6. Key Activities</strong> — Most important things to do (production, trading, or problem-solving). Become <mark>basis for cost drivers of supporting activities.</mark></p>
+        <p><strong>7. Key Resources</strong> — Most important assets (man, material, machine, method, money). Often the <em>limiting factor</em> in planning.</p>
+      </div>
+      <div class="vc-cell vc-right">
+        <h5>Revenue Side (Right)</h5>
+        <p><strong>1. Customer Segments</strong> — Who buys and why? Basis for all strategic targeting.</p>
+        <p><strong>4. Customer Relationships</strong> — How to get, keep, and grow customers. Push vs. pull communication; CRM.</p>
+        <p><strong>3. Channels</strong> — How products/services reach customers (physical or digital: web, mobile, cloud).</p>
+        <p><strong>5. Revenue Streams</strong> — How money is made: direct sale, freemium, subscription, license, transaction-based.</p>
+      </div>
+      <div class="vc-cell vc-full">
+        <h5>Bridge Element</h5>
+        <p style="text-align:center; font-size:15px; margin-bottom:0"><strong>2. Value Proposition</strong> — Products/services offered to target customer segment to solve their problems or satisfy their needs. The link between cost and revenue sides.</p>
+      </div>
+    </div>
+    <div class="vc-grid" style="grid-template-columns:1fr 1fr; grid-template-rows:auto;">
+      <div class="vc-cell" style="background:var(--green-50)">
+        <h5>9. Cost Structure</h5>
+        <p style="margin-bottom:0; font-size:13px">Expenses to operate the business, host partners, and own resources. <strong>Management accountant's active role: determining cost structure and evaluating scope &amp; scale of economics.</strong></p>
+      </div>
+      <div class="vc-cell" style="background:var(--blue-50)">
+        <h5>5. Revenue Streams (detail)</h5>
+        <p style="margin-bottom:0; font-size:13px">Strategy to capture value: direct sale, post-paid (use &amp; pay), freemium (online platforms), license, subscription (e-newspapers). Revenue models discussed in upcoming chapters.</p>
+      </div>
+    </div>
+
+    <div class="exam-alert">
+      <span class="label">Exam Application — Key Insight</span>
+      <strong>Value Proposition</strong> is the 9th/bridge element — it connects the cost side and revenue side. Business model canvas helps <em>map, discuss, design, and develop</em> robust business models. Examiners may give a business scenario and ask you to identify the elements or draw the canvas.
+    </div>
+  </section>
+
+  <!-- VALUE PROPOSITION CANVAS -->
+  <section id="s3c">
+    <h3 class="sub-title">Value Proposition Canvas</h3>
+
+    <div class="def-box">
+      <strong>Value Proposition Canvas (Osterwalder et al., 2014):</strong> A tool that helps the organisation <em>design, test, build, and manage</em> great customer value propositions. It is a "plugin" for the Business Model Canvas, zooming into the Customer Segment and Value Proposition elements.
+    </div>
+
+    <div class="canvas-grid">
+      <div class="canvas-col" style="background:var(--green-50)">
+        <h5 style="color:var(--green-800)">Value Map (Business side)</h5>
+        <p><strong>Products &amp; Services</strong> — the bundle offered to help customers get a functional/social/emotional job done and address their pains and gains.</p>
+        <p><strong>Pain Relievers</strong> — how products/services alleviate specific customer pains (before, during, and after the job). Eliminates or reduces pains.</p>
+        <p><strong>Gain Creators</strong> — how products/services create customer gains. Creates benefits and positive outcomes.</p>
+      </div>
+      <div class="canvas-divider"></div>
+      <div class="canvas-col" style="background:var(--blue-50)">
+        <h5 style="color:var(--blue-800)">Customer Profile (Market side)</h5>
+        <p><strong>Customer Jobs</strong> — important issues customers try to solve/resolve. Can be functional (task), social (status), or emotional/personal. Can be crucial or trivial.</p>
+        <p><strong>Pains</strong> — anything that annoys customer before/during/after a job: unwanted cost, negative emotion, situation, or risk. Range from severe to mild.</p>
+        <p><strong>Gains</strong> — outcomes/benefits customer requires, expects, or desires (including unexpected "delight" benefits). Range from essential to nice-to-have.</p>
+      </div>
+    </div>
+
+    <div class="card card-amber">
+      <span class="card-label amber">The Two Critical Fits</span>
+      <p><strong>Problem-Solution Fit:</strong> Features of the value proposition map perfectly match characteristics of the customer segment profile.</p>
+      <p style="margin-bottom:0"><strong>Product-Market Fit:</strong> When the market <em>validates</em> this match and the value proposition gets traction with real customers.</p>
+    </div>
+
+    <h4 class="concept-title">Elements Contributing to Customer Value Creation (Pain Reliever / Gain Creator)</h4>
+    <div style="margin: 12px 0">
+      <span class="tag tag-g">Newness</span>
+      <span class="tag tag-g">Performance</span>
+      <span class="tag tag-g">Customization</span>
+      <span class="tag tag-g">Design</span>
+      <span class="tag tag-g">Brand/Status</span>
+      <span class="tag tag-g">Price</span>
+      <span class="tag tag-g">Cost Reduction</span>
+      <span class="tag tag-g">Risk Reduction</span>
+      <span class="tag tag-g">Accessibility</span>
+      <span class="tag tag-g">Convenience/Usability</span>
+    </div>
+
+    <div class="mistake-alert">
+      <span class="label">Common Student Error</span>
+      Students confuse <strong>Pain Relievers</strong> (business-controlled) with <strong>Pains</strong> (customer-experienced), and similarly <strong>Gain Creators</strong> with <strong>Gains</strong>. Business designs pain relievers and gain creators; it does NOT control which pains and gains the customer has. No value proposition addresses ALL of a customer's jobs, pains, and gains — only those that matter most.
+    </div>
+  </section>
+</section>
+
+<!-- ══════════════ SECTION 4: EXTERNAL ENVIRONMENT ══════════════ -->
+<section id="s4">
+  <span class="section-number">Section 04</span>
+  <h2 class="section-title">External Environment Context</h2>
+
+  <p>External environment = factors <em>beyond the control</em> of the organisation but having influence on it, its performance, and strategic positions. Divided into two subsets:</p>
+  <div class="grid-2">
+    <div class="card card-blue">
+      <span class="card-label blue">Remote Environment</span>
+      <p style="margin-bottom:0">Factors originating beyond and irrespective of any single firm's operating situation. Presents opportunities, threats, and constraints. Analysed via <strong>STEEPLE</strong> (Social, Technological, Economic, Environmental, Political, Legal, Ethical). Evolution: PEST → PESTEL → STEEPLE.</p>
+    </div>
+    <div class="card card-green">
+      <span class="card-label green">Industry Operating Environment</span>
+      <p style="margin-bottom:0">Includes competitive environment. Analyses factors within the particular industry that affect industry profitability and competitive position. Analysed via <strong>Porter's Five Forces</strong>.</p>
+    </div>
+  </div>
+
+  <section id="s4a">
+    <h3 class="sub-title">Porter's Five Forces — Industry Profitability</h3>
+
+    <div class="def-box">
+      <strong>Porter's Five Forces Model (1980):</strong> Used to assess the <em>intensity of industry competition</em>. Higher intensity → lower potential profitability, and vice versa. A dynamic analytical tool — forces constantly change.
+    </div>
+
+    <div class="porter-grid">
+      <div class="porter-card pc-blue">
+        <div class="p-head">1. Bargaining Power of Buyers</div>
+        <div class="p-body">
+          <p><strong>Effect:</strong> High power → low prices or high costs → low margin.</p>
+          <p><strong>High when:</strong> Buyers purchase large volumes; products undifferentiated; buyers have full information; low switching costs; few buyers vs. many small suppliers.</p>
+          <p style="margin-bottom:0"><strong>Indian Example:</strong> B2B buyers of commodity steel from SAIL have high power due to multiple alternatives and large order volumes.</p>
+        </div>
+      </div>
+      <div class="porter-card pc-amber">
+        <div class="p-head">2. Bargaining Power of Suppliers</div>
+        <div class="p-body">
+          <p><strong>Effect:</strong> High power → high input costs → lower margins.</p>
+          <p><strong>High when:</strong> Few dominant suppliers; no substitute inputs; differentiated supplier products; supplier not dependent on this industry; significant switching costs.</p>
+          <p style="margin-bottom:0"><strong>Indian Example:</strong> OPEC's pricing power over aviation fuel gives it high bargaining power over IndiGo, Air India, etc.</p>
+        </div>
+      </div>
+      <div class="porter-card pc-purple">
+        <div class="p-head">3. Threat of Substitutes</div>
+        <div class="p-body">
+          <p><strong>Effect:</strong> High threat → revenue loss or higher customer retention cost.</p>
+          <p><strong>High when:</strong> Substitute is a perfect alternative and cheaper; low switching cost; applies both between AND within industries.</p>
+          <p style="margin-bottom:0"><strong>Indian Example:</strong> UPI payments substituting physical banking; e-commerce substituting traditional retail; OTT platforms substituting cinema.</p>
+        </div>
+      </div>
+      <div class="porter-card pc-red">
+        <div class="p-head">4. Threat of New Entrants</div>
+        <div class="p-body">
+          <p><strong>Effect:</strong> New entrants bring capacity → intensify competition → reduce market share.</p>
+          <p><strong>Barriers to entry:</strong> Economies of scale, product differentiation, capital requirements, switching costs, distribution channel access, government policy.</p>
+          <p style="margin-bottom:0"><strong>Indian Example:</strong> Low barriers in food delivery (Zomato/Swiggy era) → attracted multiple entrants → intense price competition.</p>
+        </div>
+      </div>
+      <div class="porter-card pc-green">
+        <div class="p-head">5. Rivalry Among Existing Firms</div>
+        <div class="p-body">
+          <p><strong>Effect:</strong> Intense rivalry → profit erosion; mutual dependence creates action-reaction cycles.</p>
+          <p><strong>High when:</strong> Many firms, excess capacity, homogeneous products, high fixed costs, high exit barriers. Most intense in mature, slow-growing industries.</p>
+          <p style="margin-bottom:0"><strong>Indian Example:</strong> Indian aviation (IndiGo 56.7% market share Oct 2022) — entry of LCCs, high fixed costs, near-zero switching cost for passengers → intense rivalry.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="concept-title">Barriers &amp; Profitability Matrix</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Entry Barriers \ Exit Barriers</th><th>Low Exit Barriers</th><th>High Exit Barriers</th></tr></thead>
+        <tbody>
+          <tr><td>Low Entry Barriers</td><td>Low, Stable Returns</td><td>Low, Risky Returns</td></tr>
+          <tr><td>High Entry Barriers</td><td><mark>High, Stable Returns (Best)</mark></td><td>High, Risky Returns</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CUSTOMERS AND MARKETS -->
+  <section id="s4b">
+    <h3 class="sub-title">Understanding Customers and Markets — Segmentation</h3>
+
+    <h4 class="concept-title">Key Definitions</h4>
+    <div class="def-box"><strong>Market:</strong> Sellers + buyers (actual and potential). Can be physical (brick &amp; mortar) or virtual (e-platform).</div>
+    <div class="def-box"><strong>Market Segment:</strong> A category of customers with similar likes and dislikes in an otherwise homogeneous market.</div>
+    <div class="def-box"><strong>Market Segmentation:</strong> The process of dividing a broad target customer base into smaller, more defined sub-groups based on shared characteristics.</div>
+
+    <h4 class="concept-title">Criteria for a Valid Segment (5 Tests)</h4>
+    <ol class="steps">
+      <li><div class="step-content"><span class="step-label">Homogeneous Internally</span>Members share similar characteristics (demographic, behavioural, etc.).</div></li>
+      <li><div class="step-content"><span class="step-label">Heterogeneous Externally</span>Each segment must be different from others.</div></li>
+      <li><div class="step-content"><span class="step-label">Clearly Identifiable</span>Firm must be able to distinguish members from non-members consistently.</div></li>
+      <li><div class="step-content"><span class="step-label">Reasonable Size (if not substantial)</span>At least of sufficient size for profitable marketing efforts. Any size is fine if it can be operated profitably (e.g., limited-edition luxury products).</div></li>
+      <li><div class="step-content"><span class="step-label">Responsive</span>Must respond/react to marketing offerings.</div></li>
+    </ol>
+
+    <h4 class="concept-title">Bases of Segmentation</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Type</th><th>Key Variables</th><th>Indian Example</th></tr></thead>
+        <tbody>
+          <tr><td>Product Segmentation</td><td>Product type, features, assemblies</td><td>Cars: Compact/Sedan/SUV/EV segments</td></tr>
+          <tr><td>Demographic</td><td>Age, gender, family situation, education, ethnicity</td><td>Hair salons — unisex vs. ladies only; children's clothing lines</td></tr>
+          <tr><td>Psychographic</td><td>Personality, values, attitudes, lifestyle, income group</td><td>Airlines: Economy/Business/First Class; builders: LIG/MIG/HIG flats</td></tr>
+          <tr><td>Behavioural</td><td>Purchasing habits, spending habits, brand interactions, status</td><td>Flipkart Plus membership; club gold/platinum tiers</td></tr>
+          <tr><td>Geographic</td><td>ZIP code, city, country, climate, urban/rural</td><td>Woollen clothing marketed heavily in North India winters; coastal vs. inland product mixes</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- BASIS OF COMPETITION AND CSFs -->
+  <section id="s4c">
+    <h3 class="sub-title">Basis of Competition &amp; Key Success Factors</h3>
+
+    <div class="def-box">
+      <strong>Basis of Competition:</strong> The reason why customers of a particular business choose it over its competitor. It can be a product, feature, function, style, availability, or a host of other things.
+    </div>
+
+    <h4 class="concept-title">Questions to Decode the Basis of Competition</h4>
+    <ul class="styled">
+      <li>What drives <strong>demand</strong> for products/services of the industry?</li>
+      <li>How does the customer make a <strong>choice</strong> (price, feature, quality)?</li>
+      <li>How is <strong>price</strong> determined in the industry?</li>
+      <li>What are the main <strong>drivers of cost</strong> in the industry?</li>
+      <li>What are the current and <strong>potential risks</strong>?</li>
+    </ul>
+
+    <div class="def-box">
+      <strong>Key Success Factors (CSFs / KSFs):</strong> Factors in every industry that are critical to the success of any business organisation in generating and sustaining a competitive advantage. They articulate what the company must do, and do well, to achieve its strategic plan goals.
+    </div>
+
+    <div class="card card-amber">
+      <span class="card-label amber">CSFs → KPIs Linkage</span>
+      <p style="margin-bottom:0">With each CSF, <strong>Key Performance Indicators (KPIs)</strong> are attached to measure performance. Example: Cycle time (CSF) → Lead time or Run time (KPI). CSFs form one of three strategic planning elements (along with Strategic Goals and Strategic Scope). CSFs change dynamically — Nokia lost market leadership when smartphone CSFs (R&amp;D, camera megapixel, screen size) replaced its CSFs (reliability, distribution network).</p>
+    </div>
+  </section>
+
+  <!-- CORE COMPETENCIES -->
+  <section id="s4d">
+    <h3 class="sub-title">Core Competencies</h3>
+
+    <div class="def-box">
+      <strong>Core Competency (Prahalad &amp; Hamel, 1990):</strong> "The things that a company can do uniquely well and that no one else can copy quickly enough to affect competition." Core competency leads to either <em>cost leadership or product differentiation</em> — the primary sources of competitive advantage.
+    </div>
+
+    <h4 class="concept-title">Three-Parameter Test for Core Competency</h4>
+    <div class="grid-3">
+      <div class="card card-green">
+        <span class="card-label green">1. Relevance</span>
+        <p style="font-size:14px; margin-bottom:0">Must give customers something that <em>strongly influences</em> their choice. If it doesn't affect competitive position, it is not a core competency.</p>
+      </div>
+      <div class="card card-blue">
+        <span class="card-label blue">2. Difficulty of Imitation</span>
+        <p style="font-size:14px; margin-bottom:0">Should be <em>difficult to imitate</em>. Continuous improvement maintains sustainable competitive position.</p>
+      </div>
+      <div class="card card-purple">
+        <span class="card-label purple">3. Breadth of Application</span>
+        <p style="font-size:14px; margin-bottom:0">Should open a <em>good number</em> of potential markets. Too narrow = insufficient to sustain significant growth.</p>
+      </div>
+    </div>
+
+    <h4 class="concept-title">Sources of Core Competencies</h4>
+    <ul class="styled">
+      <li><strong>Resources</strong> — which the firm has and others don't (e.g., Tata's brand, Infosys's IP)</li>
+      <li><strong>Capabilities</strong> — ability to coordinate resources and make optimal use of them</li>
+    </ul>
+  </section>
+</section>
+
+<!-- ══════════════ SECTION 5: IT STRATEGIC CONTEXT ══════════════ -->
+<section id="s5">
+  <span class="section-number">Section 05</span>
+  <h2 class="section-title">Information Technology — The Strategic Context</h2>
+
+  <h3 class="sub-title">IT, IS, and IM — The Trinity</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Basis</th><th>IS Strategy</th><th>IT Strategy</th><th>IM Strategy</th></tr></thead>
+      <tbody>
+        <tr><td>Scope (What/How/Where)</td><td><mark>What</mark> (What IS do we need?)</td><td><mark>How</mark> (How will technology be used?)</td><td><mark>Where</mark> (Where does management fit?)</td></tr>
+        <tr><td>Driven by</td><td>Business Driven</td><td>Technology Focused</td><td>Management Driven</td></tr>
+        <tr><td>Direction</td><td>Top-Down</td><td>Bottom-Up</td><td>Multi-directional</td></tr>
+        <tr><td>Orientation</td><td>Demand Oriented</td><td>Supply Oriented</td><td>Relationship Oriented</td></tr>
+        <tr><td>Organisational Level</td><td>Division/SBU/Function</td><td>Activity based</td><td>Organisation wide</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sub-title">IT/IS Impact on Porter's Five Forces</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Force</th><th>IT/IS Role</th><th>Indian Example</th></tr></thead>
+      <tbody>
+        <tr><td>Threat of New Entrants</td><td><strong>Creating barriers</strong> (existing players): expensive/complex IT increases entry cost for newcomers. <strong>Breaking barriers</strong> (new entrants): digital channels bypass physical infrastructure.</td><td>Neo-banks (Jupiter, Fi) used mobile/internet banking to enter market without costly branch networks, challenging SBI and HDFC.</td></tr>
+        <tr><td>Supplier Bargaining Power</td><td>E-procurement, tendering systems prevent cartelisation. Commercial databases identify new suppliers. ERP extends supply chain integration.</td><td>GeM (Government e-Marketplace) portal — India's public procurement platform disrupting traditional supplier power.</td></tr>
+        <tr><td>Buyer Bargaining Power</td><td><strong>Customer Data Warehousing &amp; Mining</strong> for targeted marketing. <strong>Locking customers</strong> via compatibility, loyalty schemes, app notifications, premium memberships.</td><td>Amazon Prime India: data-driven personalisation + loyalty locking reduces price sensitivity and switching.</td></tr>
+        <tr><td>Threat of Substitutes</td><td>IT itself is a substitute for many products. Firms can use CAD/CAM to develop products before rivals and patent them, minimising substitution threat.</td><td>OTT platforms (Netflix, Hotstar) substituted physical DVD rental and traditional TV. Paytm/BHIM substituted physical cash transactions.</td></tr>
+        <tr><td>Competitive Rivalry</td><td>JIT, ERP, MRP reduce costs for cost leadership. IT enables collaborative ventures. CRM builds customer engagement reducing rival attraction.</td><td>Zomato/Swiggy using AI-based demand prediction to optimise delivery time — operational IT as competitive weapon.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sub-title">IT/IS Impact on the Value Chain</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Value Chain Activity</th><th>IT/IS Application</th></tr></thead>
+      <tbody>
+        <tr><td>Inbound Logistics</td><td>Barcoding, RFID (tracks items throughout supply chain), MRP/ERP for resource planning, JIT for stock control, virtual warehousing systems.</td></tr>
+        <tr><td>Operations</td><td>CAD for design, CAM for production planning, CIM to control machine tools, robots for automation (YO! Sushi, White Castle's Flippy), online delivery platforms for service entities.</td></tr>
+        <tr><td>Outbound Logistics</td><td>RFID, vehicle scheduling systems, automated warehousing, UPS wireless network for real-time tracking.</td></tr>
+        <tr><td>Marketing &amp; Sales</td><td>Customer databases for segmentation, CRM, digital/social/viral marketing, website UX (75% of consumers judge credibility via website design), mobile commerce.</td></tr>
+        <tr><td>After-Sales Service</td><td>Computer scheduling for repairs, IoT-enabled remote service software, integration with ERP and customer service modules — reduces downtime and transportation costs.</td></tr>
+        <tr><td>Firm Infrastructure</td><td>Intranets, electronic scheduling, office automation, ERP for enterprise-wide resource planning.</td></tr>
+        <tr><td>Technology Development</td><td>Online ticket booking for state roadways, digital learning platforms — IT/IS strategies embedded here.</td></tr>
+        <tr><td>HR Management</td><td>HR Tech: AI recruitment (ATS), digital payroll, performance analytics, learning management systems (LMS).</td></tr>
+        <tr><td>Procurement</td><td>EDI (Electronic Data Interchange) for auto-supply, e-procurement/e-tendering (India: etenders.gov.in), Ford's CAD module shared with suppliers for design clarity.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════ SECTION 6: MANAGEMENT ACCOUNTANT AS LEADER ══════════════ -->
+<section id="s6">
+  <span class="section-number">Section 06</span>
+  <h2 class="section-title">Role of Management Accountant as Leader</h2>
+
+  <h3 class="sub-title">Transforming Role</h3>
+  <div class="canvas-grid">
+    <div class="canvas-col" style="background:var(--gray-50)">
+      <h5>Traditional Roles</h5>
+      <ol style="padding-left:20px; font-size:14px">
+        <li>Stewardship Accounting</li>
+        <li>Long-term and Short-Term Planning</li>
+        <li>Developing MIS</li>
+        <li>Maintaining Optimum Capital Structure</li>
+        <li>Participating in Management Process</li>
+        <li>Providing Ease in Control</li>
+      </ol>
+    </div>
+    <div class="canvas-divider"></div>
+    <div class="canvas-col" style="background:var(--green-50)">
+      <h5 style="color:var(--green-800)">Expanded Modern Roles (Added)</h5>
+      <ol style="padding-left:20px; font-size:14px; color:var(--green-800)">
+        <li value="7"><strong>Analysis</strong> — uncover meaning in numbers; insights on TQM, supply chain, customer profitability</li>
+        <li value="8"><strong>Planning</strong> — forecasting and budgeting to build informed strategies with C-Suite</li>
+        <li value="9"><strong>Innovation</strong> — initiating/advocating technological change (Industry 4.0 / 5.0)</li>
+        <li value="10"><strong>Leadership</strong> — decision-making, communication, and ethics across divisions</li>
+      </ol>
+    </div>
+  </div>
+
+  <blockquote>
+    "If accounting is truly a language of business, then the management accountant is indeed a poet, who appreciates value and numbers."
+  </blockquote>
+
+  <p>The management accountant sits at the crossroads of <strong>Technology, Financial Analysis &amp; Strategy, and Leadership</strong> — identifying <em>what drives profits and losses</em>, not merely reporting them.</p>
+
+  <h3 class="sub-title">Three Dimensions of the Leadership Role</h3>
+
+  <h4 class="concept-title">1. Communication</h4>
+  <div class="card">
+    <p><strong>Definition:</strong> Two-way process involving transfer of information or messages. Types: Vertical (upward/downward), Horizontal, Diagonal.</p>
+    <p><strong>Key Insight — Communication is more than sending messages:</strong> It includes feedback from the receiver. Without feedback, it is merely a monologue. Feedback reveals resistance to change.</p>
+    <p><strong>Listening is more than hearing:</strong> Both sender and receiver should minimise noise (barriers to communication).</p>
+    <p style="margin-bottom:0"><strong>MBWA (Management by Wandering/Walking Around):</strong> Tom Peters &amp; Robert Waterman (1982). Random, unstructured workplace visits to check employees/equipment/ongoing work. Similar to Japan's Gemba Walk (Toyota). Origin: Hewlett-Packard, 1970s. Improves morale, TQM, and organisational purpose.</p>
+  </div>
+
+  <h4 class="concept-title">2. Decision-Making</h4>
+  <div class="card">
+    <p><strong>Definition:</strong> Process of making choices by identifying a decision, gathering information, and assessing alternative resolutions.</p>
+    <p><strong>Criteria for a Rational Decision:</strong></p>
+    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px">
+      <span class="tag tag-g">Objective</span>
+      <span class="tag tag-g">Fully Informed</span>
+      <span class="tag tag-g">Conscious</span>
+      <span class="tag tag-g">Explicit</span>
+      <span class="tag tag-g">Deliberate</span>
+      <span class="tag tag-g">Consistent</span>
+      <span class="tag tag-g">Logical</span>
+      <span class="tag tag-g">Aims at End Goals</span>
+    </div>
+    <p style="margin-bottom:0"><strong>Why Irrational Decisions Happen:</strong> Jumping from analysis to recommendation (skipping alternatives); not listening to others; forecasting errors; pre-notions about "best" solution; superficial understanding; groupthink (readily agreeing with leader).</p>
+  </div>
+
+  <h4 class="concept-title">3. Business Ethics</h4>
+  <div class="card">
+    <p><strong>Business Ethics:</strong> A form of applied/professional ethics examining ethical principles and moral problems in a business environment. Applies to individuals and entire organisations.</p>
+    <p><strong>Classical Approach (Friedman):</strong> Business leaders responsible for wealth maximisation of fund providers only.</p>
+    <p><strong>Socio-Economic Approach (preferred in SCM context):</strong> Every business must balance economic motives and social costs of their actions. Overriding focus on profit can lead to unequal income distribution, environmental damage, etc.</p>
+    <p style="margin-bottom:0"><strong>Application:</strong> Use Triple Bottom Line (TBL) for performance evaluation; consider site-cleaning costs and displacement costs in lifecycle costing. Ethics must reflect the organisation's values.</p>
+  </div>
+
+  <h4 class="concept-title">Leader vs. Manager — Key Distinctions</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Dimension</th><th>Leader</th><th>Manager</th></tr></thead>
+      <tbody>
+        <tr><td>Focus</td><td>Creates a vision</td><td>Creates goals</td></tr>
+        <tr><td>Change</td><td>Change agent</td><td>Maintains status quo</td></tr>
+        <tr><td>Style</td><td>Unique</td><td>Copies proven methods</td></tr>
+        <tr><td>Risk</td><td>Takes risks</td><td>Controls risk</td></tr>
+        <tr><td>Time Horizon</td><td>Long haul</td><td>Short-term focus</td></tr>
+        <tr><td>Growth</td><td>Grows personally</td><td>Relies on existing skills</td></tr>
+        <tr><td>Relationships</td><td>Builds relationships</td><td>Builds systems and processes</td></tr>
+        <tr><td>Approach</td><td>Coaches</td><td>Directs</td></tr>
+        <tr><td>Followers</td><td>Creates followers</td><td>Has employees/subordinates</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════ SECTION 7: EXAMINER'S LENS ══════════════ -->
+<section id="s7">
+  <span class="section-number">Section 07</span>
+  <h2 class="section-title">The Examiner's Lens</h2>
+
+  <h3 class="sub-title">Trigger Points in Case Studies</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>If the Case Mentions…</th><th>The Concept Being Tested Is…</th></tr></thead>
+      <tbody>
+        <tr><td>"Company cut maintenance / closed service centres to save costs and profits fell"</td><td>Limitations of Traditional Cost Management</td></tr>
+        <tr><td>"Company charges a premium / is positioned as exclusive"</td><td>Differentiation strategy; Value Proposition; VPC</td></tr>
+        <tr><td>"Largest market share through lowest prices"</td><td>Cost Leadership; internal cost analysis; value chain reconfiguration</td></tr>
+        <tr><td>"New competitor entered and disrupted the market"</td><td>Threat of New Entrants (Porter); IT as barrier/weapon</td></tr>
+        <tr><td>"Few powerful raw material suppliers / key input price volatility"</td><td>Bargaining Power of Suppliers (Porter)</td></tr>
+        <tr><td>"Customers switching to alternative products from another industry"</td><td>Threat of Substitutes (Porter)</td></tr>
+        <tr><td>"Company needs to understand why it is winning / losing customers"</td><td>Basis of Competition; CSFs/KSFs</td></tr>
+        <tr><td>"R&amp;D, design innovation, proprietary patent" as competitive edge</td><td>Core Competency; Differentiation; IT countering substitute threat</td></tr>
+        <tr><td>"Company split markets into youth/premium/economy segments"</td><td>Market Segmentation; Basis of Segmentation (Demographic/Psychographic/Behavioural)</td></tr>
+        <tr><td>"Management accountant advising the board on strategy"</td><td>Role of Management Accountant as Leader (Communication, Decision-Making, Ethics)</td></tr>
+        <tr><td>"ERP, RFID, barcode system, EDI, CAD/CAM implementation"</td><td>IT/IS in Value Chain; IT and Porter's Five Forces</td></tr>
+        <tr><td>"Customer's pain points / what annoys the customer"</td><td>Value Proposition Canvas — Customer Profile (Pains, Gains, Jobs)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sub-title">Common Mistakes — Where Students Lose Marks</h3>
+  <div class="mistake-alert">
+    <span class="label">Mistake 1</span>
+    <strong>Confusing "Pains" with "Pain Relievers" and "Gains" with "Gain Creators."</strong> Pains and Gains belong to the Customer Profile (market side). Pain Relievers and Gain Creators belong to the Value Map (business side). Business controls the latter, not the former.
+  </div>
+  <div class="mistake-alert">
+    <span class="label">Mistake 2</span>
+    <strong>Stating Porter's Five Forces without applying intensity analysis.</strong> The examiner wants you to assess whether each force is HIGH/MEDIUM/LOW in the given scenario AND explain the profitability implication. Never list forces without analysis.
+  </div>
+  <div class="mistake-alert">
+    <span class="label">Mistake 3</span>
+    <strong>Mixing up IS Strategy, IT Strategy, and IM Strategy.</strong> Remember: IS = What (Business-driven, Top-down), IT = How (Technology-focused, Bottom-up), IM = Where (Management-driven, Multi-directional, Organisation-wide).
+  </div>
+  <div class="mistake-alert">
+    <span class="label">Mistake 4</span>
+    <strong>Recommending broad cost cuts in answer to any scenario involving declining profits.</strong> This is textbook Traditional CM thinking — exactly what the chapter argues against. Always analyse whether the cost in question is strategically important first.
+  </div>
+  <div class="mistake-alert">
+    <span class="label">Mistake 5</span>
+    <strong>Confusing Value Shop with Value Chain.</strong> Value Shop is for <em>service firms</em> (consulting, law, medicine, BFSI) and focuses on <em>problem resolution</em>, not value addition. Primary activities are cyclic and unique per problem — not sequential.
+  </div>
+
+  <h3 class="sub-title">Inter-Connectivity — How This Chapter Links to Others</h3>
+  <div class="link-alert">
+    <strong>To Chapter 2 (Modern Business Environment):</strong> STEEPLE/PESTEL analysis is the detailed treatment of the remote environment introduced here. The "need for SCM" connects directly.
+  </div>
+  <div class="link-alert">
+    <strong>To Activity-Based Costing (ABC):</strong> ABC is the cost allocation tool that operationalises SCM's cost driver analysis. ABC replaces the volume-based allocation that traditional CM relies on.
+  </div>
+  <div class="link-alert">
+    <strong>To Target Costing:</strong> Target Costing is the tool that implements cost leadership strategy from the value chain — it starts with the market price and works backward.
+  </div>
+  <div class="link-alert">
+    <strong>To Balanced Scorecard (BSC):</strong> BSC translates the strategic position (differentiation or cost leadership) into measurable KPIs across four perspectives. CSFs identified in this chapter become the foundation for BSC objectives.
+  </div>
+  <div class="link-alert">
+    <strong>To Strategic Performance Management (Chapter 2 of Part II):</strong> The Value Chain as a <em>model</em> for performance management is detailed there. This chapter introduces it; the next applies it.
+  </div>
+</section>
+
+<!-- ══════════════ SECTION 8: VISUAL SYNTHESIS ══════════════ -->
+<section id="s8">
+  <span class="section-number">Section 08</span>
+  <h2 class="section-title">Visual Synthesis — Summary Tables &amp; Flowcharts</h2>
+
+  <h3 class="sub-title">Master Comparison: All Key Models in This Chapter</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Model / Framework</th><th>Author &amp; Year</th><th>Purpose</th><th>Key Elements</th><th>Applied To</th></tr></thead>
+      <tbody>
+        <tr><td>Value Chain</td><td>Porter, 1985</td><td>Identify where value is created/destroyed</td><td>5 Primary + 4 Support Activities + Margin</td><td>Manufacturing &amp; services</td></tr>
+        <tr><td>Value Shop</td><td>Stabell &amp; Fjeldstad, 1998</td><td>Problem resolution for service firms</td><td>Problem Finding → Solving → Choice → Execution → Control (cyclic)</td><td>Professional services, BFSI</td></tr>
+        <tr><td>Porter's Five Forces</td><td>Porter, 1980</td><td>Assess industry profitability &amp; competition intensity</td><td>Buyers, Suppliers, Substitutes, New Entrants, Rivalry</td><td>Industry analysis</td></tr>
+        <tr><td>Business Model Canvas</td><td>Osterwalder, 2013</td><td>Map/design/develop business models</td><td>9 elements: Customer Segments, VP, Channels, CR, Revenue Streams, KR, KA, KP, Cost Structure</td><td>All types of businesses</td></tr>
+        <tr><td>Value Proposition Canvas</td><td>Osterwalder et al., 2014</td><td>Design &amp; validate customer value propositions</td><td>Customer Profile (Jobs/Pains/Gains) + Value Map (Products/Pain Relievers/Gain Creators)</td><td>Marketing strategy, product design</td></tr>
+        <tr><td>Mendelow's Matrix</td><td>Mendelow, 1991</td><td>Prioritise stakeholders in strategy</td><td>Power vs. Interest: Manage Closely / Keep Satisfied / Keep Informed / Monitor</td><td>Strategic positioning analysis</td></tr>
+        <tr><td>STEEPLE / PESTEL</td><td>Various, evolved over time</td><td>Remote environment scanning</td><td>Social, Technological, Economic, Environmental, Political, Legal, Ethical</td><td>Macro environment analysis</td></tr>
+        <tr><td>IS/IT/IM Framework</td><td>Michael J. Earl, 1989</td><td>Align technology strategy with business</td><td>IS (What/Business-driven), IT (How/Technology-focused), IM (Where/Management-driven)</td><td>Technology strategy</td></tr>
+        <tr><td>MBWA</td><td>Peters &amp; Waterman, 1982</td><td>Informal communication &amp; TQM</td><td>Random, unstructured workplace visits by managers</td><td>Leadership &amp; communication</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sub-title">Logic Flowchart: From Industry Analysis to Competitive Advantage</h3>
+  <div class="flow">
+    <div class="flow-row">
+      <div class="flow-box gray" style="min-width:300px">Define the Industry (Narrow vs. Wide scope decision)</div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row">
+      <div class="flow-box blue" style="min-width:180px">Remote Environment Scan<br><small style="font-weight:400">STEEPLE Analysis</small></div>
+      <div class="flow-arrow-h" style="color:var(--text-faint)">+</div>
+      <div class="flow-box blue" style="min-width:180px">Industry Operating Environment<br><small style="font-weight:400">Porter's Five Forces</small></div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row">
+      <div class="flow-box green" style="min-width:140px">Industry Profitability Assessment</div>
+      <div class="flow-arrow-h">+</div>
+      <div class="flow-box green" style="min-width:140px">Basis of Competition Decoded</div>
+      <div class="flow-arrow-h">+</div>
+      <div class="flow-box green" style="min-width:140px">Key Success Factors Identified</div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row">
+      <div class="flow-box amber" style="min-width:200px">Segmentation Analysis<br><small style="font-weight:400">Understand customers &amp; markets</small></div>
+      <div class="flow-arrow-h">+</div>
+      <div class="flow-box amber" style="min-width:200px">Core Competencies Analysis<br><small style="font-weight:400">Do we have required KSFs?</small></div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row">
+      <div class="flow-box purple" style="min-width:300px">Strategic Positioning Analysis<br><small style="font-weight:400">Where are we? Where should we be?</small></div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row">
+      <div class="flow-box blue" style="min-width:140px">Differentiation?</div>
+      <div class="flow-arrow-h" style="color:var(--text-faint)">OR</div>
+      <div class="flow-box green" style="min-width:140px">Cost Leadership?</div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row">
+      <div class="flow-box green" style="min-width:300px; background:var(--accent); color:#fff; border-color:var(--accent)">Value Chain Analysis (3 Steps)<br><small style="font-weight:400; color:rgba(255,255,255,0.8)">Identify → Cost &amp; Value → Competitive Advantage Opportunities</small></div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row">
+      <div class="flow-box amber" style="min-width:300px; border-color:var(--amber-600)">Sustainable Competitive Advantage<br><small style="font-weight:400">Supported by IT/IS Strategy + SCM Tools (ABC, Target Costing, Kaizen, TQM…)</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SECTION 9: RETAIN & RECALL ══════════════ -->
+<section id="s9">
+  <span class="section-number">Section 09</span>
+  <h2 class="section-title">Retain &amp; Recall — Mnemonics &amp; Checklist</h2>
+
+  <h3 class="sub-title">Mnemonics for Multi-Point Lists</h3>
+
+  <h4 class="concept-title">"SCORE" — Limitations of Traditional Cost Management</h4>
+  <div class="mnemonic">
+    <div class="mnemonic-letter" style="height:auto; padding:10px 0; flex-direction:column; gap:0">
+      <span style="padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.3); width:100%; text-align:center">S</span>
+      <span style="padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.3); width:100%; text-align:center">C</span>
+      <span style="padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.3); width:100%; text-align:center">O</span>
+      <span style="padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.3); width:100%; text-align:center">R</span>
+      <span style="padding:10px 0; width:100%; text-align:center">E</span>
+    </div>
+    <div style="flex:1">
+      <div class="mnemonic-word"><strong>S</strong>hort-term outlook only</div>
+      <div class="mnemonic-word"><strong>C</strong>ompetition, customers, market ignored</div>
+      <div class="mnemonic-word"><strong>O</strong>nly quantitative variances reviewed</div>
+      <div class="mnemonic-word"><strong>R</strong>eactive (corrective, not preventive)</div>
+      <div class="mnemonic-word"><strong>E</strong>xcessive focus on cost reduction → inferior quality</div>
+    </div>
+  </div>
+  <p style="font-size:13px; color:var(--text-faint); margin-top:4px; margin-bottom:24px">+ Also remember: <em>Ignores dynamics of marketing and economics</em> (relies on static, historical data)</p>
+
+  <h4 class="concept-title">"PRIMO" — Primary Activities of the Value Chain</h4>
+  <div class="mnemonic">
+    <div class="mnemonic-letter" style="height:auto; padding:10px 0; flex-direction:column; gap:0">
+      <span style="padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.3); width:100%; text-align:center">P</span>
+      <span style="padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.3); width:100%; text-align:center">R</span>
+      <span style="padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.3); width:100%; text-align:center">I</span>
+      <span style="padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.3); width:100%; text-align:center">M</span>
+      <span style="padding:10px 0; width:100%; text-align:center">O</span>
+    </div>
+    <div style="flex:1">
+      <div class="mnemonic-word"><strong>P</strong>rocurement (support) → remember P is support, not primary</div>
+      <div class="mnemonic-word"><strong>R</strong>aw materials — Inbound Logistics (receive, store, handle)</div>
+      <div class="mnemonic-word"><strong>I</strong>nfrastructure, HR, Tech Dev (support activities)</div>
+      <div class="mnemonic-word"><strong>M</strong>arketing &amp; Sales → Operations → Outbound Logistics</div>
+      <div class="mnemonic-word"><strong>O</strong>utbound service — After-Sales Service (last primary)</div>
+    </div>
+  </div>
+  <p style="font-size:13px; color:var(--text-faint); margin-top:4px; margin-bottom:24px"><strong>Sequence of Primaries:</strong> In → Ops → Out → Mkt&amp;Sales → After-Sales (IOOM-A)</p>
+
+  <h4 class="concept-title">"BSTNR" — Porter's Five Forces (B-STIR)</h4>
+  <div class="mnemonic">
+    <div class="mnemonic-letter" style="height:auto; padding:10px 0; flex-direction:column; gap:0">
+      <span style="padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.3); width:100%; text-align:center">B</span>
+      <span style="padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.3); width:100%; text-align:center">S</span>
+      <span style="padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.3); width:100%; text-align:center">T</span>
+      <span style="padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.3); width:100%; text-align:center">N</span>
+      <span style="padding:10px 0; width:100%; text-align:center">R</span>
+    </div>
+    <div style="flex:1">
+      <div class="mnemonic-word"><strong>B</strong>uyers' bargaining power</div>
+      <div class="mnemonic-word"><strong>S</strong>uppliers' bargaining power</div>
+      <div class="mnemonic-word"><strong>T</strong>hreat of substitutes</div>
+      <div class="mnemonic-word"><strong>N</strong>ew entrants threat</div>
+      <div class="mnemonic-word"><strong>R</strong>ivalry among existing firms</div>
+    </div>
+  </div>
+
+  <h4 class="concept-title">"VPC-JPG" — Value Proposition Canvas Elements</h4>
+  <div class="card card-gray" style="font-size:14px">
+    <p><strong>Customer Profile = JPG</strong> (Jobs, Pains, Gains) — what the customer experiences/needs.</p>
+    <p style="margin-bottom:0"><strong>Value Map = PPG</strong> (Products &amp; Services, Pain Relievers, Gain Creators) — what the business offers.</p>
+    <p style="margin-top:8px; margin-bottom:0; color:var(--text-faint)">Memory tip: Customer shows you a <em>JPG photo</em> of their life; Business shows its <em>PPG proposal</em> to match.</p>
+  </div>
+
+  <h4 class="concept-title">"CDES" — Communication Decision Ethics → Strategy (Role of MA as Leader)</h4>
+  <div class="card card-green" style="font-size:14px">
+    <p><strong>C</strong>ommunication (two-way, includes feedback, MBWA technique)</p>
+    <p><strong>D</strong>ecision-Making (rational criteria: objective, informed, conscious, explicit, deliberate, consistent, logical)</p>
+    <p><strong>E</strong>thics (Business Ethics: socio-economic approach; Triple Bottom Line; ethics reflects values)</p>
+    <p style="margin-bottom:0"><strong>S</strong>trategy (all three dimensions serve the strategy leadership role)</p>
+  </div>
+
+  <h4 class="concept-title">"STHIRE" — Segment Validity Criteria</h4>
+  <div class="card card-blue" style="font-size:14px">
+    <p><strong>S</strong>ize — Reasonable, if not substantial</p>
+    <p><strong>T</strong>angible / Identifiable — members distinguishable from non-members</p>
+    <p><strong>H</strong>omogeneous internally</p>
+    <p><strong>I</strong>ndividually different (Heterogeneous externally from other segments)</p>
+    <p><strong>R</strong>esponsive to marketing efforts</p>
+    <p style="margin-bottom:0">(The <strong>E</strong> = Easy to recall with this word)</p>
+  </div>
+
+  <h3 class="sub-title" style="margin-top:40px">Revision Checklist — 3-Point Mastery Test</h3>
+
+  <div class="card card-green">
+    <span class="card-label green">Before Moving On, Confirm You Can:</span>
+    <ul class="checklist">
+      <li>
+        <span class="check-num">1</span>
+        <span>Given any industry case study, <strong>apply Porter's Five Forces</strong> to assess competitive intensity and conclude on profitability potential — including the Barriers &amp; Profitability Matrix — and connect it to either a Differentiation or Cost Leadership strategic recommendation.</span>
+      </li>
+      <li>
+        <span class="check-num">2</span>
+        <span>Draw and explain the <strong>Value Proposition Canvas</strong> for a given business, correctly classifying all six elements (Jobs/Pains/Gains on the customer side; Products/Pain Relievers/Gain Creators on the value map side), and identify whether a problem-solution fit exists.</span>
+      </li>
+      <li>
+        <span class="check-num">3</span>
+        <span>Explain how a <strong>Management Accountant as Leader</strong> differs from a traditional manager, articulate the three dimensions of the leadership role (Communication, Decision-Making, Ethics), and describe with an Indian example how each dimension is applied in a strategic cost management context.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card card-amber" style="margin-top:24px">
+    <span class="card-label amber">Bonus High-Yield Points — Frequently Tested Quotes &amp; Authors</span>
+    <ul class="styled" style="font-size:14px">
+      <li><strong>Cooper &amp; Slagmulder (1998):</strong> "It is not sufficient to simply reduce costs; instead, costs must be managed strategically."</li>
+      <li><strong>Michael E. Porter (1985):</strong> Introduced Generic Value Chain in <em>Competitive Advantage: Creating and Sustaining Superior Performance</em>.</li>
+      <li><strong>Michael E. Porter (1980):</strong> Five Forces in <em>Competitive Strategy — Techniques for Analysing Industries and Competitors</em>.</li>
+      <li><strong>Alexander Osterwalder (2013):</strong> Business Model Canvas — nine elements with Value Proposition as the bridge.</li>
+      <li><strong>Prahalad &amp; Hamel (1990):</strong> Core Competences — "The Core Competence of the Corporation."</li>
+      <li><strong>Mendelow (1991):</strong> Stakeholder Matrix — Power vs. Interest for strategic objective-setting.</li>
+      <li><strong>Michael J. Earl (1989):</strong> IS/IT/IM Strategy framework in <em>Management Strategies for Information Technology</em>.</li>
+      <li><strong>Peters &amp; Waterman (1982):</strong> MBWA in <em>In Search of Excellence</em>.</li>
+      <li><strong>Stabell &amp; Fjeldstad (1998):</strong> Named and defined Value Shop Model (originally conceptualised by James D. Thompson, 1967).</li>
+      <li><strong>Booms &amp; Bitner (1981):</strong> Extended McCarthy's 4Ps to 7Ps (added People, Process, Physical Evidence).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="doc-footer">
+  <span>CA Final SCPM · Chapter 1 · One-Source Material</span>
+  <span>Institute of Chartered Accountants of India — Study Content</span>
+  <span>Prepared for Exam Excellence</span>
+</footer>
+
+</body>
+</html>

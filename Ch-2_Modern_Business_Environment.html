@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCPM Chapter 2 — Modern Business Environment | One-Source Material</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --deep-blue: #1a2f4a;
+    --mid-blue: #1e4d8c;
+    --gold: #c9982a;
+    --gold-light: #f0c84a;
+    --gold-pale: #fdf3d8;
+    --cream: #faf8f3;
+    --warm-white: #ffffff;
+    --text-dark: #1a1a2e;
+    --text-mid: #3d3d5c;
+    --text-light: #6b6b8a;
+    --rule: #d4c5a0;
+    --success: #2d6a4f;
+    --success-bg: #e8f5ee;
+    --warn: #9b2226;
+    --warn-bg: #fdf0f0;
+    --info: #023e8a;
+    --info-bg: #e8f0fc;
+    --highlight: #fff3cd;
+    --shadow: 0 4px 24px rgba(13,27,42,0.10);
+    --shadow-lg: 0 12px 48px rgba(13,27,42,0.16);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  /* ========== HEADER ========== */
+  .page-header {
+    background: var(--navy);
+    padding: 64px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 40px,
+      rgba(201,152,42,0.04) 40px, rgba(201,152,42,0.04) 41px
+    );
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  }
+  .header-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+  .chapter-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold);
+    display: inline-block;
+    border: 1px solid rgba(201,152,42,0.4);
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .page-header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: var(--warm-white);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .page-header h1 span { color: var(--gold-light); }
+  .header-meta {
+    font-size: 14px; color: rgba(255,255,255,0.55);
+    font-style: italic;
+    display: flex; gap: 24px; flex-wrap: wrap; margin-top: 24px;
+  }
+  .header-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* ========== NAV ========== */
+  .sticky-nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--deep-blue);
+    border-bottom: 2px solid var(--gold);
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .nav-inner {
+    max-width: 900px; margin: 0 auto;
+    display: flex; gap: 0; padding: 0 16px;
+  }
+  .nav-inner a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    padding: 14px 16px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .nav-inner a:hover { color: var(--gold-light); border-bottom-color: var(--gold-light); }
+
+  /* ========== LAYOUT ========== */
+  .content { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* ========== SECTIONS ========== */
+  .section {
+    margin-bottom: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--gold);
+    display: flex; align-items: center; gap: 12px;
+  }
+  h2 .h2-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; font-weight: 600;
+    color: var(--warm-white);
+    background: var(--gold);
+    padding: 4px 10px; border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem; font-weight: 700;
+    color: var(--deep-blue);
+    margin: 32px 0 12px;
+    padding-left: 14px;
+    border-left: 4px solid var(--gold);
+  }
+
+  h4 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.05rem; font-weight: 600;
+    color: var(--mid-blue);
+    margin: 24px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  p { margin-bottom: 14px; color: var(--text-mid); }
+
+  strong { color: var(--text-dark); font-weight: 600; }
+  em { color: var(--mid-blue); font-style: italic; }
+
+  /* ========== CARDS ========== */
+  .card {
+    background: var(--warm-white);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin: 20px 0;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--mid-blue);
+  }
+  .card.gold { border-left-color: var(--gold); }
+  .card.green { border-left-color: var(--success); }
+  .card.red { border-left-color: var(--warn); }
+  .card.navy { border-left-color: var(--navy); background: var(--navy); color: var(--warm-white); }
+  .card.navy p { color: rgba(255,255,255,0.85); }
+  .card.navy h3, .card.navy h4 { color: var(--gold-light); border-left-color: var(--gold); }
+  .card.navy strong { color: var(--gold-light); }
+
+  .card-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--mid-blue);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .card.navy .card-title { color: var(--gold); }
+  .card.gold .card-title { color: var(--gold); }
+
+  /* ========== CALLOUTS ========== */
+  .callout {
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin: 20px 0;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .callout-body { flex: 1; }
+  .callout-body strong { display: block; margin-bottom: 6px; font-size: 0.92rem; letter-spacing: 0.3px; }
+  .callout-body p { margin-bottom: 0; font-size: 0.93rem; }
+
+  .callout.info { background: var(--info-bg); border-left: 4px solid var(--info); }
+  .callout.info .callout-icon, .callout.info strong { color: var(--info); }
+  .callout.success { background: var(--success-bg); border-left: 4px solid var(--success); }
+  .callout.success .callout-icon, .callout.success strong { color: var(--success); }
+  .callout.warn { background: var(--warn-bg); border-left: 4px solid var(--warn); }
+  .callout.warn .callout-icon, .callout.warn strong { color: var(--warn); }
+  .callout.highlight { background: var(--highlight); border-left: 4px solid var(--gold); }
+  .callout.highlight .callout-icon, .callout.highlight strong { color: #856404; }
+
+  /* ========== LISTS ========== */
+  ul, ol { margin: 10px 0 14px 20px; }
+  li { margin-bottom: 8px; color: var(--text-mid); line-height: 1.75; }
+  li strong { color: var(--text-dark); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+  @media (max-width: 640px) { .three-col { grid-template-columns: 1fr; } }
+
+  /* ========== DEFINITION BOX ========== */
+  .definition-box {
+    background: var(--navy);
+    color: var(--warm-white);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .definition-box::before {
+    content: '"';
+    position: absolute; top: -10px; left: 16px;
+    font-size: 120px; font-family: 'Playfair Display', serif;
+    color: rgba(201,152,42,0.15); line-height: 1;
+    pointer-events: none;
+  }
+  .definition-box .def-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold);
+    display: block; margin-bottom: 10px;
+  }
+  .definition-box p {
+    font-style: italic;
+    color: rgba(255,255,255,0.9);
+    font-size: 1rem;
+    position: relative; z-index: 1;
+    margin: 0;
+  }
+  .definition-box .def-source {
+    font-size: 12px; color: rgba(255,255,255,0.45);
+    margin-top: 10px; font-style: normal;
+    display: block;
+  }
+
+  /* ========== TABLES ========== */
+  .table-wrap { overflow-x: auto; margin: 24px 0; border-radius: 8px; box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; background: var(--warm-white); }
+  thead { background: var(--navy); }
+  thead th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gold-light);
+    padding: 14px 18px;
+    text-align: left;
+    border: none;
+  }
+  tbody tr { border-bottom: 1px solid #eee; transition: background 0.15s; }
+  tbody tr:hover { background: #f7f4ee; }
+  tbody tr:last-child { border-bottom: none; }
+  td {
+    padding: 13px 18px;
+    font-size: 0.91rem;
+    color: var(--text-mid);
+    vertical-align: top;
+  }
+  td:first-child { font-weight: 600; color: var(--text-dark); }
+  .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 600;
+    padding: 3px 8px; border-radius: 3px;
+    margin: 2px 0;
+  }
+  .tag.blue { background: #dbeafe; color: #1e40af; }
+  .tag.green { background: #d1fae5; color: #065f46; }
+  .tag.red { background: #fee2e2; color: #991b1b; }
+  .tag.gold { background: #fef3c7; color: #92400e; }
+
+  /* ========== STEP FLOW ========== */
+  .step-flow { margin: 24px 0; }
+  .step {
+    display: flex; gap: 16px; margin-bottom: 16px; align-items: flex-start;
+  }
+  .step-num {
+    width: 36px; height: 36px;
+    background: var(--gold);
+    color: var(--navy);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 700;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .step-body { flex: 1; background: var(--warm-white); border-radius: 6px; padding: 12px 16px; box-shadow: var(--shadow); }
+  .step-body strong { display: block; color: var(--deep-blue); margin-bottom: 4px; font-size: 0.95rem; }
+  .step-body p { font-size: 0.88rem; color: var(--text-light); margin: 0; }
+  .step-connector { margin-left: 18px; width: 1px; height: 12px; background: var(--gold); margin-bottom: 4px; }
+
+  /* ========== MNEMONIC BOX ========== */
+  .mnemonic-box {
+    background: linear-gradient(135deg, var(--deep-blue) 0%, var(--mid-blue) 100%);
+    border-radius: 10px; padding: 28px 32px; margin: 20px 0; color: white;
+    position: relative; overflow: hidden;
+  }
+  .mnemonic-box::after {
+    content: '∗';
+    position: absolute; right: 20px; bottom: -20px;
+    font-size: 120px; color: rgba(255,255,255,0.05);
+    line-height: 1;
+  }
+  .mnemonic-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 12px; display: block;
+  }
+  .mnemonic-word {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 900;
+    color: var(--gold-light);
+    letter-spacing: 4px;
+    display: block; margin-bottom: 16px;
+  }
+  .mnemonic-breakdown { list-style: none; margin: 0; padding: 0; }
+  .mnemonic-breakdown li {
+    display: flex; gap: 12px; margin-bottom: 8px;
+    color: rgba(255,255,255,0.88); font-size: 0.92rem;
+  }
+  .mnemonic-breakdown li .letter {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700; font-size: 1.1rem;
+    color: var(--gold-light); width: 20px; flex-shrink: 0;
+  }
+
+  /* ========== REVISION CHECKLIST ========== */
+  .checklist {
+    background: var(--warm-white); border-radius: 8px;
+    padding: 24px 28px; margin: 20px 0; box-shadow: var(--shadow);
+    border-top: 4px solid var(--gold);
+  }
+  .checklist-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 10px 0; border-bottom: 1px dashed #e5e0d5;
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 20px; height: 20px; border: 2px solid var(--gold);
+    border-radius: 4px; flex-shrink: 0; margin-top: 2px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .checklist-item p { margin: 0; font-size: 0.92rem; color: var(--text-mid); }
+
+  /* ========== FLOWCHART ========== */
+  .flowchart { margin: 24px 0; }
+  .flow-row { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; }
+  .flow-node {
+    background: var(--warm-white); border: 2px solid var(--mid-blue);
+    border-radius: 8px; padding: 14px 18px; text-align: center;
+    font-size: 0.85rem; font-weight: 600; color: var(--deep-blue);
+    min-width: 140px; flex: 1; box-shadow: var(--shadow);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .flow-node.gold-node { border-color: var(--gold); background: var(--gold-pale); }
+  .flow-node.navy-node { border-color: var(--navy); background: var(--navy); color: white; }
+  .flow-arrow {
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 8px; font-size: 20px; color: var(--gold); font-weight: 900;
+    flex-shrink: 0;
+  }
+  .flow-arrow.down { transform: rotate(90deg); padding: 8px 0; }
+  .vertical-flow { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .vertical-flow .flow-node { width: 260px; }
+  .vertical-flow .flow-arrow { font-size: 22px; padding: 4px; }
+
+  /* ========== KEY FORMULA ========== */
+  .formula {
+    background: var(--navy);
+    border-radius: 8px; padding: 20px 28px; margin: 20px 0;
+    text-align: center;
+  }
+  .formula .formula-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); display: block; margin-bottom: 12px;
+  }
+  .formula .formula-body {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem; color: white;
+    line-height: 2;
+  }
+  .formula .formula-body span { color: var(--gold-light); font-weight: 700; }
+
+  /* ========== TRIGGER CHIPS ========== */
+  .trigger-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  .trigger-chip {
+    background: var(--highlight);
+    border: 1px solid #d4a017;
+    color: #664400;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px; font-weight: 600;
+    padding: 5px 12px; border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ========== MISTAKE BOX ========== */
+  .mistake-item {
+    display: flex; gap: 12px;
+    background: var(--warn-bg);
+    border-left: 4px solid var(--warn);
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px; margin-bottom: 10px;
+  }
+  .mistake-icon { color: var(--warn); font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .mistake-item p { margin: 0; font-size: 0.9rem; color: var(--text-mid); }
+  .mistake-item strong { color: var(--warn); display: block; margin-bottom: 4px; }
+
+  /* ========== GRID BOXES ========== */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  .mini-card {
+    background: var(--warm-white); border-radius: 8px;
+    padding: 18px 20px; box-shadow: var(--shadow);
+    border-top: 3px solid var(--mid-blue);
+  }
+  .mini-card.gold-top { border-top-color: var(--gold); }
+  .mini-card.green-top { border-top-color: var(--success); }
+  .mini-card.red-top { border-top-color: var(--warn); }
+  .mini-card h4 { margin-top: 0; font-size: 0.88rem; }
+  .mini-card ul { margin: 8px 0 0 16px; }
+  .mini-card li { font-size: 0.87rem; margin-bottom: 5px; }
+
+  /* ========== FOOTER ========== */
+  .page-footer {
+    background: var(--navy);
+    padding: 32px 48px;
+    text-align: center;
+    color: rgba(255,255,255,0.45);
+    font-size: 13px;
+    border-top: 3px solid var(--gold);
+  }
+  .page-footer strong { color: var(--gold); }
+
+  /* ========== PILL BADGES ========== */
+  .badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 20px;
+    vertical-align: middle; margin-left: 6px;
+  }
+  .badge.exam { background: #fee2e2; color: #991b1b; }
+  .badge.new { background: #d1fae5; color: #065f46; }
+  .badge.high { background: #fef3c7; color: #92400e; }
+
+  /* ========== COMPARISON TABLE SPECIAL ========== */
+  .compare-header { background: var(--gold); }
+  .compare-header th { color: var(--navy); }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .page-header { padding: 40px 24px 32px; }
+    .nav-inner a { font-size: 9.5px; padding: 12px 10px; }
+    h2 { font-size: 1.6rem; }
+    .two-col, .three-col { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="page-header">
+  <div class="header-inner">
+    <span class="chapter-tag">CA Final · SCPM · Chapter 02</span>
+    <h1>Modern <span>Business</span><br>Environment</h1>
+    <p style="color:rgba(255,255,255,0.6); max-width:580px; font-size:15px; margin-top:12px;">
+      A definitive one-source reference covering Cost of Quality, Total Quality Management, Supply Chain Management, Gain Sharing, and Downsizing/Outsourcing/Offshoring — built for conceptual mastery and exam precision.
+    </p>
+    <div class="header-meta">
+      <span>📚 Based on ICAI Study Material</span>
+      <span>🎯 Exam-Focused Structure</span>
+      <span>🔗 Integrated Pedagogy</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ STICKY NAV ============ -->
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <a href="#big-picture">Big Picture</a>
+    <a href="#coq">Cost of Quality</a>
+    <a href="#tqm">TQM</a>
+    <a href="#scm">Supply Chain</a>
+    <a href="#gain">Gain Sharing</a>
+    <a href="#doo">Downsizing & Outsourcing</a>
+    <a href="#examiners">Examiner's Lens</a>
+    <a href="#visual">Visual Synthesis</a>
+    <a href="#recall">Retain & Recall</a>
+  </div>
+</nav>
+
+<!-- ============ MAIN CONTENT ============ -->
+<main class="content">
+
+  <!-- ===== SECTION 1: BIG PICTURE ===== -->
+  <section class="section" id="big-picture">
+    <span class="section-label">Section 01</span>
+    <h2><span class="h2-num">§1</span>The 'Big Picture' — Executive Summary</h2>
+
+    <div class="definition-box">
+      <span class="def-label">Core Thesis of this Chapter</span>
+      <p>The fundamental shift from a <strong>Seller's Market</strong> (where the supplier dictates price, quality, and performance) to a <strong>Buyer's Market</strong> (where the customer demands drive everything) has transformed how businesses must manage quality, costs, and supply chains. This chapter explains the <em>tools and frameworks</em> a modern CA must understand to advise businesses in this new reality.</p>
+    </div>
+
+    <h3>Why This Chapter Matters in the SCPM Syllabus</h3>
+    <p>Chapter 2 is foundational because it establishes the <em>context</em> for almost every cost management and performance measurement tool studied later. You cannot understand Activity-Based Costing, Target Costing, or the Balanced Scorecard in isolation — they all respond to the pressures of the modern business environment described here.</p>
+
+    <div class="two-col">
+      <div class="card gold">
+        <span class="card-title">Syllabus Weight & Exam Pattern</span>
+        <ul>
+          <li>Frequently tested through <strong>case-study based MCQs</strong> and <strong>descriptive questions</strong></li>
+          <li>Numerical questions on <strong>COQ analysis</strong> and <strong>Customer Lifetime Value</strong> are high-probability</li>
+          <li>The <strong>TQM vs Six Sigma</strong> distinction and <strong>Deming's 14 Points</strong> appear regularly</li>
+          <li><strong>Push vs Pull Supply Chain</strong> questions appear as caselet MCQs</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="card-title">Real-World Indian Context</span>
+        <ul>
+          <li><strong>Maruti Suzuki</strong> uses TQM & supplier quality reviews — direct COQ application</li>
+          <li><strong>Flipkart/Amazon India</strong> — classic Push-to-Pull SCM transformation via e-commerce</li>
+          <li><strong>Infosys BPO</strong> — outsourcing & offshoring in practice</li>
+          <li><strong>Amul</strong> — downstream SCM with strong relationship marketing</li>
+          <li><strong>IRCTC</strong> — SLA-driven service delivery at scale</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Chapter Architecture at a Glance</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>Core Question Answered</th>
+            <th>Key Framework</th>
+            <th>Exam Risk</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cost of Quality (COQ)</td>
+            <td>How much does quality (or its absence) cost?</td>
+            <td>PAF Model</td>
+            <td><span class="tag red">High</span></td>
+          </tr>
+          <tr>
+            <td>Total Quality Management</td>
+            <td>How do we build quality into every process?</td>
+            <td>Deming's 14 Pts, PDCA, 6Cs</td>
+            <td><span class="tag red">High</span></td>
+          </tr>
+          <tr>
+            <td>Supply Chain Management</td>
+            <td>How do goods flow efficiently from source to customer?</td>
+            <td>Push/Pull, Upstream/Downstream</td>
+            <td><span class="tag red">High</span></td>
+          </tr>
+          <tr>
+            <td>Gain Sharing Arrangements</td>
+            <td>How do two parties share the benefits of collaboration?</td>
+            <td>Win-Win Contract Design</td>
+            <td><span class="tag gold">Medium</span></td>
+          </tr>
+          <tr>
+            <td>Downsizing/Outsourcing/Offshoring</td>
+            <td>How do firms restructure for cost efficiency?</td>
+            <td>Strategic Make-or-Buy</td>
+            <td><span class="tag gold">Medium</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout highlight">
+      <div class="callout-icon">💡</div>
+      <div class="callout-body">
+        <strong>The Golden Thread</strong>
+        <p>Every topic in this chapter ultimately answers one business imperative: <em>"How do we satisfy customers profitably in a hyper-competitive, globalized world?"</em> Keep this thread visible when writing exam answers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 2: COQ ===== -->
+  <section class="section" id="coq">
+    <span class="section-label">Section 02</span>
+    <h2><span class="h2-num">§2</span>Cost of Quality (COQ)</h2>
+
+    <h3>The 'Why' — Logic Behind the Theory</h3>
+    <p>Every rupee spent on <em>preventing</em> defects saves multiple rupees in <em>fixing</em> them later. COQ gives management a <strong>quantified language</strong> to make this trade-off visible. Without measuring quality costs, managers focus only on production costs and miss the enormous hidden costs of poor quality (the "iceberg below water").</p>
+
+    <div class="callout info">
+      <div class="callout-icon">📖</div>
+      <div class="callout-body">
+        <strong>Historical Roots (Exam Fact)</strong>
+        <p>Dr. <strong>Joseph M. Juran</strong> introduced COQ in his <em>Quality Control Handbook</em> (1951). Mr. <strong>Philip B. Crosby</strong> popularized it with his book <em>Quality Is Free</em>, arguing that quality costs nothing when done right — it is the <em>lack</em> of quality that costs.</p>
+      </div>
+    </div>
+
+    <h3>Key Definition — COQ</h3>
+    <div class="definition-box">
+      <span class="def-label">Precise Definition — Reproduce in Exams</span>
+      <p>Cost of Quality is <strong>the sum of all costs related to the prevention and detection of defects, and the costs incurred due to the occurrence of defects.</strong> It is measured as: <em>Cost of Control (Conformance)</em> + <em>Cost of Failure of Control (Non-Conformance).</em></p>
+      <span class="def-source">Source: ICAI SCPM Study Material, Chapter 2</span>
+    </div>
+
+    <div class="formula">
+      <span class="formula-label">The COQ Formula</span>
+      <div class="formula-body">
+        <span>COQ</span> = <span>Cost of Control</span> + <span>Cost of Failure of Control</span><br>
+        = (<span>Prevention Cost</span> + <span>Appraisal Cost</span>) + (<span>Internal Failure</span> + <span>External Failure</span>)<br>
+        <span style="font-size:0.75rem; color:rgba(255,255,255,0.5); margin-top:8px; display:block;">← Cost of Good Quality →&nbsp;&nbsp;&nbsp;&nbsp;← Cost of Poor Quality →</span>
+      </div>
+    </div>
+
+    <h3>The PAF Model — Four Components Explained</h3>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>What it is</th>
+            <th>When incurred</th>
+            <th>Indian Examples</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>🛡️ Prevention Costs</td>
+            <td>Costs to <em>avoid</em> defects from occurring in the first place</td>
+            <td><strong>Before</strong> production begins</td>
+            <td>Quality training at Tata Motors; Supplier audits at L&T; Design reviews at ISRO</td>
+            <td><span class="tag green">Good Quality Cost</span></td>
+          </tr>
+          <tr>
+            <td>🔍 Appraisal Costs</td>
+            <td>Costs to <em>measure and verify</em> conformance to quality standards</td>
+            <td><strong>During</strong> production at all stages</td>
+            <td>Incoming material inspection at Bajaj Auto; Third-party certification (BIS/ISO); Field testing at Bharat Electronics</td>
+            <td><span class="tag green">Good Quality Cost</span></td>
+          </tr>
+          <tr>
+            <td>⚠️ Internal Failure</td>
+            <td>Costs of defects found <em>before delivery</em> to customer</td>
+            <td><strong>During</strong> production, before shipment</td>
+            <td>Scrap at a textile mill; Rework at a pharmaceutical plant; Machine downtime at Hero MotoCorp</td>
+            <td><span class="tag red">Poor Quality Cost</span></td>
+          </tr>
+          <tr>
+            <td>🚨 External Failure</td>
+            <td>Costs of defects discovered <em>after delivery</em> to customer</td>
+            <td><strong>After</strong> product reaches customer</td>
+            <td>Warranty repairs by Hyundai India; Product recalls (e.g., Maggi noodles episode); Lost market share due to reputation damage</td>
+            <td><span class="tag red">Poor Quality Cost</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Detailed Examples for Each Category</h3>
+    <div class="two-col">
+      <div class="mini-card green-top">
+        <h4>🛡️ Prevention Costs — Examples</h4>
+        <ul>
+          <li>Quality engineering & planning</li>
+          <li>Quality training programs</li>
+          <li>Quality audits & quality circles</li>
+          <li>Supplier evaluation & selection</li>
+          <li>Preventive equipment maintenance</li>
+          <li>Process engineering</li>
+          <li>Design reviews & field trials</li>
+          <li>Testing of new materials</li>
+          <li>Education of suppliers</li>
+        </ul>
+      </div>
+      <div class="mini-card gold-top">
+        <h4>🔍 Appraisal Costs — Examples</h4>
+        <ul>
+          <li>Field testing</li>
+          <li>Inspecting and testing materials</li>
+          <li>Packaging inspection</li>
+          <li>Product acceptance</li>
+          <li>Process acceptance</li>
+          <li>Measurement equipment (inspection)</li>
+          <li>Outside certification (ISO, BIS)</li>
+        </ul>
+      </div>
+      <div class="mini-card red-top">
+        <h4>⚠️ Internal Failure — Examples</h4>
+        <ul>
+          <li>Scrap material</li>
+          <li>Rework & re-testing</li>
+          <li>Re-designing</li>
+          <li>Machine downtime</li>
+        </ul>
+      </div>
+      <div class="mini-card" style="border-top-color: #dc2626;">
+        <h4>🚨 External Failure — Examples</h4>
+        <ul>
+          <li>Cost of product recalls</li>
+          <li>Lost sales due to poor performance</li>
+          <li>Returns & allowances</li>
+          <li>Warranty & repair costs</li>
+          <li>Product liability claims</li>
+          <li>Customer dissatisfaction</li>
+          <li>Lost market share</li>
+          <li>Customer support costs</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Three Views on Cost of Quality <span class="badge exam">Exam Recall</span></h3>
+    <div class="card">
+      <ol>
+        <li><strong>Higher Quality = Higher Cost:</strong> Improved quality attributes (features, performance) consume more resources and the gains don't compensate the extra cost. <em>(Traditional view)</em></li>
+        <li><strong>Savings > Cost of Improvement:</strong> <em>Deming's view</em>, still dominant in Japan. Less rework, scrap and direct defect-costs result in savings that exceed quality investment. Japanese firms prove this through kaizen.</li>
+        <li><strong>Quality costs = Excess over "right first time" costs:</strong> <em>TQM philosophy view</em>. Quality costs include not just direct costs but hidden costs — lost customers, lost market share, foregone opportunities — all untracked by conventional cost accounting.</li>
+      </ol>
+    </div>
+
+    <h3>Optimal COQ — The Trade-Off</h3>
+    <p>As conformance spending (prevention + appraisal) <strong>increases</strong>, non-conformance costs (internal + external failures) <strong>decrease</strong>. There exists an <em>optimal point</em> where the total cost is minimized. <strong>Striving for zero defects is not always economically rational</strong> — the marginal cost of the last unit of conformance may exceed the marginal benefit.</p>
+
+    <div class="callout warn">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body">
+        <strong>Counter-Intuitive Exam Point</strong>
+        <p>TQM proponents argue <em>against</em> this traditional trade-off view. They contend that a programme of <strong>continuous improvement</strong> (zero-defect philosophy) can simultaneously reduce <em>both</em> conformance and non-conformance costs over time — making the optimal COQ curve shift downward and to the left.</p>
+      </div>
+    </div>
+
+    <h3>The 5-Step PAF Application Process</h3>
+    <div class="step-flow">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Gather failure data</strong>
+          <p>Collect basic information about the number and nature of failures across the system</p>
+        </div>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Quantify with assumptions</strong>
+          <p>Apply reasonable assumptions to translate raw failure data into measurable, comparable numbers</p>
+        </div>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Chart under the four PAF heads</strong>
+          <p>Classify and chart costs under Prevention, Appraisal, Internal Failure, External Failure</p>
+        </div>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Allocate resources to weak spots</strong>
+          <p>Identify categories with disproportionate cost and direct improvement resources there</p>
+        </div>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Repeat regularly & evaluate</strong>
+          <p>This is a periodic exercise — track trend, measure improvement, and reassess</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>The Iceberg Model <span class="badge high">High Yield Concept</span></h3>
+    <div class="card navy">
+      <span class="card-title">COQ Iceberg — What's Visible vs. Hidden</span>
+      <p>Only a <em>minority</em> of quality costs are obvious (above the surface): rejects, rework, testing costs, customer returns, recalls, inspection costs.</p>
+      <p>The <strong>vast majority are hidden</strong> (below the surface): excessive overtime, excessive IT system costs, planning delays, complaint handling time, unused capacity, incorrectly completed sales orders, development cost of failed products, time with dissatisfied customers, late paperwork, pricing/billing errors, excessive employee fluctuation.</p>
+      <p><strong>Key exam insight:</strong> Identifying and addressing <em>below-the-surface</em> costs represents a massive opportunity to reduce the cost of doing business.</p>
+    </div>
+
+    <h3>How to Calculate & Report COQ</h3>
+    <ul>
+      <li><strong>Simplest:</strong> In terms of <em>effort</em> (hours/days) — rough but quick</li>
+      <li><strong>Better:</strong> In terms of <em>money</em> — convert effort into rupees + add tangible costs</li>
+      <li><strong>Best:</strong> As a <em>percentage of total cost</em> — enables cross-company and cross-project benchmarking</li>
+      <li><strong>Impartiality Rule:</strong> COQ must be determined by an <em>external person</em> (e.g., Accounts Department), not the core project team, to avoid bias</li>
+    </ul>
+  </section>
+
+  <!-- ===== SECTION 3: TQM ===== -->
+  <section class="section" id="tqm">
+    <span class="section-label">Section 03</span>
+    <h2><span class="h2-num">§3</span>Total Quality Management (TQM)</h2>
+
+    <h3>The 'Why' — Logic Behind TQM</h3>
+    <p>COQ measures the <em>cost</em> of quality failure. TQM is the <em>management system</em> that prevents that failure. It recognizes that quality is not a department's responsibility — it is <strong>everyone's responsibility</strong>, embedded into every organizational process, from design to delivery.</p>
+
+    <div class="definition-box">
+      <span class="def-label">CIMA Definition — Reproduce Verbatim in Exams</span>
+      <p>"An integrated and comprehensive system of planning and controlling all business functions so that products or services are produced that meet or exceed customer expectations. TQM is a philosophy of business behaviour, embracing principles such as employee involvement, continuous improvement at all levels, and customer focus, as well as being a collection of related techniques aimed at improving quality, such as full documentation of activities, clear goal setting, and performance measurement from the customer perspective."</p>
+      <span class="def-source">— CIMA Official Definition</span>
+    </div>
+
+    <h3>Origin & Founders <span class="badge exam">Exam Fact</span></h3>
+    <ul>
+      <li>Originated in the <strong>1950s</strong>; popularized in the early <strong>1980s</strong></li>
+      <li>Developed jointly by: <strong>W. Edwards Deming</strong>, <strong>Joseph M. Juran</strong>, and <strong>Armand V. Feigenbaum</strong></li>
+      <li>Originally applied in <strong>manufacturing</strong>; now recognized as a <strong>generic management tool</strong> applicable in services and public sector</li>
+    </ul>
+
+    <h3>TQM Objectives — What It Seeks to Achieve</h3>
+    <div class="card">
+      <ul>
+        <li>Focus on <strong>meeting the owner's/customer's needs</strong> by providing quality services at a reasonable cost</li>
+        <li><strong>Continuous improvement</strong> — a never-ending process</li>
+        <li>Recognizes the <strong>role of everyone</strong> in the organization</li>
+        <li>Views the organization as an <strong>internal system</strong> with a common aim</li>
+        <li>Focuses on <em>how</em> tasks are accomplished, not just the outcome</li>
+        <li>Emphasizes <strong>teamwork</strong> across all functions</li>
+        <li>Eradicate <strong>waste</strong> and increase <strong>efficiency</strong></li>
+        <li>Ensures things are <strong>done right the first time</strong></li>
+      </ul>
+    </div>
+
+    <h3>The Six C's of TQM <span class="badge high">High Yield — Mnemonic Ahead</span></h3>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>The 'C'</th>
+            <th>What it means</th>
+            <th>Why it's critical</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>🔑 Commitment</td>
+            <td>Clear commitment from <strong>top management</strong> is non-negotiable</td>
+            <td>Without top-down commitment, quality becomes one department's job and fails. Cannot be delegated.</td>
+          </tr>
+          <tr>
+            <td>🎨 Culture</td>
+            <td>Training must shift <strong>attitudes and mindsets</strong> toward quality</td>
+            <td>Quality must become "normal" — not an add-on. This is a cultural transformation, not a policy change.</td>
+          </tr>
+          <tr>
+            <td>🔄 Continuous Improvement</td>
+            <td>TQM is a <strong>process, not a programme</strong> — never-ending search for better ways</td>
+            <td>Complacency kills quality gains. There is always room to improve, however small.</td>
+          </tr>
+          <tr>
+            <td>🤝 Co-operation</td>
+            <td><strong>Total Employee Involvement (TEI)</strong> — every employee's experience must be utilized</td>
+            <td>Quality decisions cannot be top-down alone. Front-line employees know the process best.</td>
+          </tr>
+          <tr>
+            <td>👥 Customer Focus</td>
+            <td>Both <strong>external customers</strong> (end users) and <strong>internal customers</strong> (colleagues) must be served</td>
+            <td>TQM implementations that focus only on external customers fail because internal relationships deteriorate.</td>
+          </tr>
+          <tr>
+            <td>📋 Control</td>
+            <td><strong>Documentation, procedures, and metrics</strong> are essential for monitoring improvement</td>
+            <td>Without control mechanisms, improvements cannot be measured, tracked, or sustained.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mnemonic-box">
+      <span class="mnemonic-label">Mnemonic for The Six C's of TQM</span>
+      <span class="mnemonic-word">C³ + 3C</span>
+      <ul class="mnemonic-breakdown">
+        <li><span class="letter">C</span> — Commitment (from the top)</li>
+        <li><span class="letter">C</span> — Culture (training-driven attitude change)</li>
+        <li><span class="letter">C</span> — Continuous Improvement (a process, not a programme)</li>
+        <li><span class="letter">C</span> — Co-operation (Total Employee Involvement)</li>
+        <li><span class="letter">C</span> — Customer Focus (internal + external)</li>
+        <li><span class="letter">C</span> — Control (documentation & metrics)</li>
+      </ul>
+      <p style="font-size:0.82rem; color:rgba(255,255,255,0.6); margin-top:12px;">Memory Anchor: <em>"Three C's build the culture (Commitment, Culture, Continuous) — Three C's sustain the system (Co-op, Customer, Control)"</em></p>
+    </div>
+
+    <h3>Deming's Contributions <span class="badge exam">Frequently Tested</span></h3>
+    <p>W. Edwards Deming is called the <em>"father of quality control."</em> His philosophy: <strong>quality improvements require organizational change that starts from upper management</strong> — workers rarely cause problems; <em>the system (process) does</em>.</p>
+
+    <h4>Deming's 14 Points — Organized into Themes</h4>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Point</th>
+            <th>Theme / Insight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Create constancy of purpose towards improvement</td><td>Replace short-term reaction with long-term planning</td></tr>
+          <tr><td>2</td><td>Adopt the new philosophy</td><td>Management must themselves adopt — not just mandate — the philosophy</td></tr>
+          <tr><td>3</td><td>Cease dependence on inspection</td><td>If variation is reduced, inspection becomes unnecessary — build quality in</td></tr>
+          <tr><td>4</td><td>Move towards a single supplier for any one item</td><td>Multiple suppliers introduce variation in feedstock quality</td></tr>
+          <tr><td>5</td><td>Improve constantly and forever</td><td>Continuously strive to reduce variation — kaizen mindset</td></tr>
+          <tr><td>6</td><td>Institute training on the job</td><td>Untrained workers introduce variation in processes</td></tr>
+          <tr><td>7</td><td>Institute leadership</td><td>Leadership ≠ supervision. Leaders develop people; supervisors chase quotas</td></tr>
+          <tr><td>8</td><td>Drive out fear</td><td>Fear prevents workers from acting in the organization's best interest</td></tr>
+          <tr><td>9</td><td>Break down barriers between departments</td><td>The 'internal customer' concept — each department serves the next</td></tr>
+          <tr><td>10</td><td>Eliminate slogans</td><td>Slogans don't fix the process — improving the process does</td></tr>
+          <tr><td>11</td><td>Eliminate management by objectives</td><td>Production targets encourage delivery of poor-quality goods</td></tr>
+          <tr><td>12</td><td>Remove barriers to pride of workmanship</td><td>Workers who are proud of their work produce better output</td></tr>
+          <tr><td>13</td><td>Institute education and self-improvement</td><td>Continuous learning is an organizational imperative</td></tr>
+          <tr><td>14</td><td>The transformation is everyone's job</td><td>Quality is not a department — it is a systemic, organizational commitment</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout highlight">
+      <div class="callout-icon">💡</div>
+      <div class="callout-body">
+        <strong>Exam Quick-Recall Pattern for Deming's 14 Points</strong>
+        <p>Group them: <em>Purpose & Philosophy</em> (1-2), <em>Process Control</em> (3-5), <em>People</em> (6-8), <em>Organizational Barriers</em> (9-11), <em>Transformation</em> (12-14). Think: <strong>"PP-PC-Pe-OB-T"</strong></p>
+      </div>
+    </div>
+
+    <h3>The PDCA Cycle (Deming Wheel) <span class="badge high">Diagram-Based Question Likely</span></h3>
+    <div class="card">
+      <span class="card-title">Plan–Do–Check–Act : The Engine of Continuous Improvement</span>
+      <div class="vertical-flow" style="margin: 16px auto; align-items:center;">
+        <div class="flow-node gold-node">📋 PLAN — Establish objectives & develop action plans</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node" style="border-color:#1a4d8c;">⚙️ DO — Implement the process planned</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node" style="border-color:#2d6a4f;">✅ CHECK — Measure effectiveness of the new process</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node" style="border-color:#9b2226;">🔁 ACT — Take corrective action based on findings</div>
+        <div class="flow-arrow" style="color:var(--gold); font-size:14px;">↑ Loop Back to PLAN ↑</div>
+      </div>
+      <p style="font-size:0.88rem; color:var(--text-light); text-align:center; margin-top:8px;">The <em>circular</em> nature of PDCA represents that continuous improvement is a <strong>never-ending process</strong>.</p>
+    </div>
+
+    <h3>Criticisms of TQM <span class="badge exam">Often Asked in Theory Questions</span></h3>
+    <div class="card">
+      <span class="card-title">Critics: Carlzon (1987), Albrecht (1985), Albrecht & Zemke (1988)</span>
+      <ul>
+        <li>Excessive <strong>focus on documentation</strong> of processes and ill-measurable outcomes</li>
+        <li>Emphasis on <strong>quality assurance rather than improvement</strong></li>
+        <li><strong>Internal focus</strong> that contradicts the alleged customer orientation</li>
+        <li><strong>Albrecht's view:</strong> TQM may not suit service-based industries — standards-based "industry best practice" ignores organizational culture. He recommends <em>TQS (Total Quality Service)</em> — more customer-oriented</li>
+        <li><strong>Carlzon's response:</strong> Revived customer focus through TEI (Total Employee Involvement) — delegate decision-making to the "front-line," decentralize management</li>
+      </ul>
+    </div>
+
+    <h3>TQM vs. Six Sigma — A Key Distinction</h3>
+    <div class="table-wrap">
+      <table>
+        <thead class="compare-header">
+          <tr>
+            <th>Dimension</th>
+            <th>TQM</th>
+            <th>Six Sigma</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Focus</td><td>Process improvement across the organization</td><td>Reducing defects to ~3.4 per million opportunities</td></tr>
+          <tr><td>Approach</td><td>Cultural transformation, everyone's responsibility</td><td>Statistical, data-driven, specialist-led (Black Belts)</td></tr>
+          <tr><td>Scope</td><td>Broad — all organizational functions</td><td>Targeted — specific problem/process elimination</td></tr>
+          <tr><td>Tool</td><td>PDCA, quality circles, 14 Points</td><td>DMAIC, statistical tools, control charts</td></tr>
+          <tr><td>Indian Example</td><td>Maruti Suzuki quality circles</td><td>Motorola, GE — pioneered Six Sigma globally</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 4: SCM ===== -->
+  <section class="section" id="scm">
+    <span class="section-label">Section 04</span>
+    <h2><span class="h2-num">§4</span>Supply Chain Management (SCM)</h2>
+
+    <h3>The 'Why' — Logic Behind SCM</h3>
+    <p>No producer can independently deliver what customers want, when and where they want it. <strong>Supply chains are the value chains</strong> that make this possible. Deficiencies in the supply chain directly reduce competitive ability — which is why SCM has become a boardroom strategic priority.</p>
+
+    <div class="definition-box">
+      <span class="def-label">GSCF Definition — Key for Exams</span>
+      <p>Supply Chain Management is <strong>"the integration of key business processes from end user through original suppliers that provides products, services, and information that add value for customers and other stakeholders."</strong></p>
+      <span class="def-source">— Global Supply Chain Forum (GSCF)</span>
+    </div>
+
+    <h3>The 8 GSCF Supply Chain Processes <span class="badge high">High Yield List</span></h3>
+    <div class="two-col">
+      <div class="card">
+        <ol>
+          <li><strong>Customer Relationship Management (CRM)</strong> — Manage & analyse customer data through the lifecycle</li>
+          <li><strong>Supplier Relationship Management (SRM)</strong> — Structure for developing & maintaining supplier relationships</li>
+          <li><strong>Customer Service Management</strong> — Key contact point for product/service agreements</li>
+          <li><strong>Demand Management</strong> — Aligns customer requirements with supply chain capabilities</li>
+        </ol>
+      </div>
+      <div class="card">
+        <ol start="5">
+          <li><strong>Order Fulfilment</strong> — All activities to fill customer orders efficiently</li>
+          <li><strong>Manufacturing Flow Management</strong> — Move products through plants; manage manufacturing flexibility</li>
+          <li><strong>Product Development & Commercialization</strong> — Bring new products to market with customers and suppliers</li>
+          <li><strong>Returns Management</strong> — Reverse logistics, gatekeeping, avoidance</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="mnemonic-box">
+      <span class="mnemonic-label">Mnemonic for 8 GSCF Processes</span>
+      <span class="mnemonic-word">"CRM-SDO-MPR"</span>
+      <ul class="mnemonic-breakdown">
+        <li><span class="letter">C</span> — Customer Relationship Management</li>
+        <li><span class="letter">R</span> — (Supplier) Relationship Management (SRM)</li>
+        <li><span class="letter">M</span> — (Customer Service) Management</li>
+        <li><span class="letter">S</span> — (Supply Chain) — Demand Management</li>
+        <li><span class="letter">D</span> — (Order fulfilment) Delivery</li>
+        <li><span class="letter">O</span> — Operations (Manufacturing Flow Management)</li>
+        <li><span class="letter">M</span> — Market (Product Development & Commercialization)</li>
+        <li><span class="letter">P</span> — Product Returns Management</li>
+        <li><span class="letter">R</span> — Returns</li>
+      </ul>
+      <p style="font-size:0.82rem; color:rgba(255,255,255,0.5); margin-top:8px;">Simpler anchor: <em>"CS-SD-OM-PR"</em> → Customer Service, Supply & Demand, Operations & Markets, Products & Returns</p>
+    </div>
+
+    <h3>Types of Supply Chain: Push vs. Pull</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>🔴 Push Model</th>
+            <th>🟢 Pull Model</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Production trigger</td>
+            <td>Anticipated/forecasted demand</td>
+            <td>Actual customer orders</td>
+          </tr>
+          <tr>
+            <td>Inventory level</td>
+            <td>High (built up in advance)</td>
+            <td>Low (produced on demand)</td>
+          </tr>
+          <tr>
+            <td>Customer role</td>
+            <td>Passive — buys what is available</td>
+            <td>Active — drives production through orders</td>
+          </tr>
+          <tr>
+            <td>Risk</td>
+            <td>Overstock if demand is misjudged</td>
+            <td>Potential lead time delays</td>
+          </tr>
+          <tr>
+            <td>Best suited for</td>
+            <td>Stable, predictable demand; economies of scale; commodities (FMCG, essential goods)</td>
+            <td>Customized products; volatile demand; e-commerce; fashion</td>
+          </tr>
+          <tr>
+            <td>Technology</td>
+            <td>ERP, demand forecasting tools, operations research</td>
+            <td>E-commerce, Electronic Data Interchange (EDI), real-time connectivity</td>
+          </tr>
+          <tr>
+            <td>Indian Example</td>
+            <td>Amul dairy products stocked in retail stores ahead of demand</td>
+            <td>Myntra (fashion) — produces/procures after customer order; Amazon India</td>
+          </tr>
+          <tr>
+            <td>Working capital impact</td>
+            <td>Higher — capital locked in finished goods inventory</td>
+            <td>Lower — inventory turns faster</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Upstream vs. Downstream Flow</h3>
+    <div class="two-col">
+      <div class="card">
+        <span class="card-title">⬆️ Upstream (Supplier Side)</span>
+        <p>Management of transactions with <strong>suppliers</strong>. Flow relates to inward movement of materials toward the manufacturer.</p>
+        <p><strong>Key components:</strong></p>
+        <ul>
+          <li>Relationship with Suppliers (SRM)</li>
+          <li>E-Procurement: <em>E-Sourcing → E-Purchasing → E-Payment</em></li>
+          <li>Supplier Strategy: Sources, Number, Cost/Quality/Speed, Make-or-Buy</li>
+        </ul>
+      </div>
+      <div class="card gold">
+        <span class="card-title">⬇️ Downstream (Customer Side)</span>
+        <p>Management of transactions with <strong>customers</strong>. Flow relates to outward movement of products to end users.</p>
+        <p><strong>Key components:</strong></p>
+        <ul>
+          <li>Relationship Marketing (Six Markets Model)</li>
+          <li>Customer Relationship Management (CRM)</li>
+          <li>Use of Information Technology (EDI, E-Business)</li>
+          <li>Brand Strategy</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>E-Procurement — Upstream Technology <span class="badge exam">Exam Detail</span></h3>
+    <div class="step-flow">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>E-Sourcing</strong>
+          <p>Electronic invitation to tender — suppliers across geographies submit quotations electronically. Best way to find the optimal supplier. Reduces cost, time, and effort vs. traditional methods.</p>
+        </div>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>E-Purchasing</strong>
+          <p>Electronic catalogues for standard items; recurring shopping lists; electronic POs dispatched via extranet; detailed management reporting. Enables decentralized purchasing with better controls.</p>
+        </div>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>E-Payment</strong>
+          <p>Electronic invoicing and fund transfer. Zero-error payment processing. Faster than manual modes.</p>
+        </div>
+      </div>
+    </div>
+    <div class="callout success">
+      <div class="callout-icon">✅</div>
+      <div class="callout-body">
+        <strong>Benefits of E-Procurement</strong>
+        <p>Lower costs, less time, quick ordering, best supplier selection, inventory control, better purchase/sales management, greater financial transparency. <em>Risk: A single technology failure can crash the entire system.</em></p>
+      </div>
+    </div>
+
+    <h3>Relationship Marketing — Six Markets Model <span class="badge exam">Theory Question Topic</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Market Domain</th><th>Who it includes</th><th>Strategic Importance</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Internal Markets</td><td>Internal departments and staff</td><td>Staff shape customer-oriented corporate culture</td></tr>
+          <tr><td>Referral Markets</td><td>Existing customers (word-of-mouth) + referral sources (e.g., consultants)</td><td>Cheapest form of customer acquisition</td></tr>
+          <tr><td>Influence Markets</td><td>Financial analysts, shareholders, business press, government, consumer groups</td><td>Shape the marketing environment of the firm</td></tr>
+          <tr><td>Recruitment Markets</td><td>Recruitment agencies, universities, institutes</td><td>Access to skilled talent — critical for service quality</td></tr>
+          <tr><td>Supplier Markets</td><td>Traditional suppliers + strategic alliance partners</td><td>Better quality, faster time-to-market, lower inventory</td></tr>
+          <tr><td>Customer Markets</td><td>All existing & prospective customers + intermediaries</td><td>Core source of revenue and growth</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Customer Relationship Management (CRM) — Key Concepts</h3>
+
+    <h4>Customer Account Profitability (CAP)</h4>
+    <p>Most firms measure profits at the product or business unit level — they fail to measure profit at the <strong>customer level</strong>. CAP addresses this. It uses <strong>Activity-Based Costing (ABC)</strong> to attribute revenues and all direct costs (manufacturing, distribution, sales, marketing, service) to individual customers.</p>
+
+    <div class="card">
+      <span class="card-title">Four Customer Tiers (Banking/Credit Card Model)</span>
+      <div class="two-col">
+        <ul>
+          <li>🏆 <strong>Platinum:</strong> Most profitable — receive best service & benefits</li>
+          <li>🥇 <strong>Gold:</strong> Profitable — retain and deepen relationship</li>
+        </ul>
+        <ul>
+          <li>🔩 <strong>Iron:</strong> Low profit but desirable — develop toward gold</li>
+          <li>⚠️ <strong>Lead:</strong> Unprofitable & undesirable — disengage strategically</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>5-Step CAP Improvement Process</h4>
+    <div class="step-flow">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Analyse customer base</strong><p>Segment by geography, purchasing behaviour, or profitability</p></div></div>
+      <div class="step-connector"></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Calculate annual revenues per customer segment</strong><p>Identify what each segment actually generates</p></div></div>
+      <div class="step-connector"></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Calculate annual costs of serving each segment</strong><p>Use ABC — include all direct costs: production, delivery, sales, service</p></div></div>
+      <div class="step-connector"></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Identify and retain quality customers</strong><p>Platinum and Gold tier — invest in deepening these relationships</p></div></div>
+      <div class="step-connector"></div>
+      <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Re-engineer/eliminate unprofitable segments</strong><p>Lead customers — divest or transform the relationship</p></div></div>
+    </div>
+
+    <h4>Customer Lifetime Value (CLV) <span class="badge high">Numerical Question Alert</span></h4>
+    <div class="definition-box">
+      <span class="def-label">Definition — CLV</span>
+      <p>Customer Lifetime Value is the <strong>net present value of the projected future cash flows from a lifetime of customer relationship</strong>. It helps focus marketing resources on profitable customers and discontinue servicing non-profitable ones.</p>
+    </div>
+
+    <div class="formula">
+      <span class="formula-label">CLV Calculation Approach</span>
+      <div class="formula-body">
+        <span>CLV</span> = <span>PV of Revenue from Customer</span> × <span>Probability of Usage</span> − <span>Initial Cost of Acquisition</span><br>
+        <span style="font-size:0.75rem; color:rgba(255,255,255,0.5); margin-top:8px; display:block;">Discount rate: Firm's cost of capital (or organization-specific rate)</span>
+      </div>
+    </div>
+
+    <h4>Customer Selection, Acquisition, Retention & Extension (SARE)</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stage</th><th>Key Question</th><th>Tools / Techniques</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Selection</strong></td><td>Who are we targeting? What is their value?</td><td>CAP analysis, CLV modelling</td></tr>
+          <tr><td><strong>Acquisition</strong></td><td>How do we bring new customers in?</td><td>Advertising, direct mail, search engine marketing, viral marketing</td></tr>
+          <tr><td><strong>Retention</strong></td><td>How do we keep existing customers?</td><td>Personalisation, mass customisation, opt-in e-mail, online communities</td></tr>
+          <tr><td><strong>Extension</strong></td><td>How do we increase what existing customers buy?</td><td>Re-sell, Cross-sell, Up-sell</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Service Level Agreements (SLA)</h3>
+    <div class="card gold">
+      <span class="card-title">SLA — Definition & Key Features</span>
+      <p>An SLA is a <strong>formal or informal agreement between customer and service provider</strong> that defines service expectations. It may be legally binding and can be between separate organizations or internal teams.</p>
+      <ul>
+        <li>Includes: definition of services, performance standards, termination conditions</li>
+        <li>Regular meetings to create open communication forums</li>
+        <li>Specifies <strong>provider rewards and penalties</strong></li>
+        <li>Always includes provisions for revisiting terms</li>
+      </ul>
+      <p style="margin-top:8px;"><strong>Indian Context:</strong> IT companies (Infosys, TCS, Wipro) maintain SLAs with global clients defining uptime, response times, and defect rates.</p>
+    </div>
+
+    <h3>Building a Resilient and Sustainable Supply Chain <span class="badge new">Contemporary Topic</span></h3>
+    <div class="card">
+      <span class="card-title">Major Disruptions That Exposed Supply Chain Fragility</span>
+      <ul>
+        <li>COVID-19 pandemic — widespread supply chain disruptions</li>
+        <li>Geo-political tensions — impacting food and energy supplies</li>
+        <li>Semiconductor chip shortage — affecting electronics and automobile production globally, including India</li>
+        <li>Supplier/port shutdowns, inflation, recession</li>
+      </ul>
+    </div>
+    <div class="callout info">
+      <div class="callout-icon">🛡️</div>
+      <div class="callout-body">
+        <strong>How to Build Supply Chain Resilience</strong>
+        <p>Run digital twin stress tests for disruption scenarios → Measure impact with key metrics → Assess vulnerabilities and design mitigation strategies → Benchmark resilience against peers. Governments must also assess risks to strategically critical industries.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 5: GAIN SHARING ===== -->
+  <section class="section" id="gain">
+    <span class="section-label">Section 05</span>
+    <h2><span class="h2-num">§5</span>Gain Sharing Arrangements</h2>
+
+    <h3>The 'Why' — Logic Behind Gain Sharing</h3>
+    <p>Traditional contracts create <em>adversarial dynamics</em> — the supplier hides cost savings to protect margin; the customer drives prices down destroying supplier viability. Gain sharing <strong>aligns interests</strong> by making both parties co-investors in each other's success.</p>
+
+    <div class="definition-box">
+      <span class="def-label">Definition — Gain Sharing</span>
+      <p>Gain Sharing is <strong>an approach to the review and adjustment of an existing contract (or series of contracts) where the adjustment provides benefits to both parties.</strong> The supplier performs without a guaranteed payment — compensation is based on the <em>actual benefits that emerge to the customer</em> from the supplier's performance.</p>
+    </div>
+
+    <h3>Key Features</h3>
+    <div class="card">
+      <ul>
+        <li>Supplier takes on <strong>risk</strong> (could walk away with nothing) in exchange for <strong>upside</strong> (large return if benefits are substantial)</li>
+        <li>The supplier is effectively taking an <strong>equity-like stake</strong> in the customer's success</li>
+        <li>The gain shared is <strong>not necessarily financial</strong> — it could be a higher specification, faster service, or other non-monetary benefit</li>
+        <li>Both parties must provide access to <strong>relevant cost data</strong> to verify and calculate the benefit</li>
+        <li>There must be <strong>no rewards for adversarial behaviour</strong> or hiding behind contract terms</li>
+        <li>Described as a <strong>"win-win" situation</strong> on the face of it</li>
+      </ul>
+    </div>
+
+    <h3>Typical Structure of a Gain Sharing Agreement <span class="badge exam">Standard Exam Format</span></h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Year</th><th>Treatment of Cost Savings</th><th>Who Benefits</th></tr></thead>
+        <tbody>
+          <tr><td>Year 1</td><td>Cost savings generated by supplier's initiative retained by supplier</td><td>Supplier 100%</td></tr>
+          <tr><td>Year 2</td><td>Shared between buyer and supplier (e.g., 40:60 or 30:70)</td><td>Both parties</td></tr>
+          <tr><td>Year 3</td><td>Passed entirely to the buyer/client</td><td>Buyer 100%</td></tr>
+          <tr><td>Always</td><td>If buyer proposes cost-saving idea requiring no supplier capital — passed immediately to buyer</td><td>Buyer 100%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout success">
+      <div class="callout-icon">✅</div>
+      <div class="callout-body">
+        <strong>Indian Context Example</strong>
+        <p>A large manufacturing company outsources facility maintenance to a specialist vendor under a gain-sharing contract. The vendor implements energy efficiency measures — Year 1 savings belong to the vendor; Years 2-3 shared; Year 4 passed to the manufacturer. This incentivizes genuine effort, innovation, and transparency from the vendor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 6: DOO ===== -->
+  <section class="section" id="doo">
+    <span class="section-label">Section 06</span>
+    <h2><span class="h2-num">§6</span>Downsizing, Outsourcing & Offshoring</h2>
+
+    <div class="callout highlight">
+      <div class="callout-icon">💡</div>
+      <div class="callout-body">
+        <strong>The Common Thread</strong>
+        <p>Despite their differences, all three strategies share one primary objective: <strong>reducing cost or managing it strategically</strong>. Decisions are based on cost-benefit analysis or comparative cost statements.</p>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Dimension</th><th>⬇️ Downsizing</th><th>📤 Outsourcing</th><th>🌏 Offshoring</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Definition</strong></td>
+            <td>Reducing employee workforce by closing non-profitable divisions or eliminating idle capacity to survive economic hardship</td>
+            <td>Transferring non-core functions to external specialist firms (Third Party Service Providers)</td>
+            <td>Relocating business functions to another country where operating costs are lower — requires physical infrastructure setup</td>
+          </tr>
+          <tr>
+            <td><strong>Primary Trigger</strong></td>
+            <td>Economic crisis, mergers, automation, strategy change</td>
+            <td>Cost reduction, access to expertise, focus on core competency</td>
+            <td>Lower labour costs, favourable government policies, time zone advantages</td>
+          </tr>
+          <tr>
+            <td><strong>Key Pros</strong></td>
+            <td>Immediate cost reduction, survival in recession</td>
+            <td>Reduced operating costs, specialization, scalability (up/down)</td>
+            <td>Lower cost of operations, access to local talent, time zone coverage</td>
+          </tr>
+          <tr>
+            <td><strong>Key Cons</strong></td>
+            <td>Morale damage, loss of institutional knowledge, potential talent loss</td>
+            <td>Security/privacy risks, cultural differences, communication challenges</td>
+            <td>Home country unemployment (socio-political pressure), cultural/data security risks</td>
+          </tr>
+          <tr>
+            <td><strong>Indian Example</strong></td>
+            <td>Banks reducing branch staff post-digital transformation (e.g., Yes Bank restructuring)</td>
+            <td>Infosys/TCS managing IT functions for global MNCs — India as outsourcing hub</td>
+            <td>Dell/IBM setting up call centres in India to serve US clients — offshore but not outsourced</td>
+          </tr>
+          <tr>
+            <td><strong>Key Distinction</strong></td>
+            <td>Workforce reduction strategy</td>
+            <td>Third party does work — no physical relocation needed</td>
+            <td>Work moves geographically — physical infrastructure in another country</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Critical Distinctions — Exam Trap Points</h3>
+    <div class="card red">
+      <span class="card-title">⚠️ Conceptual Distinctions You Must Know</span>
+      <ul>
+        <li><strong>Outsource but NOT offshore:</strong> Hiring an external law firm to review contracts (outsourced to third party, but both in same country)</li>
+        <li><strong>Offshore but NOT outsource:</strong> Dell's Indian call centre serves American clients — work moved offshore, but Dell's own employees do it (not a third party)</li>
+        <li><strong>Offshore outsourcing:</strong> Both — hiring a vendor in another country for cost advantage and expertise</li>
+        <li><strong>Downsizing ≠ Rightsizing:</strong> Downsizing cuts costs in crisis; Rightsizing is optimization for new business objectives — not necessarily cost-cutting</li>
+      </ul>
+    </div>
+
+    <h3>Outsourcing — Steps for Success</h3>
+    <ol>
+      <li><strong>Choose larger, more established vendors</strong> — bigger and older outsourcing vendors carry lower execution risk</li>
+      <li><strong>Avoid outsourcing proprietary or security-sensitive work</strong> — trade secrets, core IP must stay in-house</li>
+      <li><strong>Start small and monitor constantly</strong> — scale up only after validating quality and security</li>
+    </ol>
+    <div class="callout warn">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body">
+        <strong>Without these steps:</strong>
+        <p>Quality control issues, security violations, and poor customer service can eliminate all cost savings attributed to lower wages.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 7: EXAMINER'S LENS ===== -->
+  <section class="section" id="examiners">
+    <span class="section-label">Section 07</span>
+    <h2><span class="h2-num">§7</span>The Examiner's Lens</h2>
+
+    <h3>Trigger Points — Keywords That Signal Each Concept</h3>
+
+    <div class="card gold">
+      <span class="card-title">COQ / PAF Model Triggers</span>
+      <div class="trigger-cloud">
+        <span class="trigger-chip">rejection rate</span>
+        <span class="trigger-chip">warranty claims</span>
+        <span class="trigger-chip">rework costs</span>
+        <span class="trigger-chip">inspection proposal</span>
+        <span class="trigger-chip">scrap percentage</span>
+        <span class="trigger-chip">cost of poor quality</span>
+        <span class="trigger-chip">faulty production</span>
+        <span class="trigger-chip">cost of control</span>
+        <span class="trigger-chip">prevention vs appraisal</span>
+        <span class="trigger-chip">net benefit of quality</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="card-title">TQM Triggers</span>
+      <div class="trigger-cloud">
+        <span class="trigger-chip">competitive advantage through quality</span>
+        <span class="trigger-chip">continuous improvement</span>
+        <span class="trigger-chip">zero defects</span>
+        <span class="trigger-chip">employee involvement</span>
+        <span class="trigger-chip">customer satisfaction</span>
+        <span class="trigger-chip">Deming philosophy</span>
+        <span class="trigger-chip">PDCA cycle</span>
+        <span class="trigger-chip">conformance vs non-conformance</span>
+      </div>
+    </div>
+
+    <div class="card green">
+      <span class="card-title">SCM Triggers</span>
+      <div class="trigger-cloud">
+        <span class="trigger-chip">inventory levels</span>
+        <span class="trigger-chip">supplier relationship</span>
+        <span class="trigger-chip">forecast-based production</span>
+        <span class="trigger-chip">order-based production</span>
+        <span class="trigger-chip">upstream / downstream</span>
+        <span class="trigger-chip">customer lifetime value</span>
+        <span class="trigger-chip">customer profitability</span>
+        <span class="trigger-chip">e-procurement</span>
+        <span class="trigger-chip">SLA</span>
+        <span class="trigger-chip">supply chain disruption</span>
+      </div>
+    </div>
+
+    <h3>Common Mistakes — Where Marks Are Lost</h3>
+
+    <div class="mistake-item">
+      <span class="mistake-icon">✗</span>
+      <div>
+        <strong>Confusing Prevention with Appraisal Costs</strong>
+        <p>Prevention happens <em>before</em> production begins (training, design reviews, quality planning). Appraisal happens <em>during</em> production (testing, inspection, auditing). Students frequently misclassify "supplier evaluation" — it is Prevention (before selecting), not Appraisal (during production).</p>
+      </div>
+    </div>
+
+    <div class="mistake-item">
+      <span class="mistake-icon">✗</span>
+      <div>
+        <strong>Treating External Failure as just "warranty costs"</strong>
+        <p>External Failure includes <em>hidden</em> costs: lost profits from lost customers, lost market share, customer dissatisfaction, product liability. These often exceed visible warranty costs and must be mentioned in exam answers.</p>
+      </div>
+    </div>
+
+    <div class="mistake-item">
+      <span class="mistake-icon">✗</span>
+      <div>
+        <strong>Recommending against TQM purely on financial grounds</strong>
+        <p>Many questions have TQM proposals that show a net financial cost. Students write "reject the proposal." Full marks require discussing <em>non-financial benefits</em>: reputation, customer retention, long-term market share, employee morale. Always balance financial with non-financial.</p>
+      </div>
+    </div>
+
+    <div class="mistake-item">
+      <span class="mistake-icon">✗</span>
+      <div>
+        <strong>Confusing Push and Pull in caselet MCQs</strong>
+        <p>The trigger for Push: predictable demand, economies of scale, stable products, sufficient storage/working capital. The trigger for Pull: customized products, volatile demand, e-commerce, just-in-time philosophy. Read the case carefully — don't default to one or the other.</p>
+      </div>
+    </div>
+
+    <div class="mistake-item">
+      <span class="mistake-icon">✗</span>
+      <div>
+        <strong>In CLV questions — ignoring probability of usage</strong>
+        <p>A very common numerical error: computing PV of revenue without adjusting for the probability that a customer will actually use the service in later years. Always multiply PV by the relevant probability fraction before summing.</p>
+      </div>
+    </div>
+
+    <div class="mistake-item">
+      <span class="mistake-icon">✗</span>
+      <div>
+        <strong>Treating Outsourcing and Offshoring as synonyms</strong>
+        <p>They are distinct. Outsourcing = handing work to a third party (same or different country). Offshoring = relocating work to another country (done by own staff or third party). A question asking to distinguish between them carries easy marks that many students drop.</p>
+      </div>
+    </div>
+
+    <h3>Inter-Connectivity — How This Chapter Links to Others</h3>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Concept in This Chapter</th><th>Connects To</th><th>The Link</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cost of Quality (COQ)</td>
+            <td>Activity-Based Costing (ABC), Target Costing</td>
+            <td>ABC is used to measure customer account profitability and trace quality costs to activities. Target Costing forces quality to be built-in at design stage.</td>
+          </tr>
+          <tr>
+            <td>TQM / PDCA / Continuous Improvement</td>
+            <td>Performance Measurement (Balanced Scorecard), Budgetary Control</td>
+            <td>Internal process perspective in BSC directly measures TQM KPIs. Continuous improvement conflicts with traditional fixed budget thinking.</td>
+          </tr>
+          <tr>
+            <td>Supply Chain Management (SCM)</td>
+            <td>Performance Measurement, JIT, Lean Manufacturing</td>
+            <td>SCM efficiency is measured through non-financial KPIs (delivery time, fill rates). JIT is the operational expression of the Pull model in SCM.</td>
+          </tr>
+          <tr>
+            <td>Customer Lifetime Value (CLV)</td>
+            <td>Strategic Profitability Analysis, Pricing Decisions</td>
+            <td>CLV determines how much to spend on customer acquisition (marketing spend = f(CLV)). Feeds into pricing strategy decisions.</td>
+          </tr>
+          <tr>
+            <td>Gain Sharing</td>
+            <td>Transfer Pricing, Contract Costing</td>
+            <td>Gain sharing is a real-world contract structure that must be costed and evaluated — connects to contract pricing and cost-sharing frameworks.</td>
+          </tr>
+          <tr>
+            <td>Outsourcing / Offshoring</td>
+            <td>Make-or-Buy Analysis, Strategic Cost Management</td>
+            <td>The outsourcing decision IS a make-or-buy analysis. Relevant cost comparison (differential analysis) is the framework used to decide.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 8: VISUAL SYNTHESIS ===== -->
+  <section class="section" id="visual">
+    <span class="section-label">Section 08</span>
+    <h2><span class="h2-num">§8</span>Visual Synthesis</h2>
+
+    <h3>Master Comparison Table — All Models in This Chapter</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Framework</th>
+            <th>Purpose</th>
+            <th>Key Components</th>
+            <th>Who Uses It</th>
+            <th>Limitation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>PAF Model (COQ)</strong></td>
+            <td>Measure and classify quality costs</td>
+            <td>Prevention, Appraisal, Internal Failure, External Failure</td>
+            <td>Quality control managers, management accountants</td>
+            <td>Many hidden costs not captured; subjectivity in classification</td>
+          </tr>
+          <tr>
+            <td><strong>TQM (6Cs)</strong></td>
+            <td>Embed quality culture across the organization</td>
+            <td>Commitment, Culture, Continuous Improvement, Co-operation, Customer Focus, Control</td>
+            <td>Entire organization — top management to front-line</td>
+            <td>Documentation-heavy; may not suit service industries (Albrecht critique)</td>
+          </tr>
+          <tr>
+            <td><strong>PDCA Cycle</strong></td>
+            <td>Operationalize continuous improvement</td>
+            <td>Plan → Do → Check → Act → (loop)</td>
+            <td>Operations, process improvement teams</td>
+            <td>Requires consistent discipline; slow if check cycle is long</td>
+          </tr>
+          <tr>
+            <td><strong>Push/Pull SCM</strong></td>
+            <td>Determine production trigger and inventory strategy</td>
+            <td>Forecast-driven (Push) vs Demand-driven (Pull)</td>
+            <td>Operations, supply chain, inventory managers</td>
+            <td>Pure Push = overstock risk; Pure Pull = lead time risk</td>
+          </tr>
+          <tr>
+            <td><strong>Six Markets Model</strong></td>
+            <td>Map all relationship marketing domains</td>
+            <td>Internal, Referral, Influence, Recruitment, Supplier, Customer</td>
+            <td>Marketing, CRM, HR functions</td>
+            <td>Complex to manage all 6 simultaneously with equal priority</td>
+          </tr>
+          <tr>
+            <td><strong>CAP (Customer Profitability)</strong></td>
+            <td>Measure profitability at customer level, not product level</td>
+            <td>Platinum, Gold, Iron, Lead tiers via ABC</td>
+            <td>Finance, CRM, sales management</td>
+            <td>Cost allocation per customer is complex in service environments</td>
+          </tr>
+          <tr>
+            <td><strong>CLV Model</strong></td>
+            <td>Quantify lifetime value of customer relationship</td>
+            <td>PV of future net cash flows × probability of retention</td>
+            <td>Marketing strategists, finance</td>
+            <td>Highly sensitive to discount rate and duration assumptions</td>
+          </tr>
+          <tr>
+            <td><strong>Gain Sharing</strong></td>
+            <td>Align supplier-customer incentives</td>
+            <td>No guaranteed payment; shared upside; tiered across years</td>
+            <td>Procurement, outsourcing contracts</td>
+            <td>Requires mutual transparency of cost data — trust is essential</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Logic Flowchart — COQ Analysis and Decision Process</h3>
+    <p>This is the most complex analytical process in the chapter, used in numerical questions like the Livewell Ltd. and Cool Air illustrations.</p>
+
+    <div class="card" style="padding: 32px;">
+      <div class="vertical-flow" style="align-items:stretch; max-width:460px; margin: 0 auto;">
+        <div class="flow-node gold-node" style="width:100%; text-align:left; padding:14px 20px;">
+          <div>📌 <strong>STEP 1: Identify current rejection/defect rate</strong><br>
+          <span style="font-size:0.8rem; color:#555; font-weight:400;">Current cost = Defective units × Cost per defective unit</span></div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node" style="width:100%; text-align:left; padding:14px 20px;">
+          <div>📌 <strong>STEP 2: Calculate proposed defect rate</strong><br>
+          <span style="font-size:0.8rem; color:#555; font-weight:400;">Proposed cost = Revised defective units × Cost per defective unit</span></div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node" style="width:100%; text-align:left; padding:14px 20px;">
+          <div>📌 <strong>STEP 3: Compute savings</strong><br>
+          <span style="font-size:0.8rem; color:#555; font-weight:400;">Savings = Current cost of poor quality − Proposed cost of poor quality</span></div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node" style="width:100%; text-align:left; padding:14px 20px;">
+          <div>📌 <strong>STEP 4: Compute cost of new control</strong><br>
+          <span style="font-size:0.8rem; color:#555; font-weight:400;">= Incremental prevention or appraisal cost of the proposal</span></div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node" style="width:100%; text-align:left; padding:14px 20px;">
+          <div>📌 <strong>STEP 5: Net Benefit = Savings − New Control Cost</strong><br>
+          <span style="font-size:0.8rem; color:#555; font-weight:400;">If positive → Accept proposal (financial grounds)</span></div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node navy-node" style="width:100%; text-align:left; padding:14px 20px;">
+          <div>📌 <strong>STEP 6: Add Non-Financial Perspective</strong><br>
+          <span style="font-size:0.8rem; color:rgba(255,255,255,0.7); font-weight:400;">Reputation, customer satisfaction, market share — always include even if financially negative</span></div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node gold-node" style="width:100%; text-align:center; font-size:1rem; font-weight:700;">
+          ✅ FINAL RECOMMENDATION
+        </div>
+      </div>
+    </div>
+
+    <h3>Logic Flowchart — Push vs Pull Supply Chain Selection</h3>
+    <div class="card" style="padding: 32px;">
+      <div class="vertical-flow" style="align-items:stretch; max-width:460px; margin: 0 auto;">
+        <div class="flow-node gold-node" style="width:100%;">Is demand <strong>predictable & stable</strong>?</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-row" style="gap:12px;">
+          <div style="flex:1;">
+            <div class="flow-node" style="background:#d1fae5; border-color:#065f46; padding:10px;">YES → Can it benefit from economies of scale?</div>
+            <div style="margin-top:8px;" class="flow-node" style="background:#d1fae5; border-color:#065f46; padding:10px;"><strong style="color:#065f46;">PUSH Model ✅</strong></div>
+          </div>
+          <div style="flex:1;">
+            <div class="flow-node" style="background:#fee2e2; border-color:#991b1b; padding:10px;">NO → Is product highly customized?</div>
+            <div style="margin-top:8px;" class="flow-node" style="background:#fee2e2; border-color:#991b1b; padding:10px;"><strong style="color:#991b1b;">PULL Model ✅</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 9: RETAIN & RECALL ===== -->
+  <section class="section" id="recall">
+    <span class="section-label">Section 09</span>
+    <h2><span class="h2-num">§9</span>The 'Retain & Recall' Section</h2>
+
+    <h3>All Mnemonics — Chapter 2</h3>
+
+    <div class="mnemonic-box">
+      <span class="mnemonic-label">Mnemonic 1 — PAF Model (4 COQ Components)</span>
+      <span class="mnemonic-word">PAIF</span>
+      <ul class="mnemonic-breakdown">
+        <li><span class="letter">P</span> — Prevention Costs (before production — avoid defects)</li>
+        <li><span class="letter">A</span> — Appraisal Costs (during production — measure conformance)</li>
+        <li><span class="letter">I</span> — Internal Failure (before delivery — scrap, rework)</li>
+        <li><span class="letter">F</span> — External Failure (after delivery — warranty, recalls)</li>
+      </ul>
+      <p style="font-size:0.82rem; color:rgba(255,255,255,0.55); margin-top:10px;">Remember: <em>"PAIF — You PAY IF you don't get quality right."</em></p>
+    </div>
+
+    <div class="mnemonic-box">
+      <span class="mnemonic-label">Mnemonic 2 — Six C's of TQM</span>
+      <span class="mnemonic-word">CC-CC-CC</span>
+      <ul class="mnemonic-breakdown">
+        <li><span class="letter">C</span> — Commitment (top management)</li>
+        <li><span class="letter">C</span> — Culture (training changes attitudes)</li>
+        <li><span class="letter">C</span> — Continuous Improvement (never-ending process)</li>
+        <li><span class="letter">C</span> — Co-operation (Total Employee Involvement)</li>
+        <li><span class="letter">C</span> — Customer Focus (internal + external)</li>
+        <li><span class="letter">C</span> — Control (documentation, metrics, monitoring)</li>
+      </ul>
+      <p style="font-size:0.82rem; color:rgba(255,255,255,0.55); margin-top:10px;"><em>"Six C's — the DNA of TQM culture"</em></p>
+    </div>
+
+    <div class="mnemonic-box">
+      <span class="mnemonic-label">Mnemonic 3 — PDCA Cycle</span>
+      <span class="mnemonic-word">Please Do Check Again</span>
+      <ul class="mnemonic-breakdown">
+        <li><span class="letter">P</span> — Plan (objectives & action plans)</li>
+        <li><span class="letter">D</span> — Do (implement the plan)</li>
+        <li><span class="letter">C</span> — Check (measure effectiveness)</li>
+        <li><span class="letter">A</span> — Act (corrective action → loop back to Plan)</li>
+      </ul>
+    </div>
+
+    <div class="mnemonic-box">
+      <span class="mnemonic-label">Mnemonic 4 — Downstream SCM (Customer Side)</span>
+      <span class="mnemonic-word">R-CRM-IT-B</span>
+      <ul class="mnemonic-breakdown">
+        <li><span class="letter">R</span> — Relationship Marketing (Six Markets)</li>
+        <li><span class="letter">C</span> — Customer Relationship Management (CRM)</li>
+        <li><span class="letter">R</span> — (included in CRM)</li>
+        <li><span class="letter">M</span> — (CRM: CAP + CLV + SARE)</li>
+        <li><span class="letter">IT</span> — Use of Information Technology (EDI, E-Business)</li>
+        <li><span class="letter">B</span> — Brand Strategy</li>
+      </ul>
+    </div>
+
+    <div class="mnemonic-box">
+      <span class="mnemonic-label">Mnemonic 5 — Customer Tiers (CAP)</span>
+      <span class="mnemonic-word">PGIL</span>
+      <ul class="mnemonic-breakdown">
+        <li><span class="letter">P</span> — Platinum (most profitable)</li>
+        <li><span class="letter">G</span> — Gold (profitable)</li>
+        <li><span class="letter">I</span> — Iron (low profit but desirable)</li>
+        <li><span class="letter">L</span> — Lead (unprofitable — eliminate)</li>
+      </ul>
+      <p style="font-size:0.82rem; color:rgba(255,255,255,0.55); margin-top:10px;"><em>"Pure Gold Is Legendary... Lead is Left behind."</em></p>
+    </div>
+
+    <div class="mnemonic-box">
+      <span class="mnemonic-label">Mnemonic 6 — Customer SARE Framework</span>
+      <span class="mnemonic-word">SARE</span>
+      <ul class="mnemonic-breakdown">
+        <li><span class="letter">S</span> — Selection (who to target)</li>
+        <li><span class="letter">A</span> — Acquisition (how to attract)</li>
+        <li><span class="letter">R</span> — Retention (how to keep)</li>
+        <li><span class="letter">E</span> — Extension (cross-sell, up-sell, re-sell)</li>
+      </ul>
+    </div>
+
+    <h3>3-Point Revision Checklist — Verify Your Mastery</h3>
+
+    <div class="checklist">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:16px;">✓ Before Your Exam — Can You Answer These?</span>
+
+      <div class="checklist-item">
+        <div class="check-box">□</div>
+        <p><strong>COQ Mastery:</strong> Can you correctly classify any given cost item into Prevention / Appraisal / Internal Failure / External Failure, AND perform a numerical COQ analysis to determine if a quality improvement proposal should be accepted (on both financial and non-financial grounds)? Can you calculate the break-even rejection rate below which a proposal is profitable?</p>
+      </div>
+
+      <div class="checklist-item">
+        <div class="check-box">□</div>
+        <p><strong>TQM & SCM Mastery:</strong> Can you explain all 6Cs of TQM, all 14 Deming points (grouped by theme), critique TQM from Carlzon's and Albrecht's perspective, distinguish Push from Pull supply chains with real triggers, and describe all 8 GSCF processes? Can you define CLV and calculate it numerically using PV factors and probability adjustments?</p>
+      </div>
+
+      <div class="checklist-item">
+        <div class="check-box">□</div>
+        <p><strong>Strategic Concepts Mastery:</strong> Can you distinguish between Outsourcing, Offshoring, and Offshore Outsourcing with examples? Can you explain a Gain Sharing arrangement — its structure, the year-wise benefit allocation, the risks for both parties, and why it is a "win-win" arrangement? Can you connect COQ, TQM, and SCM to related chapters in the syllabus?</p>
+      </div>
+    </div>
+
+    <div class="callout success" style="margin-top: 32px;">
+      <div class="callout-icon">🏆</div>
+      <div class="callout-body">
+        <strong>Final Exam Mindset for this Chapter</strong>
+        <p>Every question in this chapter is ultimately about <em>demonstrating that you understand the business logic</em>, not just the framework names. When writing answers: state the concept → explain the logic → apply to the case → quantify where possible → add non-financial perspective → give a clear recommendation. This structure earns full marks.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="page-footer">
+  <strong>CA Final · Strategic Cost & Performance Management</strong><br>
+  Chapter 2 — Modern Business Environment | One-Source Material<br>
+  <span style="font-size:11px; margin-top:8px; display:block;">Based on ICAI Study Material © The Institute of Chartered Accountants of India</span>
+</footer>
+
+</body>
+</html>

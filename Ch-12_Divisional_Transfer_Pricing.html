@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divisional Transfer Pricing — CA Final SCPM | One-Source Material</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1a2e45;
+    --navy-light: #243b55;
+    --teal: #1a8c7a;
+    --teal-light: #22b8a0;
+    --gold: #c9a84c;
+    --gold-light: #f0c96e;
+    --cream: #f8f4ec;
+    --cream-mid: #ede8dc;
+    --red-accent: #c0392b;
+    --green-accent: #27ae60;
+    --text-dark: #1a1a2e;
+    --text-mid: #3d4a5c;
+    --text-light: #6b7a8d;
+    --white: #ffffff;
+    --shadow: 0 4px 24px rgba(13,27,42,0.12);
+    --shadow-lg: 0 8px 40px rgba(13,27,42,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ===== HEADER ===== */
+  .hero {
+    background: var(--navy);
+    color: var(--white);
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,140,122,0.25) 0%, transparent 70%);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 10%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--teal);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .hero h1 span { color: var(--gold-light); }
+
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    max-width: 560px;
+    margin-bottom: 30px;
+  }
+
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .pill {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+
+  /* ===== NAV ===== */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--navy-mid);
+    padding: 0 40px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    border-bottom: 2px solid var(--teal);
+    box-shadow: var(--shadow);
+  }
+
+  .sticky-nav a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 14px 18px;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  .sticky-nav a:hover {
+    color: var(--gold-light);
+    border-bottom-color: var(--gold);
+  }
+
+  /* ===== LAYOUT ===== */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px;
+  }
+
+  section {
+    padding: 56px 0 40px;
+  }
+
+  section + section {
+    border-top: 1px solid var(--cream-mid);
+  }
+
+  /* ===== SECTION HEADERS ===== */
+  .section-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--teal);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  h2 .accent { color: var(--teal); }
+
+  .section-lead {
+    font-size: 15px;
+    color: var(--text-mid);
+    max-width: 720px;
+    margin-bottom: 36px;
+    border-left: 3px solid var(--gold);
+    padding-left: 16px;
+  }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--navy-mid);
+    margin: 32px 0 14px;
+  }
+
+  h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 20px 0 10px;
+  }
+
+  p { margin-bottom: 12px; color: var(--text-mid); }
+
+  strong { color: var(--text-dark); font-weight: 600; }
+  em { color: var(--teal); font-style: normal; font-weight: 500; }
+
+  /* ===== CARDS ===== */
+  .card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 26px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    border-left: 4px solid var(--teal);
+  }
+
+  .card-gold { border-left-color: var(--gold); }
+  .card-red { border-left-color: var(--red-accent); }
+  .card-navy { border-left-color: var(--navy); }
+  .card-green { border-left-color: var(--green-accent); }
+
+  .card h3 { margin-top: 0; }
+
+  /* ===== GRID ===== */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+  @media (max-width: 768px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .sticky-nav { padding: 0 16px; }
+    .hero { padding: 40px 20px 36px; }
+    section { padding: 40px 0 28px; }
+    .container { padding: 0 18px; }
+  }
+
+  /* ===== INFO BOXES ===== */
+  .info-box {
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin: 16px 0;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .info-box .icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+
+  .info-box p { margin-bottom: 0; }
+
+  .box-teal { background: rgba(26,140,122,0.08); border: 1px solid rgba(26,140,122,0.2); }
+  .box-gold { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); }
+  .box-red { background: rgba(192,57,43,0.07); border: 1px solid rgba(192,57,43,0.2); }
+  .box-navy { background: rgba(13,27,42,0.05); border: 1px solid rgba(13,27,42,0.12); }
+
+  /* ===== FORMULA BOX ===== */
+  .formula {
+    background: var(--navy);
+    color: var(--gold-light);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    padding: 20px 24px;
+    border-radius: 8px;
+    margin: 14px 0;
+    line-height: 1.8;
+    position: relative;
+  }
+
+  .formula::before {
+    content: 'FORMULA';
+    position: absolute;
+    top: -10px; left: 16px;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 2px 10px;
+    border-radius: 3px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* ===== LISTS ===== */
+  ul, ol { padding-left: 22px; margin-bottom: 12px; }
+  li { margin-bottom: 7px; color: var(--text-mid); }
+  li strong { color: var(--text-dark); }
+
+  /* ===== TAGS ===== */
+  .tag {
+    display: inline-block;
+    background: var(--cream-mid);
+    border: 1px solid rgba(0,0,0,0.1);
+    color: var(--text-mid);
+    font-size: 11.5px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin: 3px 2px;
+  }
+
+  .tag-teal { background: rgba(26,140,122,0.1); color: var(--teal); border-color: rgba(26,140,122,0.3); }
+  .tag-red { background: rgba(192,57,43,0.1); color: var(--red-accent); border-color: rgba(192,57,43,0.3); }
+  .tag-gold { background: rgba(201,168,76,0.12); color: #8a6d15; border-color: rgba(201,168,76,0.4); }
+
+  /* ===== TABLE ===== */
+  .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 10px; box-shadow: var(--shadow); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    font-size: 13.5px;
+  }
+
+  thead {
+    background: var(--navy);
+    color: var(--white);
+  }
+
+  thead th {
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  tbody tr { border-bottom: 1px solid var(--cream-mid); transition: background 0.15s; }
+  tbody tr:hover { background: rgba(26,140,122,0.04); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td { padding: 13px 16px; vertical-align: top; color: var(--text-mid); }
+  tbody td:first-child { font-weight: 600; color: var(--navy); }
+
+  .adv { color: var(--green-accent); font-weight: 500; }
+  .disadv { color: var(--red-accent); font-weight: 500; }
+
+  /* ===== FLOWCHART ===== */
+  .flowchart {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 32px 24px;
+    box-shadow: var(--shadow);
+    margin: 20px 0;
+  }
+
+  .flow-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-align: center;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--cream-mid);
+  }
+
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .flow-node {
+    background: var(--navy);
+    color: var(--white);
+    padding: 13px 28px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 500;
+    text-align: center;
+    max-width: 420px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 3px 12px rgba(13,27,42,0.25);
+  }
+
+  .flow-node.teal { background: var(--teal); }
+  .flow-node.gold { background: var(--gold); color: var(--navy); }
+  .flow-node.light { background: var(--cream-mid); color: var(--text-dark); border: 2px solid var(--navy-light); }
+  .flow-node.red { background: var(--red-accent); }
+  .flow-node.green { background: var(--green-accent); }
+
+  .flow-arrow {
+    width: 2px;
+    height: 28px;
+    background: var(--navy-light);
+    position: relative;
+  }
+
+  .flow-arrow::after {
+    content: '▼';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--navy-light);
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  .flow-branch {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 0;
+    align-items: start;
+    width: 100%;
+    max-width: 620px;
+    margin: 0;
+  }
+
+  .flow-branch-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    padding: 6px 0;
+  }
+
+  .flow-branch-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ===== MNEMONIC ===== */
+  .mnemonic-box {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 28px 30px;
+    margin: 16px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mnemonic-box::before {
+    content: '"';
+    position: absolute;
+    top: -10px; left: 16px;
+    font-family: 'Playfair Display', serif;
+    font-size: 100px;
+    color: rgba(255,255,255,0.05);
+    line-height: 1;
+  }
+
+  .mnemonic-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .mnemonic-word {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 4px;
+    margin-bottom: 16px;
+  }
+
+  .mnemonic-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .mnemonic-list li {
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 8px;
+    font-size: 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .mnemonic-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    min-width: 20px;
+  }
+
+  /* ===== CHECKLIST ===== */
+  .checklist {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 24px 28px;
+    box-shadow: var(--shadow);
+  }
+
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--cream-mid);
+  }
+
+  .checklist-item:last-child { border-bottom: none; }
+
+  .check-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .check-text strong { display: block; color: var(--navy); margin-bottom: 3px; font-size: 15px; }
+  .check-text p { margin-bottom: 0; font-size: 13.5px; }
+
+  /* ===== TRIGGER KEYWORDS ===== */
+  .keyword-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+  .keyword {
+    background: var(--navy);
+    color: var(--gold-light);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  /* ===== STEP SEQUENCE ===== */
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+  }
+
+  .steps li {
+    counter-increment: step;
+    padding: 14px 16px 14px 56px;
+    background: var(--white);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    color: var(--text-mid);
+  }
+
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px; height: 28px;
+    background: var(--teal);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  /* ===== COMPARE PANEL ===== */
+  .compare-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 14px 0;
+  }
+
+  .compare-box {
+    padding: 18px 20px;
+    border-radius: 8px;
+  }
+
+  .compare-box.pros { background: rgba(39,174,96,0.07); border: 1px solid rgba(39,174,96,0.25); }
+  .compare-box.cons { background: rgba(192,57,43,0.07); border: 1px solid rgba(192,57,43,0.25); }
+
+  .compare-box h4 { margin-top: 0; }
+  .compare-box.pros h4 { color: var(--green-accent); }
+  .compare-box.cons h4 { color: var(--red-accent); }
+
+  .compare-box ul { padding-left: 18px; }
+  .compare-box li { font-size: 13.5px; margin-bottom: 6px; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 24px;
+    font-size: 12.5px;
+    margin-top: 40px;
+  }
+
+  /* ===== DIVIDERS ===== */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--teal), transparent);
+    margin: 30px 0;
+    opacity: 0.4;
+  }
+
+  /* ===== HIGHLIGHT ROW ===== */
+  .highlight-row {
+    background: rgba(201,168,76,0.08) !important;
+    border: 1px solid rgba(201,168,76,0.3) !important;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-tag">CA Final · SCPM · Chapter 12</div>
+    <h1>Divisional <span>Transfer</span> Pricing</h1>
+    <p class="hero-sub">One-Source Material — Conceptual Clarity meets Exam Precision. Built for the CA Final Strategic Cost & Performance Management paper.</p>
+    <div class="hero-pills">
+      <span class="pill">📌 Goal Congruence</span>
+      <span class="pill">📐 Min–Max TP Range</span>
+      <span class="pill">🌍 International TP</span>
+      <span class="pill">⚖️ Behavioural Consequences</span>
+      <span class="pill">🔁 Dual & Two-Part Pricing</span>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <a href="#big-picture">01 Big Picture</a>
+  <a href="#concepts">02 Concepts</a>
+  <a href="#methods">03 Methods</a>
+  <a href="#goal-congruence">04 Goal Congruence</a>
+  <a href="#capacity">05 Capacity & Demand</a>
+  <a href="#conflict">06 Resolving Conflict</a>
+  <a href="#international">07 International TP</a>
+  <a href="#examiner">08 Examiner's Lens</a>
+  <a href="#visual">09 Visual Synthesis</a>
+  <a href="#recall">10 Recall</a>
+</nav>
+
+<!-- ====================================================
+     SECTION 1 — BIG PICTURE
+===================================================== -->
+<section id="big-picture">
+<div class="container">
+  <div class="section-number">01 — Overview</div>
+  <h2>The <span class="accent">Big Picture</span></h2>
+  <p class="section-lead">Transfer Pricing is the nervous system of any decentralised organisation — it silently governs how profit is allocated, how managers behave, and ultimately whether the company wins or loses as a whole.</p>
+
+  <div class="grid-2">
+    <div class="card card-teal">
+      <h3>Why This Chapter Matters</h3>
+      <p>In a decentralised firm (think Reliance Industries with its Retail, Jio, and O2C divisions, or Tata Group with Tata Steel and Tata Motors), each division is a <strong>profit centre</strong>. When goods or services flow between these divisions, they must carry a <strong>price tag</strong> — this is the Transfer Price (TP).</p>
+      <p>The TP chosen has zero impact on the company's <em>total</em> profit (it cancels in consolidation) but has a <em>massive</em> impact on how that profit is split between divisions — and therefore how managers are evaluated and how they make decisions.</p>
+    </div>
+    <div class="card card-gold">
+      <h3>Real-World Indian Context</h3>
+      <ul>
+        <li><strong>Reliance:</strong> Refining division transfers petro-products to the retail division at a TP. Too high → retail looks loss-making. Too low → refining looks unprofitable.</li>
+        <li><strong>Infosys:</strong> Internal shared-services centre charges technology services to client-facing BUs at a TP — impacting which BU looks "profitable."</li>
+        <li><strong>Tata Steel:</strong> Its captive iron-ore mining division supplies ore to the steel plant at a TP — affects cost of production and hence pricing decisions for the steel division.</li>
+        <li><strong>Indian MNCs:</strong> Sections 92A–92F of the Income Tax Act, 1961 regulate international TPs using the arm's-length principle.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>The Four Pillars of Transfer Pricing Utility</h3>
+  <div class="grid-2">
+    <div class="info-box box-teal">
+      <span class="icon">📊</span>
+      <div><strong>Performance Evaluation:</strong> Makes each division profit-accountable, motivating managers to maximise divisional profitability — which ideally aligns with overall company goals.</div>
+    </div>
+    <div class="info-box box-gold">
+      <span class="icon">👥</span>
+      <div><strong>Employee Engagement & Compensation:</strong> Since manager bonuses are linked to divisional profit, an unfair TP creates demotivation and resentment. Fair TP = engaged managers.</div>
+    </div>
+    <div class="info-box box-navy">
+      <span class="icon">🏭</span>
+      <div><strong>Resource Allocation:</strong> TP guides make-or-buy decisions, capacity expansion choices, and optimal production mix — channelling resources to highest-value uses.</div>
+    </div>
+    <div class="info-box box-red">
+      <span class="icon">🌐</span>
+      <div><strong>Taxation & Profit Remittance:</strong> For MNCs, TP determines where taxable profit is booked. A TP policy can legally minimise the group's total tax burden across jurisdictions.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="info-box box-teal">
+    <span class="icon">🎯</span>
+    <div><strong>The Core Tension:</strong> Every manager wants a TP that maximises <em>their</em> division's profit. But decisions that seem rational at the divisional level may be suboptimal for the company as a whole. This is the classic <strong>Goal Congruence Problem</strong> — and it is the beating heart of this entire chapter.</div>
+  </div>
+</div>
+</section>
+
+<!-- ====================================================
+     SECTION 2 — CONCEPTS
+===================================================== -->
+<section id="concepts">
+<div class="container">
+  <div class="section-number">02 — Conceptual Deep-Dive</div>
+  <h2>Core <span class="accent">Concepts</span></h2>
+  <p class="section-lead">The foundation you must master before attempting any numerical problem.</p>
+
+  <div class="card">
+    <h3>Key Definitions (Exam-Reproducible)</h3>
+    <div class="grid-2">
+      <div>
+        <h4>Transfer Price (TP)</h4>
+        <p>The <strong>internal price</strong> at which one division of an organisation supplies goods or services to another division of the same organisation, as recorded in the management accounting system.</p>
+
+        <h4>Goal Congruence</h4>
+        <p>A state where divisional managers, while pursuing their individual divisional objectives, also simultaneously advance the <strong>overall organisation's strategic goals</strong>.</p>
+
+        <h4>Arm's-Length Price</h4>
+        <p>A price that would be agreed upon by <strong>independent, unrelated parties</strong> dealing freely in the open market — used primarily as the benchmark in taxation (Sections 92A–92F, Income Tax Act 1961).</p>
+      </div>
+      <div>
+        <h4>Responsibility Centre</h4>
+        <p>An organisational unit headed by a manager who is accountable for specified financial outcomes: a <strong>Cost Centre</strong> (costs only) or a <strong>Profit Centre</strong> (revenues and costs).</p>
+
+        <h4>Sub-Optimal Decision</h4>
+        <p>A decision that is optimal from a <em>divisional</em> perspective but results in a <strong>loss of overall company profit</strong> — the classic failure of divisional autonomy without proper TP design.</p>
+
+        <h4>Opportunity Cost</h4>
+        <p>In TP context: the <strong>contribution foregone</strong> by the supplying division from external sales it must curtail in order to meet the internal transfer demand.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>The TP Accounting Mechanics</h3>
+  <div class="info-box box-navy">
+    <span class="icon">📒</span>
+    <div>
+      <p>In accounting records: <strong>TP is Revenue for the supplying division</strong> and <strong>Cost for the purchasing division.</strong></p>
+      <p>At group consolidation, these inter-divisional transactions are eliminated — so TP has <strong>zero impact on overall group profit</strong>. Its only effect is the <em>distribution</em> of that total profit between divisions.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ====================================================
+     SECTION 3 — METHODS
+===================================================== -->
+<section id="methods">
+<div class="container">
+  <div class="section-number">03 — Transfer Pricing Methods</div>
+  <h2>Pricing <span class="accent">Methods</span></h2>
+  <p class="section-lead">There are three broad families of TP methods: Market-Based, Cost-Based, and Negotiation-Based. Each has a distinct logic, advantages, and behavioural consequences.</p>
+
+  <!-- METHOD 1: MARKET -->
+  <h3>① Market-Based Transfer Price</h3>
+  <div class="card card-teal">
+    <p><strong>The 'Why':</strong> If an external market exists for the intermediate product, that market price is an unbiased, objective benchmark — neither division can manipulate it.</p>
+    <p><strong>Mechanism:</strong> TP = External Market Price <em>minus</em> any costs saved by not selling externally (e.g., packaging, delivery, selling commission).</p>
+    <p><strong>Variant — Shared Profit Relative to Cost:</strong> Total company profit is split between divisions in proportion to the cost each division incurs. This rewards divisions that add more value in cost terms.</p>
+    <div class="compare-pair">
+      <div class="compare-box pros">
+        <h4>✅ Advantages</h4>
+        <ul>
+          <li>Unbiased (set by demand & supply)</li>
+          <li>Less ambiguous — cannot be manipulated</li>
+          <li>Links divisional performance objectively to overall profit contribution</li>
+        </ul>
+      </div>
+      <div class="compare-box cons">
+        <h4>❌ Disadvantages</h4>
+        <ul>
+          <li>Not suitable when market price fluctuates widely</li>
+          <li>No market price may exist for intermediate-stage goods</li>
+          <li>Price discrimination or distress sales distort the "market" price</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-box box-gold">
+      <span class="icon">🧠</span>
+      <div><strong>Behavioural Consequence:</strong> Creates internal competition — the supplying division must compete with external vendors, driving cost efficiency. The purchasing division gains more sourcing options. However, in-house products may have unique specs, so external sourcing may involve hidden modification costs.</div>
+    </div>
+  </div>
+
+  <!-- METHOD 2: COST -->
+  <h3>② Cost-Based Transfer Price</h3>
+  <div class="card card-navy">
+    <p><strong>The 'Why':</strong> Used when no comparable external market price exists, or when management wants to benchmark performance against internal cost targets.</p>
+    <div class="compare-pair">
+      <div class="compare-box pros">
+        <h4>✅ Advantages</h4>
+        <ul>
+          <li>Performance can be benchmarked to internal budgets</li>
+          <li>Information is easily available</li>
+          <li>Cost components can be broken down for deeper analysis</li>
+        </ul>
+      </div>
+      <div class="compare-box cons">
+        <h4>❌ Disadvantages</h4>
+        <ul>
+          <li>Cost basis is subjective (variable vs. full vs. standard)</li>
+          <li>Supplying division has little incentive to be cost-efficient (costs passed on)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Sub-Types of Cost-Based TP:</h4>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sub-Type</th>
+            <th>Definition</th>
+            <th>Key Advantage</th>
+            <th>Key Disadvantage</th>
+            <th>Behavioural Impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Marginal Cost</td>
+            <td>TP = Variable cost per unit to produce one additional unit</td>
+            <td class="adv">Best when supplying division has <em>excess capacity</em></td>
+            <td class="disadv">Supplying division earns zero profit; fixed costs unrecovered</td>
+            <td>Demotivates supplying division; may resist capacity expansion</td>
+          </tr>
+          <tr>
+            <td>Standard Cost</td>
+            <td>TP = Predetermined cost based on budgets and assumed input factors</td>
+            <td class="adv">Enables variance analysis and performance monitoring</td>
+            <td class="disadv">Profit measurement centralised — individual divisions can't be assessed on profit</td>
+            <td>Little incentive to improve efficiency beyond budget</td>
+          </tr>
+          <tr>
+            <td>Full Cost</td>
+            <td>TP = Production cost + share of selling, admin, R&D costs</td>
+            <td class="adv">Full cost recovery — supplying division doesn't show a loss</td>
+            <td class="disadv">No profit for supplying division; purchasing division may distort pricing decisions</td>
+            <td>Purchasing division treats full cost as variable; leads to inflated external prices</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>Cost + Mark-up</td>
+            <td>TP = Full cost + a percentage markup (on cost or capital employed)</td>
+            <td class="adv">Supplying division earns a profit — addresses the "no incentive" problem</td>
+            <td class="disadv">Purchasing division bears a share of selling expenses even though none were incurred internally</td>
+            <td>Risk: purchasing division may reject short-term special orders below full cost, causing sub-optimisation</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- METHOD 3: NEGOTIATION -->
+  <h3>③ Negotiation-Based Transfer Price</h3>
+  <div class="card card-gold">
+    <p><strong>The 'Why':</strong> A middle ground between market and cost methods. Managers of both divisions exercise autonomy and arrive at a mutually agreeable price through negotiation.</p>
+    <div class="compare-pair">
+      <div class="compare-box pros">
+        <h4>✅ Advantages</h4>
+        <ul>
+          <li>Divisional autonomy maintained</li>
+          <li>Acts as an integrating tool between departments</li>
+          <li>Promotes goal congruence through efficient divisional performance</li>
+        </ul>
+      </div>
+      <div class="compare-box cons">
+        <h4>❌ Disadvantages</h4>
+        <ul>
+          <li>Requires both external market data and internal cost data to be shared</li>
+          <li>Time-consuming; outcome depends on bargaining power of managers</li>
+          <li>Can lead to conflict — may require top management intervention</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-box box-red">
+      <span class="icon">⚠️</span>
+      <div><strong>Critical Behavioural Point:</strong> When the purchasing division decides to buy externally at a lower price while the supplying division has <em>excess capacity</em>, management must intervene. Sub-optimal use of the company's own capacity is a direct destruction of value.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ====================================================
+     SECTION 4 — GOAL CONGRUENCE
+===================================================== -->
+<section id="goal-congruence">
+<div class="container">
+  <div class="section-number">04 — The TP Range</div>
+  <h2>Goal <span class="accent">Congruence</span> & the TP Range</h2>
+  <p class="section-lead">The most frequently examined concept. Any TP set within this range ensures that both divisions benefit from the internal transfer — making it the Pareto-optimal zone.</p>
+
+  <div class="formula">
+    ┌─────────────────────────────────────────────────────────────────┐<br>
+    │  MINIMUM TP (Floor — set by SUPPLYING division)                 │<br>
+    │  = Additional Outlay Cost per unit + Opportunity Cost per unit  │<br>
+    │                                                                 │<br>
+    │  Additional Outlay Cost = Marginal Cost + Any Incidental Costs  │<br>
+    │  Opportunity Cost = Contribution foregone from external sales   │<br>
+    └─────────────────────────────────────────────────────────────────┘<br>
+    <br>
+    ┌─────────────────────────────────────────────────────────────────┐<br>
+    │  MAXIMUM TP (Ceiling — set by PURCHASING division)              │<br>
+    │  = LOWER of:                                                    │<br>
+    │      (a) Net Marginal Revenue                                   │<br>
+    │          = Selling Price p.u. − Marginal Cost of Purchasing Div │<br>
+    │      (b) External Buy-in Price (market price of substitute)     │<br>
+    └─────────────────────────────────────────────────────────────────┘
+  </div>
+
+  <div class="info-box box-teal">
+    <span class="icon">💡</span>
+    <div><strong>The Logic:</strong> Min TP = the minimum the supplier needs to be no worse off than not transferring. Max TP = the maximum the buyer can pay and still be no worse off than buying externally. If Min &lt; Max → a mutually beneficial range exists. If Min &gt; Max → no transfer should take place; company is better off with external sourcing.</div>
+  </div>
+
+  <h3>Worked Logic: When Opportunity Cost = 0 (Excess Capacity)</h3>
+  <div class="card card-green">
+    <p>When the supplying division has <strong>idle (excess) capacity</strong>:</p>
+    <ul>
+      <li>No external sales are being foregone → Opportunity Cost = ₹0</li>
+      <li><strong>Minimum TP = Marginal Cost per unit only</strong></li>
+      <li>Maximum TP = Lower of Net Marginal Revenue and External Buy-in Price</li>
+    </ul>
+    <p>The purchasing division benefits from getting goods below market price; the supplying division at least recovers its additional cost. Fixed costs are sunk — irrelevant to the minimum.</p>
+  </div>
+
+  <h3>Worked Logic: When Division is at Full Capacity</h3>
+  <div class="card card-red">
+    <p>When the supplying division is at <strong>full capacity</strong>:</p>
+    <ul>
+      <li>Accepting internal order means curtailing external sales → Opportunity Cost > 0</li>
+      <li><strong>Minimum TP = Marginal Cost + Opportunity Cost (= External Selling Price)</strong></li>
+      <li>This is why a full-capacity supplying division will charge market price for internal transfers — anything less makes them worse off.</li>
+    </ul>
+  </div>
+
+  <h3>Implementation Steps — Solving a TP Range Problem</h3>
+  <ol class="steps">
+    <li><strong>Determine Capacity Status:</strong> Is the supplying division at full, partial, or excess capacity? (Count total hours / units needed vs. available.)</li>
+    <li><strong>Identify the Optimal Product Mix:</strong> If capacity is limited, rank products by contribution per limiting factor (e.g., ₹ per labour hour) to determine what gets curtailed.</li>
+    <li><strong>Calculate Opportunity Cost:</strong> Contribution lost from external sales that must be curtailed to meet the internal order. Express per unit of internally transferred good.</li>
+    <li><strong>Set the Minimum TP:</strong> Add Marginal Cost + Opportunity Cost per unit.</li>
+    <li><strong>Calculate Net Marginal Revenue for the purchasing division:</strong> Selling Price − Purchasing Division's own Marginal Cost (excluding the transfer price).</li>
+    <li><strong>Set the Maximum TP:</strong> Lower of Net Marginal Revenue and External Buy-in Price.</li>
+    <li><strong>State the TP Range</strong> and conclude whether a mutually beneficial internal transfer is possible.</li>
+  </ol>
+</div>
+</section>
+
+<!-- ====================================================
+     SECTION 5 — CAPACITY & DEMAND
+===================================================== -->
+<section id="capacity">
+<div class="container">
+  <div class="section-number">05 — Special Scenarios</div>
+  <h2>Different Capacity & <span class="accent">Demand Levels</span></h2>
+  <p class="section-lead">The TP range changes dramatically depending on whether the supplying division is operating at excess, partial, or full capacity. Examinations test this extensively.</p>
+
+  <div class="grid-3">
+    <div class="card card-green">
+      <h3>Excess Capacity</h3>
+      <p>No opportunity cost. Transfer can be made at <strong>Marginal Cost</strong> as minimum. Both divisions benefit. Classic win-win scenario.</p>
+      <div class="formula" style="font-size:12px; padding: 12px 16px;">
+        Min TP = Marginal Cost<br>
+        Max TP = Min(NMR, Buy-in)
+      </div>
+    </div>
+    <div class="card card-gold">
+      <h3>Partial Capacity</h3>
+      <p>Some opportunity cost exists. Must calculate <strong>contribution per hour</strong> of products being curtailed and include in Min TP.</p>
+      <div class="formula" style="font-size:12px; padding: 12px 16px;">
+        Min TP = MC + Opp Cost<br>
+        (based on curtailed units)
+      </div>
+    </div>
+    <div class="card card-red">
+      <h3>Full Capacity</h3>
+      <p>Highest opportunity cost. Minimum TP equals the <strong>external market price</strong>. No incentive to transfer internally below that.</p>
+      <div class="formula" style="font-size:12px; padding: 12px 16px;">
+        Min TP = MC + Full OC<br>
+        ≈ External Selling Price
+      </div>
+    </div>
+  </div>
+
+  <h3>Different Demand Levels — Key Adjustments</h3>
+  <div class="card card-navy">
+    <p>When a division caters to <strong>multiple demand types</strong> (external market, internal transfer, special orders), the following cost changes must be accounted for in the TP:</p>
+    <ul>
+      <li><strong>Economies of Scale:</strong> Higher volume → lower fixed cost per unit. Evaluate whether additional production is feasible within current capacity and fixed cost steps.</li>
+      <li><strong>Cost Savings on Internal Sales:</strong> Internal transfers often avoid packaging, selling commissions, distribution costs — deduct these from the minimum TP. The buying division should not pay for costs not incurred.</li>
+      <li><strong>Step Fixed Costs:</strong> Production beyond a threshold may trigger additional fixed costs (new machinery, extra shift). These incremental fixed costs affect the total profitability calculation.</li>
+      <li><strong>Cost Comparison — Variable vs. Fixed Selling:</strong> When volume of special/internal orders is uncertain, calculate the indifference point (fixed overhead ÷ variable cost per unit) to decide which cost structure to use.</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<!-- ====================================================
+     SECTION 6 — RESOLVING CONFLICT
+===================================================== -->
+<section id="conflict">
+<div class="container">
+  <div class="section-number">06 — Conflict Resolution</div>
+  <h2>Resolving <span class="accent">TP Conflict</span></h2>
+  <p class="section-lead">When standard TP methods create a conflict between divisional interest and company interest, two special systems can resolve it.</p>
+
+  <div class="grid-2">
+    <div class="card card-teal">
+      <h3>① Dual Rate Transfer Pricing</h3>
+      <p><strong>Mechanism:</strong> Two separate prices are used simultaneously:</p>
+      <ul>
+        <li><strong>Supplying division records revenue at:</strong> Full Cost + Normal Profit Margin (so it shows a fair profit)</li>
+        <li><strong>Purchasing division records cost at:</strong> Marginal Cost only (so it makes optimal output decisions)</li>
+        <li>The artificial inter-divisional profit is eliminated by an accounting adjustment at consolidation.</li>
+      </ul>
+      <div class="info-box box-gold" style="margin-top:12px">
+        <span class="icon">✅</span>
+        <div><strong>Result:</strong> Both divisions are better off. Supplying division earns a return; purchasing division minimises its cost. Goal congruence achieved.</div>
+      </div>
+      <h4>Drawbacks</h4>
+      <ul>
+        <li>Complicates accounting records → risk of errors</li>
+        <li>Divisional profits are artificial — only valid for internal evaluation, not external reporting</li>
+      </ul>
+    </div>
+    <div class="card card-navy">
+      <h3>② Two-Part Transfer Pricing</h3>
+      <p><strong>Mechanism:</strong></p>
+      <div class="formula" style="font-size:13px; padding:14px 18px;">
+        TP = Marginal Cost per unit<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ Lump-Sum Fixed Fee
+      </div>
+      <ul>
+        <li><strong>Marginal cost component</strong> → ensures purchasing division makes optimal output decisions (equates marginal cost to net marginal revenue)</li>
+        <li><strong>Lump-sum component</strong> → allows supplying division to recover a portion of its fixed costs and show a reasonable profit</li>
+        <li>The lump-sum is negotiated at the start of the period based on budgeted usage</li>
+      </ul>
+      <div class="info-box box-teal" style="margin-top:12px">
+        <span class="icon">✅</span>
+        <div><strong>Result:</strong> Purchasing division chooses optimal output. Supplying division earns a profit on transfers. Sub-optimisation is eliminated.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <h3>When to Suggest Each Method (Exam Trigger)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Scenario</th><th>Recommended Resolution</th><th>Why</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Supplying division resists transfers at marginal cost (no profit for them)</td>
+          <td>Dual Rate or Two-Part TP</td>
+          <td>Both allow supplying division to show a profit while purchasing division gets marginal cost pricing</td>
+        </tr>
+        <tr>
+          <td>Purchasing division treats full-cost TP as variable — distorts decisions</td>
+          <td>Two-Part TP</td>
+          <td>Separates fixed cost recovery (lump sum) from variable pricing — purchasing division correctly sees only marginal cost per unit</td>
+        </tr>
+        <tr>
+          <td>One division always "wins" and the other "loses" under current TP</td>
+          <td>Dual Rate TP</td>
+          <td>Each division sees a TP that is favourable to them; inter-divisional profit is an accounting construct</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ====================================================
+     SECTION 7 — INTERNATIONAL TP
+===================================================== -->
+<section id="international">
+<div class="container">
+  <div class="section-number">07 — International Dimension</div>
+  <h2>International <span class="accent">Transfer Pricing</span></h2>
+  <p class="section-lead">When divisions are in different countries, TP becomes a tool of tax planning — and a subject of intense regulatory scrutiny.</p>
+
+  <div class="card card-teal">
+    <h3>The Tax-Minimisation Strategy</h3>
+    <p>MNCs set TPs to shift taxable profits <strong>away from high-tax jurisdictions</strong> into low-tax ones:</p>
+    <div class="grid-2">
+      <div class="info-box box-red">
+        <span class="icon">📉</span>
+        <div><strong>Supplying Division in High-Tax Country:</strong> Set TP LOW → Revenue (and profit) is low in the high-tax country → Less tax paid there.</div>
+      </div>
+      <div class="info-box box-teal">
+        <span class="icon">📈</span>
+        <div><strong>Purchasing Division in Low-Tax Country:</strong> Low purchase cost → Higher profit in the low-tax country → Tax saved at lower rate.</div>
+      </div>
+    </div>
+    <div class="info-box box-navy" style="margin-top:12px">
+      <span class="icon">⚖️</span>
+      <div><strong>The Regulatory Check:</strong> Tax authorities demand that TP approximates the <strong>Arm's-Length Price</strong> — what independent parties would have agreed upon. The Starbucks UK case (royalty paid to Netherlands unit) is the classic example of TP abuse. In India: Sections 92A–92F of the IT Act, 1961 govern this.</div>
+    </div>
+  </div>
+
+  <h3>Additional Complexities — Currency Management</h3>
+  <div class="card card-gold">
+    <ul>
+      <li><strong>Exchange Rate Risk:</strong> International TPs create inter-divisional cash flows in different currencies → exchange rate movements can distort divisional performance reports.</li>
+      <li><strong>Offsetting Effect:</strong> If the Indian subsidiary (supplier) suffers a forex loss, the Italian subsidiary (buyer) gains — net group impact may be zero, but individual divisional performance appears distorted.</li>
+      <li><strong>Strategic Currency Choice:</strong> A multinational may choose to denominate TPs in a currency such that forex losses arise in the high-tax subsidiary (tax deductible) and forex gains arise in the low-tax subsidiary.</li>
+    </ul>
+  </div>
+
+  <h3>TP Decision Framework for International Scenarios</h3>
+  <ol class="steps">
+    <li><strong>Identify all relevant cash flows</strong> for each subsidiary — purchase cost, duty, local taxes, corporate tax rate.</li>
+    <li><strong>Calculate the net benefit to the supplying subsidiary</strong> after its local corporate tax.</li>
+    <li><strong>Calculate the net additional cost to the purchasing subsidiary</strong> after import duty and local corporate tax deductions (note: import duty is tax-deductible in the country of import).</li>
+    <li><strong>Net the two</strong> to determine if the overall group benefits from the internal transfer vs. external sourcing.</li>
+  </ol>
+</div>
+</section>
+
+<!-- ====================================================
+     SECTION 8 — EXAMINER'S LENS
+===================================================== -->
+<section id="examiner">
+<div class="container">
+  <div class="section-number">08 — Exam Strategy</div>
+  <h2>The <span class="accent">Examiner's Lens</span></h2>
+  <p class="section-lead">How to read a case study, what traps the examiner sets, and how this chapter connects to others.</p>
+
+  <h3>🎯 Trigger Points — Keywords That Signal Specific Concepts</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Signals "Calculate TP Range"</h4>
+      <div class="keyword-grid">
+        <span class="keyword">"goal congruence"</span>
+        <span class="keyword">"promote goal congruence"</span>
+        <span class="keyword">"minimum price"</span>
+        <span class="keyword">"maximum price willing to pay"</span>
+        <span class="keyword">"excess capacity"</span>
+        <span class="keyword">"full capacity"</span>
+        <span class="keyword">"opportunity cost"</span>
+        <span class="keyword">"can buy externally at ₹X"</span>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Signals "Behavioural Consequences"</h4>
+      <div class="keyword-grid">
+        <span class="keyword">"demotivated"</span>
+        <span class="keyword">"division shows a loss"</span>
+        <span class="keyword">"manager refused"</span>
+        <span class="keyword">"performance evaluation"</span>
+        <span class="keyword">"ROI / profit margin ratio"</span>
+        <span class="keyword">"cost plus markup"</span>
+        <span class="keyword">"intervene"</span>
+        <span class="keyword">"sub-optimal"</span>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Signals "International TP"</h4>
+      <div class="keyword-grid">
+        <span class="keyword">"different countries"</span>
+        <span class="keyword">"tax rate X% in India"</span>
+        <span class="keyword">"import duty"</span>
+        <span class="keyword">"after-tax benefit"</span>
+        <span class="keyword">"arms-length"</span>
+        <span class="keyword">"royalty payment"</span>
+        <span class="keyword">"foreign exchange"</span>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Signals "Resolve Conflict"</h4>
+      <div class="keyword-grid">
+        <span class="keyword">"overcome conflict"</span>
+        <span class="keyword">"not willing to transfer"</span>
+        <span class="keyword">"no incentive to sell internally"</span>
+        <span class="keyword">"both divisions benefit"</span>
+        <span class="keyword">"dual rate"</span>
+        <span class="keyword">"lump sum + marginal cost"</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>❌ Common Mistakes — Where Students Lose Marks</h3>
+  <div class="card card-red">
+    <ol>
+      <li style="margin-bottom:12px"><strong>Ignoring Opportunity Cost When at Full Capacity:</strong> The most common error. Students calculate Min TP = Marginal Cost, forgetting to add the contribution lost from curtailed external sales. Always check capacity first.</li>
+      <li style="margin-bottom:12px"><strong>Not Adjusting for Cost Savings on Internal Transfer:</strong> Variable selling expenses (packaging, commissions) are NOT incurred on internal transfers. Failing to deduct these inflates the Min TP and distorts the range.</li>
+      <li style="margin-bottom:12px"><strong>Using Actual Cost instead of Standard Cost for TP Analysis:</strong> The chapter uses budgeted/standard costs for setting TPs. Actual costs are used for year-end variance analysis, not for setting the price upfront.</li>
+      <li style="margin-bottom:12px"><strong>Forgetting Import Duty is Tax-Deductible in International TP Problems:</strong> Students calculate the tax impact but miss that import duty paid by the purchasing subsidiary is itself a deductible expense for corporate tax — it provides a tax shield.</li>
+      <li style="margin-bottom:12px"><strong>Confusing "Minimum TP" and "Maximum TP" perspectives:</strong> Minimum is what the <em>Supplier</em> needs (floor). Maximum is what the <em>Buyer</em> will pay (ceiling). Students sometimes calculate both from one division's perspective.</li>
+      <li><strong>Not Discussing Behavioural Consequences in Descriptive Questions:</strong> Even numerical questions often carry 2–4 marks for "discuss/advise on behavioural consequences." Always write 3–4 points on how the TP affects motivation and decision-making of managers.</li>
+    </ol>
+  </div>
+
+  <h3>🔗 Inter-Connectivity with Other Chapters</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Connected Chapter / Topic</th><th>The Link</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Divisional Performance Measurement (ROI, RI)</td>
+          <td>TP directly affects divisional profit, which feeds into ROI and RI calculations. An unfair TP makes a well-managed division look underperforming — a core behavioural consequence.</td>
+        </tr>
+        <tr>
+          <td>Marginal Costing & Decision Making</td>
+          <td>The Min TP formula (MC + OC) is built on marginal costing principles. Contribution per limiting factor is essential for opportunity cost calculation.</td>
+        </tr>
+        <tr>
+          <td>Standard Costing & Variance Analysis</td>
+          <td>Standard Cost TP method uses budgeted rates → variances (spending, volume) arise when actuals differ → managers analysed on controllable vs. uncontrollable variances.</td>
+        </tr>
+        <tr>
+          <td>Taxation (Direct Tax)</td>
+          <td>International TP and the concept of Arm's-Length Price directly links to Sections 92A–92F of the Income Tax Act, 1961. Corporate tax rates affect post-tax benefit calculations.</td>
+        </tr>
+        <tr>
+          <td>Budgeting & Responsibility Accounting</td>
+          <td>TP forms the basis of divisional budgets. Divisions use transfer prices to model their own cost structures and set customer-facing prices. Errors in TP propagate through the entire budgeting system.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ====================================================
+     SECTION 9 — VISUAL SYNTHESIS
+===================================================== -->
+<section id="visual">
+<div class="container">
+  <div class="section-number">09 — Visual Synthesis</div>
+  <h2>Visual <span class="accent">Summary</span></h2>
+
+  <h3>Master Comparison Table — All TP Methods</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>TP Basis</th>
+          <th>Supplying Div Profit?</th>
+          <th>Best Used When</th>
+          <th>Key Risk</th>
+          <th>Behavioural Outcome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Market Price</td>
+          <td>External market price (adj. for cost savings)</td>
+          <td class="adv">Yes (competitive)</td>
+          <td>Active external market exists</td>
+          <td>Market may be distorted/unavailable for intermediate goods</td>
+          <td>Promotes efficiency; both divisions compete fairly</td>
+        </tr>
+        <tr>
+          <td>Shared Profit on Cost</td>
+          <td>Total profit split in ratio of costs incurred</td>
+          <td class="adv">Yes (proportionate)</td>
+          <td>No market price; value addition via cost is clear</td>
+          <td>Doesn't incentivise cost reduction (more cost = more profit share)</td>
+          <td>Fair but complex; may not incentivise cost efficiency</td>
+        </tr>
+        <tr>
+          <td>Marginal / Variable Cost</td>
+          <td>Variable cost per unit only</td>
+          <td class="disadv">No (zero contribution)</td>
+          <td>Supplying division has significant idle capacity</td>
+          <td>Fixed costs not recovered; demotivates supplying division</td>
+          <td>Purchasing division uses optimally; supplier resists expansion</td>
+        </tr>
+        <tr>
+          <td>Standard Cost</td>
+          <td>Budgeted/predetermined cost</td>
+          <td class="disadv">Minimal/None</td>
+          <td>Performance benchmarking against budgets</td>
+          <td>Centralised profit; individual divisions can't be assessed profitably</td>
+          <td>Variance analysis tool; little incentive to exceed budget</td>
+        </tr>
+        <tr>
+          <td>Full Cost</td>
+          <td>Total product cost (production + overhead allocation)</td>
+          <td class="disadv">No</td>
+          <td>Full cost recovery is the objective</td>
+          <td>No profit for supplier; purchasing division distorts decisions</td>
+          <td>Purchasing division may reject profitable special orders</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>Cost + Markup</td>
+          <td>Full cost + % markup on cost or capital</td>
+          <td class="adv">Yes</td>
+          <td>Supplying division needs profit incentive</td>
+          <td>Purchasing division bears notional selling costs not incurred</td>
+          <td>Supplier motivated; buyer's pricing may be inflated</td>
+        </tr>
+        <tr>
+          <td>Negotiated</td>
+          <td>Bargained price between divisional managers</td>
+          <td class="adv">Depends on negotiation</td>
+          <td>Market + cost data both available; managers have autonomy</td>
+          <td>Time-consuming; outcome depends on bargaining power</td>
+          <td>Autonomy preserved; risk of conflict and sub-optimal decisions</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>Dual Rate</td>
+          <td>Supplier: Full Cost + Profit; Buyer: Marginal Cost</td>
+          <td class="adv">Yes (artificially)</td>
+          <td>Conflict between supplier and buyer interests exists</td>
+          <td>Artificial profits; complex accounting</td>
+          <td>Both divisions satisfied; goal congruence improved</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>Two-Part TP</td>
+          <td>Marginal Cost/unit + Lump-Sum Fixed Fee</td>
+          <td class="adv">Yes (via lump sum)</td>
+          <td>Full cost TP is distorting decisions; fixed cost recovery needed</td>
+          <td>Requires negotiation of lump sum; may change with volume changes</td>
+          <td>Optimal output decisions; supplier earns return on capacity</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FLOWCHART -->
+  <h3>Decision Flowchart: Setting the TP Range (Most Complex Process)</h3>
+  <div class="flowchart">
+    <div class="flow-title">⚙️ Transfer Pricing Range — Step-by-Step Decision Logic</div>
+    <div class="flow-steps">
+
+      <div class="flow-node teal">START: Internal Transfer Requested</div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-node">Step 1: Identify Supplying Division's Marginal Cost (MC) per unit</div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-node">Step 2: Check Capacity Status</div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-branch">
+        <div>
+          <div class="flow-branch-label">✅ Excess Capacity</div>
+          <div class="flow-node green" style="font-size:12px">Opportunity Cost = ₹0<br>Min TP = MC only</div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center; padding-top:24px; color:var(--teal); font-weight:700; font-size:18px">OR</div>
+        <div>
+          <div class="flow-branch-label">⚠️ Full / Partial Capacity</div>
+          <div class="flow-node gold" style="font-size:12px">Rank products by contribution/hour → Find units curtailed → Calculate OC per transferred unit</div>
+        </div>
+      </div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-node">Step 3: Min TP = MC + Opportunity Cost per unit</div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-node">Step 4: Calculate Net Marginal Revenue (NMR) for Purchasing Division<br><span style="font-size:12px; opacity:0.8">NMR = Selling Price of Final Product − Purchasing Division's Own MC</span></div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-node">Step 5: Max TP = LOWER of NMR and External Buy-in Price</div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-branch">
+        <div>
+          <div class="flow-branch-label">Min TP &lt; Max TP</div>
+          <div class="flow-node green" style="font-size:12px">✅ Mutually Beneficial Range Exists<br>Internal Transfer Recommended</div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center; padding-top:24px; color:var(--red-accent); font-weight:700; font-size:18px">OR</div>
+        <div>
+          <div class="flow-branch-label">Min TP &gt; Max TP</div>
+          <div class="flow-node red" style="font-size:12px">❌ No Mutually Agreeable TP<br>External Sourcing Recommended</div>
+        </div>
+      </div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-node teal">Step 6: If conflict persists → Consider Dual Rate or Two-Part TP</div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ====================================================
+     SECTION 10 — RETAIN & RECALL
+===================================================== -->
+<section id="recall">
+<div class="container">
+  <div class="section-number">10 — Retention Toolkit</div>
+  <h2>Retain & <span class="accent">Recall</span></h2>
+  <p class="section-lead">Mnemonics, checklists, and rapid-recall devices built specifically for exam-day use.</p>
+
+  <h3>📝 Mnemonic 1 — The 4 Uses of Transfer Pricing</h3>
+  <div class="mnemonic-box">
+    <div class="mnemonic-label">Remember as →</div>
+    <div class="mnemonic-word">PERT</div>
+    <ul class="mnemonic-list">
+      <li><span class="mnemonic-letter">P</span>erformance Evaluation (profit-accountable divisions)</li>
+      <li><span class="mnemonic-letter">E</span>mployee Engagement &amp; Compensation (motivation)</li>
+      <li><span class="mnemonic-letter">R</span>esource Allocation (make-or-buy, capacity decisions)</li>
+      <li><span class="mnemonic-letter">T</span>axation &amp; Profit Remittance (MNCs, repatriation)</li>
+    </ul>
+  </div>
+
+  <h3>📝 Mnemonic 2 — TP Methods in Order (Market → Cost → Negotiation)</h3>
+  <div class="mnemonic-box">
+    <div class="mnemonic-label">Remember cost sub-types as →</div>
+    <div class="mnemonic-word">MSFC+</div>
+    <ul class="mnemonic-list">
+      <li><span class="mnemonic-letter">M</span>arginal Cost (best for excess capacity)</li>
+      <li><span class="mnemonic-letter">S</span>tandard Cost (best for variance analysis)</li>
+      <li><span class="mnemonic-letter">F</span>ull Cost (full recovery, but no profit for supplier)</li>
+      <li><span class="mnemonic-letter">C+</span> Cost Plus Markup (supplier gets profit, buyer may overpay)</li>
+    </ul>
+  </div>
+
+  <h3>📝 Mnemonic 3 — The Min TP Formula Components</h3>
+  <div class="mnemonic-box">
+    <div class="mnemonic-label">The Min TP =</div>
+    <div class="mnemonic-word">MC + OC</div>
+    <ul class="mnemonic-list">
+      <li><span class="mnemonic-letter">MC</span>— Marginal Cost per unit (what you spend to make it)</li>
+      <li><span class="mnemonic-letter">OC</span>— Opportunity Cost per unit (what you give up by NOT selling externally)</li>
+    </ul>
+    <div style="margin-top:12px; font-size:13px; color:rgba(255,255,255,0.65)">
+      → When excess capacity: OC = 0, so Min TP = MC<br>
+      → When full capacity: OC = External contribution/unit, so Min TP ≈ Market Price
+    </div>
+  </div>
+
+  <h3>📝 Mnemonic 4 — The Max TP Rule</h3>
+  <div class="mnemonic-box">
+    <div class="mnemonic-label">Max TP =</div>
+    <div class="mnemonic-word">LOW NMR/BI</div>
+    <ul class="mnemonic-list">
+      <li><span class="mnemonic-letter">LOW</span>— Always take the LOWER of the two options</li>
+      <li><span class="mnemonic-letter">NMR</span>— Net Marginal Revenue (Selling Price − Buyer's own MC)</li>
+      <li><span class="mnemonic-letter">BI</span>— Buy-in Price (external market procurement cost for buyer)</li>
+    </ul>
+    <div style="margin-top:12px; font-size:13px; color:rgba(255,255,255,0.65)">
+      The buyer will not pay more than what it costs to buy externally, AND will not pay more than what it earns from using the product (NMR).
+    </div>
+  </div>
+
+  <h3>📝 Mnemonic 5 — Resolving Conflict Methods</h3>
+  <div class="mnemonic-box">
+    <div class="mnemonic-label">Remember as →</div>
+    <div class="mnemonic-word">D + T</div>
+    <ul class="mnemonic-list">
+      <li><span class="mnemonic-letter">D</span>ual Rate: Different prices for each side (supplier sees full cost + profit; buyer sees marginal cost)</li>
+      <li><span class="mnemonic-letter">T</span>wo-Part: Two components in one price (MC per unit + fixed lump-sum charge)</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>✅ 3-Point Revision Checklist</h3>
+  <div class="checklist">
+    <div class="checklist-item">
+      <div class="check-num">1</div>
+      <div class="check-text">
+        <strong>Can you derive the TP Range under all three capacity scenarios?</strong>
+        <p>For excess, partial, and full capacity — calculate the minimum TP (MC + OC) and maximum TP (lower of NMR and external buy-in price). Include contribution per limiting factor for capacity-constrained scenarios. You must be able to state whether a mutually beneficial TP exists and why.</p>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-num">2</div>
+      <div class="check-text">
+        <strong>Can you explain and apply Dual Rate and Two-Part TP systems?</strong>
+        <p>For any case study describing conflict between divisional and company interests, you must be able to explain how each method works, show the resulting numbers, and articulate how goal congruence is restored. Also identify which drawbacks remain.</p>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <div class="check-num">3</div>
+      <div class="check-text">
+        <strong>Can you evaluate an International TP problem after considering tax and import duty?</strong>
+        <p>Given corporate tax rates in two countries and an import duty rate, calculate: (a) after-tax benefit to supplying subsidiary, (b) net additional after-tax cost to purchasing subsidiary (remember: import duty is tax-deductible), and (c) net after-tax impact to the overall group. Also discuss arm's-length and non-financial considerations.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="info-box box-teal" style="margin-top:20px">
+    <span class="icon">🏆</span>
+    <div>
+      <strong>The Examiner's Ultimate Test:</strong> A well-crafted CA Final TP question will always demand more than just the number. It will ask you to <em>"Advise"</em>, <em>"Discuss"</em>, or <em>"Analyse"</em>. This means: (1) present the numerical answer, (2) explain what it means for each division's profitability, (3) describe the behavioural consequences for managers, and (4) recommend a course of action. Train yourself to write all four layers for every TP problem you practice.
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>
+  <p>CA Final · Strategic Cost &amp; Performance Management · Chapter 12 — Divisional Transfer Pricing</p>
+  <p style="margin-top:6px; font-size:11px;">One-Source Material · Based strictly on ICAI Study Material · For educational use only</p>
+</footer>
+
+</body>
+</html>

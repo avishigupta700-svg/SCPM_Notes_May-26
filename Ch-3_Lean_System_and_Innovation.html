@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lean System & Innovation — CA Final SCPM One-Source Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1623;
+    --paper: #f7f4ee;
+    --gold: #c8932a;
+    --gold-light: #f0d89a;
+    --emerald: #1a6b4a;
+    --emerald-light: #e4f2eb;
+    --emerald-mid: #2d9e6b;
+    --ruby: #9b2335;
+    --ruby-light: #fceef0;
+    --sapphire: #1a3a6b;
+    --sapphire-light: #e8eef8;
+    --amber: #d97706;
+    --amber-light: #fef3c7;
+    --slate: #64748b;
+    --divider: #ddd8cc;
+    --card-bg: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ─── HEADER ─── */
+  .masthead {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 60px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 2px solid rgba(200,147,42,0.25);
+  }
+  .masthead::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: 30%;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,147,42,0.15);
+  }
+  .badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .masthead h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.15;
+    max-width: 700px;
+    margin-bottom: 16px;
+  }
+  .masthead h1 span { color: var(--gold); }
+  .masthead p {
+    color: rgba(247,244,238,0.65);
+    font-size: 14px;
+    max-width: 540px;
+  }
+  .chapter-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .meta-pill {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 12px;
+    color: rgba(247,244,238,0.8);
+  }
+  .meta-pill strong { color: var(--gold); display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px; }
+
+  /* ─── TOC ─── */
+  .toc-strip {
+    background: var(--emerald);
+    color: white;
+    padding: 20px 48px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .toc-strip span { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; margin-right: 8px; }
+  .toc-strip a {
+    color: white;
+    text-decoration: none;
+    font-size: 12.5px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.12);
+    transition: background 0.2s;
+  }
+  .toc-strip a:hover { background: rgba(255,255,255,0.25); }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 48px 48px; }
+  @media (max-width: 768px) { .container { padding: 32px 20px; } }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-marker {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 56px 0 28px;
+  }
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--divider);
+    line-height: 1;
+    min-width: 60px;
+  }
+  .section-title-block h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .section-title-block .subtitle {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-top: 2px;
+  }
+  .rule { height: 1px; background: var(--divider); margin: 8px 0 32px; }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 28px 32px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    border: 1px solid var(--divider);
+    margin-bottom: 20px;
+  }
+  .card-emerald { border-left: 4px solid var(--emerald); background: var(--emerald-light); }
+  .card-gold { border-left: 4px solid var(--gold); background: #fffbf0; }
+  .card-ruby { border-left: 4px solid var(--ruby); background: var(--ruby-light); }
+  .card-sapphire { border-left: 4px solid var(--sapphire); background: var(--sapphire-light); }
+  .card-amber { border-left: 4px solid var(--amber); background: var(--amber-light); }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .card h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 20px 0 8px;
+    color: var(--slate);
+  }
+
+  /* ─── GRIDS ─── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+  /* ─── CONCEPT BLOCKS ─── */
+  .concept-block { margin-bottom: 40px; }
+  .concept-block .concept-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--emerald);
+    border-bottom: 2px solid var(--emerald-light);
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .concept-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    background: var(--emerald);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  /* ─── DEFINITION BOX ─── */
+  .definition {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 16px 0;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.6;
+    position: relative;
+  }
+  .definition::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    color: var(--gold);
+    opacity: 0.4;
+    position: absolute;
+    top: 4px;
+    left: 16px;
+    line-height: 1;
+  }
+  .definition p { padding-left: 24px; }
+  .definition .source { font-style: normal; font-size: 11px; opacity: 0.6; margin-top: 8px; padding-left: 24px; }
+
+  /* ─── NUMBERED LIST ─── */
+  .steps { counter-reset: steps; list-style: none; }
+  .steps li {
+    counter-increment: steps;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+  .steps li::before {
+    content: counter(steps);
+    min-width: 28px;
+    height: 28px;
+    background: var(--emerald);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ─── BULLET LIST ─── */
+  .bullets { list-style: none; }
+  .bullets li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    border-bottom: 1px solid var(--divider);
+  }
+  .bullets li:last-child { border-bottom: none; }
+  .bullets li::before {
+    content: '▸';
+    color: var(--emerald);
+    position: absolute;
+    left: 0;
+    font-size: 12px;
+  }
+
+  /* ─── TABLE ─── */
+  .styled-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 16px 0; }
+  .styled-table th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+  .styled-table td { padding: 10px 16px; border-bottom: 1px solid var(--divider); vertical-align: top; }
+  .styled-table tr:nth-child(even) td { background: #fafafa; }
+  .styled-table tr:hover td { background: var(--emerald-light); }
+  .styled-table .col-h { background: var(--emerald-light); font-weight: 600; }
+
+  /* ─── MNEMONIC BOX ─── */
+  .mnemonic-box {
+    background: linear-gradient(135deg, var(--ink) 0%, #1e3a5f 100%);
+    border-radius: 8px;
+    padding: 24px 28px;
+    color: white;
+    margin: 16px 0;
+  }
+  .mnemonic-box .mnemonic-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .mnemonic-word {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+  .mnemonic-breakdown { display: flex; flex-direction: column; gap: 6px; }
+  .mnemonic-row { display: flex; gap: 12px; align-items: flex-start; }
+  .mnemonic-letter {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    min-width: 24px;
+  }
+  .mnemonic-text { font-size: 13.5px; color: rgba(247,244,238,0.9); }
+
+  /* ─── ALERT / CALLOUT ─── */
+  .callout {
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    display: flex;
+    gap: 12px;
+  }
+  .callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .callout-warn { background: #fff8e1; border: 1px solid #f5c842; }
+  .callout-info { background: var(--sapphire-light); border: 1px solid #93b4e8; }
+  .callout-danger { background: var(--ruby-light); border: 1px solid #e8a0aa; }
+  .callout-success { background: var(--emerald-light); border: 1px solid #7ec8a4; }
+
+  /* ─── FLOWCHART ─── */
+  .flowchart { display: flex; flex-direction: column; align-items: flex-start; gap: 0; margin: 20px 0; }
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+  .flow-node {
+    min-width: 200px;
+    max-width: 280px;
+    background: var(--card-bg);
+    border: 2px solid var(--emerald);
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .flow-node.decision { background: var(--amber-light); border-color: var(--amber); }
+  .flow-node.end { background: var(--ink); color: white; border-color: var(--ink); }
+  .flow-connector {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    color: var(--slate);
+    font-size: 20px;
+  }
+  .flow-arrow {
+    width: 32px;
+    text-align: center;
+    font-size: 20px;
+    color: var(--emerald);
+    margin: 0 auto;
+    padding: 2px 0;
+  }
+
+  /* ─── SIGMA TABLE ─── */
+  .sigma-row-1 { background: #fff0f0; }
+  .sigma-row-2 { background: #fff8e0; }
+  .sigma-row-3 { background: #fffff0; }
+  .sigma-row-4 { background: #f0fff4; }
+  .sigma-row-5 { background: #e8f8ff; }
+  .sigma-row-6 { background: #f0e8ff; font-weight: 600; }
+
+  /* ─── EXAM LENS ─── */
+  .trigger-chip {
+    display: inline-block;
+    background: var(--emerald);
+    color: white;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    margin: 3px;
+  }
+  .mistake-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--divider);
+  }
+  .mistake-item:last-child { border-bottom: none; }
+  .x-icon { color: var(--ruby); font-size: 16px; flex-shrink: 0; }
+  .check-icon { color: var(--emerald); font-size: 16px; flex-shrink: 0; }
+
+  /* ─── CHECKLIST ─── */
+  .checklist { list-style: none; }
+  .checklist li {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--divider);
+    align-items: flex-start;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--emerald);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ─── PILLAR CARDS ─── */
+  .pillar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0; }
+  @media (max-width: 900px) { .pillar-grid { grid-template-columns: repeat(2,1fr); } }
+  .pillar-card {
+    background: var(--card-bg);
+    border: 1px solid var(--divider);
+    border-radius: 6px;
+    padding: 16px;
+    text-align: center;
+  }
+  .pillar-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--emerald);
+    margin-bottom: 6px;
+  }
+  .pillar-name { font-weight: 600; font-size: 13px; color: var(--ink); margin-bottom: 4px; }
+  .pillar-desc { font-size: 11.5px; color: var(--slate); }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--ink);
+    color: rgba(247,244,238,0.5);
+    padding: 28px 48px;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 80px;
+  }
+  .footer strong { color: var(--gold); }
+
+  /* ─── TAG ─── */
+  kbd {
+    font-family: 'DM Mono', monospace;
+    background: var(--ink);
+    color: var(--gold);
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+
+  strong { font-weight: 600; }
+  em { color: var(--emerald); font-style: normal; font-weight: 500; }
+  .text-gold { color: var(--gold); font-weight: 600; }
+  .text-ruby { color: var(--ruby); font-weight: 600; }
+  .text-sapphire { color: var(--sapphire); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- ═══ MASTHEAD ═══ -->
+<header class="masthead">
+  <div class="badge">CA Final · SCPM · Chapter 3</div>
+  <h1>Lean System &<br><span>Innovation</span></h1>
+  <p>One-Source Master Notes — compiled for exam-ready mastery with conceptual depth and application precision.</p>
+  <div class="chapter-meta">
+    <div class="meta-pill"><strong>Weight</strong>High-Frequency Chapter</div>
+    <div class="meta-pill"><strong>Concepts</strong>JIT · Kaizen · 5S · TPM · Six Sigma · Process Innovation</div>
+    <div class="meta-pill"><strong>Exam Pattern</strong>Case-based · Numerical (OEE) · Theory</div>
+    <div class="meta-pill"><strong>Source</strong>ICAI SCPM Study Material</div>
+  </div>
+</header>
+
+<!-- ═══ TOC ═══ -->
+<nav class="toc-strip">
+  <span>Jump To</span>
+  <a href="#big-picture">Big Picture</a>
+  <a href="#lean-system">Lean System</a>
+  <a href="#jit">JIT</a>
+  <a href="#kaizen">Kaizen</a>
+  <a href="#5s">5S</a>
+  <a href="#tpm">TPM</a>
+  <a href="#six-sigma">Six Sigma</a>
+  <a href="#process-innovation">Process Innovation</a>
+  <a href="#exam-lens">Examiner's Lens</a>
+  <a href="#tables">Summary Tables</a>
+  <a href="#mnemonics">Mnemonics</a>
+  <a href="#checklist">Revision Checklist</a>
+</nav>
+
+<div class="container">
+
+<!-- ═══ SECTION 1: BIG PICTURE ═══ -->
+<div id="big-picture" class="section-marker">
+  <div class="section-number">01</div>
+  <div class="section-title-block">
+    <h2>The Big Picture</h2>
+    <div class="subtitle">Executive Summary · Syllabus Significance · Real-World Context</div>
+  </div>
+</div>
+<div class="rule"></div>
+
+<div class="card card-emerald">
+  <h3>🔭 Why This Chapter Matters</h3>
+  <p>This chapter sits at the <strong>intersection of operational strategy and cost management</strong>. Every tool here—JIT, Kaizen, 5S, TPM, Six Sigma—is a weapon against waste. The ICAI examiner tests this chapter through <em>case scenarios</em> requiring application (not mere recitation), numerical problems (OEE calculations), and comparative essays (e.g., Kaizen vs Standard Costing; DMAIC vs DMADV).</p>
+  <br>
+  <p>In the CA Final SCPM syllabus, this chapter directly feeds into <strong>Strategic Cost Management</strong> (activity elimination, value chain analysis) and <strong>Performance Measurement</strong> (OEE, process efficiency ratios). Questions from this chapter carry application marks that require structured, structured answers with frameworks.</p>
+</div>
+
+<div class="grid-2">
+  <div class="card">
+    <h3>🏭 Indian Real-World Context</h3>
+    <ul class="bullets">
+      <li><strong>JIT in India:</strong> Maruti Suzuki's Manesar plant uses JIT purchasing with its 200+ vendor ecosystem; suppliers deliver parts in sequences aligned with assembly line demand.</li>
+      <li><strong>Kaizen in India:</strong> Tata Motors' Pune plant ran "Kaizen Kaizen" events — achieving ₹40+ crore in savings through employee-suggested micro-improvements.</li>
+      <li><strong>5S in India:</strong> Indian Railways stations (A1 category) follow 5S protocols for platform and station management.</li>
+      <li><strong>Six Sigma:</strong> Wipro — India's first Six Sigma adopter — ensures 91% on-time project delivery vs. 55% industry average.</li>
+      <li><strong>TPM:</strong> Bharat Forge (Pune) uses TPM to achieve near-zero unplanned downtime in its forging presses.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>🗺️ Chapter Architecture</h3>
+    <ul class="bullets">
+      <li><strong>Lean System</strong> — The umbrella philosophy (Toyota Production System)</li>
+      <li><strong>JIT</strong> — Demand-pull production; zero inventory ideal</li>
+      <li><strong>Kaizen</strong> — Incremental continuous cost reduction</li>
+      <li><strong>5S</strong> — Workplace organisation system</li>
+      <li><strong>TPM</strong> — Machine performance maximisation (OEE)</li>
+      <li><strong>Cellular Manufacturing</strong> — One-piece flow cells</li>
+      <li><strong>Six Sigma</strong> — Defect reduction (DMAIC / DMADV)</li>
+      <li><strong>Process Innovation</strong> — Radical process redesign</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══ SECTION 2: LEAN SYSTEM ═══ -->
+<div id="lean-system" class="section-marker">
+  <div class="section-number">02</div>
+  <div class="section-title-block">
+    <h2>Lean System — The Foundation</h2>
+    <div class="subtitle">Toyota Production System · Waste Elimination · Value Maximisation</div>
+  </div>
+</div>
+<div class="rule"></div>
+
+<div class="concept-block">
+  <div class="concept-name">
+    Lean Philosophy
+    <span class="concept-tag">CONCEPTUAL</span>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="card card-gold">
+        <h4>The "Why" Behind Lean</h4>
+        <p>Traditional manufacturing creates value AND waste simultaneously. Lean thinking forces managers to separate the two — retaining only value-creating activities. The guiding question: <strong>"Would the customer pay for this step?"</strong> If no → it is waste.</p>
+        <br>
+        <p>A <em>Lean Manager</em> applies <strong>reverse engineering (backward ideology)</strong> — starting from what the customer values and tracing backwards to identify what activities to retain vs. eliminate.</p>
+      </div>
+
+      <div class="card">
+        <h4>Core Principles of Lean</h4>
+        <ul class="bullets">
+          <li><strong>Perfect first-time quality</strong> — Do right the first time</li>
+          <li><strong>Waste minimisation</strong> — Eliminate all non-value-added activities</li>
+          <li><strong>Continuous improvement</strong> — Kaizen mindset</li>
+          <li><strong>Flexibility</strong> — Adaptability to changing demand</li>
+          <li><strong>Single piece flow</strong> — One unit at a time through the system</li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div class="card card-ruby">
+        <h4>🗑️ Seven Wastes (Taiichi Ohno) — TIMWOOD</h4>
+        <div class="mnemonic-box" style="padding:16px 20px; margin: 0;">
+          <div class="mnemonic-label">Mnemonic</div>
+          <div class="mnemonic-word" style="font-size:1.5rem;">TIM WOOD</div>
+          <div class="mnemonic-breakdown">
+            <div class="mnemonic-row"><span class="mnemonic-letter">T</span><span class="mnemonic-text">Transportation — unnecessary movement of products</span></div>
+            <div class="mnemonic-row"><span class="mnemonic-letter">I</span><span class="mnemonic-text">Inventory — more than minimally required</span></div>
+            <div class="mnemonic-row"><span class="mnemonic-letter">M</span><span class="mnemonic-text">Motion — people/equipment moving more than needed</span></div>
+            <div class="mnemonic-row"><span class="mnemonic-letter">W</span><span class="mnemonic-text">Waiting — products/people idle between steps</span></div>
+            <div class="mnemonic-row"><span class="mnemonic-letter">O</span><span class="mnemonic-text">Over-production — producing ahead of demand</span></div>
+            <div class="mnemonic-row"><span class="mnemonic-letter">O</span><span class="mnemonic-text">Over-processing — unnecessary non-value-added steps</span></div>
+            <div class="mnemonic-row"><span class="mnemonic-letter">D</span><span class="mnemonic-text">Defects — rework or repair required</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <h4>Characteristics of Lean Manufacturing</h4>
+    <div class="grid-3">
+      <div style="text-align:center; padding:12px; background: var(--emerald-light); border-radius:6px;">
+        <div style="font-size:24px;">⏱️</div>
+        <div style="font-weight:600; font-size:13px;">Zero Waiting Time</div>
+      </div>
+      <div style="text-align:center; padding:12px; background: var(--emerald-light); border-radius:6px;">
+        <div style="font-size:24px;">📦</div>
+        <div style="font-weight:600; font-size:13px;">Zero Inventory</div>
+      </div>
+      <div style="text-align:center; padding:12px; background: var(--emerald-light); border-radius:6px;">
+        <div style="font-size:24px;">↩️</div>
+        <div style="font-weight:600; font-size:13px;">Pull Processing</div>
+      </div>
+      <div style="text-align:center; padding:12px; background: var(--emerald-light); border-radius:6px;">
+        <div style="font-size:24px;">🔄</div>
+        <div style="font-weight:600; font-size:13px;">Continuous Flow</div>
+      </div>
+      <div style="text-align:center; padding:12px; background: var(--emerald-light); border-radius:6px;">
+        <div style="font-size:24px;">📉</div>
+        <div style="font-weight:600; font-size:13px;">Reduced Process Time</div>
+      </div>
+      <div style="text-align:center; padding:12px; background: var(--emerald-light); border-radius:6px;">
+        <div style="font-size:24px;">✅</div>
+        <div style="font-weight:600; font-size:13px;">Single Piece Flow</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 3: JIT ═══ -->
+<div id="jit" class="section-marker">
+  <div class="section-number">03</div>
+  <div class="section-title-block">
+    <h2>Just-in-Time (JIT)</h2>
+    <div class="subtitle">Pull System · Demand-Driven Production · Supply Chain Integration</div>
+  </div>
+</div>
+<div class="rule"></div>
+
+<div class="concept-block">
+  <div class="definition">
+    <p><strong>CIMA Definition:</strong> A system whose objective is to produce or to procure products or components as they are required by a customer or for use, rather than for stock. The JIT system is a <strong>Pull system</strong>, which responds to demand, in contrast to a <strong>push system</strong>, in which stocks act as buffers between purchasing, production, and sales.</p>
+    <div class="source">— CIMA Official Terminology</div>
+  </div>
+
+  <div class="callout callout-info">
+    <span class="callout-icon">💡</span>
+    <div><strong>The "Why" Behind JIT:</strong> Traditional systems produce to forecast (push), creating inventory risk. JIT produces to actual demand (pull), eliminating the cost of holding, obsolescence, and rework hidden within large batches.</div>
+  </div>
+
+  <div class="card">
+    <h3>JIT — Three-Tier Framework</h3>
+    <div class="grid-3">
+      <div class="card card-emerald" style="margin:0;">
+        <h4>🛒 JIT Purchase</h4>
+        <ul class="bullets">
+          <li>Spare parts from suppliers on exact date/time needed</li>
+          <li>Straight delivery to production floor — no warehouse stop</li>
+          <li>Engineering staff visits supplier sites</li>
+          <li>EDI system for precise order communication</li>
+          <li>Narrow supplier base with deep relationships</li>
+          <li>Zero Price Variance + Quality Clause + On-time delivery</li>
+        </ul>
+      </div>
+      <div class="card card-gold" style="margin:0;">
+        <h4>🏭 JIT Production</h4>
+        <ul class="bullets">
+          <li>Shorten machine setup times (video-tape analysis method)</li>
+          <li>Eliminate long production runs</li>
+          <li>Multi-skilled, cross-trained employees</li>
+          <li>Kanban Card system (pull authorisation)</li>
+          <li>Cellular Manufacturing (U-shaped cells)</li>
+          <li>Employees empowered to stop production on defects</li>
+        </ul>
+      </div>
+      <div class="card card-sapphire" style="margin:0;">
+        <h4>📊 JIT Support</h4>
+        <ul class="bullets">
+          <li>Single consolidated monthly payment to each supplier</li>
+          <li>Back-flushing accounting system</li>
+          <li>No supplier invoices needed — internal records used</li>
+          <li>Reduced variance reporting (issues resolved in real-time)</li>
+          <li>Accounting system alterations to match JIT workflow</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Essential Pre-Requisites of JIT</h3>
+    <div class="mnemonic-box">
+      <div class="mnemonic-label">Mnemonic</div>
+      <div class="mnemonic-word">LN-EPTDP</div>
+      <div class="mnemonic-breakdown">
+        <div class="mnemonic-row"><span class="mnemonic-letter">L</span><span class="mnemonic-text">Low variety of goods</span></div>
+        <div class="mnemonic-row"><span class="mnemonic-letter">N</span><span class="mnemonic-text">Narrow supplier base with sound, reliable trade relations (Vendors)</span></div>
+        <div class="mnemonic-row"><span class="mnemonic-letter">E</span><span class="mnemonic-text">Efficient information system</span></div>
+        <div class="mnemonic-row"><span class="mnemonic-letter">P</span><span class="mnemonic-text">Predictable demand patterns</span></div>
+        <div class="mnemonic-row"><span class="mnemonic-letter">T</span><span class="mnemonic-text">Total Quality Management</span></div>
+        <div class="mnemonic-row"><span class="mnemonic-letter">D</span><span class="mnemonic-text">Defect-free materials</span></div>
+        <div class="mnemonic-row"><span class="mnemonic-letter">P</span><span class="mnemonic-text">Preventive maintenance</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>Impact of JIT System</h3>
+      <h4>Costs of Waste</h4>
+      <p>JIT eliminates: obsolete inventory costs, defective product costs, rework costs, idle asset costs, excess WIP holding costs.</p>
+      <h4>Overhead Costs</h4>
+      <p>Reduced: material handling, quality inspection, warehouse space, warehouse staff, equipment and rent → sharp drop in overhead cost pool.</p>
+      <h4>Product Prices</h4>
+      <p>Higher quality + reliable delivery → premium pricing possible in quality-sensitive industries.</p>
+    </div>
+    <div>
+      <div class="card card-ruby">
+        <h3>⚠️ Pros & Cons of JIT</h3>
+        <h4>Pros ✅</h4>
+        <ul class="bullets">
+          <li>Meets customer demand in timely manner</li>
+          <li>High quality products</li>
+          <li>Lowest possible total cost</li>
+        </ul>
+        <h4>Cons ❌</h4>
+        <ul class="bullets">
+          <li>Demand prediction is not always easy → difficult without buffer inventory</li>
+          <li>Any supply chain disruption immediately halts production (no buffer)</li>
+        </ul>
+      </div>
+      <div class="card card-amber" style="margin-top:16px;">
+        <h3>Kanban vs Cellular Manufacturing</h3>
+        <p><strong>Kanban Card:</strong> A notification card sent upstream to authorise production of just enough components — "pull" from the end of the line.</p>
+        <br>
+        <p><strong>Cellular Manufacturing:</strong> A U-shaped cluster of machines run by a single operator. No WIP can accumulate between machines. Defects identified immediately.</p>
+        <br>
+        <p class="callout callout-success" style="margin:0; border-radius:4px; padding:8px 12px; font-size:13px;">⚡ <strong>Both should be used TOGETHER</strong> — they are not mutually exclusive.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📊 Back-Flushing in JIT</h3>
+    <p><strong>Concept:</strong> No data entry until finished product is completed. At completion, total quantity finished × bill-of-materials components = theoretical inventory usage, which is subtracted from opening inventory.</p>
+    <br>
+    <h4>Four Problems with Back-Flushing</h4>
+    <div class="mnemonic-box">
+      <div class="mnemonic-label">Mnemonic — Remember: PSLI</div>
+      <div class="mnemonic-word">PSLI</div>
+      <div class="mnemonic-breakdown">
+        <div class="mnemonic-row"><span class="mnemonic-letter">P</span><span class="mnemonic-text"><strong>Production Reporting Error:</strong> Total production figure entered must be 100% accurate</span></div>
+        <div class="mnemonic-row"><span class="mnemonic-letter">S</span><span class="mnemonic-text"><strong>Scrap Reporting:</strong> All abnormal scrap must be diligently tracked separately</span></div>
+        <div class="mnemonic-row"><span class="mnemonic-letter">L</span><span class="mnemonic-text"><strong>Lot Tracing:</strong> Impossible under back-flushing (no lot-level records)</span></div>
+        <div class="mnemonic-row"><span class="mnemonic-letter">I</span><span class="mnemonic-text"><strong>Inventory Accuracy:</strong> Balance may be too high — system updates only once daily</span></div>
+      </div>
+    </div>
+    <div class="callout callout-warn" style="margin-top:16px;">
+      <span class="callout-icon">⚠️</span>
+      <div>GIGO Principle applies: <strong>Garbage In, Garbage Out</strong> — inaccurate scrap/production inputs destroy inventory accuracy. Success of back-flushing depends on a well-trained, low-turnover production staff.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📐 Process Cycle Efficiency (PCE)</h3>
+    <p style="margin-bottom:12px;">Used to evaluate whether shifting to JIT is justified:</p>
+    <div style="background:var(--ink); color:var(--gold); border-radius:6px; padding:16px 20px; font-family:'DM Mono',monospace; font-size:14px; text-align:center;">
+      PCE = (Value Added Time / Total Cycle Time) × 100
+    </div>
+    <p style="margin-top:12px;"><em>Only processing time is value-added. Inspection, storage, and moving are non-value-added (waste).</em></p>
+    <p style="margin-top:8px; font-size:13px; color:var(--slate);">Higher PCE = less waste in the process. JIT typically improves PCE significantly by cutting storage and inspection time.</p>
+  </div>
+</div>
+
+<!-- ═══ SECTION 4: KAIZEN ═══ -->
+<div id="kaizen" class="section-marker">
+  <div class="section-number">04</div>
+  <div class="section-title-block">
+    <h2>Kaizen Costing</h2>
+    <div class="subtitle">改善 · Continuous Improvement · Cost Reduction · Incremental Change</div>
+  </div>
+</div>
+<div class="rule"></div>
+
+<div class="concept-block">
+  <div class="card card-emerald">
+    <h3>The "Why" Behind Kaizen</h3>
+    <p>Standard Costing sets a standard and measures variance. Kaizen assumes the standard itself must keep improving. Nothing is ever perfect — there is always a more efficient way. Kaizen is fundamentally different from <strong>BPR (Business Process Re-engineering)</strong> which makes radical one-off changes; Kaizen makes <em>small, incremental, continuous improvements</em> sustained over time.</p>
+  </div>
+
+  <div class="card">
+    <h3>Kaizen Costing Process — 3 Steps</h3>
+    <div class="flowchart">
+      <div class="flow-step">
+        <div class="flow-node"><strong>Step 1:</strong> Establish a Cost Reduction Goal<br><small style="color:var(--slate);">(Kaizen Cost Target) — set by bottom-up participation</small></div>
+        <div style="flex:1; padding-top:14px; color:var(--emerald); font-size:20px;">→</div>
+        <div class="flow-node"><strong>Step 2:</strong> Identify the Gap<br><small style="color:var(--slate);">Gap = Actual Cost − Kaizen Target Cost</small></div>
+        <div style="flex:1; padding-top:14px; color:var(--emerald); font-size:20px;">→</div>
+        <div class="flow-node"><strong>Step 3:</strong> Formulate &amp; Implement Cost Reduction Plan<br><small style="color:var(--slate);">Based on Value Analysis → Product feature changes, Process changes, Kaizen team activities</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Five Core Kaizen Principles (5 Gems)</h3>
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-num">1</div>
+        <div class="pillar-name">Know Your Customer</div>
+        <div class="pillar-desc">Aim for creating customer value</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">2</div>
+        <div class="pillar-name">Let It Flow</div>
+        <div class="pillar-desc">Target zero waste — everyone creates value</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">3</div>
+        <div class="pillar-name">Go to Gemba</div>
+        <div class="pillar-desc">Visit the actual workplace — follow the action</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">4</div>
+        <div class="pillar-name">Empower People</div>
+        <div class="pillar-desc">Same goal + system + tools = organised teams</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;" class="pillar-card" style="max-width:220px;">
+      <div class="pillar-num">5</div>
+      <div class="pillar-name">Be Transparent</div>
+      <div class="pillar-desc">Speak with real, visible data</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📊 Kaizen vs Standard Costing — Critical Comparison</h3>
+    <div class="callout callout-warn">
+      <span class="callout-icon">🎯</span>
+      <div><strong>Exam Alert:</strong> This comparison appears frequently as a theory question. Memorise all 6 points of difference with their directional logic.</div>
+    </div>
+    <table class="styled-table">
+      <thead>
+        <tr><th>Dimension</th><th>Standard Costing</th><th>Kaizen Costing</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="col-h">Purpose</td><td>Cost <strong>Control</strong> technique</td><td>Cost <strong>Reduction</strong> technique</td></tr>
+        <tr><td class="col-h">Assumption</td><td>Assumes <em>current</em> work conditions remain stable</td><td>Assumes <em>continuous improvement</em> conditions</td></tr>
+        <tr><td class="col-h">Goal</td><td>Meet cost performance <strong>standards</strong></td><td>Achieve cost <strong>reduction target</strong></td></tr>
+        <tr><td class="col-h">Period</td><td>Longer (usually annual)</td><td>Short — Monthly or Quarterly</td></tr>
+        <tr><td class="col-h">Variance</td><td>Actual vs Standard — <em>variances computed</em></td><td>No formal variance; only the <em>Gap</em> matters</td></tr>
+        <tr><td class="col-h">Problem Resolution</td><td>Variances reported and addressed later</td><td>Missing target → root cause assessed (Jidoka etc.)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══ SECTION 5: 5S ═══ -->
+<div id="5s" class="section-marker">
+  <div class="section-number">05</div>
+  <div class="section-title-block">
+    <h2>5S Methodology</h2>
+    <div class="subtitle">Seiri · Seiton · Seiso · Seiketsu · Shitsuke · Workplace Organisation</div>
+  </div>
+</div>
+<div class="rule"></div>
+
+<div class="concept-block">
+  <div class="callout callout-info">
+    <span class="callout-icon">📌</span>
+    <div><strong>Positioning:</strong> 5S is the <em>foundation</em> of TPM and all lean manufacturing techniques. It fits in the <strong>"Do" stage of the PDCA Cycle</strong> as a continual improvement enabler. Applies universally — Manufacturing, Healthcare, Education, Government.</div>
+  </div>
+
+  <div class="card">
+    <h3>The Five S Phases</h3>
+    <table class="styled-table">
+      <thead>
+        <tr><th>Phase</th><th>Japanese Term</th><th>English</th><th>Core Action</th><th>Lean Benefit</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-h">1</td>
+          <td><strong>Seiri</strong></td>
+          <td>Sort</td>
+          <td>Classify materials: Not needed / Needed but not now / Needed but not here / Needed but excess quantity. Use <em>Red Tags</em> (unwanted) and <em>Yellow Tags</em> (needed later).</td>
+          <td>Eliminates obstacles; prevents accumulation of unnecessary items</td>
+        </tr>
+        <tr>
+          <td class="col-h">2</td>
+          <td><strong>Seiton</strong></td>
+          <td>Set in Order</td>
+          <td>Systematic arrangement — "a place for everything and everything in its place" (Fayol's 14th Principle). Frequently used items near workstation.</td>
+          <td>Eliminates search time and motion waste; faster retrieval</td>
+        </tr>
+        <tr>
+          <td class="col-h">3</td>
+          <td><strong>Seiso</strong></td>
+          <td>Shine</td>
+          <td>Daily cleaning of workstation by worker. Inspect machines from all six sides (front, rear, left, right, top, bottom).</td>
+          <td>Safer environment; improved quality; less downtime</td>
+        </tr>
+        <tr>
+          <td class="col-h">4</td>
+          <td><strong>Seiketsu</strong></td>
+          <td>Standardise</td>
+          <td>Establish SMART SOPs so Sort, Set, Shine become habits. Every process must have a standard.</td>
+          <td>Consistent quality; auditable processes</td>
+        </tr>
+        <tr>
+          <td class="col-h">5</td>
+          <td><strong>Shitsuke</strong></td>
+          <td>Sustain</td>
+          <td>Daily monitoring, Red Tag Campaign, structured communication, periodic audits, staff recognition, continuous training.</td>
+          <td>Long-term discipline; self-reinforcing improvement culture</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card card-sapphire">
+    <h3>5S in PDCA Cycle</h3>
+    <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:12px;">
+      <div style="background:var(--sapphire); color:white; padding:10px 20px; border-radius:6px; text-align:center;"><strong>PLAN</strong><br><small>Preparation</small></div>
+      <div style="font-size:20px; color:var(--emerald);">→</div>
+      <div style="background:var(--emerald); color:white; padding:10px 20px; border-radius:6px; text-align:center;"><strong>DO</strong><br><small>5S Implementation ✓</small></div>
+      <div style="font-size:20px; color:var(--emerald);">→</div>
+      <div style="background:var(--slate); color:white; padding:10px 20px; border-radius:6px; text-align:center;"><strong>CHECK</strong><br><small>Self Assessment &amp; Certification</small></div>
+      <div style="font-size:20px; color:var(--emerald);">→</div>
+      <div style="background:var(--gold); color:var(--ink); padding:10px 20px; border-radius:6px; text-align:center;"><strong>ACT</strong><br><small>Continual Improvement</small></div>
+    </div>
+    <p style="margin-top:12px; font-size:13px; color:rgba(247,244,238,0.8);">Plan and Do = Enablers | Check and Act = Results. 5S fits at the <strong>Do stage</strong>.</p>
+  </div>
+</div>
+
+<!-- ═══ SECTION 6: TPM ═══ -->
+<div id="tpm" class="section-marker">
+  <div class="section-number">06</div>
+  <div class="section-title-block">
+    <h2>Total Productive Maintenance (TPM)</h2>
+    <div class="subtitle">OEE · Eight Pillars · Six Big Losses · Zero Defects · Zero Breakdowns</div>
+  </div>
+</div>
+<div class="rule"></div>
+
+<div class="concept-block">
+  <div class="card card-gold">
+    <h3>The "Why" Behind TPM</h3>
+    <p>Equipment downtime and quality losses are invisible costs that erode profitability. TPM makes every machine defect and breakdown a visible, measurable, and improvable metric. It was first introduced by <strong>Nippon Denso Co. Ltd., Japan</strong> (a Toyota supplier) and has a goal of <em>Zero Defects, Zero Breakdowns, Zero Accidents.</em></p>
+  </div>
+
+  <div class="card">
+    <h3>Eight Pillars of TPM</h3>
+    <table class="styled-table">
+      <thead><tr><th>Pillar</th><th>Focus</th><th>Key Technique</th></tr></thead>
+      <tbody>
+        <tr><td class="col-h">Foundation: 5S</td><td>Organised workplace — uncover hidden problems</td><td>Seiri, Seiton, Seiso, Seiketsu, Shitsuke</td></tr>
+        <tr><td class="col-h">P-1: Autonomous Maintenance</td><td>Equipment operation without breakdown; defect elimination at source</td><td>Cleaning, Lubricating, Visual Inspection, Tightening</td></tr>
+        <tr><td class="col-h">P-2: Focused Improvement (Kaizen)</td><td>Minor continuous improvements to reduce efficiency losses</td><td>Kaizen Register, Why-Why Analysis, Summary of Losses</td></tr>
+        <tr><td class="col-h">P-3: Planned Maintenance</td><td>Zero breakdown; optimum maintenance cost</td><td>Preventive, Breakdown, Corrective, Maintenance Prevention</td></tr>
+        <tr><td class="col-h">P-4: Early Management</td><td>Shorten product &amp; equipment development time</td><td>Engineering &amp; Re-engineering Processes</td></tr>
+        <tr><td class="col-h">P-5: Quality Maintenance</td><td>Customer satisfaction through high-quality products</td><td>Root Cause Analysis, Customer Data Analysis</td></tr>
+        <tr><td class="col-h">P-6: Education &amp; Training</td><td>Improve skills and employee morale</td><td>Training Calendar, On-site Training Policies</td></tr>
+        <tr><td class="col-h">P-7: Office TPM</td><td>Productivity &amp; efficiency in administration</td><td>Process Analysis → Office Automation</td></tr>
+        <tr><td class="col-h">P-8: Safety, Health &amp; Environment</td><td>Zero accidents; zero health damage</td><td>Safety Slogans, Dramas, Quizzes, Posters</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>📊 Overall Equipment Effectiveness (OEE)</h3>
+    <div class="callout callout-success">
+      <span class="callout-icon">🏆</span>
+      <div>OEE is the single most important TPM performance metric. <strong>World-Class OEE ≥ 85%</strong>. A realistic acceptable target is >50% (Kotze, 1993).</div>
+    </div>
+
+    <div style="background:var(--ink); border-radius:8px; padding:24px; margin:16px 0; text-align:center;">
+      <div style="color:var(--gold); font-family:'DM Mono',monospace; font-size:13px; letter-spacing:0.1em; margin-bottom:12px;">OEE FORMULA</div>
+      <div style="color:white; font-size:1.4rem; font-weight:600; font-family:'Playfair Display', serif;">OEE = Availability × Performance × Quality</div>
+    </div>
+
+    <table class="styled-table">
+      <thead><tr><th>Factor</th><th>Formula</th><th>What It Captures</th><th>Ideal Benchmark</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="col-h">Availability</td>
+          <td><code>(Operating Time / Planned Production Time) × 100</code></td>
+          <td>Unscheduled downtime, breakdowns, setups. <em>Planned downtime (breaks, preventive maintenance) is NOT counted as a loss.</em></td>
+          <td class="text-gold">&gt; 90%</td>
+        </tr>
+        <tr>
+          <td class="col-h">Performance</td>
+          <td><code>(Ideal Cycle Time × Total Count / Operating Time) × 100</code></td>
+          <td>Speed losses — idling, minor stoppages, reduced speed</td>
+          <td class="text-gold">&gt; 95%</td>
+        </tr>
+        <tr>
+          <td class="col-h">Quality</td>
+          <td><code>(Good Count / Total Count) × 100</code></td>
+          <td>Defects, rework, scrap (also called 'Yield')</td>
+          <td class="text-gold">&gt; 99%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-info" style="margin-top:12px;">
+      <span class="callout-icon">🔢</span>
+      <div><strong>Alternative OEE Formula:</strong> <kbd>OEE = (Good Count × Ideal Cycle Time) / Planned Production Time</kbd></div>
+    </div>
+
+    <h4>Six Big Losses → Mapped to OEE Factors</h4>
+    <div class="grid-3">
+      <div class="card card-ruby" style="margin:0;">
+        <h4>Availability Losses</h4>
+        <ul class="bullets">
+          <li>Equipment Failure / Breakdown</li>
+          <li>Set-up / Adjustments</li>
+        </ul>
+      </div>
+      <div class="card card-amber" style="margin:0;">
+        <h4>Performance Losses</h4>
+        <ul class="bullets">
+          <li>Idling and Minor Stoppages</li>
+          <li>Reduced Speed</li>
+        </ul>
+      </div>
+      <div class="card card-gold" style="margin:0;">
+        <h4>Quality Losses</h4>
+        <ul class="bullets">
+          <li>Reduced Yield</li>
+          <li>Quality Defects and Rework</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-sapphire">
+    <h3>TQM vs TPM — Connection</h3>
+    <ul class="bullets">
+      <li>Both make the company more competitive (cost reduction, customer satisfaction, lead times)</li>
+      <li>Both require worker involvement at all phases</li>
+      <li>Both need fundamental training and education</li>
+      <li>Both require <strong>long-term commitment</strong> before tangible benefits appear</li>
+      <li>Both need top management commitment for success</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══ SECTION 7: SIX SIGMA ═══ -->
+<div id="six-sigma" class="section-marker">
+  <div class="section-number">07</div>
+  <div class="section-title-block">
+    <h2>Six Sigma</h2>
+    <div class="subtitle">Quality Improvement · DMAIC · DMADV · Defect Elimination · 3.4 DPMO</div>
+  </div>
+</div>
+<div class="rule"></div>
+
+<div class="concept-block">
+  <div class="grid-2">
+    <div class="card card-emerald">
+      <h3>Origin & Core Concept</h3>
+      <p>Introduced by <strong>Bill Smith at Motorola in 1986</strong>. Popularised by <strong>Jack Welch at General Electric in 1995</strong>. In India, <em>Wipro was the first adopter.</em></p>
+      <br>
+      <p>Sigma (σ) measures how far a process deviates from perfection. <strong>Higher sigma = closer to perfection.</strong></p>
+      <br>
+      <p>Six Sigma uses three tools together: <em>Quality management methods + Statistical methods + Special infrastructure of people.</em></p>
+    </div>
+    <div class="card">
+      <h3>Sigma Level Table</h3>
+      <table class="styled-table" style="font-size:12.5px;">
+        <thead><tr><th>Sigma</th><th>DPMO</th><th>Defective %</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr class="sigma-row-1"><td>1σ</td><td>6,91,462</td><td>69%</td><td class="text-ruby">Loss</td></tr>
+          <tr class="sigma-row-2"><td>2σ</td><td>3,08,538</td><td>31%</td><td class="text-ruby">Non-Competitive</td></tr>
+          <tr class="sigma-row-3"><td>3σ</td><td>66,807</td><td>6.7%</td><td>Average Industries</td></tr>
+          <tr class="sigma-row-4"><td>4σ</td><td>6,210</td><td>0.62%</td><td class="text-gold">Above Average</td></tr>
+          <tr class="sigma-row-5"><td>5σ</td><td>233</td><td>0.023%</td><td class="text-sapphire">Below Maximum</td></tr>
+          <tr class="sigma-row-6"><td><strong>6σ</strong></td><td><strong>3.4</strong></td><td><strong>0.00034%</strong></td><td class="text-gold">Near Perfection</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>DMAIC — For Improving Existing Processes</h3>
+    <div class="callout callout-info">
+      <span class="callout-icon">📌</span>
+      <div><strong>Use DMAIC when:</strong> A product/process already exists; it's part of continuous improvement; only a single process needs alteration; competitors, customers, and technology are stable.</div>
+    </div>
+    <table class="styled-table">
+      <thead><tr><th>Phase</th><th>Action</th><th>Key Tools</th><th>Indian Banking Example</th></tr></thead>
+      <tbody>
+        <tr><td class="col-h"><strong>D</strong>efine</td><td>Define the problem, project goals, and customer requirements</td><td>Project Charter, Process Mapping, Tree Diagram, Effort-Impact Analysis</td><td>Define why customer satisfaction/loyalty impacts bank performance; gather complaints</td></tr>
+        <tr><td class="col-h"><strong>M</strong>easure</td><td>Measure current process performance using quantitative data</td><td>Quality Function Deployment, Check Sheet, Process Capability Analysis</td><td>Measure wait times (highest impact on banking satisfaction) statistically</td></tr>
+        <tr><td class="col-h"><strong>A</strong>nalyse</td><td>Analyse data to find root causes of variation and defects</td><td>Histogram, Pareto Diagram, Run Chart, Scatter Graph</td><td>Analyse which processes have max impact on satisfaction at minimum improvement cost</td></tr>
+        <tr><td class="col-h"><strong>I</strong>mprove</td><td>Implement solutions to address and eliminate root causes</td><td>Advanced statistical tools, design-of-experiments</td><td>Corrective measures in consultation with staff; pilot improvements</td></tr>
+        <tr><td class="col-h"><strong>C</strong>ontrol</td><td>Maintain the improved process; monitor future performance</td><td>Control charts, ongoing review systems</td><td>Periodic review; if still underperforming → refer back to Define phase</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>DMADV — For Designing New Processes/Products</h3>
+    <div class="callout callout-info">
+      <span class="callout-icon">📌</span>
+      <div><strong>Use DMADV when:</strong> No process exists; existing process fully optimised; project has strategic importance; multiple processes need alteration; competitors, customers, or technology are changing.</div>
+    </div>
+    <table class="styled-table">
+      <thead><tr><th>Phase</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td class="col-h"><strong>D</strong>efine</td><td>Define project goals and customer deliverables</td></tr>
+        <tr><td class="col-h"><strong>M</strong>easure</td><td>Measure and determine customer needs and specifications</td></tr>
+        <tr><td class="col-h"><strong>A</strong>nalyse</td><td>Analyse process options to meet customer needs</td></tr>
+        <tr><td class="col-h"><strong>D</strong>esign</td><td>Design (detailed) the process to meet customer needs</td></tr>
+        <tr><td class="col-h"><strong>V</strong>erify</td><td>Verify the design performance and ability to meet customer needs</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>DMAIC vs DMADV — Critical Comparison</h3>
+    <table class="styled-table">
+      <thead><tr><th>Dimension</th><th>DMAIC</th><th>DMADV</th></tr></thead>
+      <tbody>
+        <tr><td class="col-h">Purpose</td><td>Fix existing processes</td><td>Design new processes/products</td></tr>
+        <tr><td class="col-h">Approach</td><td>Reactive</td><td>Proactive</td></tr>
+        <tr><td class="col-h">Focus</td><td>Increase <strong>capability</strong></td><td>Increase <strong>capacity</strong></td></tr>
+        <tr><td class="col-h">Benefits Timeline</td><td>Quantified quickly</td><td>Long-term; harder to quantify</td></tr>
+        <tr><td class="col-h">Indian Example</td><td>Reduce cycle time for GST filing; Reduce errors in vendor invoices</td><td>Create a new real-time ERP reporting module; Design a new customer onboarding process</td></tr>
+      </tbody>
+    </table>
+    <div class="callout callout-success" style="margin-top:12px;">
+      <span class="callout-icon">✅</span>
+      <div><strong>Similarities:</strong> Both use DPMO as base metric; both use same Six Sigma quality tools; both are driven by customer needs as primary parameter.</div>
+    </div>
+  </div>
+
+  <div class="card card-ruby">
+    <h3>Limitations of Six Sigma</h3>
+    <div class="mnemonic-box">
+      <div class="mnemonic-label">Mnemonic — SNSCNSR</div>
+      <div class="mnemonic-word" style="font-size:1.3rem;">S·N·S·C·N·S·R</div>
+      <div class="mnemonic-breakdown">
+        <div class="mnemonic-row"><span class="mnemonic-letter">S</span><span class="mnemonic-text">Focuses on quality <strong>only</strong> — ignores other dimensions</span></div>
+        <div class="mnemonic-row"><span class="mnemonic-letter">N</span><span class="mnemonic-text"><strong>Not</strong> suitable for intangible results</span></div>
+        <div class="mnemonic-row"><span class="mnemonic-letter">S</span><span class="mnemonic-text"><strong>Substantial</strong> infrastructure investment required</span></div>
+        <div class="mnemonic-row"><span class="mnemonic-letter">C</span><span class="mnemonic-text"><strong>Complex</strong> for simple tasks</span></div>
+        <div class="mnemonic-row"><span class="mnemonic-letter">N</span><span class="mnemonic-text"><strong>Not</strong> all products need Six Sigma standards</span></div>
+        <div class="mnemonic-row"><span class="mnemonic-letter">S</span><span class="mnemonic-text"><strong>Specific</strong> process type only — not universal</span></div>
+        <div class="mnemonic-row"><span class="mnemonic-letter">R</span><span class="mnemonic-text"><strong>Real-time barriers</strong> exist between theory and practice</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-gold">
+    <h3>Lean Six Sigma</h3>
+    <p>The combination of <strong>Lean</strong> (speed, waste elimination) and <strong>Six Sigma</strong> (quality, defect elimination) achieves results neither could attain alone. It enables organisations to: <em>Maximise Profits, Build Better Teams, Minimise Costs, and Satisfy Customers.</em></p>
+  </div>
+</div>
+
+<!-- ═══ SECTION 8: PROCESS INNOVATION ═══ -->
+<div id="process-innovation" class="section-marker">
+  <div class="section-number">08</div>
+  <div class="section-title-block">
+    <h2>Process Innovation</h2>
+    <div class="subtitle">New Process Implementation · BPR vs PI · Delivery · Production · Support</div>
+  </div>
+</div>
+<div class="rule"></div>
+
+<div class="concept-block">
+  <div class="definition">
+    <p><strong>Process Innovation:</strong> The implementation of a new or significantly improved production or delivery method (including significant changes in techniques, equipment, and/or software).</p>
+    <div class="source">— ICAI SCPM Study Material</div>
+  </div>
+
+  <div class="card card-amber">
+    <h4>What is NOT Process Innovation?</h4>
+    <ul class="bullets">
+      <li>Simple capital replacement or extension</li>
+      <li>Changes from factor price changes alone</li>
+      <li>Customisation of existing methods</li>
+      <li>Regular seasonal/cyclical changes</li>
+      <li>Adding to a manufacturing/logical system without significant change</li>
+    </ul>
+  </div>
+
+  <div class="grid-3">
+    <div class="card card-emerald">
+      <h4>🏭 Production Innovation</h4>
+      <p>Changes to processes, equipment, and technology to enhance manufacturing. Includes computer software improvements.</p>
+      <p style="margin-top:8px; font-size:13px;"><em>Example: Ford's first moving assembly line — reduced vehicle production from 12.5 hours to 90 minutes.</em></p>
+    </div>
+    <div class="card card-sapphire">
+      <h4>🚚 Delivery Innovation</h4>
+      <p>Tools, techniques, and software solutions for supply chain and delivery systems.</p>
+      <p style="margin-top:8px; font-size:13px;"><em>Example: Barcodes, GPS-based tracking systems, shipping software (e.g., Delhivery's routing algorithms).</em></p>
+    </div>
+    <div class="card card-gold">
+      <h4>🏢 Support Services Innovation</h4>
+      <p>Innovations in purchasing, maintenance, and accounting processes.</p>
+      <p style="margin-top:8px; font-size:13px;"><em>Example: AI-driven invoice processing replacing manual accounts payable workflows in FMCG companies.</em></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>BPR vs Process Innovation</h3>
+    <table class="styled-table">
+      <thead><tr><th>Dimension</th><th>BPR (Business Process Re-engineering)</th><th>Process Innovation (PI)</th></tr></thead>
+      <tbody>
+        <tr><td class="col-h">Focus</td><td>Amend and streamline <em>existing</em> processes</td><td>Implement <em>entirely new</em> processes</td></tr>
+        <tr><td class="col-h">Scope of Change</td><td>Incremental to radical — within existing structure</td><td>Changes the overall organisational structure</td></tr>
+        <tr><td class="col-h">Radicalism</td><td>Less radical — streamlines what exists</td><td>More radical — redesigns from scratch</td></tr>
+        <tr><td class="col-h">Example</td><td>Adding automated machines to an existing bike assembly line</td><td>Giving all parts to a specialist team to manufacture collaboratively (no assembly line)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══ SECTION 9: EXAMINER'S LENS ═══ -->
+<div id="exam-lens" class="section-marker">
+  <div class="section-number">09</div>
+  <div class="section-title-block">
+    <h2>The Examiner's Lens</h2>
+    <div class="subtitle">Trigger Points · Common Mistakes · Inter-topic Connectivity</div>
+  </div>
+</div>
+<div class="rule"></div>
+
+<div class="card">
+  <h3>🎯 Trigger Points — Keywords in Case Studies</h3>
+  <table class="styled-table">
+    <thead><tr><th>Trigger Phrase / Scenario</th><th>Concept to Apply</th></tr></thead>
+    <tbody>
+      <tr><td>"Excess inventory", "high carrying cost", "demand-driven", "pull system"</td><td class="col-h">JIT (Just-in-Time)</td></tr>
+      <tr><td>"Small incremental improvements", "employee participation in cost setting", "monthly targets"</td><td class="col-h">Kaizen Costing</td></tr>
+      <tr><td>"Workplace disorganisation", "clutter", "search time", "dirty workplace", "old files hiding key files"</td><td class="col-h">5S Methodology</td></tr>
+      <tr><td>"Machine breakdown", "availability ratio", "performance ratio", "scrap", "OEE"</td><td class="col-h">TPM + OEE Calculation</td></tr>
+      <tr><td>"Defect rate", "customer complaints", "existing process failing", "root cause"</td><td class="col-h">Six Sigma — DMAIC</td></tr>
+      <tr><td>"New process design", "technology changing", "competitor behaviour changing"</td><td class="col-h">Six Sigma — DMADV</td></tr>
+      <tr><td>"Radical redesign", "entirely new process", "from scratch"</td><td class="col-h">Process Innovation</td></tr>
+      <tr><td>"Improve existing", "streamline", "automate"</td><td class="col-h">BPR (vs PI)</td></tr>
+      <tr><td>"Sales returns", "customer feedback", "manufacturing defects by category"</td><td class="col-h">DMAIC Application</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card card-ruby">
+  <h3>❌ Common Mistakes Where Students Lose Marks</h3>
+  <div class="mistake-item">
+    <span class="x-icon">✗</span>
+    <div><strong>OEE Calculation Error:</strong> Including planned downtime (lunch breaks, preventive maintenance) in the "losses" for Availability. Remember — planned downtime is NOT a loss; only unplanned downtime counts against Availability.</div>
+  </div>
+  <div class="mistake-item">
+    <span class="x-icon">✗</span>
+    <div><strong>Kaizen vs Standard Costing Confusion:</strong> Writing that "both are cost control techniques." Kaizen is specifically a <em>cost reduction</em> technique. This distinction is examined directly.</div>
+  </div>
+  <div class="mistake-item">
+    <span class="x-icon">✗</span>
+    <div><strong>DMAIC vs DMADV Mix-up:</strong> Using DMAIC for a new product design scenario, or DMADV for an existing process improvement scenario. The trigger is: <em>Does the process exist?</em></div>
+  </div>
+  <div class="mistake-item">
+    <span class="x-icon">✗</span>
+    <div><strong>Back-flushing incomplete answers:</strong> Mentioning only 1-2 problems. All four (PSLI — Production, Scrap, Lot, Inventory) must be covered for full marks.</div>
+  </div>
+  <div class="mistake-item">
+    <span class="x-icon">✗</span>
+    <div><strong>JIT Benefits without Limitations:</strong> In evaluation questions, always balance JIT advantages with its supply chain vulnerability and demand unpredictability risks.</div>
+  </div>
+  <div class="mistake-item">
+    <span class="x-icon">✗</span>
+    <div><strong>5S Phase Sequencing:</strong> Confusing the order. Always: Sort → Set → Shine → Standardise → Sustain. Some students reverse Standardise and Sustain.</div>
+  </div>
+  <div class="mistake-item">
+    <span class="x-icon">✗</span>
+    <div><strong>Takt Time vs Cycle Time:</strong> Takt time = available time per customer demand unit (set by customer). Cycle time = actual time taken per unit (set by the process). These are different.</div>
+  </div>
+</div>
+
+<div class="card card-sapphire">
+  <h3>🔗 Inter-Topic Connectivity</h3>
+  <table class="styled-table">
+    <thead><tr><th>This Chapter's Concept</th><th>Connects To</th><th>How They Link</th></tr></thead>
+    <tbody>
+      <tr><td><strong>JIT + Lean</strong></td><td>Activity-Based Costing (Ch: Cost Systems)</td><td>Both eliminate non-value-added activities; JIT reduces overhead cost pools measured by ABC</td></tr>
+      <tr><td><strong>Kaizen Costing</strong></td><td>Target Costing (Strategic Cost Mgmt)</td><td>Target costing sets the initial cost ceiling; Kaizen continuously reduces costs towards that target during production</td></tr>
+      <tr><td><strong>TPM + OEE</strong></td><td>Performance Measurement (Balanced Scorecard)</td><td>OEE is an internal process perspective KPI; directly feeds into BSC's Process dimension</td></tr>
+      <tr><td><strong>Six Sigma</strong></td><td>Quality Costing (Cost of Quality)</td><td>Six Sigma reduces internal failure costs (rework, scrap) and external failure costs (returns, warranty)</td></tr>
+      <tr><td><strong>Process Innovation</strong></td><td>Value Chain Analysis</td><td>PI fundamentally redesigns value chain activities; Lean optimises them incrementally</td></tr>
+      <tr><td><strong>5S</strong></td><td>TPM, JIT, TQM</td><td>5S is the foundational platform for all three — the workplace organisation that makes other systems possible</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══ SECTION 10: SUMMARY TABLES ═══ -->
+<div id="tables" class="section-marker">
+  <div class="section-number">10</div>
+  <div class="section-title-block">
+    <h2>Visual Synthesis — Summary Tables</h2>
+    <div class="subtitle">Master Comparison Tables · Logic Flowchart</div>
+  </div>
+</div>
+<div class="rule"></div>
+
+<div class="card">
+  <h3>🏆 Grand Comparison — All Lean Tools</h3>
+  <div style="overflow-x:auto;">
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Origin</th>
+        <th>Primary Goal</th>
+        <th>Time Horizon</th>
+        <th>Who Does It</th>
+        <th>Key Metric</th>
+        <th>Limitation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-h">Lean System</td>
+        <td>Toyota, Japan</td>
+        <td>Eliminate all waste; maximise customer value</td>
+        <td>Ongoing philosophy</td>
+        <td>Entire organisation</td>
+        <td>Process Cycle Efficiency (PCE)</td>
+        <td>Requires cultural shift</td>
+      </tr>
+      <tr>
+        <td class="col-h">JIT</td>
+        <td>Toyota, Japan</td>
+        <td>Zero inventory; demand-driven production</td>
+        <td>Operational (daily)</td>
+        <td>Supply chain + production</td>
+        <td>Inventory levels; holding cost</td>
+        <td>Supply chain vulnerability; demand unpredictability</td>
+      </tr>
+      <tr>
+        <td class="col-h">Kaizen</td>
+        <td>Japan (改善)</td>
+        <td>Continuous cost reduction</td>
+        <td>Monthly / Quarterly</td>
+        <td>All employees (bottom-up)</td>
+        <td>Kaizen Gap (Actual − Target cost)</td>
+        <td>Small savings; may miss radical improvements</td>
+      </tr>
+      <tr>
+        <td class="col-h">5S</td>
+        <td>Japan</td>
+        <td>Organised, clean, standardised workplace</td>
+        <td>Daily discipline</td>
+        <td>All employees</td>
+        <td>Audit scores; search time</td>
+        <td>Needs sustained discipline; easy to relapse</td>
+      </tr>
+      <tr>
+        <td class="col-h">TPM</td>
+        <td>Nippon Denso, Japan</td>
+        <td>Zero breakdowns, defects, accidents</td>
+        <td>Ongoing</td>
+        <td>Operators + maintenance staff</td>
+        <td>OEE (≥85% = world class)</td>
+        <td>Long time for tangible benefits</td>
+      </tr>
+      <tr>
+        <td class="col-h">Six Sigma</td>
+        <td>Motorola, USA (1986)</td>
+        <td>Near-zero defects (3.4 DPMO)</td>
+        <td>Project-based</td>
+        <td>Trained experts + teams</td>
+        <td>DPMO; Sigma Level</td>
+        <td>Quality-focused only; costly infrastructure</td>
+      </tr>
+      <tr>
+        <td class="col-h">Process Innovation</td>
+        <td>Management theory</td>
+        <td>Implement entirely new processes</td>
+        <td>Strategic (long-term)</td>
+        <td>Top management + R&D</td>
+        <td>Process cost; cycle time</td>
+        <td>High risk; no guarantee of efficiency gain</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<div class="card" style="margin-top:24px;">
+  <h3>🔄 Logic Flowchart — DMAIC Decision Process</h3>
+  <p style="margin-bottom:20px; color:var(--slate); font-size:13px;">The most complex process in this chapter — how to apply DMAIC step-by-step to a case study.</p>
+
+  <div style="background:var(--paper); border:1px solid var(--divider); border-radius:8px; padding:24px; overflow-x:auto;">
+    <div style="display:flex; flex-direction:column; gap:4px; align-items:flex-start;">
+
+      <div style="background:var(--emerald); color:white; border-radius:6px; padding:12px 24px; font-weight:600; font-size:13px; min-width:300px;">
+        🔍 <strong>DEFINE</strong> — What problem are we solving?<br>
+        <small style="font-weight:400; opacity:0.85;">Identify: Customer requirements · Project goal · Process scope</small>
+      </div>
+      <div style="color:var(--emerald); font-size:24px; padding-left:24px;">↓</div>
+
+      <div style="background:var(--sapphire); color:white; border-radius:6px; padding:12px 24px; font-weight:600; font-size:13px; min-width:300px;">
+        📏 <strong>MEASURE</strong> — How bad is the problem?<br>
+        <small style="font-weight:400; opacity:0.85;">Collect data · Establish baseline · Quantify current performance</small>
+      </div>
+      <div style="color:var(--emerald); font-size:24px; padding-left:24px;">↓</div>
+
+      <div style="background:#7c3d2e; color:white; border-radius:6px; padding:12px 24px; font-weight:600; font-size:13px; min-width:300px;">
+        🔬 <strong>ANALYSE</strong> — Why is it happening?<br>
+        <small style="font-weight:400; opacity:0.85;">Pareto analysis · Root cause analysis · Fishbone diagram</small>
+      </div>
+      <div style="color:var(--emerald); font-size:24px; padding-left:24px;">↓</div>
+
+      <div style="background:var(--amber); color:var(--ink); border-radius:6px; padding:12px 24px; font-weight:600; font-size:13px; min-width:300px;">
+        🔧 <strong>IMPROVE</strong> — How do we fix it?<br>
+        <small style="font-weight:400; opacity:0.9;">Recommend solutions · Implement improvements · Consider costs</small>
+      </div>
+      <div style="color:var(--emerald); font-size:24px; padding-left:24px;">↓</div>
+
+      <div style="background:var(--gold); color:var(--ink); border-radius:6px; padding:12px 24px; font-weight:600; font-size:13px; min-width:300px;">
+        📊 <strong>CONTROL</strong> — How do we sustain it?<br>
+        <small style="font-weight:400; opacity:0.9;">Monitor ongoing · Set thresholds · IT system redesign if needed</small>
+      </div>
+      <div style="color:var(--emerald); font-size:24px; padding-left:24px;">↓</div>
+
+      <div style="display:flex; gap:12px; align-items:center;">
+        <div style="background:var(--emerald); color:white; border-radius:6px; padding:10px 20px; font-size:12.5px; font-weight:600;">
+          ✅ Process performing at target → END
+        </div>
+        <div style="color:var(--slate); font-size:13px;">OR</div>
+        <div style="background:var(--ruby); color:white; border-radius:6px; padding:10px 20px; font-size:12.5px; font-weight:600;">
+          ↺ Major issue persists → Loop back to DEFINE
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 11: MNEMONICS ═══ -->
+<div id="mnemonics" class="section-marker">
+  <div class="section-number">11</div>
+  <div class="section-title-block">
+    <h2>Retain & Recall — Mnemonics</h2>
+    <div class="subtitle">Memory Aids for All Multi-Point Lists</div>
+  </div>
+</div>
+<div class="rule"></div>
+
+<div class="grid-2">
+  <div class="mnemonic-box">
+    <div class="mnemonic-label">Seven Wastes (Lean)</div>
+    <div class="mnemonic-word">TIM WOOD</div>
+    <div class="mnemonic-breakdown">
+      <div class="mnemonic-row"><span class="mnemonic-letter">T</span><span class="mnemonic-text">Transportation</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">I</span><span class="mnemonic-text">Inventory</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">M</span><span class="mnemonic-text">Motion</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">W</span><span class="mnemonic-text">Waiting</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">O</span><span class="mnemonic-text">Over-production</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">O</span><span class="mnemonic-text">Over-processing</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">D</span><span class="mnemonic-text">Defects</span></div>
+    </div>
+  </div>
+
+  <div class="mnemonic-box">
+    <div class="mnemonic-label">JIT Pre-Requisites</div>
+    <div class="mnemonic-word">LN-EPTDP</div>
+    <div class="mnemonic-breakdown">
+      <div class="mnemonic-row"><span class="mnemonic-letter">L</span><span class="mnemonic-text">Low variety of goods</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">N</span><span class="mnemonic-text">Narrow supplier base (Vendors)</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">E</span><span class="mnemonic-text">Efficient information system</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">P</span><span class="mnemonic-text">Predictable demand patterns</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">T</span><span class="mnemonic-text">Total Quality Management</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">D</span><span class="mnemonic-text">Defect-free materials</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">P</span><span class="mnemonic-text">Preventive maintenance</span></div>
+    </div>
+  </div>
+
+  <div class="mnemonic-box">
+    <div class="mnemonic-label">Back-Flushing Problems</div>
+    <div class="mnemonic-word">PSLI</div>
+    <div class="mnemonic-breakdown">
+      <div class="mnemonic-row"><span class="mnemonic-letter">P</span><span class="mnemonic-text">Production Reporting errors</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">S</span><span class="mnemonic-text">Scrap Reporting gaps</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">L</span><span class="mnemonic-text">Lot Tracing impossible</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">I</span><span class="mnemonic-text">Inventory Accuracy issues</span></div>
+    </div>
+  </div>
+
+  <div class="mnemonic-box">
+    <div class="mnemonic-label">5S Phases</div>
+    <div class="mnemonic-word">SSSSS</div>
+    <div class="mnemonic-breakdown">
+      <div class="mnemonic-row"><span class="mnemonic-letter">S</span><span class="mnemonic-text"><strong>Sort</strong> — Remove unnecessary (Seiri)</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">S</span><span class="mnemonic-text"><strong>Set in Order</strong> — Everything in place (Seiton)</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">S</span><span class="mnemonic-text"><strong>Shine</strong> — Clean daily (Seiso)</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">S</span><span class="mnemonic-text"><strong>Standardise</strong> — Make it SOP (Seiketsu)</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">S</span><span class="mnemonic-text"><strong>Sustain</strong> — Daily discipline (Shitsuke)</span></div>
+    </div>
+  </div>
+
+  <div class="mnemonic-box">
+    <div class="mnemonic-label">Six Sigma — DMAIC</div>
+    <div class="mnemonic-word">DMAIC</div>
+    <div class="mnemonic-breakdown">
+      <div class="mnemonic-row"><span class="mnemonic-letter">D</span><span class="mnemonic-text"><strong>D</strong>efine the problem</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">M</span><span class="mnemonic-text"><strong>M</strong>easure current state</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">A</span><span class="mnemonic-text"><strong>A</strong>nalyse root cause</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">I</span><span class="mnemonic-text"><strong>I</strong>mprove by eliminating cause</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">C</span><span class="mnemonic-text"><strong>C</strong>ontrol the improved process</span></div>
+    </div>
+  </div>
+
+  <div class="mnemonic-box">
+    <div class="mnemonic-label">Six Big Losses (TPM)</div>
+    <div class="mnemonic-word">ESIR·RQ</div>
+    <div class="mnemonic-breakdown">
+      <div class="mnemonic-row"><span class="mnemonic-letter">E</span><span class="mnemonic-text">Equipment Failure (Availability)</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">S</span><span class="mnemonic-text">Set-up/Adjustments (Availability)</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">I</span><span class="mnemonic-text">Idling & Minor Stoppages (Performance)</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">R</span><span class="mnemonic-text">Reduced Speed (Performance)</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">R</span><span class="mnemonic-text">Reduced Yield (Quality)</span></div>
+      <div class="mnemonic-row"><span class="mnemonic-letter">Q</span><span class="mnemonic-text">Quality Defects & Rework (Quality)</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 12: REVISION CHECKLIST ═══ -->
+<div id="checklist" class="section-marker">
+  <div class="section-number">12</div>
+  <div class="section-title-block">
+    <h2>Revision Checklist</h2>
+    <div class="subtitle">3-Point Mastery Verification per Major Topic</div>
+  </div>
+</div>
+<div class="rule"></div>
+
+<div class="grid-2">
+  <div class="card">
+    <h3>✅ JIT Mastery Checklist</h3>
+    <ul class="checklist">
+      <li><span class="checkbox"></span><span>Can I explain the JIT Pull system vs Push system and give a concrete Indian manufacturing example?</span></li>
+      <li><span class="checkbox"></span><span>Can I calculate Process Cycle Efficiency (PCE) and interpret whether a shift to JIT is justified?</span></li>
+      <li><span class="checkbox"></span><span>Can I list all four back-flushing problems and explain the GIGO consequence for inventory accuracy?</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>✅ Kaizen Mastery Checklist</h3>
+    <ul class="checklist">
+      <li><span class="checkbox"></span><span>Can I compare Kaizen Costing and Standard Costing across all 6 dimensions without referring to notes?</span></li>
+      <li><span class="checkbox"></span><span>Can I explain the 3-step Kaizen process and identify who sets the cost reduction target (bottom-up)?</span></li>
+      <li><span class="checkbox"></span><span>Can I differentiate Kaizen from BPR in a case study context (incremental vs radical)?</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>✅ TPM & OEE Mastery Checklist</h3>
+    <ul class="checklist">
+      <li><span class="checkbox"></span><span>Can I solve an OEE numerical (Availability × Performance × Quality) correctly, excluding planned downtime from availability losses?</span></li>
+      <li><span class="checkbox"></span><span>Can I map the Six Big Losses to their correct OEE factor (Availability / Performance / Quality)?</span></li>
+      <li><span class="checkbox"></span><span>Can I name all 8 TPM pillars and their primary focus areas in sequence?</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>✅ Six Sigma Mastery Checklist</h3>
+    <ul class="checklist">
+      <li><span class="checkbox"></span><span>Can I determine in a case study whether to apply DMAIC or DMADV based on whether the process exists?</span></li>
+      <li><span class="checkbox"></span><span>Can I apply each DMAIC phase to a manufacturing or service scenario with specific, relevant points?</span></li>
+      <li><span class="checkbox"></span><span>Can I state the defects at 6σ level (3.4 DPMO = 99.99966% yield) and explain Lean Six Sigma's combined benefit?</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="card card-gold" style="margin-top: 8px;">
+  <h3>🎯 Final Pre-Exam Rapid Review — 5 Must-Know Facts</h3>
+  <table class="styled-table">
+    <tbody>
+      <tr><td class="col-h">1</td><td>JIT is a <strong>Pull system</strong>; Traditional is a <strong>Push system</strong>. Key distinction tested repeatedly.</td></tr>
+      <tr><td class="col-h">2</td><td>World-Class OEE = <strong>≥85%</strong>. Ideal benchmarks: Availability >90%, Performance >95%, Quality >99%.</td></tr>
+      <tr><td class="col-h">3</td><td>Kaizen = <strong>cost reduction</strong>; Standard Costing = <strong>cost control</strong>. Never confuse these in answers.</td></tr>
+      <tr><td class="col-h">4</td><td>5S fits in the <strong>"Do"</strong> stage of PDCA (not Plan, Check, or Act).</td></tr>
+      <tr><td class="col-h">5</td><td>Six Sigma = 3.4 DPMO. DMAIC for <strong>existing</strong> processes. DMADV for <strong>new</strong> processes.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!-- end container -->
+
+<footer class="footer">
+  <div>
+    <strong>CA Final SCPM — Lean System & Innovation</strong><br>
+    One-Source Master Notes · Chapter 3 · Compiled from ICAI Study Material
+  </div>
+  <div style="text-align:right;">
+    <strong>Institute of Chartered Accountants of India</strong><br>
+    Strategic Cost &amp; Performance Management
+  </div>
+</footer>
+
+</body>
+</html>

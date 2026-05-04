@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch. 6 – Strategic Revenue Management | CA Final SCPM</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --ink:       #0f1117;
+    --paper:     #faf8f4;
+    --accent:    #1a3a4a;
+    --gold:      #c8922a;
+    --sage:      #2d5a4a;
+    --rust:      #8b3a2a;
+    --mist:      #e8f0ed;
+    --border:    #d4c9b0;
+    --mono:      'JetBrains Mono', monospace;
+    --serif:     'Source Serif 4', serif;
+    --display:   'Playfair Display', serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--serif);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--accent);
+    color: #fff;
+    padding: 3.5rem 4rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent 0px, transparent 18px,
+      rgba(255,255,255,.03) 18px, rgba(255,255,255,.03) 20px
+    );
+  }
+  .hero-label {
+    font-family: var(--mono);
+    font-size: .7rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .75rem;
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-size: 2.9rem;
+    line-height: 1.15;
+    font-weight: 900;
+    max-width: 720px;
+  }
+  .hero-sub {
+    margin-top: .9rem;
+    color: rgba(255,255,255,.7);
+    font-size: .95rem;
+    max-width: 640px;
+  }
+  .hero-pills {
+    display: flex; flex-wrap: wrap; gap: .5rem;
+    margin-top: 1.8rem;
+  }
+  .pill {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 999px;
+    padding: .25rem .85rem;
+    font-size: .72rem;
+    font-family: var(--mono);
+    letter-spacing: .06em;
+    color: rgba(255,255,255,.85);
+  }
+
+  /* ── LAYOUT ── */
+  .toc-wrapper {
+    display: flex;
+    gap: 0;
+    min-height: 100vh;
+  }
+  .toc {
+    width: 260px;
+    flex-shrink: 0;
+    background: #fff;
+    border-right: 1px solid var(--border);
+    padding: 2rem 1.5rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  .toc h3 {
+    font-family: var(--mono);
+    font-size: .65rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .toc ol { list-style: none; counter-reset: toc-ctr; }
+  .toc ol li { counter-increment: toc-ctr; margin-bottom: .25rem; }
+  .toc ol li::before {
+    content: counter(toc-ctr, decimal-leading-zero) ". ";
+    font-family: var(--mono);
+    font-size: .65rem;
+    color: var(--gold);
+    margin-right: .3rem;
+  }
+  .toc a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: .8rem;
+    line-height: 1.4;
+    transition: color .2s;
+  }
+  .toc a:hover { color: var(--accent); font-weight: 600; }
+
+  .content {
+    flex: 1;
+    padding: 3rem 3.5rem;
+    max-width: 900px;
+  }
+
+  /* ── SECTIONS ── */
+  section { margin-bottom: 4rem; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: .65rem;
+    color: var(--gold);
+    background: var(--accent);
+    color: #fff;
+    padding: .35rem .7rem;
+    border-radius: 4px;
+    letter-spacing: .1em;
+    flex-shrink: 0;
+  }
+  h2 {
+    font-family: var(--display);
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  h3 {
+    font-family: var(--display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 1.8rem 0 .6rem;
+  }
+  h4 {
+    font-family: var(--mono);
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin: 1.2rem 0 .4rem;
+  }
+  p { margin-bottom: .8rem; }
+
+  /* ── CARDS ── */
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.4rem 1.6rem;
+    margin: 1rem 0;
+  }
+  .card.accent  { border-left: 4px solid var(--accent); }
+  .card.gold    { border-left: 4px solid var(--gold); background: #fdf9f0; }
+  .card.sage    { border-left: 4px solid var(--sage); background: var(--mist); }
+  .card.rust    { border-left: 4px solid var(--rust); background: #fdf3f0; }
+
+  .card-title {
+    font-family: var(--mono);
+    font-size: .7rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    margin-bottom: .6rem;
+  }
+  .card.accent .card-title { color: var(--accent); }
+  .card.gold   .card-title { color: var(--gold); }
+  .card.sage   .card-title { color: var(--sage); }
+  .card.rust   .card-title { color: var(--rust); }
+
+  /* ── LISTS ── */
+  ul, ol { padding-left: 1.4rem; margin-bottom: .8rem; }
+  li { margin-bottom: .3rem; }
+  li::marker { color: var(--gold); }
+
+  /* ── DEFINITION ── */
+  .def {
+    background: var(--mist);
+    border-left: 3px solid var(--sage);
+    padding: .8rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: .8rem 0;
+    font-style: italic;
+    font-size: .92rem;
+  }
+  .def strong { font-style: normal; color: var(--sage); }
+
+  /* ── FORMULA ── */
+  .formula {
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: .85rem;
+    padding: .9rem 1.4rem;
+    border-radius: 6px;
+    margin: 1rem 0;
+    letter-spacing: .02em;
+  }
+  .formula .label {
+    font-size: .65rem;
+    letter-spacing: .15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: .3rem;
+  }
+
+  /* ── TABLE ── */
+  .table-wrap { overflow-x: auto; margin: 1.2rem 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .85rem;
+  }
+  thead { background: var(--accent); color: #fff; }
+  thead th {
+    padding: .7rem 1rem;
+    text-align: left;
+    font-family: var(--mono);
+    font-size: .7rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  tbody tr:nth-child(even) { background: var(--mist); }
+  tbody tr:hover { background: #e0ebe5; }
+  td { padding: .65rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  td:first-child { font-weight: 600; color: var(--accent); }
+
+  /* ── FLOWCHART ── */
+  .flow {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    margin: 1.2rem 0;
+  }
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: .8rem;
+    position: relative;
+  }
+  .flow-step + .flow-step { margin-top: .3rem; }
+  .flow-num {
+    background: var(--gold);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: .72rem;
+    font-weight: 600;
+    width: 1.8rem; height: 1.8rem;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: .15rem;
+  }
+  .flow-connector {
+    width: 2px;
+    height: 20px;
+    background: var(--border);
+    margin-left: .87rem;
+  }
+  .flow-body strong { display: block; font-size: .9rem; color: var(--accent); }
+  .flow-body span { font-size: .82rem; color: #555; }
+
+  /* ── MNEMONIC ── */
+  .mnemonic {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin: .8rem 0;
+  }
+  .mnemo-letter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 6px;
+    padding: .5rem .6rem;
+    min-width: 3.2rem;
+    text-align: center;
+  }
+  .mnemo-letter .ltr {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .mnemo-letter .word { font-size: .6rem; font-family: var(--mono); margin-top: .2rem; opacity: .85; }
+
+  /* ── CHECKLIST ── */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex; align-items: flex-start; gap: .75rem;
+    padding: .7rem 1rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+  }
+  .checklist li::before { content: none; }
+  .check-icon {
+    width: 1.4rem; height: 1.4rem;
+    border: 2px solid var(--sage);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: .15rem;
+  }
+
+  /* ── COMPARE GRID ── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  @media(max-width:680px) { .compare-grid { grid-template-columns: 1fr; } }
+
+  /* ── HIGHLIGHT / WARN / TIP ── */
+  .tip, .warn, .exam {
+    padding: .75rem 1.1rem;
+    border-radius: 6px;
+    font-size: .87rem;
+    margin: .8rem 0;
+    display: flex; gap: .7rem; align-items: flex-start;
+  }
+  .tip  { background: #edfbf3; border: 1px solid #7bcfa4; }
+  .warn { background: #fdf9ec; border: 1px solid #e0b84a; }
+  .exam { background: #f0f5ff; border: 1px solid #7ba4cf; }
+  .tip-icon, .warn-icon, .exam-icon {
+    font-size: 1rem; flex-shrink: 0; margin-top: .1rem;
+  }
+
+  /* ── BADGE ── */
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: .65rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: #fff;
+    padding: .15rem .55rem;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-left: .3rem;
+  }
+  .badge.blue  { background: var(--accent); }
+  .badge.green { background: var(--sage); }
+
+  /* ── KANO VISUAL ── */
+  .kano-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .kano-card {
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+  }
+  .kano-card .k-icon { font-size: 1.8rem; margin-bottom: .4rem; }
+  .kano-card h5 {
+    font-family: var(--mono);
+    font-size: .7rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: .3rem;
+  }
+  .kano-card p { font-size: .78rem; margin: 0; }
+  .kano-must    { background: #fff0e6; border: 2px solid #e07030; }
+  .kano-perf    { background: #e6f4ff; border: 2px solid #3070e0; }
+  .kano-delight { background: #e6fff0; border: 2px solid #30a060; }
+  .kano-bad     { background: #f5f5f5; border: 2px dashed #bbb; }
+
+  strong { font-weight: 600; }
+  em { color: var(--rust); font-style: italic; }
+  code {
+    font-family: var(--mono);
+    font-size: .82em;
+    background: #eee;
+    padding: .1em .35em;
+    border-radius: 3px;
+  }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+  /* Scrollbar */
+  .toc::-webkit-scrollbar { width: 4px; }
+  .toc::-webkit-scrollbar-track { background: transparent; }
+  .toc::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">CA Final · Strategic Cost &amp; Performance Management · Chapter 6</div>
+  <h1>Strategic Revenue Management</h1>
+  <p class="hero-sub">One-Source Material — Conceptual Depth · Exam-Focused Precision · Mnemonics &amp; Flowcharts</p>
+  <div class="hero-pills">
+    <span class="pill">CVP Analysis</span>
+    <span class="pill">Relevant Cost</span>
+    <span class="pill">Pricing Policy</span>
+    <span class="pill">Pricing Methods</span>
+    <span class="pill">Pricing Strategies</span>
+    <span class="pill">Kano's Model</span>
+    <span class="pill">Ethical Pricing</span>
+    <span class="pill">Short-term Decisions</span>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="toc-wrapper">
+
+  <!-- TABLE OF CONTENTS -->
+  <nav class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#s1">The Big Picture</a></li>
+      <li><a href="#s2">CVP Analysis</a></li>
+      <li><a href="#s3">Relevant Cost Concepts</a></li>
+      <li><a href="#s4">Short-term Decision Applications</a></li>
+      <li><a href="#s5">Pricing Policy &amp; Theory</a></li>
+      <li><a href="#s6">Pricing of New Products</a></li>
+      <li><a href="#s7">Pricing Methods</a></li>
+      <li><a href="#s8">Pricing Strategies</a></li>
+      <li><a href="#s9">Kano's Model</a></li>
+      <li><a href="#s10">Examiner's Lens</a></li>
+      <li><a href="#s11">Visual Synthesis</a></li>
+      <li><a href="#s12">Retain &amp; Recall</a></li>
+    </ol>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- ══════════════════════════════════════════ -->
+    <section id="s1">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2>The Big Picture — Executive Summary</h2>
+      </div>
+
+      <div class="card accent">
+        <div class="card-title">Syllabus Significance</div>
+        <p>This chapter is the <strong>revenue engine</strong> of the SCPM syllabus. Unlike cost-focused chapters, it asks: <em>"Given our costs, how should we price to maximise strategic value?"</em> It bridges <strong>short-term operational decisions</strong> (make-or-buy, special orders) with <strong>long-term strategic pricing</strong> (skimming, penetration, value-based). Exam weightage is consistently 20–30 marks.</p>
+      </div>
+
+      <h3>Real-World Significance (Indian Context)</h3>
+      <ul>
+        <li><strong>Jio's Penetration Pricing (2016):</strong> Reliance Jio entered with free data/calls—a textbook penetration strategy—driving incumbents out and establishing market dominance before raising prices gradually.</li>
+        <li><strong>Bata's Psychological Pricing:</strong> ₹499, ₹999, ₹1,499—India's earliest and most iconic use of "charm pricing" to cross psychological price barriers.</li>
+        <li><strong>Indian Railways — CVP in Services:</strong> Dynamic fare pricing (Tatkal, Flexi) demonstrates contribution-based pricing in a regulated service environment.</li>
+        <li><strong>Flipkart Big Billion Day — Promotional Pricing:</strong> Loss-leader pricing on select categories (smartphones) drives platform traffic and cross-sells higher-margin items.</li>
+        <li><strong>Pharmaceutical Companies — Recession Pricing:</strong> Generic drug manufacturers often price below full cost but above marginal cost during patent cliffs to retain market share.</li>
+      </ul>
+
+      <div class="card sage">
+        <div class="card-title">The Unifying Theme</div>
+        <p><strong>Revenue = Price × Volume.</strong> This chapter teaches you to <em>strategically control the Price variable</em> while understanding how Volume responds—through demand elasticity, CVP relationships, and market structure analysis. Every pricing decision is ultimately a <strong>contribution maximisation problem</strong> subject to strategic, ethical, and non-financial constraints.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <section id="s2">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2>Cost-Volume-Profit (CVP) Analysis</h2>
+      </div>
+
+      <h3>The 'Why'</h3>
+      <p>Managers need to know: <em>"How many units must we sell to cover costs?"</em> and <em>"What happens to profit if volume or price changes?"</em> CVP answers these by modelling the linear relationship between volume, costs, and profit in the short run, where fixed costs are truly fixed.</p>
+
+      <div class="def">
+        <strong>CVP Analysis</strong> analyses the interrelationships among revenues, costs, levels of activity, and profits to determine break-even points and target profit volumes.
+      </div>
+
+      <div class="formula">
+        <span class="label">Break-Even Point (Units)</span>
+        BEP (units) = Fixed Cost ÷ (Selling Price per unit – Variable Cost per unit)
+        <br><br>
+        BEP (₹) = Fixed Cost ÷ P/V Ratio
+      </div>
+
+      <h3>Activity-Based CVP Analysis</h3>
+      <p>Conventional CVP lumps <em>all</em> non-variable costs as "fixed." But ABC reveals that some costs vary with <strong>non-volume drivers</strong> (set-ups, engineering hours). The extended ABC Break-even formula is:</p>
+
+      <div class="formula">
+        <span class="label">ABC Break-Even (Units)</span>
+        BEP = [Fixed Cost + (Batch Cost Driver × Cost per Batch) + (Product Sustaining Driver × Cost per Driver)] ÷ Contribution per unit
+      </div>
+
+      <h4>ABC Cost Hierarchy — Four Levels</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Level</th><th>Description</th><th>Cost Driver</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>Unit-Level</td><td>Incurred each time one unit is produced</td><td>Production volume</td><td>Direct material, direct labour, energy</td></tr>
+            <tr><td>Batch-Level</td><td>Incurred once per production batch</td><td>No. of set-ups / purchase orders</td><td>Machine set-up cost, procurement processing</td></tr>
+            <tr><td>Product Sustaining</td><td>Supports a specific product line</td><td>Engineering hours, design specs</td><td>Product design, advertising, testing routines</td></tr>
+            <tr><td>Facility Level</td><td>General business operations; untraceable to products</td><td>None (truly fixed)</td><td>Factory rent, insurance, GM salary</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="warn">
+        <span class="warn-icon">⚠️</span>
+        <div><strong>Key Insight:</strong> Larger batch sizes → fewer set-ups → lower per-unit set-up cost. But larger batches increase inventory holding cost. The optimal batch size balances these two opposing forces.</div>
+      </div>
+
+      <h3>CVP in Services and Non-Profit Organisations</h3>
+      <p>The key adaptation is <strong>measuring output differently</strong>—not in physical units but in <em>passenger-kilometres, patient-days, bed-occupancy rates, show-tickets</em>, etc. Variable costs per output unit must be identified carefully as many service costs appear fixed but vary with activity.</p>
+
+      <h3>CVP in Just-In-Time (JIT) Environment</h3>
+      <div class="card gold">
+        <div class="card-title">JIT Modifications to CVP</div>
+        <ul>
+          <li><strong>Direct labour becomes Fixed</strong> (long-term committed workforce).</li>
+          <li><strong>Direct material remains Variable</strong> (procured as needed, quality-focused, no discounts).</li>
+          <li><strong>Batch-level variable is absent</strong>—batch size = 1 unit in pure JIT.</li>
+          <li><strong>Engineering hours</strong> remain a separate non-unit driver.</li>
+        </ul>
+        <div class="formula" style="margin-top:.8rem;">
+          <span class="label">JIT Total Cost</span>
+          Total Cost = Fixed Cost + (Unit Variable Cost × Units) + (Engineering Cost × Engineering Hours)
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <section id="s3">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2>Relevant Cost Concepts in Short-Term Decisions</h2>
+      </div>
+
+      <h3>The 'Why'</h3>
+      <p>Short-run decisions must isolate costs that will <em>actually change</em> due to the decision. Using total/absorbed cost misleads managers into rejecting profitable orders or retaining loss-making segments.</p>
+
+      <h4>The Two Tests for Relevance</h4>
+      <div class="compare-grid">
+        <div class="card sage">
+          <div class="card-title">Test 1 — Future Cost</div>
+          <p>Must be a cost yet to be incurred. <strong>Sunk costs are never relevant</strong> (e.g., historical purchase price of inventory already bought).</p>
+        </div>
+        <div class="card sage">
+          <div class="card-title">Test 2 — Differential Cost</div>
+          <p>Must differ between the alternatives being evaluated. A cost that is identical under all choices has <strong>zero relevance</strong> to the decision.</p>
+        </div>
+      </div>
+
+      <h4>Key Relevant Cost Concepts</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Cost Type</th><th>Definition</th><th>Relevant?</th></tr></thead>
+          <tbody>
+            <tr><td>Sunk Cost</td><td>Already incurred; cannot be recovered</td><td>❌ Never</td></tr>
+            <tr><td>Opportunity Cost</td><td>Benefit foregone by choosing one option over the next best</td><td>✅ Always</td></tr>
+            <tr><td>Incremental Cost</td><td>Additional cost resulting from a specific decision</td><td>✅ Yes</td></tr>
+            <tr><td>Avoidable Cost</td><td>Can be eliminated if a segment/product is dropped</td><td>✅ Yes</td></tr>
+            <tr><td>Committed Fixed Cost</td><td>Will be incurred regardless of the decision</td><td>❌ No</td></tr>
+            <tr><td>Allocated/Absorbed OH</td><td>Portion of fixed OH allocated using a rate; total OH unchanged</td><td>❌ No</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="exam">
+        <span class="exam-icon">📘</span>
+        <div><strong>Examiner Favourite:</strong> Material already in stock is valued at <strong>replacement cost</strong> if regularly used (will need replenishing) or at <strong>net realisable value (NRV)</strong> if surplus with no other use. NRV is the opportunity cost of using it rather than selling it.</div>
+      </div>
+
+      <h3>Decision-Making Model (6-Step Process)</h3>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-num">1</div><div class="flow-body"><strong>Define the Problem</strong><span>Frame the decision precisely (e.g., "Should we accept this ₹500 special order?")</span></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><div class="flow-num">2</div><div class="flow-body"><strong>Identify Alternatives</strong><span>List all feasible options; eliminate infeasible ones immediately</span></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><div class="flow-num">3</div><div class="flow-body"><strong>Identify Costs &amp; Benefits per Alternative</strong><span>Total costs and revenues for each option</span></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><div class="flow-num">4</div><div class="flow-body"><strong>Examine Total Relevant Costs &amp; Benefits</strong><span>Strip out sunk, allocated, and committed costs → compute differential/incremental amounts</span></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><div class="flow-num">5</div><div class="flow-body"><strong>Assess Non-Financial &amp; Ethical Factors</strong><span>Employee morale, supplier relationships, brand, CSR, regulatory compliance</span></div></div>
+        <div class="flow-connector"></div>
+        <div class="flow-step"><div class="flow-num">6</div><div class="flow-body"><strong>Select the Option with Greatest Overall Benefit</strong><span>Balance quantitative superiority with qualitative concerns</span></div></div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <section id="s4">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2>Applications of CVP &amp; Relevant Cost</h2>
+      </div>
+
+      <div class="tip"><span class="tip-icon">💡</span><div>All six applications below share a common logic: <strong>only incremental revenues vs. incremental costs matter</strong>. Non-financial qualitative factors can override a financially superior choice.</div></div>
+
+      <h3>1. Outsourcing (Make-or-Buy) Decision</h3>
+      <div class="def"><strong>Outsourcing Decision:</strong> Whether to produce internally or purchase from an external supplier. Requires incremental analysis comparing total cost of making vs. buying, including opportunity costs.</div>
+
+      <div class="formula">
+        <span class="label">Decision Rule</span>
+        If (Incremental Cost Savings + Opportunity Costs) &gt; Incremental Cost of Buying → Make internally
+        <br>If (Incremental Cost Savings + Opportunity Costs) &lt; Incremental Cost of Buying → Outsource
+      </div>
+
+      <div class="card rust">
+        <div class="card-title">Qualitative Factors — Make or Buy</div>
+        <ul>
+          <li>Quality reliability of the external supplier</li>
+          <li>Confidentiality / IP risk if process is outsourced</li>
+          <li>Impact on existing workforce and morale</li>
+          <li>Supplier dependency and supply chain risk</li>
+          <li>Loss of technical expertise in-house over time</li>
+        </ul>
+      </div>
+
+      <h3>2. Sell or Process Further</h3>
+      <div class="def">Decision about whether to sell a joint product at the split-off point or incur additional processing costs for a higher realisation. <strong>Joint process costs are sunk</strong> at the point of separation—always ignore them.</div>
+
+      <div class="formula">
+        <span class="label">Decision Rule</span>
+        If (Incremental Revenue from further processing) &gt; (Incremental Cost of further processing) → Process Further
+      </div>
+
+      <h3>3. Minimum Pricing Decision</h3>
+      <p>Used in intense competition, surplus capacity situations, special orders, or market-share battles. Price must at minimum recover the <strong>total relevant (incremental) cost including opportunity costs</strong>.</p>
+      <div class="formula">
+        <span class="label">Minimum Price Formula</span>
+        Minimum Price = Incremental Costs + Opportunity Costs (if any)
+      </div>
+
+      <h3>4. Keep or Drop Decision</h3>
+      <p>A segment should be dropped <strong>only if</strong> the incremental cost savings exceed the incremental revenue lost (i.e., contribution lost plus any opportunity benefits). Beware: fixed costs allocated to dropped segments are often NOT avoidable.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Condition</th><th>Decision</th></tr></thead>
+          <tbody>
+            <tr><td>Incremental Cost Savings &gt; Incremental Revenue Lost</td><td>Drop (unless qualitative factors override)</td></tr>
+            <tr><td>Incremental Cost Savings &lt; Incremental Revenue Lost</td><td>Keep (unless qualitative factors override)</td></tr>
+            <tr><td>Incremental Cost Savings = Incremental Revenue Lost</td><td>Qualitative factors decide</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>5. Special Order Decision</h3>
+      <p>Accept a specially-priced order when the firm operates below capacity, as fixed costs are irrelevant (already being recovered). <strong>Price discrimination laws</strong> apply only to competing customers in the same market.</p>
+
+      <div class="warn">
+        <span class="warn-icon">⚠️</span>
+        <div><strong>Long-run Danger:</strong> Continuously evaluating special orders as short-term decisions treats capacity as permanently available. Managers must periodically make a long-term capacity decision based on incremental revenues vs. capacity costs that can be eliminated.</div>
+      </div>
+
+      <h3>6. Product Mix Decision (with Limiting Factor)</h3>
+      <p>When one resource is scarce (machine hours, material, skilled labour), rank products by <strong>contribution per unit of the scarce resource</strong>—not by contribution per unit. When multiple constraints exist, use <strong>Linear Programming</strong>.</p>
+
+      <div class="formula">
+        <span class="label">Ranking Metric</span>
+        Rank = Contribution per unit ÷ Units of Scarce Resource per unit of product
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <section id="s5">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2>Pricing Policy, Theory &amp; Principles</h2>
+      </div>
+
+      <div class="card accent">
+        <div class="card-title">Core Distinction</div>
+        <p><strong>Pricing Policy</strong> = Principle of action (the 'what we stand for' in pricing).<br>
+        <strong>Pricing Strategy</strong> = Plan to execute the policy.<br>
+        <strong>Pricing Decision</strong> = Tactical outcome for a specific product/market.</p>
+      </div>
+
+      <h3>Factors Influencing Pricing Decisions</h3>
+      <div class="compare-grid">
+        <div class="card sage">
+          <div class="card-title">Internal Factors</div>
+          <ul>
+            <li>Corporate objectives</li>
+            <li>Desired brand image</li>
+            <li>Price elasticity of demand</li>
+            <li>Cost structure</li>
+            <li>Product life cycle stage</li>
+            <li>Intensity of competition</li>
+            <li>Volume / economies of scale</li>
+          </ul>
+        </div>
+        <div class="card gold">
+          <div class="card-title">External Factors</div>
+          <ul>
+            <li>Market composition</li>
+            <li>Buyer bargaining power</li>
+            <li>Buyer attitude &amp; psychology</li>
+            <li>Competitor pricing policy</li>
+            <li>General economic conditions</li>
+            <li>Government regulations</li>
+            <li>Societal considerations</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Profit Maximisation Model — Economics of Pricing</h3>
+      <p>The microeconomic optimum: produce until <strong>Marginal Revenue = Marginal Cost</strong>. Use the demand curve equation to find this point.</p>
+
+      <div class="formula">
+        <span class="label">Price Equation (Demand Curve)</span>
+        P = a – bQ
+        <br><br>
+        where: a = Price when demand = 0 (intercept)
+        <br>       b = |Change in Price ÷ Change in Quantity| (slope)
+        <br>       Q = Quantity demanded
+        <br><br>
+        Marginal Revenue (MR) = a – 2bQ
+        <br>At profit max: MR = MC → solve for Q, substitute in P = a – bQ
+      </div>
+
+      <h3>Pricing Under Different Market Structures</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Market Structure</th><th>Number of Sellers</th><th>Product</th><th>Price Control</th><th>Strategy</th></tr></thead>
+          <tbody>
+            <tr><td>Perfect Competition</td><td>Many</td><td>Homogeneous</td><td>Price Taker (none)</td><td>Produce till MC = Market Price; focus on cost control</td></tr>
+            <tr><td>Monopoly</td><td>One</td><td>Unique, no close substitute</td><td>Price Setter (full)</td><td>Set price where MR = MC; consider demand elasticity</td></tr>
+            <tr><td>Monopolistic Competition</td><td>Many</td><td>Differentiated</td><td>Some price control</td><td>Differentiation; long-run excess profits erode</td></tr>
+            <tr><td>Oligopoly</td><td>Few</td><td>Similar/identical</td><td>Interdependent</td><td>Watch competitors; avoid price wars; consider collusion implications</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Price Sensitivity — Nagle's Nine Factors</h3>
+      <div class="mnemonic">
+        <div class="mnemo-letter"><span class="ltr">U</span><span class="word">Unique Value</span></div>
+        <div class="mnemo-letter"><span class="ltr">S</span><span class="word">Substitute Awareness</span></div>
+        <div class="mnemo-letter"><span class="ltr">D</span><span class="word">Difficult Comparison</span></div>
+        <div class="mnemo-letter"><span class="ltr">T</span><span class="word">Total Expenditure</span></div>
+        <div class="mnemo-letter"><span class="ltr">E</span><span class="word">End-Benefit</span></div>
+        <div class="mnemo-letter"><span class="ltr">S</span><span class="word">Shared Cost</span></div>
+        <div class="mnemo-letter"><span class="ltr">S</span><span class="word">Sunk Investment</span></div>
+        <div class="mnemo-letter"><span class="ltr">P</span><span class="word">Price-Quality</span></div>
+        <div class="mnemo-letter"><span class="ltr">I</span><span class="word">Inventory</span></div>
+      </div>
+      <p style="font-size:.82rem;color:#555;"><em>Mnemonic: <strong>"U-S-D-T-E-S-S-P-I"</strong> → "Usually, Sensitive Demand Triggers Everyone's Spending Strategy, Producing Interesting results"</em></p>
+
+      <h4>Price Sensitivity Direction — Key Rules</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Factor Condition</th><th>Price Sensitivity</th></tr></thead>
+          <tbody>
+            <tr><td>Product is highly unique</td><td>LOW — buyers accept premium</td></tr>
+            <tr><td>Many substitutes known to buyer</td><td>HIGH — buyers switch easily</td></tr>
+            <tr><td>Difficult to compare alternatives</td><td>LOW — buyers can't price-shop</td></tr>
+            <tr><td>Small % of buyer's total budget</td><td>LOW — price barely noticed</td></tr>
+            <tr><td>Cost shared by another party (employer, etc.)</td><td>LOW — buyer not paying full amount</td></tr>
+            <tr><td>High perceived quality signal</td><td>LOW — premium justified</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <section id="s6">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2>Pricing of New Products</h2>
+      </div>
+
+      <h3>Three Categories of New Products</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Category</th><th>Definition</th><th>Indian Example</th><th>Appropriate Pricing</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Revolutionary</strong></td><td>Entirely new to market; creates its own category; disrupts existing technology</td><td>Ola Electric Scooter (at launch); original Jio 4G launch</td><td><strong>Premium / Skimming</strong> — reward for innovation and first-mover advantage</td></tr>
+            <tr><td><strong>Evolutionary</strong></td><td>Upgraded version of existing product; incremental improvements</td><td>iPhone SE (India); new Maruti Baleno facelift</td><td><strong>Demand-Based</strong> — price higher than previous version to justify costs and benefits</td></tr>
+            <tr><td><strong>Me-too</strong></td><td>Imitation of successful revolutionary/evolutionary products; market follower</td><td>Chinese smartphone brands entering India</td><td><strong>Market Price / Competitive</strong> — price is market-determined by competitive forces</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Market Entry Pricing Strategies</h3>
+
+      <div class="compare-grid">
+        <div class="card gold">
+          <div class="card-title">Skimming Pricing</div>
+          <p><strong>Strategy:</strong> Enter at a high price; gradually reduce over product life cycle.</p>
+          <p><strong>Appropriate when:</strong></p>
+          <ul>
+            <li>Demand is price-inelastic initially (early adopters)</li>
+            <li>High initial capital/R&D costs need quick recovery</li>
+            <li>Demand is uncertain and price acts as a signal of quality</li>
+            <li>Competitors cannot imitate quickly</li>
+          </ul>
+          <p><strong>Indian Example:</strong> Samsung Galaxy S-series launch pricing</p>
+        </div>
+        <div class="card sage">
+          <div class="card-title">Penetration Pricing</div>
+          <p><strong>Strategy:</strong> Enter at a low price to quickly capture market share; raise price later.</p>
+          <p><strong>Appropriate when:</strong></p>
+          <ul>
+            <li>Demand is price-elastic</li>
+            <li>Substantial economies of scale available</li>
+            <li>Threat of competitive entry (low price acts as barrier)</li>
+            <li>Long-term market leadership is the objective</li>
+          </ul>
+          <p><strong>Indian Example:</strong> Reliance Jio (2016), Xiaomi phones</p>
+        </div>
+      </div>
+
+      <div class="warn">
+        <span class="warn-icon">⚠️</span>
+        <div><strong>Do NOT confuse:</strong> <strong>Penetration Pricing</strong> aims to gain market share (legal). <strong>Predatory Pricing</strong> (selling below cost to eliminate competitors) is an abuse of dominance under Section 4 of the Competition Act, 2002 — it is <em>illegal</em>.</div>
+      </div>
+
+      <h3>Pricing &amp; Product Life Cycle (PLC)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Stage</th><th>Price Trend</th><th>Strategy Options</th></tr></thead>
+          <tbody>
+            <tr><td>Introduction</td><td>High or Low</td><td>Skimming (high, inelastic demand) OR Penetration (low, elastic demand)</td></tr>
+            <tr><td>Growth</td><td>Reducing</td><td>Reduce price to expand market; discourage new entrants</td></tr>
+            <tr><td>Maturity</td><td>Stable / Competitive</td><td>Price to match/beat competitors; retain price in premium segments</td></tr>
+            <tr><td>Decline</td><td>Decreasing</td><td>Cut price if not repositioning; some late-decline price increases possible</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <section id="s7">
+      <div class="section-header">
+        <span class="section-num">07</span>
+        <h2>Pricing Methods for Existing Products</h2>
+      </div>
+
+      <h3>A. Cost-Based Pricing</h3>
+      <p>Price is derived from estimated cost plus a profit margin. The 'cost' base can be full cost or variable cost.</p>
+
+      <div class="compare-grid">
+        <div class="card accent">
+          <div class="card-title">Mark-Up Pricing</div>
+          <p><strong>Formula:</strong> Price = Cost + Mark-up %</p>
+          <p>Applies a standard percentage to production cost (usually variable cost). Simple but ignores demand.</p>
+          <div class="formula" style="margin-top:.5rem; font-size:.75rem; padding:.6rem 1rem;">
+            Best when: Costs are known, demand is uncertain
+          </div>
+        </div>
+        <div class="card accent">
+          <div class="card-title">Target Rate of Return</div>
+          <p><strong>Formula:</strong><br>Price = Unit Cost + [(Desired RoR × Invested Capital) ÷ No. of units]</p>
+          <p>More rational; links pricing to investment expectations. Requires accurate sales volume estimates.</p>
+        </div>
+      </div>
+
+      <div class="card rust">
+        <div class="card-title">Limitations of Cost-Based Pricing</div>
+        <ul>
+          <li>Inter-departmental overhead allocation is <strong>arbitrary</strong>—distorts unit cost</li>
+          <li>Requires estimation of normal output, which is often imprecise</li>
+          <li>Ignores the demand side—may result in over- or under-pricing relative to market</li>
+        </ul>
+      </div>
+
+      <h3>B. Competition-Based Pricing</h3>
+
+      <div class="compare-grid">
+        <div class="card sage">
+          <div class="card-title">Going Rate Pricing</div>
+          <p>Price set at the average industry level. Useful when costs are hard to measure (homogeneous products like oil, fertilisers, raw materials). Least disruptive to industry harmony.</p>
+        </div>
+        <div class="card sage">
+          <div class="card-title">Sealed Bid Pricing</div>
+          <p>Price set based on expected competitor bids (e.g., government tenders, defence contracts). Price must stay above marginal cost. Higher price = more profit but lower win probability.</p>
+        </div>
+      </div>
+
+      <h3>C. Value-Based Pricing</h3>
+
+      <div class="def"><strong>True Economic Value (TEV)</strong> = Cost of the Next Best Alternative + Value of Performance Differential<br>This represents the maximum a rational buyer would pay.</div>
+
+      <div class="def"><strong>Perceived Value</strong> = The price a consumer <em>believes</em> the product is worth, based on their subjective understanding—may be above or below TEV.</div>
+
+      <div class="tip">
+        <span class="tip-icon">💡</span>
+        <div><strong>Pricing Sweet Spot:</strong> Set price between Cost of Goods Sold (floor) and Perceived Value (ceiling). This creates incentives for both the buyer (surplus value) and seller (profit).</div>
+      </div>
+
+      <h3>D. Psychological Pricing</h3>
+      <p>Exploits cognitive biases. Price ₹999 instead of ₹1,000—the buyer perceives a substantially lower price even though the difference is trivial. Called <em>"Bata Pricing"</em> in India as Bata pioneered this approach in the Indian retail footwear market.</p>
+
+      <h3>Pricing Under Special Circumstances</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Situation</th><th>Floor Price</th><th>Rationale</th></tr></thead>
+          <tbody>
+            <tr><td>Normal / Long-run</td><td>Above Total Cost</td><td>Recover all costs and earn target return</td></tr>
+            <tr><td>Recession / Idle Capacity</td><td>Above Marginal Cost (below Total Cost)</td><td>Retain skilled labour, prevent machinery deterioration, stay market-ready</td></tr>
+            <tr><td>Perishable goods / Excess stock</td><td>Below Marginal Cost (temporarily)</td><td>Recover any cash rather than dispose; save carrying costs</td></tr>
+            <tr><td>New product penetration</td><td>Below Marginal Cost (temporarily)</td><td>Buy market share; cross-subsidise from other products</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <section id="s8">
+      <div class="section-header">
+        <span class="section-num">08</span>
+        <h2>Pricing Strategies &amp; Price Adaptation</h2>
+      </div>
+
+      <h3>Core Pricing Strategies</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Strategy</th><th>Mechanism</th><th>Best Suited For</th></tr></thead>
+          <tbody>
+            <tr><td>Cost-Plus Pricing</td><td>Cost base + fixed mark-up</td><td>Custom orders; cost-certain environments</td></tr>
+            <tr><td>Market Skimming</td><td>High launch price, gradual reduction</td><td>Revolutionary / premium products; inelastic demand</td></tr>
+            <tr><td>Penetration Pricing</td><td>Low launch price to grab market share</td><td>Elastic demand; scale economies; competition threat</td></tr>
+            <tr><td>Complementary Product</td><td>Low core product price; high ancillary price</td><td>Razors &amp; blades; printers &amp; cartridges</td></tr>
+            <tr><td>Product-Line Pricing</td><td>Price steps across a product range</td><td>Multi-tier offerings (economy/standard/premium)</td></tr>
+            <tr><td>Volume Discounting</td><td>Lower price at higher purchase quantities</td><td>B2B; wholesale; materials distribution</td></tr>
+            <tr><td>Price Discrimination</td><td>Different prices for different segments</td><td>Airlines, railways, cinemas (time/customer-based)</td></tr>
+            <tr><td>Relevant Cost Pricing</td><td>Price = incremental cost + opportunity cost</td><td>Special orders; spare capacity utilisation</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Price Adaptation Strategies</h3>
+
+      <h4>Geographical Pricing Mechanisms</h4>
+      <ul>
+        <li><strong>Compensation Deals</strong> — Part payment in cash, part in goods (countertrade)</li>
+        <li><strong>Barter</strong> — Direct exchange of goods; no money involved</li>
+        <li><strong>Buy-Back Arrangement</strong> — Sell technology/equipment; accept payment in output produced</li>
+        <li><strong>Offset</strong> — Receive full cash; commit to spend a portion in the buyer's country</li>
+      </ul>
+
+      <h4>Product Mix Pricing Techniques</h4>
+      <ul>
+        <li><strong>Product Line Pricing:</strong> Stepped prices across variants (e.g., Maruti Alto → Dzire → Ciaz)</li>
+        <li><strong>Optional Feature Pricing:</strong> Base product + paid add-ons (e.g., car sunroof, insurance add-ons)</li>
+        <li><strong>Captive Product Pricing:</strong> Core product cheap; consumables expensive (razors &amp; blades; printers &amp; cartridges)</li>
+        <li><strong>Two-Part Pricing:</strong> Fixed entry fee + variable usage fee (amusement parks; game zones)</li>
+        <li><strong>By-Product Pricing:</strong> Profits from by-products subsidise main product price</li>
+        <li><strong>Bundle Pricing:</strong> Pure bundle (only as a set) or Mixed bundle (set or individual)</li>
+      </ul>
+
+      <h3>Ethical Pricing Issues</h3>
+      <div class="card rust">
+        <div class="card-title">⚠️ Unethical Pricing Practices — Key for Exams</div>
+        <div class="table-wrap" style="margin-top:.8rem;">
+          <table>
+            <thead><tr><th>Practice</th><th>Description</th><th>Legal Status (India)</th></tr></thead>
+            <tbody>
+              <tr><td>Price Fixing (Cartelisation)</td><td>Horizontal agreement among competitors to fix prices</td><td>Illegal — S.3, Competition Act 2002</td></tr>
+              <tr><td>Predatory Pricing</td><td>Pricing below cost to eliminate competitors (abuse of dominance)</td><td>Illegal — S.4, Competition Act 2002</td></tr>
+              <tr><td>Bid Rigging</td><td>Collusion in competitive bidding to favour a pre-selected winner</td><td>Illegal — Anti-competitive</td></tr>
+              <tr><td>Price Discrimination</td><td>Different prices for competing buyers in the same market without justification</td><td>Regulated</td></tr>
+              <tr><td>Price Skimming (as unethical)</td><td>Exploiting early adopters through extreme time-discrimination</td><td>Legal but ethically questionable</td></tr>
+              <tr><td>Super-Pricing on high perceived value</td><td>Charging disproportionately high prices without disclosure (e.g., ventilators during COVID)</td><td>Legally complex; ethically wrong</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="exam">
+        <span class="exam-icon">📘</span>
+        <div><strong>Vertical vs Horizontal Price Fixing:</strong> Vertical price fixing (supplier setting floor price for retailers; franchise price control) can be <em>permissible</em>. Horizontal price fixing (competitors colluding) is <em>strictly illegal</em>. Know this distinction.</div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <section id="s9">
+      <div class="section-header">
+        <span class="section-num">09</span>
+        <h2>Kano's Performance Attributes</h2>
+      </div>
+
+      <div class="card accent">
+        <div class="card-title">The Link to Pricing</div>
+        <p>Price is a function of <strong>customer-perceived value</strong>. The Kano Model identifies which product features drive perceived value, enabling businesses to invest in features that justify higher prices and eliminate those that add cost without value.</p>
+      </div>
+
+      <div class="kano-grid">
+        <div class="kano-card kano-must">
+          <div class="k-icon">✅</div>
+          <h5>Must-Be (Threshold)</h5>
+          <p>Basic expectations. Absence causes dissatisfaction; presence merely prevents it. <em>Example: Touchscreen on a smartphone; seatbelts in a car.</em></p>
+        </div>
+        <div class="kano-card kano-perf">
+          <div class="k-icon">📈</div>
+          <h5>Performance (One-Dimensional)</h5>
+          <p>Linear: more = better. Most impact on willingness to pay. <em>Example: Battery life; fuel efficiency; internet speed.</em></p>
+        </div>
+        <div class="kano-card kano-delight">
+          <div class="k-icon">✨</div>
+          <h5>Excitement (Delighters)</h5>
+          <p>Unexpected features that delight. Not expected → no dissatisfaction if absent. High ROI when present. <em>Example: Complimentary seat upgrade on a flight.</em></p>
+        </div>
+      </div>
+
+      <div class="kano-grid" style="margin-top:.5rem;">
+        <div class="kano-card kano-bad">
+          <div class="k-icon">😐</div>
+          <h5>Indifferent</h5>
+          <p>Neither good nor bad. No pricing implication. <em>Example: Logo size on a coffee cup; emoticon style in an app.</em></p>
+        </div>
+        <div class="kano-card kano-bad">
+          <div class="k-icon">😤</div>
+          <h5>Reverse</h5>
+          <p>Presence causes dissatisfaction. <em>Example: Excessive pop-up notifications; overly complex menus.</em></p>
+        </div>
+        <div class="kano-card kano-bad">
+          <div class="k-icon">❓</div>
+          <h5>Questionable</h5>
+          <p>Ambiguous feature. Behaves similarly to Reverse. Doubtful whether it exists or adds value.</p>
+        </div>
+      </div>
+
+      <h3>Business Implication</h3>
+      <div class="card sage">
+        <div class="card-title">Kano Decision Framework for Businesses</div>
+        <div class="compare-grid">
+          <div>
+            <h4>✅ INCLUDE in Product</h4>
+            <ul>
+              <li>Basic Threshold (Must-Be) — non-negotiable</li>
+              <li>Performance attributes — drive WTP</li>
+              <li>Excitement/Delight attributes — differentiation &amp; premium</li>
+            </ul>
+          </div>
+          <div>
+            <h4>❌ EXCLUDE from Product</h4>
+            <ul>
+              <li>Indifferent — costs money, adds no value</li>
+              <li>Reverse — actively harms satisfaction</li>
+              <li>Questionable — uncertain value, risky investment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="exam">
+        <span class="exam-icon">📘</span>
+        <div><strong>Examiner note:</strong> Most organisations focus on Kano's <strong>Performance Attributes</strong> because of the direct, linear relationship with customer willingness to pay—making them most relevant to pricing strategy. Perceptions change over time: delight attributes become performance and eventually threshold attributes (e.g., 2G → 4G → 5G).</div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <section id="s10">
+      <div class="section-header">
+        <span class="section-num">10</span>
+        <h2>The Examiner's Lens</h2>
+      </div>
+
+      <h3>Trigger Words in Case Studies</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>You See in the Question…</th><th>Think…</th></tr></thead>
+          <tbody>
+            <tr><td>"Operating below capacity," "spare capacity," "idle hours"</td><td>Special Order Decision — fixed costs irrelevant; use marginal cost floor</td></tr>
+            <tr><td>"Surplus/non-moving inventory," "already purchased"</td><td>Sunk cost → value at NRV (opportunity cost of selling) or replacement cost if regularly used</td></tr>
+            <tr><td>"Set-up cost," "batch production," "number of production runs"</td><td>Activity-Based CVP — batch-level cost driver; ABC BEP formula</td></tr>
+            <tr><td>"Permanent labour with idle time" vs "scarce skilled labour"</td><td>Idle = sunk cost (exclude); Scarce = include labour rate + opportunity cost of lost contribution</td></tr>
+            <tr><td>"New product," "entering market," "market share"</td><td>Skimming vs Penetration; new product categories (Revolutionary/Evolutionary/Me-too)</td></tr>
+            <tr><td>"Customer perception," "willingness to pay," "next best alternative"</td><td>Value-Based Pricing → TEV = Cost of next best + Performance differential</td></tr>
+            <tr><td>"Allocated overhead," "absorbed overhead," "general fixed overhead"</td><td>IRRELEVANT — sunk / committed cost; exclude from relevant cost analysis</td></tr>
+            <tr><td>"Price discrimination," "same product different prices," "different markets"</td><td>Discriminatory pricing; check Competition Act 2002 implications</td></tr>
+            <tr><td>"Battery life," "screen resolution," "processing speed"</td><td>Kano Performance Attributes — strongest driver of willingness to pay</td></tr>
+            <tr><td>"Joint product," "split-off point," "further processing"</td><td>Sell or Process Further — joint costs are sunk; evaluate only incremental post-separation costs vs revenue</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Common Mistakes — Where Students Lose Marks</h3>
+      <div class="card rust">
+        <div class="card-title">⚠️ Top 8 Mark-Losing Errors</div>
+        <ol>
+          <li><strong>Including allocated/absorbed overhead</strong> in special order or make-or-buy relevant cost calculations — it is almost always irrelevant.</li>
+          <li><strong>Confusing sunk cost with opportunity cost</strong> for existing inventory — book value is sunk; NRV or replacement cost is what matters.</li>
+          <li><strong>Valuing regular-use materials at book value</strong> instead of replacement cost (the cost to replenish).</li>
+          <li><strong>Ignoring opportunity cost of scarce labour</strong> in minimum pricing — the contribution foregone from displaced production must be added.</li>
+          <li><strong>Using total contribution to rank products</strong> instead of contribution per unit of scarce resource in limiting factor analysis.</li>
+          <li><strong>Confusing penetration pricing with predatory pricing</strong> — a common definitional error in theory questions.</li>
+          <li><strong>Treating non-avoidable fixed costs as savings</strong> when evaluating a "drop division" decision — only avoidable fixed costs are saved.</li>
+          <li><strong>Not mentioning qualitative/non-financial factors</strong> in the conclusion — marks are awarded for a balanced recommendation.</li>
+        </ol>
+      </div>
+
+      <h3>Inter-Topic Connectivity</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>This Chapter's Concept</th><th>Links to…</th><th>Connection</th></tr></thead>
+          <tbody>
+            <tr><td>CVP and ABC</td><td>Activity-Based Costing (Ch. 3)</td><td>ABC cost hierarchy directly feeds the extended BEP formula</td></tr>
+            <tr><td>Relevant Cost — Labour</td><td>Labour &amp; Overhead Planning (Ch. 2)</td><td>Opportunity cost of scarce labour requires understanding of contribution from other products</td></tr>
+            <tr><td>Product Mix — LP</td><td>Quantitative Techniques</td><td>Multiple scarce resources require linear programming for optimal mix</td></tr>
+            <tr><td>Pricing Strategy</td><td>Performance Measurement (Ch. 9)</td><td>Pricing decisions directly impact Revenue, GP%, and ROI metrics</td></tr>
+            <tr><td>Kano Model</td><td>Value Chain Analysis (Ch. 5)</td><td>Features creating delight attributes are identified through value chain activities</td></tr>
+            <tr><td>Ethical Pricing</td><td>Corporate Governance / Ethics</td><td>Competition Act, CSR considerations overlap with governance frameworks</td></tr>
+            <tr><td>Learning Curve in Pricing</td><td>Learning Curve (Ch. 2)</td><td>As volume doubles, cumulative average time reduces—impacts cost and hence minimum price</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <section id="s11">
+      <div class="section-header">
+        <span class="section-num">11</span>
+        <h2>Visual Synthesis</h2>
+      </div>
+
+      <h3>Master Comparison Table — All Pricing Methods</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Price Driver</th>
+              <th>Key Advantage</th>
+              <th>Key Disadvantage</th>
+              <th>Ideal Market</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Mark-Up (Cost-Plus)</td><td>Cost</td><td>Simple; ensures cost recovery</td><td>Ignores demand; arbitrary mark-up</td><td>Custom orders; low competition</td></tr>
+            <tr><td>Target RoR</td><td>Cost + Investment</td><td>Rational; links to capital efficiency</td><td>Requires accurate volume forecast</td><td>Capital-intensive industries</td></tr>
+            <tr><td>Going Rate</td><td>Competitor average</td><td>Maintains industry harmony</td><td>May not recover own costs</td><td>Homogeneous product markets</td></tr>
+            <tr><td>Sealed Bid</td><td>Expected competitor bid</td><td>Wins contracts; strategic</td><td>Cannot bid below MC; win uncertainty</td><td>Government tenders, OEM</td></tr>
+            <tr><td>True Economic Value</td><td>Benefits delivered</td><td>Captures full value; reduces price wars</td><td>Difficult to quantify differentials</td><td>B2B, industrial; tech products</td></tr>
+            <tr><td>Perceived Value</td><td>Customer psychology</td><td>Brand-driven premium</td><td>Subjective; market research needed</td><td>Premium consumer brands</td></tr>
+            <tr><td>Psychological</td><td>Cognitive bias</td><td>Simple; widely effective</td><td>Ethically questionable if deceptive</td><td>Retail, FMCG</td></tr>
+            <tr><td>Skimming</td><td>Demand curve (high-first)</td><td>Recovers dev. costs; signals quality</td><td>Invites competitors; limits volume</td><td>Revolutionary products; tech</td></tr>
+            <tr><td>Penetration</td><td>Demand curve (low-first)</td><td>Rapid market capture; economies of scale</td><td>May not recover costs; price war risk</td><td>Elastic demand; commodity-like</td></tr>
+            <tr><td>Relevant Cost</td><td>Incremental cost + OC</td><td>Optimal for spare capacity use</td><td>Long-run pricing trap; customer expectations</td><td>Special orders; one-off jobs</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Logic Flowchart — Special Order Decision</h3>
+      <div class="card sage" style="margin-top:1rem;">
+        <div class="card-title">Most Complex Process: Accepting/Rejecting a Special Order</div>
+        <div class="flow" style="margin-top:1rem;">
+          <div class="flow-step"><div class="flow-num">1</div><div class="flow-body"><strong>Identify Spare Capacity</strong><span>Does the firm have idle capacity to fulfil the order? If NO → opportunity cost of regular sales must be included.</span></div></div>
+          <div class="flow-connector"></div>
+          <div class="flow-step"><div class="flow-num">2</div><div class="flow-body"><strong>Calculate Incremental Revenue</strong><span>= Special order price × Quantity ordered</span></div></div>
+          <div class="flow-connector"></div>
+          <div class="flow-step"><div class="flow-num">3</div><div class="flow-body"><strong>Calculate Incremental Costs</strong><span>Variable production costs + any special fixed costs (specific tools, moulds, inspection) + packing/shipping</span></div></div>
+          <div class="flow-connector"></div>
+          <div class="flow-step"><div class="flow-num">4</div><div class="flow-body"><strong>Calculate Opportunity Cost</strong><span>If capacity is limited → contribution foregone from displaced regular sales</span></div></div>
+          <div class="flow-connector"></div>
+          <div class="flow-step"><div class="flow-num">5</div><div class="flow-body"><strong>Net Incremental Benefit</strong><span>= Incremental Revenue – Incremental Costs – Opportunity Costs</span></div></div>
+          <div class="flow-connector"></div>
+          <div class="flow-step"><div class="flow-num">6</div><div class="flow-body"><strong>Financial Decision</strong><span>Positive net benefit → Accept (subject to qualitative factors)</span></div></div>
+          <div class="flow-connector"></div>
+          <div class="flow-step"><div class="flow-num">7</div><div class="flow-body"><strong>Qualitative Check</strong><span>Price discrimination laws; customer relationship precedent; capacity strategy; long-term pricing signal</span></div></div>
+          <div class="flow-connector"></div>
+          <div class="flow-step"><div class="flow-num">8</div><div class="flow-body"><strong>Final Recommendation</strong><span>Accept / Reject / Negotiate with clear reasoning on both financial and non-financial grounds</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════ -->
+    <section id="s12">
+      <div class="section-header">
+        <span class="section-num">12</span>
+        <h2>Retain &amp; Recall</h2>
+      </div>
+
+      <h3>Mnemonics — All Multi-Point Lists</h3>
+
+      <h4>Relevant Cost — 6 Application Areas</h4>
+      <div class="mnemonic">
+        <div class="mnemo-letter"><span class="ltr">O</span><span class="word">Outsource</span></div>
+        <div class="mnemo-letter"><span class="ltr">S</span><span class="word">Sell/Process</span></div>
+        <div class="mnemo-letter"><span class="ltr">M</span><span class="word">Min. Price</span></div>
+        <div class="mnemo-letter"><span class="ltr">K</span><span class="word">Keep/Drop</span></div>
+        <div class="mnemo-letter"><span class="ltr">S</span><span class="word">Special Order</span></div>
+        <div class="mnemo-letter"><span class="ltr">P</span><span class="word">Product Mix</span></div>
+      </div>
+      <p style="font-size:.82rem;color:#555;"><em>"<strong>OSM-KSP</strong>" → "Outstanding Strategies Make Knowledgeable Specialists Profitable"</em></p>
+
+      <h4>ABC Cost Hierarchy — Four Levels</h4>
+      <div class="mnemonic">
+        <div class="mnemo-letter"><span class="ltr">U</span><span class="word">Unit-Level</span></div>
+        <div class="mnemo-letter"><span class="ltr">B</span><span class="word">Batch-Level</span></div>
+        <div class="mnemo-letter"><span class="ltr">P</span><span class="word">Product Sustaining</span></div>
+        <div class="mnemo-letter"><span class="ltr">F</span><span class="word">Facility Level</span></div>
+      </div>
+      <p style="font-size:.82rem;color:#555;"><em>"<strong>UBPF</strong>" → "Units Breed Profit Fundamentals"</em></p>
+
+      <h4>Penetration Pricing — 3 Conditions</h4>
+      <div class="mnemonic">
+        <div class="mnemo-letter"><span class="ltr">E</span><span class="word">Elastic Demand</span></div>
+        <div class="mnemo-letter"><span class="ltr">S</span><span class="word">Scale Economies</span></div>
+        <div class="mnemo-letter"><span class="ltr">T</span><span class="word">Threat of Entry</span></div>
+      </div>
+      <p style="font-size:.82rem;color:#555;"><em>"<strong>EST</strong>" → Conditions that make penetration pricing the most EST-ablished strategy to use.</em></p>
+
+      <h4>Pricing Methods — Cost / Competition / Value / Psychological</h4>
+      <div class="mnemonic">
+        <div class="mnemo-letter"><span class="ltr">C</span><span class="word">Cost-Based</span></div>
+        <div class="mnemo-letter"><span class="ltr">C</span><span class="word">Competition-Based</span></div>
+        <div class="mnemo-letter"><span class="ltr">V</span><span class="word">Value-Based</span></div>
+        <div class="mnemo-letter"><span class="ltr">P</span><span class="word">Psychological</span></div>
+      </div>
+      <p style="font-size:.82rem;color:#555;"><em>"<strong>CCVP</strong>" → "Costs Can't Value Psychology" — reminding you that cost-based pricing fails to account for value and psychology.</em></p>
+
+      <h4>Kano — INCLUDE attributes (must score in exams)</h4>
+      <div class="mnemonic">
+        <div class="mnemo-letter"><span class="ltr">B</span><span class="word">Basic/Must-Be</span></div>
+        <div class="mnemo-letter"><span class="ltr">P</span><span class="word">Performance</span></div>
+        <div class="mnemo-letter"><span class="ltr">E</span><span class="word">Excitement</span></div>
+      </div>
+      <p style="font-size:.82rem;color:#555;"><em>"<strong>BPE</strong>" → "Be Performance-Excellent" — what your product must do to justify a higher price.</em></p>
+
+      <h4>Ethical Pricing Issues — 5 Practices to Name</h4>
+      <div class="mnemonic">
+        <div class="mnemo-letter"><span class="ltr">P</span><span class="word">Price Fixing</span></div>
+        <div class="mnemo-letter"><span class="ltr">P</span><span class="word">Price Skimming</span></div>
+        <div class="mnemo-letter"><span class="ltr">B</span><span class="word">Bid Rigging</span></div>
+        <div class="mnemo-letter"><span class="ltr">P</span><span class="word">Price Discrimination</span></div>
+        <div class="mnemo-letter"><span class="ltr">S</span><span class="word">Super Pricing</span></div>
+      </div>
+      <p style="font-size:.82rem;color:#555;"><em>"<strong>PPBPS</strong>" → "Practically Perfect But Probably Shady"</em></p>
+
+      <hr>
+
+      <h3>3-Point Revision Checklist</h3>
+      <ul class="checklist">
+        <li>
+          <div class="check-icon"></div>
+          <div>
+            <strong>Conceptual Mastery:</strong> Can you derive the ABC BEP formula from scratch, explain why batch-level costs are treated differently from unit-level costs, and identify the appropriate Kano attribute category for any given product feature? Can you calculate minimum price, TEV, and profit-maximising price using MR=MC?
+          </div>
+        </li>
+        <li>
+          <div class="check-icon"></div>
+          <div>
+            <strong>Application Accuracy:</strong> Given a scenario, can you correctly classify all cost items as relevant/irrelevant, calculate the net incremental benefit of all six decision types, and produce a formatted recommendation that explicitly separates financial analysis from qualitative considerations — without including sunk costs or allocated overheads?
+          </div>
+        </li>
+        <li>
+          <div class="check-icon"></div>
+          <div>
+            <strong>Strategic Integration:</strong> Can you explain — for any given product/market scenario — which pricing strategy is appropriate, which PLC stage it is in, what the ethical implications are (citing specific sections of the Competition Act 2002 where relevant), and how non-financial factors like employee morale, brand image, and long-term customer relationships should influence the recommendation?
+          </div>
+        </li>
+      </ul>
+
+      <div class="card gold" style="margin-top:2rem;">
+        <div class="card-title">📌 Final Examiner Thought</div>
+        <p>In every question in this chapter, the examiner is testing whether you understand that <strong>financial analysis is necessary but never sufficient</strong>. Every calculation must be followed by a <em>balanced recommendation</em> that acknowledges qualitative and strategic factors. A technically perfect computation without a recommendation loses up to 30% of the allocated marks.</p>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>

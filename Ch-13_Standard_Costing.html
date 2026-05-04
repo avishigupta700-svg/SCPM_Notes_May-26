@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Standard Costing — One-Source Master Notes | CA Final SCPM</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Serif+4:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-muted: #4a4a4a;
+    --ink-faint: #7a7a7a;
+    --paper: #faf8f4;
+    --paper-warm: #f3ede3;
+    --paper-cool: #eef2f8;
+    --accent-gold: #b8860b;
+    --accent-teal: #1d7a72;
+    --accent-red: #9b2a2a;
+    --accent-blue: #1a4d8f;
+    --accent-purple: #5a2a8a;
+    --border: #d4c9b6;
+    --border-light: #e8e0d0;
+    --highlight-yellow: #fef9c3;
+    --highlight-green: #d1fae5;
+    --highlight-red: #fee2e2;
+    --highlight-blue: #dbeafe;
+    --code-bg: #f0ebe1;
+    --sidebar-w: 260px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* ── TOP HEADER ── */
+  .site-header {
+    background: var(--ink);
+    color: #f0e8d8;
+    padding: 0.6rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+  .site-header .badge {
+    background: var(--accent-gold);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .progress-bar {
+    position: fixed;
+    top: 36px;
+    left: 0;
+    height: 3px;
+    background: var(--accent-gold);
+    z-index: 101;
+    transition: width 0.1s;
+    width: 0%;
+  }
+
+  /* ── LAYOUT ── */
+  .layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    min-height: calc(100vh - 36px);
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  /* ── SIDEBAR NAV ── */
+  .sidebar {
+    position: sticky;
+    top: 36px;
+    height: calc(100vh - 36px);
+    overflow-y: auto;
+    border-right: 1px solid var(--border);
+    background: var(--paper-warm);
+    padding: 1.5rem 0;
+  }
+  .sidebar-section { margin-bottom: 0.5rem; }
+  .sidebar-heading {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: 0.5rem 1.25rem 0.25rem;
+  }
+  .sidebar a {
+    display: block;
+    padding: 0.3rem 1.25rem;
+    font-size: 13px;
+    color: var(--ink-muted);
+    text-decoration: none;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 300;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+    line-height: 1.4;
+  }
+  .sidebar a:hover { color: var(--ink); background: rgba(0,0,0,0.04); }
+  .sidebar a.active {
+    color: var(--accent-teal);
+    border-left-color: var(--accent-teal);
+    background: rgba(29,122,114,0.06);
+    font-weight: 600;
+  }
+  .sidebar a.sub { padding-left: 2rem; font-size: 12px; }
+
+  /* ── MAIN CONTENT ── */
+  main {
+    padding: 3rem 3.5rem 5rem;
+    max-width: 860px;
+  }
+
+  /* ── CHAPTER HERO ── */
+  .chapter-hero {
+    margin-bottom: 3.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--ink);
+  }
+  .chapter-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: 0.5rem;
+  }
+  .chapter-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  .chapter-subtitle {
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    font-weight: 300;
+    max-width: 600px;
+    margin-bottom: 1.25rem;
+  }
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid;
+  }
+  .pill-gold { border-color: var(--accent-gold); color: var(--accent-gold); }
+  .pill-teal { border-color: var(--accent-teal); color: var(--accent-teal); }
+  .pill-red { border-color: var(--accent-red); color: var(--accent-red); }
+  .pill-blue { border-color: var(--accent-blue); color: var(--accent-blue); }
+
+  /* ── SECTION HEADINGS ── */
+  h1.section-h {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 3rem 0 1.25rem;
+    padding-top: 0.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+  h1.section-h .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    color: var(--accent-gold);
+    font-weight: 400;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 2.25rem 0 0.75rem;
+  }
+  h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent-teal);
+    margin: 1.75rem 0 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.9rem;
+  }
+  h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 1.25rem 0 0.4rem;
+  }
+
+  p { margin-bottom: 1rem; }
+
+  strong { font-weight: 600; color: var(--ink); }
+  em { font-style: italic; color: var(--ink-muted); }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-radius: 6px;
+    padding: 1.1rem 1.3rem;
+    margin: 1.5rem 0;
+    border-left: 4px solid;
+    font-size: 0.95rem;
+  }
+  .callout-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .callout.why { background: var(--highlight-blue); border-color: var(--accent-blue); }
+  .callout.why .callout-title { color: var(--accent-blue); }
+  .callout.definition { background: var(--paper-warm); border-color: var(--accent-gold); }
+  .callout.definition .callout-title { color: var(--accent-gold); }
+  .callout.warning { background: var(--highlight-red); border-color: var(--accent-red); }
+  .callout.warning .callout-title { color: var(--accent-red); }
+  .callout.tip { background: var(--highlight-green); border-color: var(--accent-teal); }
+  .callout.tip .callout-title { color: var(--accent-teal); }
+  .callout.mnemonic {
+    background: #f3e8ff;
+    border-color: var(--accent-purple);
+  }
+  .callout.mnemonic .callout-title { color: var(--accent-purple); }
+  .callout.example {
+    background: #f0f9ff;
+    border-color: #0369a1;
+  }
+  .callout.example .callout-title { color: #0369a1; }
+
+  /* ── FORMULA BOX ── */
+  .formula-box {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    color: var(--ink);
+    line-height: 1.9;
+  }
+  .formula-box .fvar { color: var(--accent-teal); font-weight: 500; }
+  .formula-box .fop { color: var(--accent-red); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border-light);
+    margin: 2.5rem 0;
+  }
+
+  /* ── LISTS ── */
+  ul, ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  li { margin-bottom: 0.4rem; }
+  li::marker { color: var(--accent-gold); }
+
+  /* ── NUMBERED STEPS ── */
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    padding-left: 0;
+  }
+  .steps li {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    align-items: baseline;
+  }
+  .steps li::before {
+    content: counter(step);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: #fff;
+    background: var(--accent-teal);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── TABLES ── */
+  .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  thead th {
+    background: var(--ink);
+    color: #f0e8d8;
+    padding: 0.65rem 0.9rem;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+  tbody tr:nth-child(even) { background: var(--paper-warm); }
+  tbody td {
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+  }
+  tbody tr:hover { background: var(--highlight-yellow); }
+  .td-f { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
+  .td-fav { color: var(--accent-teal); font-weight: 600; }
+  .td-adv { color: var(--accent-red); font-weight: 600; }
+
+  /* ── VARIANCE CARDS ── */
+  .variance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .v-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    background: #fff;
+  }
+  .v-card h4 {
+    font-size: 0.88rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent-teal);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .v-card .formula {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    background: var(--code-bg);
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    line-height: 1.7;
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist {
+    list-style: none;
+    padding-left: 0;
+  }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--highlight-green);
+    border-radius: 6px;
+    font-size: 0.95rem;
+  }
+  .checklist li::before {
+    content: "✓";
+    color: var(--accent-teal);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ── TRIGGER CARD ── */
+  .trigger-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .trigger-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    background: var(--paper-cool);
+  }
+  .trigger-card .tc-kw {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--accent-blue);
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+  }
+  .trigger-card p { font-size: 0.88rem; margin-bottom: 0; color: var(--ink-muted); }
+
+  /* ── TAG ── */
+  .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 1px 7px;
+    border-radius: 3px;
+    background: var(--highlight-yellow);
+    color: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
+    margin: 0 2px;
+  }
+
+  /* ── INTER-CONNECT ── */
+  .connect-box {
+    background: #f5f0ff;
+    border: 1px solid #c4a8ff;
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    font-size: 0.92rem;
+  }
+  .connect-box h4 {
+    color: var(--accent-purple);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── SCROLL MARKER ── */
+  .section-anchor { scroll-margin-top: 60px; }
+
+  /* ── BACK TO TOP ── */
+  .back-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--ink);
+    color: #f0e8d8;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 50;
+  }
+  .back-top.visible { opacity: 1; }
+
+  /* ── FLOWCHART SVG WRAPPER ── */
+  .diagram-wrap {
+    margin: 2rem 0;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    overflow-x: auto;
+  }
+  .diagram-wrap figcaption {
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    font-style: italic;
+    text-align: center;
+    margin-top: 0.75rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    main { padding: 2rem 1.5rem 4rem; }
+    .variance-grid, .trigger-grid { grid-template-columns: 1fr; }
+    .chapter-title { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<header class="site-header">
+  <span>CA Final · Strategic Cost &amp; Performance Management · Ch. 13</span>
+  <span class="badge">One-Source Material</span>
+</header>
+
+<div class="layout">
+
+  <!-- ══ SIDEBAR ══ -->
+  <nav class="sidebar" aria-label="Chapter navigation">
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Overview</div>
+      <a href="#big-picture">Big Picture</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Conceptual Deep-Dive</div>
+      <a href="#planning-operational">Planning &amp; Operational Variances</a>
+      <a href="#abc-variance" class="sub">ABC Variance Analysis</a>
+      <a href="#learning-curve" class="sub">Learning Curve Impact</a>
+      <a href="#relevant-cost" class="sub">Relevant Cost Approach</a>
+      <a href="#throughput" class="sub">Throughput Accounting</a>
+      <a href="#ame" class="sub">Advanced Mfg. Environment</a>
+      <a href="#service-sector" class="sub">Service &amp; Public Sector</a>
+      <a href="#marginal-costing">Standard Marginal Costing</a>
+      <a href="#reconciliation">Reconciliation of Profit</a>
+      <a href="#investigation">Investigation of Variances</a>
+      <a href="#interdependence">Interdependence</a>
+      <a href="#interpretation">Interpretation</a>
+      <a href="#behavioural">Behavioural Issues</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Exam Toolkit</div>
+      <a href="#examiners-lens">Examiner's Lens</a>
+      <a href="#formulae-summary">Formula Summary Tables</a>
+      <a href="#flowchart">Logic Flowchart</a>
+      <a href="#retain-recall">Retain &amp; Recall</a>
+    </div>
+  </nav>
+
+  <!-- ══ MAIN ══ -->
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <div class="chapter-hero">
+      <div class="chapter-label">Chapter 13 · ICAI CA Final SCPM</div>
+      <h1 class="chapter-title">Standard Costing</h1>
+      <p class="chapter-subtitle">Advanced variances, reconciliation of profit, investigation techniques, and standard costing in contemporary environments — the definitive one-stop reference.</p>
+      <div class="meta-pills">
+        <span class="pill pill-gold">High Weightage</span>
+        <span class="pill pill-teal">Numericals + Theory</span>
+        <span class="pill pill-red">Common Exam Pitfall Zone</span>
+        <span class="pill pill-blue">Links to Transfer Pricing &amp; Performance Mgmt.</span>
+      </div>
+    </div>
+
+    <!-- ═══ SECTION 1 ═══ -->
+    <section id="big-picture" class="section-anchor">
+      <h1 class="section-h"><span class="num">01</span>The Big Picture — Executive Summary</h1>
+
+      <p>Standard Costing is the <strong>control engine</strong> of management accounting. It answers a deceptively simple question: <em>"Did we perform as planned, and if not — why?"</em> By pre-setting a benchmark (the standard) and then comparing it with reality (the actual), organisations generate actionable signals — <strong>variances</strong> — that drive corrective decisions.</p>
+
+      <p>At the CA Final level, the examiner expects you to go far beyond the Intermediate-level routine of computing price and usage variances. The Final syllabus adds <strong>advanced layers</strong>: planning vs. operational decomposition, ABC-based overhead analysis, learning curve adjustments, throughput constraints, and variance analysis in environments as diverse as a hospital, a software company, or a street-cleaning municipality.</p>
+
+      <div class="callout why">
+        <span class="callout-title">Why This Chapter Matters</span>
+        <strong>Real-world lens (Indian context):</strong> Consider Maruti Suzuki setting standard labour hours for painting a new SUV model. Mid-year, robotic welding technology improves productivity by 20%. The traditional variance analysis will show a "favourable efficiency variance" — but is this really the production manager's achievement, or was the standard simply outdated? <strong>Planning &amp; Operational variance analysis</strong> answers this. Similarly, a pharma company like Sun Pharma uses ABC-based variances to control the cost of each quality-testing batch run — not just overall overhead. These are the scenarios you will face in the exam.
+      </div>
+
+      <p>This chapter has <strong>three distinct exam dimensions</strong>:</p>
+      <ul>
+        <li><strong>Numerical:</strong> Computing advanced variances, reconciliation statements, ABC variances, learning-curve adjusted standards.</li>
+        <li><strong>Interpretive:</strong> Explaining what a variance <em>means</em>, identifying its root cause, and assessing whether it is controllable.</li>
+        <li><strong>Strategic:</strong> Evaluating whether standard costing is even appropriate for a given organisation (modern manufacturing, service sector, public sector).</li>
+      </ul>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ═══ SECTION 2 ═══ -->
+    <section id="conceptual-deep-dive" class="section-anchor">
+      <h1 class="section-h"><span class="num">02</span>Conceptual Deep-Dive</h1>
+
+      <!-- ── 2.1 Planning & Operational ── -->
+      <h2 id="planning-operational" class="section-anchor">2.1 Planning &amp; Operational Variances</h2>
+
+      <div class="callout why">
+        <span class="callout-title">The 'Why'</span>
+        Traditional variance analysis assumes the original standard was perfectly set. In a world of volatile raw material prices, technological disruptions, and shifting market conditions, this assumption collapses. When Reliance Industries faces an unexpected crude oil price spike, the entire material cost variance becomes <em>uncontrollable</em> by the production manager. <strong>Planning &amp; Operational variance analysis separates the failure of planning from the failure of operations.</strong>
+      </div>
+
+      <div class="callout definition">
+        <span class="callout-title">Key Definitions</span>
+        <p><strong>Ex-Ante Standard:</strong> The original budget standard set <em>before</em> the period begins. Based on anticipated conditions at the time of budgeting.</p>
+        <p><strong>Ex-Post Standard:</strong> A <em>revised</em> standard set <em>after</em> the period, reflecting what conditions <em>actually were</em>. Represents the optimum achievable performance in the conditions experienced.</p>
+        <p><strong>Planning Variance (= Revision Variance):</strong> Compares the ex-post (revised) standard with the ex-ante (original) standard. Measures the error in the planning process. Generally <em>uncontrollable</em>.</p>
+        <p><strong>Operational Variance:</strong> Compares actual results against the ex-post standard. Measures operational efficiency against a realistic benchmark. <em>Controllable</em> by operational management.</p>
+      </div>
+
+      <p><strong>The fundamental relationship:</strong></p>
+      <div class="formula-box">
+        <span class="fvar">Total (Traditional) Variance</span> <span class="fop">=</span> <span class="fvar">Planning Variance</span> <span class="fop">+</span> <span class="fvar">Operational Variance</span>
+      </div>
+
+      <h4>Implementation Steps — Material Variances</h4>
+      <ol class="steps">
+        <li>Identify the <strong>ex-ante standard</strong> (original budget quantity &amp; price).</li>
+        <li>Determine the <strong>ex-post standard</strong> (revised quantity &amp; price reflecting actual market conditions).</li>
+        <li>Compute <strong>Traditional Variances</strong> (Actual vs. Ex-Ante): Price = (SP – AP) × AQ; Usage = (SQ – AQ) × SP.</li>
+        <li>Compute <strong>Operational Variances</strong> (Actual vs. Ex-Post): Price = (Revised SP – AP) × AQ; Usage = (Revised SQ – AQ) × Revised SP.</li>
+        <li>Compute <strong>Planning Variances</strong> (Ex-Post vs. Ex-Ante): Price = (SP – Revised SP) × Revised SQ; Usage = (SQ – Revised SQ) × SP.</li>
+        <li><strong>Verify:</strong> Planning Variance + Operational Variance = Traditional Variance.</li>
+      </ol>
+
+      <div class="callout tip">
+        <span class="callout-title">Special Case: Controllable Planning Variance</span>
+        If the company had the <em>option</em> to use a cheaper alternative material but the planning team chose the expensive one, the resulting adverse planning variance is <strong>partially controllable</strong>. The portion due to <em>faulty forecasting of known trends</em> is controllable; the portion due to genuinely <em>unforeseen external shocks</em> is not.
+      </div>
+
+      <p><strong>Sales Volume Variance — Planning vs. Operational split:</strong></p>
+      <div class="formula-box">
+        <strong>Market Size Variance</strong> (Planning) <span class="fop">=</span> Budgeted Market Share % × (Actual Industry Qty – Budgeted Industry Qty) × Avg. Budgeted Contribution per unit<br><br>
+        <strong>Market Share Variance</strong> (Operational) <span class="fop">=</span> (Actual Market Share % – Budgeted Market Share %) × Actual Industry Qty × Avg. Budgeted Contribution per unit
+      </div>
+
+      <!-- ── 2.2 ABC ── -->
+      <h2 id="abc-variance" class="section-anchor">2.2 Variance Analysis in Activity Based Costing</h2>
+
+      <div class="callout why">
+        <span class="callout-title">The 'Why'</span>
+        Traditional overhead variance lumps all indirect costs into one pool and divides by direct labour hours — a blunt instrument. ABC recognises that overheads are driven by <em>activities</em> (setups, deliveries, quality tests), not just volume. A company like Hindustan Unilever tracking cost per customer delivery run needs <strong>ABC variance analysis</strong> to control costs meaningfully.
+      </div>
+
+      <div class="callout definition">
+        <span class="callout-title">Key Definitions</span>
+        <p><strong>Efficiency Variance (ABC):</strong> Cost impact of undertaking <em>more or fewer</em> activities than standard. Focuses on whether the right number of activity runs occurred.<br>
+        Formula: <strong>(Standard Activity Units for Actual Output – Actual Activity Units) × Standard Cost per Driver</strong></p>
+        <p><strong>Expenditure Variance (ABC):</strong> Cost impact of <em>paying more or less</em> than standard per activity unit.<br>
+        Formula: <strong>(Actual Activity Units × Standard Rate) – Actual Cost</strong></p>
+      </div>
+
+      <div class="callout example">
+        <span class="callout-title">Numerical Example</span>
+        <p>Budget: 20 deliveries for 2,000 units at ₹200/delivery.<br>
+        Actual: 19 deliveries for 2,100 units at ₹205/delivery.<br><br>
+        <strong>Standard deliveries for 2,100 units</strong> = (20/2,000) × 2,100 = <strong>21 deliveries</strong><br>
+        <strong>Efficiency Variance</strong> = (21 – 19) × ₹200 = <strong>₹400 (F)</strong> [Fewer deliveries needed]<br>
+        <strong>Expenditure Variance</strong> = 19 × ₹200 – (19 × ₹205) = ₹3,800 – ₹3,895 = <strong>₹95 (A)</strong></p>
+      </div>
+
+      <!-- ── 2.3 Learning Curve ── -->
+      <h2 id="learning-curve" class="section-anchor">2.3 Learning Curve — Impact on Variances</h2>
+
+      <div class="callout why">
+        <span class="callout-title">The 'Why'</span>
+        When a new product is launched (e.g., a new ISRO satellite component or a startup's first batch of EVs), workers become progressively faster with each repetition. Ignoring this learning effect will set <em>pessimistic</em> labour standards, making every batch look favourable when it actually isn't. Conversely, once learning ceases, the standard must be frozen at the final (plateau) time.
+      </div>
+
+      <div class="callout definition">
+        <span class="callout-title">Key Formula: Learning Curve Model</span>
+        <div class="formula-box">
+          <span class="fvar">y</span> <span class="fop">=</span> <span class="fvar">a · x<sup>b</sup></span><br><br>
+          Where: y = Average time per unit for x cumulative units<br>
+          a = Time for the first unit<br>
+          x = Cumulative number of units produced<br>
+          b = Learning coefficient (negative — e.g., –0.322 for 80% curve)
+        </div>
+      </div>
+
+      <ol class="steps">
+        <li>Use the learning curve model to calculate <strong>standard time for the actual cumulative output</strong> (ex-post revised standard hours).</li>
+        <li>If learning has ceased by the actual output level, add the <strong>post-plateau hours</strong> at the plateau rate.</li>
+        <li>Calculate <strong>Revised Budget = Revised Std. Hours × Standard Rate</strong>.</li>
+        <li>Compute variances: <strong>Rate Variance</strong> (Actual Hrs × (Std. Rate – Actual Rate)) and <strong>Efficiency Variance</strong> (Std. Rate × (Revised Std. Hrs – Actual Hrs)).</li>
+      </ol>
+
+      <!-- ── 2.4 Relevant Cost ── -->
+      <h2 id="relevant-cost" class="section-anchor">2.4 Relevant Cost Approach to Variance Analysis</h2>
+
+      <div class="callout why">
+        <span class="callout-title">The 'Why'</span>
+        When a key input (e.g., a specialised cobalt alloy for battery manufacturing) is <em>in limited supply</em>, the traditional price variance understates the true cost of using it inefficiently. Every kilogram wasted not only costs the purchase price but also <strong>forgoes the contribution</strong> that could have been earned by using that kilogram to produce more output.
+      </div>
+
+      <p>Under this approach, the <strong>usage variance is enhanced</strong> to include the <em>opportunity cost</em> (lost contribution) of using more than the standard quantity of a scarce resource. Price and expenditure variances remain unaffected — only the <strong>efficiency/usage variances</strong> are grossed up.</p>
+
+      <!-- ── 2.5 Throughput ── -->
+      <h2 id="throughput" class="section-anchor">2.5 Variance Analysis and Throughput Accounting</h2>
+
+      <p>Throughput Accounting does not use traditional variance analysis. Its focus is on the <strong>constrained resource</strong> (the bottleneck). Standard costing may penalise a manager who correctly shuts down a non-bottleneck machine (to avoid excess WIP) by generating an <em>adverse labour efficiency variance</em> — even though this is the optimal throughput decision.</p>
+
+      <p>The key throughput variance is tracking changes in the <strong>inventory buffer before the constraint</strong>, to ensure the constraint is never starved of work.</p>
+
+      <div class="callout warning">
+        <span class="callout-title">Watch Out — Exam Trap</span>
+        A question may describe a TOC/JIT environment and ask you to comment on the <em>appropriateness</em> of an adverse labour efficiency variance. The correct answer is that the variance is <strong>not meaningful</strong> — the manager acted correctly by creating idle time upstream to prevent buffer overload at the constraint.
+      </div>
+
+      <!-- ── 2.6 AME ── -->
+      <h2 id="ame" class="section-anchor">2.6 Variance Analysis in Advanced Manufacturing / High-Technology</h2>
+
+      <p>In highly automated environments (e.g., semiconductor fabs, IT hardware production like Tata Electronics), the key characteristics are:</p>
+      <ul>
+        <li>Labour is largely a <strong>committed fixed cost</strong> (skilled programmers, robotics operators) — labour variances lose meaning.</li>
+        <li>The two dominant <strong>variable costs</strong> are <strong>Direct Materials</strong> and <strong>Power/Energy</strong>.</li>
+        <li>Variance analysis emphasis shifts to <strong>material variances</strong> and <strong>variable overhead (power) variances</strong>.</li>
+        <li>Fixed overhead volume variances are also less relevant since volume fluctuations don't drive cost.</li>
+      </ul>
+
+      <!-- ── 2.7 Service & Public ── -->
+      <h2 id="service-sector" class="section-anchor">2.7 Standard Costing in Service &amp; Public Sector</h2>
+
+      <p><strong>Service Sector</strong> (e.g., Deloitte, Manipal Hospitals, Ola): Cost is predominantly overhead. Traditional overhead variance analysis is weak. <strong>ABC</strong> provides a better framework — cost per client visit, cost per patient procedure, cost per ride. The McDonaldization principle (breaking service delivery into smallest measurable tasks) enables standard-setting even for services.</p>
+
+      <p><strong>Public Sector</strong> (e.g., BBMP's garbage collection, NHAI road maintenance): Variance analysis requires actual unit cost vs. estimated unit cost on a monthly basis. Data inputs include number of visits, hours worked, km cleaned. Financial reports must reconcile for trade payables, accruals, and timing differences.</p>
+
+    </section>
+
+    <hr class="divider">
+
+    <!-- ══ MARGINAL COSTING ══ -->
+    <section id="marginal-costing" class="section-anchor">
+      <h1 class="section-h"><span class="num">03</span>Standard Marginal Costing</h1>
+
+      <p>Under marginal costing, <strong>fixed overheads are not absorbed</strong>. Therefore:</p>
+      <ul>
+        <li><strong>No Fixed Overhead Volume Variance</strong> (no absorption = no volume variance).</li>
+        <li>The only fixed overhead variance is the <strong>Fixed Overhead Expenditure Variance</strong> = Budgeted Fixed Cost – Actual Fixed Cost.</li>
+        <li>Sales variances are expressed in terms of <strong>Contribution</strong> (not Profit margin).</li>
+      </ul>
+
+      <div class="callout definition">
+        <span class="callout-title">Sales Contribution Variances</span>
+        <div class="formula-box">
+          Sales Contribution Variance = Actual Contribution – Budgeted Contribution<br><br>
+          Sales Contribution Price Variance = AQ × (Actual Contribution/unit – Standard Contribution/unit)<br><br>
+          Sales Contribution Volume Variance = Standard Contribution/unit × (AQ – BQ)<br><br>
+          Mix Variance = SC/unit × (AQ – Revised AQ in budgeted proportion)<br><br>
+          Quantity Variance = SC/unit × (Revised AQ – BQ)
+        </div>
+      </div>
+
+      <div class="callout tip">
+        <span class="callout-title">Key Relationship to Remember</span>
+        <strong>Sales Contribution Volume Variance = Sales Margin Volume Variance + Fixed Overhead Volume Variance</strong><br>
+        (Because contribution includes fixed overhead per unit that absorption costing treats separately.)
+      </div>
+
+    </section>
+
+    <hr class="divider">
+
+    <!-- ══ RECONCILIATION ══ -->
+    <section id="reconciliation" class="section-anchor">
+      <h1 class="section-h"><span class="num">04</span>Reconciliation of Profit</h1>
+
+      <p>Reconciliation links <strong>Budgeted Profit → Actual Profit</strong> via all variances. Three types appear in exams:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Reconciliation Type</th>
+              <th>Starting Point</th>
+              <th>Sales Variance used</th>
+              <th>Fixed OH</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Budgeted Profit → Actual Profit (Absorption)</strong></td>
+              <td>BQ × Standard Margin</td>
+              <td>Sales Margin Variances (Profit)</td>
+              <td>Full (Expenditure + Volume)</td>
+            </tr>
+            <tr>
+              <td><strong>Budgeted Profit → Actual Profit (Marginal)</strong></td>
+              <td>BQ × Standard Margin</td>
+              <td>Sales Contribution Variances</td>
+              <td>Expenditure only (No Volume)</td>
+            </tr>
+            <tr>
+              <td><strong>Standard Profit → Actual Profit (Absorption)</strong></td>
+              <td>AQ × Standard Margin</td>
+              <td>Sales Margin Price Variance only (+ Volume = NA)</td>
+              <td>Full</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warning">
+        <span class="callout-title">Exam Alert — Common Mistake</span>
+        In Marginal Costing reconciliation, candidates often include a Fixed Overhead Volume Variance — <strong>this is wrong</strong>. Under marginal costing, fixed overheads are period costs and are not absorbed; therefore, there is no volume variance to report. Only the Expenditure Variance exists.
+      </div>
+
+    </section>
+
+    <hr class="divider">
+
+    <!-- ══ INVESTIGATION ══ -->
+    <section id="investigation" class="section-anchor">
+      <h1 class="section-h"><span class="num">05</span>Investigation of Variances</h1>
+
+      <p>Computing a variance is only the first step. The examiner frequently asks: <em>"Should this variance be investigated?"</em></p>
+
+      <h3>Factors to Consider</h3>
+      <ul>
+        <li><strong>Size:</strong> Investigate only if variance exceeds a threshold (absolute amount or % of standard cost).</li>
+        <li><strong>Type:</strong> Adverse variances receive more attention than favourable ones.</li>
+        <li><strong>Cost-Benefit:</strong> Investigation cost must be less than the expected benefit from corrective action.</li>
+        <li><strong>Pattern:</strong> A worsening trend over several periods signals a systemic problem even if each individual variance is small.</li>
+        <li><strong>Budgetary process quality:</strong> If the budget itself is unrealistic, investigating variances is futile — fix the budget first.</li>
+      </ul>
+
+      <h3>Methods of Investigation</h3>
+      <div class="variance-grid">
+        <div class="v-card">
+          <h4>Simple Rule of Thumb Model</h4>
+          <p style="font-size:0.9rem">Investigate if variance > ₹X or > Y% of standard cost. Based on <em>managerial judgement</em>. Does not consider statistical significance. Quick and practical.</p>
+        </div>
+        <div class="v-card">
+          <h4>Statistical Decision Model</h4>
+          <p style="font-size:0.9rem">Two states: "In Control" (random fluctuation) or "Out of Control" (systematic deviation). Investigate when the probability of being "In Control" falls below a pre-set threshold (e.g., 5%).</p>
+        </div>
+      </div>
+
+    </section>
+
+    <hr class="divider">
+
+    <!-- ══ INTERDEPENDENCE ══ -->
+    <section id="interdependence" class="section-anchor">
+      <h1 class="section-h"><span class="num">06</span>Possible Interdependence Between Variances</h1>
+
+      <p>Variances do not exist in isolation. The cause of one variance may <em>directly cause</em> another in a different direction. Always consider variances together, not in silos.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Decision / Event</th>
+              <th>Variance 1</th>
+              <th>Variance 2 (Consequence)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Purchase cheaper/inferior material</td>
+              <td class="td-fav">Material Price (F)</td>
+              <td class="td-adv">Material Usage (A) + Labour Efficiency (A)</td>
+            </tr>
+            <tr>
+              <td>Hire more skilled labour (higher wage)</td>
+              <td class="td-adv">Labour Rate (A)</td>
+              <td class="td-fav">Labour Efficiency (F) + Variable OH Efficiency (F)</td>
+            </tr>
+            <tr>
+              <td>Change labour mix to cheaper grades</td>
+              <td class="td-fav">Labour Mix (F)</td>
+              <td class="td-adv">Labour Yield/Sub-Efficiency (A)</td>
+            </tr>
+            <tr>
+              <td>Workers chase efficiency bonus</td>
+              <td class="td-adv">Labour Rate (A) [bonus paid]</td>
+              <td class="td-adv">Material Usage (A) [rushed, wasteful]</td>
+            </tr>
+            <tr>
+              <td>Cut selling price to boost volume</td>
+              <td class="td-adv">Sales Price (A)</td>
+              <td class="td-fav">Sales Volume (F)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+
+    <hr class="divider">
+
+    <!-- ══ INTERPRETATION ══ -->
+    <section id="interpretation" class="section-anchor">
+      <h1 class="section-h"><span class="num">07</span>Interpretation of Variances</h1>
+
+      <div class="variance-grid">
+        <div class="v-card">
+          <h4>Material Price (A)</h4>
+          <p style="font-size:0.88rem">New/dearer supplier · Smaller order quantities · Emergency purchases (poor stock control) · Unexpected delivery charges · Global price spikes</p>
+        </div>
+        <div class="v-card">
+          <h4>Material Usage (A)</h4>
+          <p style="font-size:0.88rem">Inferior quality material · Pilferage · Careless handling · Change in production method · Poor inspection · Design change</p>
+        </div>
+        <div class="v-card">
+          <h4>Labour Rate (A)</h4>
+          <p style="font-size:0.88rem">Wage revision · Bonus payment · Skill-mix change · Overtime at premium rate</p>
+        </div>
+        <div class="v-card">
+          <h4>Labour Efficiency (A)</h4>
+          <p style="font-size:0.88rem">Poor supervision · Machine breakdown · Inferior material quality · Resource shortage · Industrial action</p>
+        </div>
+        <div class="v-card">
+          <h4>Sales Price (A)</h4>
+          <p style="font-size:0.88rem">Higher discounts · Promotional offers · Market price pressure · Poor sales force performance</p>
+        </div>
+        <div class="v-card">
+          <h4>Sales Volume (A)</h4>
+          <p style="font-size:0.88rem">Failed marketing campaign · Production shortfall · Shift in customer preferences · Competitor action</p>
+        </div>
+      </div>
+
+    </section>
+
+    <hr class="divider">
+
+    <!-- ══ BEHAVIOURAL ══ -->
+    <section id="behavioural" class="section-anchor">
+      <h1 class="section-h"><span class="num">08</span>Behavioural Issues &amp; Contemporary Environment</h1>
+
+      <p>Standard costing can generate <strong>dysfunctional behaviour</strong> when targets are perceived as unfair or static in a rapidly changing environment.</p>
+
+      <div class="variance-grid">
+        <div class="v-card">
+          <h4>Short-termism</h4>
+          <p style="font-size:0.88rem">Managers optimise for this period's variances at the expense of long-term quality, innovation, or strategic investment.</p>
+        </div>
+        <div class="v-card">
+          <h4>Budget Slack / Padding</h4>
+          <p style="font-size:0.88rem">If managers set their own standards, they build in slack to ensure favourable variances — "gaming" the system.</p>
+        </div>
+        <div class="v-card">
+          <h4>Why it fails in Modern Production</h4>
+          <p style="font-size:0.88rem">Products rapidly change · Standards become obsolete quickly · Highly automated plants show no meaningful labour variances · Continuous improvement philosophy contradicts fixed standards</p>
+        </div>
+        <div class="v-card">
+          <h4>How to mitigate</h4>
+          <p style="font-size:0.88rem">Involve employees in standard-setting · Use a <em>range</em> of qualitative and quantitative performance measures · Adopt a long-term strategic lens aligned with organisational direction</p>
+        </div>
+      </div>
+
+    </section>
+
+    <hr class="divider">
+
+    <!-- ═══ SECTION 3 — EXAMINER'S LENS ═══ -->
+    <section id="examiners-lens" class="section-anchor">
+      <h1 class="section-h"><span class="num">09</span>The Examiner's Lens</h1>
+
+      <h2>Trigger Points — Keywords to Watch</h2>
+      <div class="trigger-grid">
+        <div class="trigger-card">
+          <div class="tc-kw">→ "market conditions changed" / "technology improved"</div>
+          <p>Signal: Compute Planning &amp; Operational variances. Split total variance into revision + controllable portions.</p>
+        </div>
+        <div class="trigger-card">
+          <div class="tc-kw">→ "new product launch" / "first batch"</div>
+          <p>Signal: Apply Learning Curve model. Recalculate standard hours using y = axᵇ before computing efficiency variance.</p>
+        </div>
+        <div class="trigger-card">
+          <div class="tc-kw">→ "activity based" / "cost driver" / "setup" / "delivery"</div>
+          <p>Signal: Use ABC variance framework. Compute efficiency variance on driver units, not direct labour hours.</p>
+        </div>
+        <div class="trigger-card">
+          <div class="tc-kw">→ "industry sales" / "market size" / "market share"</div>
+          <p>Signal: Decompose Sales Quantity Variance into Market Size Variance (Planning) + Market Share Variance (Operational).</p>
+        </div>
+        <div class="trigger-card">
+          <div class="tc-kw">→ "reconcile budgeted profit to actual"</div>
+          <p>Signal: Identify if absorption or marginal costing. Structure reconciliation with all relevant variance lines in the right order.</p>
+        </div>
+        <div class="trigger-card">
+          <div class="tc-kw">→ "scarce resource" / "constrained input"</div>
+          <p>Signal: Apply Relevant Cost approach — enhance usage variance with opportunity cost (lost contribution).</p>
+        </div>
+        <div class="trigger-card">
+          <div class="tc-kw">→ "should variance be investigated?"</div>
+          <p>Signal: Address all five factors: Size, Type, Cost-Benefit, Pattern, Budgetary process quality.</p>
+        </div>
+        <div class="trigger-card">
+          <div class="tc-kw">→ "highly automated" / "JIT" / "TQM" / "committed cost"</div>
+          <p>Signal: Question the relevance of labour variances. Emphasise material and power cost variances instead.</p>
+        </div>
+      </div>
+
+      <h2>Common Mistakes — Where Marks Are Lost</h2>
+      <div class="callout warning">
+        <span class="callout-title">Top 8 Exam Mistakes</span>
+        <ol>
+          <li><strong>Forgetting to verify reconciliation:</strong> Planning + Operational ≠ Traditional Variance? You made an arithmetic error. Always cross-check.</li>
+          <li><strong>Wrong price in Operational Variance:</strong> Using the original standard price instead of the <em>revised</em> standard price in operational variance formulas.</li>
+          <li><strong>Volume Variance in Marginal Costing reconciliation:</strong> There is no Fixed Overhead Volume Variance under marginal costing.</li>
+          <li><strong>Learning curve — using total hours instead of average hours:</strong> y in the model is the <em>average</em> time per unit, not total. Then multiply by x to get total.</li>
+          <li><strong>Market Size vs. Market Share:</strong> Market Size uses <em>budgeted</em> market share %; Market Share uses the <em>difference</em> between actual and budgeted market share % × actual industry volume.</li>
+          <li><strong>Ignoring interdependence in written answers:</strong> Never analyse a single variance in isolation in a discussion question — always flag the likely linked variance.</li>
+          <li><strong>In ABC efficiency variance:</strong> Using actual output units instead of computing <em>standard activity units for actual output</em>.</li>
+          <li><strong>Treating Planning Variance as adverse automatically:</strong> A planning variance can be favourable (e.g., market prices fell below budget).</li>
+        </ol>
+      </div>
+
+      <h2>Inter-connectivity with Other Chapters</h2>
+      <div class="connect-box">
+        <h4>🔗 Linked Topics</h4>
+        <ul>
+          <li><strong>Performance Measurement (Ch. 14/15):</strong> Variance analysis is the quantitative backbone of performance reports. Operational variances → manager's KPIs. Planning variances → environmental adjustment.</li>
+          <li><strong>Transfer Pricing:</strong> Standard costs are often used as transfer prices between divisions (cost-plus). Adverse variances in one division can distort the transfer price.</li>
+          <li><strong>Activity Based Management:</strong> ABC variance analysis directly extends the ABC chapter — the cost driver rates and activity pools are the same inputs.</li>
+          <li><strong>Budgeting &amp; Forecasting:</strong> The quality of ex-ante standards determines the size of planning variances — a poorly prepared budget generates large planning variances that obscure operational performance.</li>
+          <li><strong>Throughput Accounting (ToC):</strong> Standard costing's efficiency focus conflicts directly with ToC's constraint focus — a fertile ground for theoretical exam questions on appropriateness.</li>
+          <li><strong>Learning Curve (Ch. 12 Pricing):</strong> Learning curve data for variance analysis is the same model used in pricing new products or estimating project costs.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <hr class="divider">
+
+    <!-- ═══ SECTION 4 — VISUAL SYNTHESIS ═══ -->
+    <section id="formulae-summary" class="section-anchor">
+      <h1 class="section-h"><span class="num">10</span>Visual Synthesis — Summary Tables</h1>
+
+      <h2>4.1 Complete Variance Formula Reference</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Variance</th>
+              <th>Formula</th>
+              <th>F if…</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Material Price</strong></td>
+              <td class="td-f">(SP – AP) × AQ</td>
+              <td>SP &gt; AP (paid less than standard)</td>
+            </tr>
+            <tr>
+              <td><strong>Material Usage</strong></td>
+              <td class="td-f">(SQ – AQ) × SP</td>
+              <td>SQ &gt; AQ (used less than standard)</td>
+            </tr>
+            <tr>
+              <td><strong>Material Mix</strong></td>
+              <td class="td-f">(RAQ – AQ) × SP</td>
+              <td>Cheaper mix used than standard</td>
+            </tr>
+            <tr>
+              <td><strong>Material Yield</strong></td>
+              <td class="td-f">(SQ – RAQ) × SP</td>
+              <td>Output greater than standard for input</td>
+            </tr>
+            <tr>
+              <td><strong>Labour Rate</strong></td>
+              <td class="td-f">(SR – AR) × AH paid</td>
+              <td>SR &gt; AR (paid less than standard)</td>
+            </tr>
+            <tr>
+              <td><strong>Labour Idle Time</strong></td>
+              <td class="td-f">(AH paid – AH worked) × SR</td>
+              <td>Always adverse (idle = waste)</td>
+            </tr>
+            <tr>
+              <td><strong>Labour Efficiency</strong></td>
+              <td class="td-f">(SH – AH worked) × SR</td>
+              <td>SH &gt; AH worked (faster than standard)</td>
+            </tr>
+            <tr>
+              <td><strong>Labour Mix (Gang)</strong></td>
+              <td class="td-f">(RAH – AH) × SR</td>
+              <td>Cheaper mix than standard</td>
+            </tr>
+            <tr>
+              <td><strong>Labour Yield (Sub-Eff)</strong></td>
+              <td class="td-f">(SH – RAH) × SR</td>
+              <td>Output faster than standard for team</td>
+            </tr>
+            <tr>
+              <td><strong>Var. OH Expenditure</strong></td>
+              <td class="td-f">AH worked × (Std. Rate – Actual Rate)</td>
+              <td>Paid less per hour than standard</td>
+            </tr>
+            <tr>
+              <td><strong>Var. OH Efficiency</strong></td>
+              <td class="td-f">(SH – AH worked) × Std. Rate</td>
+              <td>SH &gt; AH worked</td>
+            </tr>
+            <tr>
+              <td><strong>Fixed OH Expenditure</strong></td>
+              <td class="td-f">Budgeted FOH – Actual FOH</td>
+              <td>Spent less than budgeted</td>
+            </tr>
+            <tr>
+              <td><strong>Fixed OH Volume</strong></td>
+              <td class="td-f">Absorbed FOH – Budgeted FOH</td>
+              <td>Actual output &gt; Budgeted output</td>
+            </tr>
+            <tr>
+              <td><strong>Fixed OH Capacity</strong></td>
+              <td class="td-f">Std. Rate × (AH – Budgeted Hours)</td>
+              <td>AH worked &gt; Budgeted hours</td>
+            </tr>
+            <tr>
+              <td><strong>Fixed OH Efficiency</strong></td>
+              <td class="td-f">Std. Rate × (SH – AH worked)</td>
+              <td>SH &gt; AH worked</td>
+            </tr>
+            <tr>
+              <td><strong>Sales Margin Price</strong></td>
+              <td class="td-f">AQ × (Actual Margin – Std. Margin)</td>
+              <td>Sold at higher margin than standard</td>
+            </tr>
+            <tr>
+              <td><strong>Sales Margin Volume</strong></td>
+              <td class="td-f">Std. Margin × (AQ – BQ)</td>
+              <td>Sold more than budgeted</td>
+            </tr>
+            <tr>
+              <td><strong>Sales Margin Mix</strong></td>
+              <td class="td-f">Std. Margin × (AQ – RAQ)</td>
+              <td>Shifted to higher-margin products</td>
+            </tr>
+            <tr>
+              <td><strong>Sales Margin Quantity</strong></td>
+              <td class="td-f">Std. Margin × (RAQ – BQ)</td>
+              <td>Overall volume &gt; budget</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>4.2 Planning vs. Operational vs. Traditional — Side-by-Side</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Variance Component</th>
+              <th>Traditional</th>
+              <th>Planning</th>
+              <th>Operational</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Material Usage</strong></td>
+              <td class="td-f">(SQ – AQ) × SP</td>
+              <td class="td-f">(SQ – Rev.SQ) × SP</td>
+              <td class="td-f">(Rev.SQ – AQ) × Rev.SP</td>
+            </tr>
+            <tr>
+              <td><strong>Material Price</strong></td>
+              <td class="td-f">(SP – AP) × AQ</td>
+              <td class="td-f">(SP – Rev.SP) × Rev.SQ</td>
+              <td class="td-f">(Rev.SP – AP) × AQ</td>
+            </tr>
+            <tr>
+              <td><strong>Labour Efficiency</strong></td>
+              <td class="td-f">(SH – AH) × SR</td>
+              <td class="td-f">(SH – Rev.SH) × SR</td>
+              <td class="td-f">(Rev.SH – AH) × Rev.SR</td>
+            </tr>
+            <tr>
+              <td><strong>Labour Rate</strong></td>
+              <td class="td-f">(SR – AR) × AH</td>
+              <td class="td-f">(SR – Rev.SR) × Rev.SH</td>
+              <td class="td-f">(Rev.SR – AR) × AH</td>
+            </tr>
+            <tr>
+              <td><strong>Sales Volume</strong></td>
+              <td class="td-f">SM × (AQ – BQ)</td>
+              <td class="td-f">Market Size Variance</td>
+              <td class="td-f">Market Share Variance</td>
+            </tr>
+            <tr>
+              <td><strong>Who is responsible</strong></td>
+              <td>Mixed (unclear)</td>
+              <td>Planning team / CFO</td>
+              <td>Operational managers</td>
+            </tr>
+            <tr>
+              <td><strong>Controllability</strong></td>
+              <td>Mixed</td>
+              <td>Generally Uncontrollable</td>
+              <td>Controllable</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>4.3 Absorption vs. Marginal Costing Reconciliation — Key Differences</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Absorption Costing</th>
+              <th>Marginal Costing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fixed OH Volume Variance</td>
+              <td class="td-fav">Included ✓</td>
+              <td class="td-adv">Not Applicable ✗</td>
+            </tr>
+            <tr>
+              <td>Fixed OH Expenditure Variance</td>
+              <td class="td-fav">Included ✓</td>
+              <td class="td-fav">Included ✓</td>
+            </tr>
+            <tr>
+              <td>Sales Variance basis</td>
+              <td>Profit Margin</td>
+              <td>Contribution</td>
+            </tr>
+            <tr>
+              <td>Sales Volume Variance link</td>
+              <td>SM Volume = SC Volume – FOH Volume</td>
+              <td>SC Volume is the primary measure</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ═══ FLOWCHART ═══ -->
+    <section id="flowchart" class="section-anchor">
+      <h2>4.4 Logic Flowchart — Planning &amp; Operational Variance Process</h2>
+      <div class="diagram-wrap">
+        <svg width="100%" viewBox="0 0 680 560" role="img" xmlns="http://www.w3.org/2000/svg">
+          <title>Flowchart: Deciding between traditional and planning/operational variance analysis</title>
+          <desc>A decision flowchart showing when to apply planning and operational variance analysis versus traditional analysis</desc>
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+
+          <!-- Step 1: Start -->
+          <rect x="240" y="20" width="200" height="46" rx="23" fill="#1a1a1a"/>
+          <text x="340" y="48" text-anchor="middle" fill="#f0e8d8" font-size="13" font-family="'Source Serif 4', serif" font-weight="600">Variance arises in period</text>
+
+          <!-- Arrow down -->
+          <line x1="340" y1="66" x2="340" y2="100" stroke="#4a4a4a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- Decision diamond -->
+          <polygon points="340,100 480,140 340,180 200,140" fill="#f3ede3" stroke="#b8860b" stroke-width="1.5"/>
+          <text x="340" y="137" text-anchor="middle" fill="#b8860b" font-size="12" font-family="'JetBrains Mono', monospace" font-weight="500">Did conditions change</text>
+          <text x="340" y="153" text-anchor="middle" fill="#b8860b" font-size="12" font-family="'JetBrains Mono', monospace" font-weight="500">from original budget?</text>
+
+          <!-- NO branch → right → Traditional -->
+          <line x1="480" y1="140" x2="570" y2="140" stroke="#4a4a4a" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <text x="519" y="133" text-anchor="middle" fill="#4a4a4a" font-size="11" font-family="'JetBrains Mono', monospace">NO</text>
+          <rect x="570" y="112" width="100" height="56" rx="6" fill="#dbeafe" stroke="#1a4d8f" stroke-width="1"/>
+          <text x="620" y="137" text-anchor="middle" fill="#1a4d8f" font-size="12" font-family="'Source Serif 4', serif" font-weight="600">Traditional</text>
+          <text x="620" y="153" text-anchor="middle" fill="#1a4d8f" font-size="11" font-family="'Source Serif 4', serif">Variance Analysis</text>
+
+          <!-- YES branch → down -->
+          <line x1="340" y1="180" x2="340" y2="220" stroke="#4a4a4a" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <text x="350" y="205" fill="#4a4a4a" font-size="11" font-family="'JetBrains Mono', monospace">YES</text>
+
+          <!-- Step: Establish Ex-Post Standard -->
+          <rect x="190" y="220" width="300" height="50" rx="8" fill="#d1fae5" stroke="#1d7a72" stroke-width="1.5"/>
+          <text x="340" y="241" text-anchor="middle" fill="#1d7a72" font-size="12" font-family="'Source Serif 4', serif" font-weight="600">Establish Ex-Post (Revised) Standard</text>
+          <text x="340" y="258" text-anchor="middle" fill="#1d7a72" font-size="11" font-family="'Source Serif 4', serif">reflecting actual operating conditions</text>
+
+          <!-- Arrow down -->
+          <line x1="340" y1="270" x2="340" y2="305" stroke="#4a4a4a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- Split into two -->
+          <line x1="200" y1="305" x2="480" y2="305" stroke="#4a4a4a" stroke-width="1"/>
+          <line x1="200" y1="305" x2="200" y2="335" stroke="#4a4a4a" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="480" y1="305" x2="480" y2="335" stroke="#4a4a4a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- Planning Variance Box -->
+          <rect x="80" y="335" width="240" height="70" rx="8" fill="#fef9c3" stroke="#b8860b" stroke-width="1.5"/>
+          <text x="200" y="360" text-anchor="middle" fill="#b8860b" font-size="12" font-family="'Source Serif 4', serif" font-weight="600">Planning Variance</text>
+          <text x="200" y="378" text-anchor="middle" fill="#7a7a7a" font-size="10" font-family="'JetBrains Mono', monospace">Ex-Post vs. Ex-Ante Standard</text>
+          <text x="200" y="394" text-anchor="middle" fill="#9b2a2a" font-size="10" font-family="'Source Serif 4', serif">Generally Uncontrollable</text>
+
+          <!-- Operational Variance Box -->
+          <rect x="360" y="335" width="240" height="70" rx="8" fill="#d1fae5" stroke="#1d7a72" stroke-width="1.5"/>
+          <text x="480" y="360" text-anchor="middle" fill="#1d7a72" font-size="12" font-family="'Source Serif 4', serif" font-weight="600">Operational Variance</text>
+          <text x="480" y="378" text-anchor="middle" fill="#7a7a7a" font-size="10" font-family="'JetBrains Mono', monospace">Actual vs. Ex-Post Standard</text>
+          <text x="480" y="394" text-anchor="middle" fill="#1a4d8f" font-size="10" font-family="'Source Serif 4', serif">Controllable by Managers</text>
+
+          <!-- Arrow down from each to reconcile -->
+          <line x1="200" y1="405" x2="200" y2="445" stroke="#4a4a4a" stroke-width="1.5"/>
+          <line x1="480" y1="405" x2="480" y2="445" stroke="#4a4a4a" stroke-width="1.5"/>
+          <line x1="200" y1="445" x2="480" y2="445" stroke="#4a4a4a" stroke-width="1"/>
+          <line x1="340" y1="445" x2="340" y2="475" stroke="#4a4a4a" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- Verify Box -->
+          <rect x="160" y="475" width="360" height="50" rx="8" fill="#1a1a1a"/>
+          <text x="340" y="496" text-anchor="middle" fill="#f0e8d8" font-size="12" font-family="'JetBrains Mono', monospace">Verify: Planning + Operational</text>
+          <text x="340" y="514" text-anchor="middle" fill="#b8860b" font-size="12" font-family="'JetBrains Mono', monospace">= Traditional Variance ✓</text>
+        </svg>
+        <figcaption>Fig. 1: Decision process for applying Planning &amp; Operational variance analysis</figcaption>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ═══ SECTION 5 — RETAIN & RECALL ═══ -->
+    <section id="retain-recall" class="section-anchor">
+      <h1 class="section-h"><span class="num">11</span>The 'Retain &amp; Recall' Section</h1>
+
+      <h2>Mnemonics</h2>
+
+      <div class="callout mnemonic">
+        <span class="callout-title">🧠 Mnemonic 1 — Factors for Variance Investigation</span>
+        <p><strong>S-T-C-P-B</strong></p>
+        <p><strong>S</strong>ize of the variance · <strong>T</strong>ype (adverse vs. favourable) · <strong>C</strong>ost of investigation vs. benefit · <strong>P</strong>attern over time · <strong>B</strong>udgetary process quality</p>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="callout-title">🧠 Mnemonic 2 — Causes of Material Price Variance</span>
+        <p><strong>S-O-D-E-E</strong></p>
+        <p><strong>S</strong>upplier change · <strong>O</strong>rder size variation · <strong>D</strong>elivery charge increase · <strong>E</strong>fficiency of buying procedure · <strong>E</strong>mergency purchase (poor inventory control)</p>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="callout-title">🧠 Mnemonic 3 — Why Standard Costing Fails in Modern Environments</span>
+        <p><strong>P-O-A-C-V</strong></p>
+        <p><strong>P</strong>roducts not standardised · <strong>O</strong>utdated standards quickly · <strong>A</strong>utomation makes labour variances irrelevant · <strong>C</strong>ontinuous improvement philosophy conflicts · <strong>V</strong>ariance reports arrive too late</p>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="callout-title">🧠 Mnemonic 4 — Planning Variance vs. Operational Variance (POV)</span>
+        <p><strong>P = Past mistake (ex-ante vs. ex-post) · O = Operational result (ex-post vs. actual) · V = Verify they sum to Traditional</strong></p>
+        <p>Think: <em>"Planning is the Planner's problem; Operations is the Operator's opportunity."</em></p>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="callout-title">🧠 Mnemonic 5 — ABC Variance Types</span>
+        <p><strong>Efficiency = Effort (number of activities) · Expenditure = Expense (cost per activity)</strong></p>
+        <p>Efficiency asks: <em>"Did we do the right number of setups/deliveries?"</em><br>
+        Expenditure asks: <em>"Did we pay the right rate for each setup/delivery?"</em></p>
+      </div>
+
+      <h2>3-Point Revision Checklist</h2>
+      <ul class="checklist">
+        <li><strong>Can you split any total variance into Planning + Operational?</strong> Practice with a material price example: given ex-ante price, ex-post price, actual price, and actual quantity — compute all three variances and verify they reconcile. If you cannot do this in under 4 minutes, revisit Section 2.1.</li>
+        <li><strong>Can you build a complete Reconciliation Statement — both Absorption and Marginal?</strong> Take a set of variance data and construct the reconciliation from scratch, being mindful of which variances appear in each framework (especially Fixed Overhead Volume Variance). If you confuse the two, revisit Section 4.3 and the comparison table.</li>
+        <li><strong>Can you interpret any variance combination critically?</strong> Given two seemingly contradictory variances (e.g., favourable price + adverse usage + adverse labour efficiency), can you construct a plausible narrative connecting all three? If not, revisit Section 06 (Interdependence) and Section 07 (Interpretation).</li>
+      </ul>
+
+      <div class="callout tip">
+        <span class="callout-title">Final Exam Strategy Tip</span>
+        In a 16-mark variance question, the examiner allocates marks as follows (approximately): <strong>Calculations: 60%</strong> (apply formulae correctly) + <strong>Interpretation: 25%</strong> (what does the variance mean?) + <strong>Recommendations: 15%</strong> (what should management do?). Most students leave the interpretation and recommendation marks on the table. Even 2-3 sentences of intelligent commentary on each major variance can secure a full passing score.
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <p style="color:var(--ink-faint); font-size:0.82rem; font-family:'JetBrains Mono', monospace; text-align:center; margin-top:2rem;">
+      One-Source Material · CA Final SCPM · Chapter 13 · Standard Costing<br>
+      Based on ICAI Study Material © The Institute of Chartered Accountants of India
+    </p>
+
+  </main>
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<script>
+  // Progress bar
+  const prog = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.body.scrollHeight - window.innerHeight;
+    prog.style.width = (scrolled / total * 100) + '%';
+    document.getElementById('backTop').classList.toggle('visible', scrolled > 300);
+  });
+
+  // Active sidebar link
+  const sections = document.querySelectorAll('.section-anchor');
+  const links = document.querySelectorAll('.sidebar a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const id = e.target.getAttribute('id');
+        const link = document.querySelector(`.sidebar a[href="#${id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
