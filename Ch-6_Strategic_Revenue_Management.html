@@ -426,6 +426,68 @@
   .toc::-webkit-scrollbar { width: 4px; }
   .toc::-webkit-scrollbar-track { background: transparent; }
   .toc::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+/* ── A4 PAGE SETUP & PAGE BREAKS ── */
+@page {
+  size: A4;
+  margin: 18mm 14mm;
+}
+
+@media print {
+
+  body {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    background: #fff;
+  }
+
+  /* Force each major section onto a new A4 page */
+  section {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  /* Prevent awkward splits */
+  h2, h3, h4,
+  .card,
+  .table-wrap,
+  .flow,
+  .mnemonic,
+  .pillar-wrap,
+  .vc-grid,
+  .canvas-grid,
+  .porter-grid,
+  blockquote {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Keep headings attached to content */
+  h2, h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Better table printing */
+  table {
+    width: 100%;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Optional: smaller print font for better fit */
+  body {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+}
 </style>
 </head>
 <body>
